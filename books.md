@@ -1,6 +1,6 @@
 # Toddler book pickup list — Peoria Public Library
 
-Availability confirmed on **RSAcat (rsacat via alsi.sdp.sirsi.net, Peoria PL scope) — Sunday, July 19, 2026, early afternoon** (toddler list ~1 PM, 3-year-old additions ~2 PM, round 3 ~2:30 PM).
+Availability confirmed on **RSAcat (rsacat via alsi.sdp.sirsi.net, Peoria PL scope) — Sunday, July 19, 2026, early afternoon** (toddler list ~1 PM, 3-year-old additions ~2 PM, round 3 ~2:30 PM, round 4 ~3 PM).
 "On shelf" = catalog status showed a shelf location (not checked out) at that branch. Grab-soon caveat: nothing is on hold for you, so a title can walk away — but most picks below have multiple copies in the system.
 
 Ages: everything works for a 28-month-old up through 3+, with board books (BB) favored for durability. Both his favorites are covered: **Grumpy Monkey** (4 titles!) and **In My Heart**.
@@ -88,6 +88,18 @@ Story-driven picture books he can grow into (all confirmed on shelf, same day):
 
 *Looked for but not borrowable at North/Lakeview right now: the original Pout-Pout Fish (all Peoria copies out), The Gruffalo (Peoria only owns the DVD), Pete the Cat: I Love My White Shoes (Lincoln only), We're Going on a Bear Hunt (Main St & Lincoln only), Click Clack Moo (Outreach book+CD only), Llama Llama Misses Mama (Main St only), Sheep in a Jeep (Lincoln only), Mighty Mighty Construction Site (North copy out; Main/Lincoln/McClure have it), Daniel Tiger (DVDs only), Trashy Town, Jamberry, and Good Night Gorilla (not in Peoria's collection).*
 
+## 🧸 Round 4 — more in the 30-month sweet spot
+
+All five are on shelf at **North** (nice pairing with a North trip); the Duck & Goose pair is at Lakeview too.
+
+- [ ] **Big Red Barn** — Margaret Wise Brown — `JP BRO` (PB) — North (also McClure)
+- [ ] **Ten Little Fingers and Ten Little Toes** — Mem Fox — `JP FOX` (PB) — North
+- [ ] **Duck & Goose Go to the Beach** — Tad Hills — `JP HIL` (PB) — North + Lakeview, perfect for July
+- [ ] **Duck & Goose, Honk! Quack! Boo!** — Tad Hills — `JP HIL` (Holiday shelf) — North + Lakeview
+- [ ] **Ten Apples Up on Top!** — Dr. Seuss/LeSieg — `JP SEU` (BB) — North (also McClure)
+
+*Struck out this round: Bear Snores On and Little Fish touch-and-feel (Outreach collection only); Barnyard Dance!, Blue Hat Green Hat, I Am a Bunny, Owl Babies, and The Little Mouse/Red Ripe Strawberry aren't in Peoria's collection.*
+
 ## 📍 Worth grabbing if you pass another branch
 
 - **Little Blue Truck** — Alice Schertle — Main St (107 NE Monroe), `JP SCH` board book, on shelf — *the* toddler truck book; the only available copy in Peoria
@@ -101,7 +113,7 @@ Story-driven picture books he can grow into (all confirmed on shelf, same day):
 
 ## Tips
 
-- **Suggested plan:** one Lakeview trip nets ~31 of the 40 confirmed titles including In My Heart; add a quick North stop (it's 5 min from the house) for Press Here, Chicka Chicka Boom Boom, How Do Dinosaurs Say Good Night?, Where Do Diggers Sleep at Night?, Steam Train Dream Train, The Very Busy Spider, Bluey: Zoo, and You Can Do It, Pout-Pout Fish!.
+- **Suggested plan:** one Lakeview trip nets ~33 of the 45 confirmed titles including In My Heart; add a quick North stop (it's 5 min from the house) for Press Here, Chicka Chicka Boom Boom, How Do Dinosaurs Say Good Night?, Where Do Diggers Sleep at Night?, Steam Train Dream Train, The Very Busy Spider, Bluey: Zoo, and You Can Do It, Pout-Pout Fish!.
 - Checkout needs your brother-in-law's card (or his card number + PIN at self-check). Standard loan is 3 weeks — fine for a 2-week stay; just return them before you leave (any branch takes returns).
 - I didn't place holds (that needs his card credentials). If something's gone when you arrive, staff can pull the copy from another branch in a day or two.
 - Not borrowable, FYI: the Karen Katz *Where Is Baby's Belly Button?* and *Pat the Bunny* — Peoria's only copies are non-circulating or missing, and the classic *Good Night, Gorilla* isn't in Peoria's collection at all.
