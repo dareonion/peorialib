@@ -1,0 +1,10 @@
+[project]
+name = "peorialib"
+version = "0.1.0"
+description = "Look up Peoria Public Library book availability from the command line"
+requires-python = ">=3.11"
+dependencies = ["playwright>=1.40"]
+
+[tool.uv]
+# Not a packaged library — just a script + its managed venv. Run with `uv run`.
+package = false
