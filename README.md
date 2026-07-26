@@ -11,6 +11,7 @@ lists that started this repo.
 - `books.md` — curated, branch-verified booklist for a 2–3-year-old (North / Lakeview)
 - `north.md` — North Branch shelf-walk (by section and call number)
 - `main.md` — Main Branch shelf-walk of best-of toddler titles (by section and call number)
+- `lakeview.md` — Lakeview Branch shelf-walk of best-of toddler titles (by section and call number)
 
 ## Why it needs a real browser
 
