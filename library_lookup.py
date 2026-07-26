@@ -322,7 +322,9 @@ def run(queries, branches, details, available_only, max_results, as_json, connec
     else:
         print_human(results, details)
     if db_path:
-        print(f"\n(recorded to {db_path})", file=sys.stderr)
+        import report
+        report.write_all(db_path)
+        print(f"\n(recorded to {db_path}; markdown regenerated)", file=sys.stderr)
 
 
 def print_human(results, details):

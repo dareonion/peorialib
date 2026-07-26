@@ -6,15 +6,19 @@ lists that started this repo.
 
 ## Contents
 
+**Code** (the source of truth is the SQLite DB; everything else is derived):
 - `library_lookup.py` — the availability lookup tool (details below)
 - `catalog_db.py` — SQLite store: every scrape's per-branch status over time
 - `ingest.py` — load browser-captured scrape JSON into the store
-- `report.py` — reports over the store (e.g. `--matrix`, the cross-branch table)
-- `test_library_lookup.py` / `test_catalog_db.py` — tests (parsing + the DB layer)
-- `books.md` — curated, branch-verified booklist for a 2–3-year-old (North / Lakeview)
-- `north.md` / `main.md` / `lakeview.md` — per-branch shelf-walks (by section + call number)
-- `cross-branch.md` — a title-×-branch availability matrix, generated from the store
-- `chinese.md` — Chinese-language kids'-book collection (concentrated at North)
+- `report.py` — **generates the markdown** from the store (`--write`) + `--matrix`
+- `test_library_lookup.py` / `test_catalog_db.py` / `test_report.py` — tests
+
+**Generated markdown** — do NOT hand-edit; regenerate with `uv run report.py --write`.
+Every scrape (via `library_lookup.py`/`ingest.py`) regenerates them automatically, so
+they're always current:
+- `books.md` — overview: per-branch on-shelf counts + the full title-×-branch matrix
+- `north.md` / `lakeview.md` / `main.md` — per-branch "on the shelf now" shelf-walks
+  (with a Chinese / World Language subsection where applicable)
 
 ## Storing scrapes (SQLite)
 

@@ -1,70 +1,59 @@
-# Lakeview Branch shelf-walk — 27 toddler books
+# Lakeview Branch — on the shelf now
 
-**Peoria Public Library, Lakeview Branch** — 1137 W. Lake Ave., Peoria, IL 61614 · 309-497-2200
-Hours: Mon–Wed 10 AM–8 PM, Fri–Sat 10 AM–6 PM, Sun 12–5 PM, **closed Thursdays**.
-Statuses checked **Sunday, July 26, 2026 (midday)** — everything below was on the shelf then.
+<!-- AUTO-GENERATED from peorialib.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-Call numbers are `JP` + the first letters of the author's last name. Walk each
-section in call-number order and you'll pass these alphabetically. ⭐ marks the
-core "first books" for a 30-month-old. Lakeview's real strength is **feelings
-books** — see the picture-book section.
+_Auto-generated from `peorialib.db` — data as of **2026-07-26T17:00:00**. Don't hand-edit; run `uv run report.py --write`._
 
-## 1️⃣ Board Books — 9 titles
 
-| Call # | Title |
-|---|---|
-| JP BOY | ⭐ Moo, Baa, La La La! — Boynton |
-| JP BOY | Moo, Baa, Fa La La La La! — Boynton |
-| JP BOY | The Going to Bed Book — Boynton |
-| JP CAR | ⭐ The Very Hungry Caterpillar — Eric Carle |
-| JP CUM | Twinkle, Twinkle, Little Sheepy — Cummins |
-| JP HIL | ⭐ Where's Spot? — Eric Hill (lift-the-flap; 2 copies) |
-| JP LAN | Grumpy Monkey Yuck! — Lang |
-| JP MAR | ⭐ Brown Bear, Brown Bear, What Do You See? — Martin/Carle |
-| JP MAR | Polar Bear, Polar Bear, What Do You Hear? — Martin/Carle |
+**39 titles on the shelf** (of 44 we track here).
 
-## 2️⃣ Picture Books (A–Z by call number) — 16 titles
 
-| Call # | Title |
-|---|---|
-| JP BLU | Bluey: The Creek |
-| JP BRO | ⭐ Goodnight Moon — Margaret Wise Brown (2 copies) |
-| JP HIL | Duck & Goose Go to the Beach — Tad Hills |
-| JP LAN | Grumpy Monkey — Lang *(feelings)* |
-| JP LAN | Grumpy Monkey Party Time! — Lang *(feelings)* |
-| JP LAN | Grumpy Monkey: Mom for a Day — Lang *(feelings)* |
-| JP LLE | The Color Monster: A Story About Emotions — Llenas *(feelings)* |
-| JP NUM | If You Give a Mouse a Cookie — Numeroff |
-| JP PAT | Higher! Higher! — Patricelli |
-| JP RUB | Dragons Love Tacos — Rubin |
-| JP SEN | Where the Wild Things Are — Sendak |
-| JP TUL | Dot! Scribble! Go! — Tullet (interactive) |
-| JP WIL | Don't Let the Pigeon Drive the Bus! — Willems |
-| JP WIL | Knuffle Bunny: A Cautionary Tale — Willems |
-| JP WIL | Knuffle Bunny Too — Willems |
-| JP WIT | In My Heart: A Book of Feelings — Witek *(feelings)* |
+## Picture & board books
 
-## 3️⃣ Reader shelf — 1 title
+- `JP BLU` Bluey : the creek.
+- `JP BOY` Moo, baa, fa la la la la!
+- `JP BOY` Moo, baa, la la la!
+- `JP BOY` The going to bed book
+- `JP BRO` Goodnight moon
+- `JP CAR` From head to toe
+- `JP CAR` The very hungry caterpillar
+- `JP CAR` The very hungry caterpillar
+- `JP CRO` Duck stays in the truck
+- `JP CUM` Twinkle, twinkle, little sheepy : a sleepy sheepy story
+- `JP HEP` I love you to the moon and back
+- `JP HIL` Duck & Goose go to the beach
+- `JP HIL` Duck & Goose, honk! quack! boo!
+- `JP HIL` Where's Spot?
+- `JP JAC` I know an old lady who swallowed a pie
+- `JP LAN` Grumpy monkey
+- `JP LAN` Grumpy monkey : mom for a day
+- `JP LAN` Grumpy monkey party time!
+- `JP LAN` Grumpy monkey yuck!
+- `JP LLE` The color monster : a story about emotions
+- `JP MAR` Brown bear, brown bear, what do you see?
+- `JP MAR` Chicka Chicka I love you
+- `JP MAR` Polar bear, polar bear, what do you hear?
+- `JP MAT` Tap the magic tree
+- `JP MCS` My First Mandarin Words with Gordon & Li Li (board)
+- `JP NUM` If you give a mouse a cookie
+- `JP PAT` Higher! Higher!
+- `JP PIZ` The watermelon seed
+- `JP REG` Mike delivers : the duck is stuck!
+- `JP RUB` Dragons love tacos
+- `JP SEN` Where the wild things are
+- `JP TUL` Dot! scribble! go!
+- `JP WAL` Mouse paint
+- `JP WIL` Don't let the pigeon drive the bus
+- `JP WIL` Knuffle Bunny : a cautionary tale
+- `JP WIL` Knuffle Bunny too : a case of mistaken identity
+- `JP WIL` The pigeon needs a bath!
+- `JP WIT` In my heart : a book of feelings
 
-| Call # | Title |
-|---|---|
-| JP CRO | Duck Stays in the Truck — Cronin (2 copies) |
+## Chinese / World Language
 
-## 4️⃣ Holiday Collection shelf — 1 title
+- `AUDIO JP LIU` Mina qu hai tan = Mina goes to the beach (bilingual + audio)
 
-| Call # | Title |
-|---|---|
-| JP JAC | I Know an Old Lady Who Swallowed a Pie — Jackson |
+## Not on the shelf right now (out or in-library only)
 
----
+Bluey : zoo., Caps for sale : a tale of a peddler, some monkeys, and their monkey business, Llama Llama misses Mama, Llama Llama red pajama, Steam train, dream train
 
-**Checked out / on hold at Lakeview today** (grab elsewhere): *Llama Llama Red
-Pajama* (on hold) and *Llama Llama Misses Mama* (checked out).
-
-**Not held at Lakeview at all** (these are at Main St and/or North, per `main.md`
-and `north.md`): *Little Blue Truck*, *Dear Zoo*, *The Snowy Day*, *Time for Bed*,
-*How Do Dinosaurs Say Good Night?*, and *We're Going on a Bear Hunt*.
-
-**Tip:** availability is a point-in-time snapshot; board books move fast, so treat
-this as "very likely on the shelf." If a title's missing, the desk can pull it from
-another branch in a day or two.

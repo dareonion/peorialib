@@ -40,6 +40,7 @@ import json
 import sys
 
 import catalog_db as db
+import report
 
 
 def ingest(path: str, db_path: str) -> dict:
@@ -97,11 +98,16 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="Load catalog-scrape JSON into SQLite.")
     ap.add_argument("json_file", help="scrape JSON to load")
     ap.add_argument("--db", default="peorialib.db", help="SQLite path (default peorialib.db)")
+    ap.add_argument("--no-report", action="store_true",
+                    help="don't regenerate the markdown files after loading")
     args = ap.parse_args(argv)
     counts = ingest(args.json_file, args.db)
     print(f"ingested into {args.db}: "
           f"{counts['titles']} titles, {counts['availability_rows']} availability rows, "
           f"{counts['search_snapshots']} search snapshots")
+    if not args.no_report:
+        for p in report.write_all(args.db):
+            print(f"regenerated {p}")
 
 
 if __name__ == "__main__":
