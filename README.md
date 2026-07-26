@@ -7,11 +7,29 @@ lists that started this repo.
 ## Contents
 
 - `library_lookup.py` — the availability lookup tool (details below)
-- `test_library_lookup.py` — tests for the parsing + a live-DOM check of the extractors
+- `catalog_db.py` — SQLite store: every scrape's per-branch status over time
+- `ingest.py` — load browser-captured scrape JSON into the store
+- `report.py` — reports over the store (e.g. `--matrix`, the cross-branch table)
+- `test_library_lookup.py` / `test_catalog_db.py` — tests (parsing + the DB layer)
 - `books.md` — curated, branch-verified booklist for a 2–3-year-old (North / Lakeview)
-- `north.md` — North Branch shelf-walk (by section and call number)
-- `main.md` — Main Branch shelf-walk of best-of toddler titles (by section and call number)
-- `lakeview.md` — Lakeview Branch shelf-walk of best-of toddler titles (by section and call number)
+- `north.md` / `main.md` / `lakeview.md` — per-branch shelf-walks (by section + call number)
+- `cross-branch.md` — a title-×-branch availability matrix, generated from the store
+
+## Storing scrapes (SQLite)
+
+Every lookup can be appended to a local SQLite database (`peorialib.db`, gitignored)
+so availability accumulates as a time-series. Two ways in:
+
+```bash
+uv run library_lookup.py --details "pigeon needs a bath"   # live scrape, auto-records (--no-db to skip)
+uv run ingest.py scrape.json                               # load browser-captured JSON
+uv run report.py --matrix                                  # regenerate the cross-branch table
+```
+
+Tables: `titles` (record metadata), `scrapes` (one row per lookup event),
+`availability` (one row per branch copy per check — the time-series core), and
+`search_snapshots` (Peoria-wide counts). The schema lives in `catalog_db.py`, so the
+DB is always reproducible; it's kept out of git to avoid binary churn.
 
 ## Why it needs a real browser
 

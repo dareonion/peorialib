@@ -30,11 +30,14 @@ from __future__ import annotations
 
 import argparse
 import contextlib
+import datetime
 import json
 import re
 import sys
 import urllib.parse
 from pathlib import Path
+
+import catalog_db
 
 CATALOG = "https://alsi.sdp.sirsi.net/client/en_US/PeoriaPL"
 # Search scope: every Peoria Public Library branch, excluding eBooks/eAudio and
@@ -215,7 +218,7 @@ def open_page(connect: str | None, headless: bool):
             ctx.close()
 
 
-def lookup(page, query: str, branches, details: bool, max_results: int):
+def lookup(page, query: str, branches, details: bool, max_results: int, db_ctx=None):
     from playwright.sync_api import TimeoutError as PWTimeout
 
     url = f"{CATALOG}/search/results?qu={urllib.parse.quote_plus(query)}&lm={SEARCH_PROFILE}"
@@ -237,8 +240,32 @@ def lookup(page, query: str, branches, details: bool, max_results: int):
         n, blurb = summarize_avail(h["avail"])
         h["local_count"] = n
         h["avail_text"] = blurb
-        h["copies"] = fetch_detail(page, h["id"], branches) if details else []
+        all_rows = fetch_detail(page, h["id"]) if details else []
+        h["copies"] = filter_branches(all_rows, branches)  # branch-filtered for display
+        if db_ctx is not None:
+            persist_hit(db_ctx, query, h, all_rows)
     return hits
+
+
+def persist_hit(db_ctx, query, hit, all_rows):
+    """Write one search hit (+ its full branch holdings) to the SQLite store."""
+    conn, checked_at = db_ctx
+    rid, title = hit["id"], hit["title"]
+    meta = {"author": hit.get("author") or None, "year": hit.get("year") or None}
+    if all_rows:
+        first = all_rows[0]
+        meta["format"] = catalog_db.format_guess(first.get("call", ""), "", first.get("status", ""))
+    catalog_db.upsert_title(conn, rid, title, checked_at, meta)
+    sid = catalog_db.record_scrape(conn, "search", checked_at, query=query,
+                                   source="library_lookup", profile=SEARCH_PROFILE)
+    catalog_db.add_search_snapshot(conn, sid, rid, query, hit.get("call"),
+                                   hit.get("local_count"), hit.get("avail_text"), checked_at)
+    if all_rows:
+        sid = catalog_db.record_scrape(conn, "detail", checked_at, query=query,
+                                       source="library_lookup", profile=SEARCH_PROFILE)
+        holdings = [{"branch": r["branch"], "call_number": r.get("call"),
+                     "status": r.get("status"), "material_type": None} for r in all_rows]
+        catalog_db.add_availability(conn, sid, rid, title, holdings, checked_at)
 
 
 def fetch_detail(page, sd_id: str, branches):
@@ -254,7 +281,7 @@ def fetch_detail(page, sd_id: str, branches):
     except PWTimeout:
         pass
 
-    rows = filter_branches(page.evaluate(DETAIL_JS), branches)
+    rows = page.evaluate(DETAIL_JS)  # all Peoria branches; caller filters for display
     for r in rows:
         r["state"] = classify(r["status"])
     return rows
@@ -262,25 +289,40 @@ def fetch_detail(page, sd_id: str, branches):
 
 # --------------------------- orchestration + output ---------------------------
 
-def run(queries, branches, details, available_only, max_results, as_json, connect, headless):
+def run(queries, branches, details, available_only, max_results, as_json, connect,
+        headless, db_path=None):
     details = details or bool(branches) or available_only
+    db_ctx = None
+    conn = None
+    if db_path:
+        conn = catalog_db.open_db(db_path)
+        db_ctx = (conn, datetime.datetime.now().isoformat(timespec="seconds"))
+
     results = {}
-    with open_page(connect, headless) as page:
-        for q in queries:
-            hits = lookup(page, q, branches, details, max_results)
-            if available_only:
-                if details:
-                    for h in hits:
-                        h["copies"] = [c for c in h["copies"] if c["state"] == "available"]
-                    hits = [h for h in hits if h["copies"]]
-                else:
-                    hits = [h for h in hits if (h["local_count"] or 0) > 0]
-            results[q] = hits
+    try:
+        with open_page(connect, headless) as page:
+            for q in queries:
+                hits = lookup(page, q, branches, details, max_results, db_ctx)
+                if available_only:
+                    if details:
+                        for h in hits:
+                            h["copies"] = [c for c in h["copies"] if c["state"] == "available"]
+                        hits = [h for h in hits if h["copies"]]
+                    else:
+                        hits = [h for h in hits if (h["local_count"] or 0) > 0]
+                results[q] = hits
+        if conn is not None:
+            conn.commit()
+    finally:
+        if conn is not None:
+            conn.close()
 
     if as_json:
         print(json.dumps(results, indent=2, ensure_ascii=False))
     else:
         print_human(results, details)
+    if db_path:
+        print(f"\n(recorded to {db_path})", file=sys.stderr)
 
 
 def print_human(results, details):
@@ -329,6 +371,9 @@ def main(argv=None):
     ap.add_argument("--headless", action="store_true",
                     help="run the browser headless (faster; usually blocked by the bot check)")
     ap.add_argument("--json", action="store_true", help="emit JSON instead of text")
+    ap.add_argument("--db", default="peorialib.db", metavar="PATH",
+                    help="SQLite store to append each scrape to (default peorialib.db)")
+    ap.add_argument("--no-db", action="store_true", help="don't record this run to SQLite")
     args = ap.parse_args(argv)
 
     run(
@@ -340,6 +385,7 @@ def main(argv=None):
         as_json=args.json,
         connect=args.connect,
         headless=args.headless,
+        db_path=None if args.no_db else args.db,
     )
 
 
