@@ -21,95 +21,95 @@ Per-branch title lists: `north.md`, `lakeview.md`, `main.md`.
 
 ## Full availability matrix
 
-| Title | Call # | North | Lakeview | Main St | Lincoln | McClure | Outreach |
-|---|---|---|---|---|---|---|---|
-| A ti! a ti! (Achoo! Achoo!) | JP WAN | ✓ |  |  |  |  |  |
-| Are you my mother? | JP EAS | ✗ |  | ✓ | ✓ |  |  |
-| Bao bao biao qing ji: My Face Book (baby faces) | JP MYF | ✓ |  | ✓ |  |  |  |
-| Big red barn | JP BRO | ✗ |  |  |  | ✗ |  |
-| Blueberries for Sal | JP MCC |  |  |  | ✓ |  |  |
-| Bluey : the creek. | JP BLU | ✗ | ✓ |  | ✓ | ✗ | ✗ |
-| Bluey : zoo. | JP BLU | ✓ | ✗ | ✗ | ✓ | ✓ | ✗ |
-| Brown bear, brown bear, what do you see? | JP MAR | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Caps for sale : a tale of a peddler, some monkeys, and their monkey business | JP SLO | ✗ | ✗ | ✓ |  |  |  |
-| Chicka chicka boom boom | JP MAR | ✗ |  |  | ✓ | ✓ |  |
-| Chicka Chicka I love you | JP MAR | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Chugga-chugga choo-choo | JP LEW |  |  | · |  |  |  |
-| Dear zoo | JP CAM |  |  | ✓ |  |  |  |
-| Don't let the pigeon drive the bus | JP WIL |  | ✓ |  |  |  |  |
-| Don't let the pigeon drive the bus | JP WIL | ✓ |  | ✓ | ✗ | ✗ | ✗ |
-| Don't push the button! | JP COT | ✓ |  |  |  |  |  |
-| Dong wu yue dui (Animal Band) | JP ORE | ✓ |  |  |  |  |  |
-| Dot! scribble! go! | JP TUL | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Dragons love tacos | JP RUB |  | ✓ | ✓ | ✓ | ✗ |  |
-| Duck & Goose go to the beach | JP HIL | ✗ | ✓ | ✓ |  |  |  |
-| Duck & Goose, honk! quack! boo! | JP HIL | ✓ | ✓ | ✓ | ✓ |  | ✓ |
-| Duck stays in the truck | JP CRO | ✓ | ✓ |  | ✓ |  | ✓ |
-| First Words: Mandarin | JP FIR | ✓ |  |  |  |  |  |
-| Freight train = Tren de carga | JP CRE |  |  | ✓ |  |  |  |
-| From head to toe | JP CAR | ✗ | ✓ |  | ✓ |  |  |
-| Goodnight moon | JP BRO | ✗ | ✓ | ✓ | ✓ | ✗ |  |
-| Grumpy monkey | JP LAN | ✗ | ✓ |  | ✓ |  |  |
-| Grumpy monkey : mom for a day | JP LAN | ✗ | ✓ | ✓ | ✓ |  | ✓ |
-| Grumpy monkey party time! | JP LAN | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Grumpy monkey yuck! | JP LAN | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ |
-| Higher! Higher! | JP PAT |  | ✓ |  |  |  |  |
-| How do dinosaurs say good night? | JP YOL | ✗ |  | ✓ | ✓ | ✓ |  |
-| Hui jiang gu shi de dan ci shu | JP SCA | ✓ |  |  |  |  |  |
-| I know an old lady who swallowed a pie | JP JAC |  | ✓ | ✓ | ✓ |  |  |
-| I love you to the moon and back | JP HEP | ✓ | ✓ | ✓ | ✓ |  | ✓ |
-| I stink! | JP MCM | ✓ |  |  |  |  |  |
-| If you give a mouse a cookie | JP NUM | ✓ | ✓ | ✓ | ✓ |  |  |
-| In my heart : a book of feelings | JP WIT | ✗ | ✓ | ✗ |  |  |  |
-| Kitten's first full moon | JP HEN | ✓ |  | ✓ |  | ✓ |  |
-| Knuffle Bunny : a cautionary tale | JP WIL | ✗ | ✓ | ✓ | ✓ |  |  |
-| Knuffle Bunny too : a case of mistaken identity | JP WIL |  | ✓ | ✓ | ✓ |  |  |
-| Kuai huo de fan dou che si ji (The happy little car driver) | JP MIR | ✓ |  |  |  |  |  |
-| Liang ge hao huo ban (Two Good Friends) | JP HOB | ✓ |  |  |  |  |  |
-| Little blue truck | JP SCH |  |  | ✓ |  |  |  |
-| Llama Llama misses Mama | JP DEW |  | ✗ | ✓ |  |  |  |
-| Llama Llama red pajama | JP DEW | ✗ | ✗ |  |  |  |  |
-| Long-haired girl (bilingual EN/ZH + audio) | AUDIO JP CHE |  |  | ✓ |  |  |  |
-| Mang mang lu lu zhen (Busy Busy Town) | JP SCA | ✓ |  |  |  |  |  |
-| Mike delivers : the duck is stuck! | JP REG | ✓ | ✓ | ✓ | ✓ |  | ✓ |
-| Mina qu hai tan = Mina goes to the beach (bilingual + audio) | AUDIO JP LIU |  | ✓ |  |  |  |  |
-| Moo, baa, fa la la la la! | JP BOY | ✓ | ✓ |  | ✓ | ✓ |  |
-| Moo, baa, la la la! | JP BOY | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Mouse paint | JP WAL |  | ✓ | ✓ |  |  |  |
-| Mr. Brown can moo! Can you? | JP SEU | ✓ |  | ✓ |  |  |  |
-| My First Mandarin Words with Gordon & Li Li (board) | JP MCS |  | ✓ |  |  |  |  |
-| Nan guo de Fuloge (Frog is Sad) | JP VEL | ✓ |  |  |  |  |  |
-| Polar bear, polar bear, what do you hear? | JP MAR | ✗ | ✓ |  |  |  |  |
-| Press here | JP TUL | ✗ |  |  |  |  |  |
-| Steam train, dream train | JP RIN | ✗ | ✗ |  | ✓ | ✓ |  |
-| Tangmu zhu yuan | JP BAW | ✓ |  |  |  |  |  |
-| Tap the magic tree | JP MAT | ✗ | ✓ | ✗ | ✓ |  |  |
-| Ten apples up on top! | JP SEU | ✓ |  |  |  | ✗ | ✓ |
-| Ten little fingers and ten little toes | JP FOX | ✓ |  | · |  |  |  |
-| The color monster : a story about emotions | JP LLE | ✗ | ✓ | ✗ | ✓ | ✓ | ✗ |
-| The going to bed book | JP BOY | ✗ | ✓ |  | ✓ | ✓ |  |
-| The napping house | JP WOO |  |  | ✓ |  |  |  |
-| The pigeon needs a bath! | JP WIL | ✗ | ✓ | ✗ | ✓ | ✓ |  |
-| The sheep beauty = Yang gu niang (bilingual EN/ZH + audio) | AUDIO CHINESE JP LI | ✓ |  |  |  |  |  |
-| The snowy day | JP KEA | ✗ |  | ✓ | ✓ |  |  |
-| The very busy spider | JP CAR | ✗ |  |  | ✓ | ✓ |  |
-| The very hungry caterpillar | JP CAR |  | ✓ | ✓ |  | ✓ |  |
-| The very hungry caterpillar | JP CAR |  | ✓ |  | ✓ | ✓ |  |
-| The very quiet cricket | JP CAR |  |  | · | ✓ |  |  |
-| The watermelon seed | JP PIZ | ✗ | ✓ | ✗ | ✓ | ✓ |  |
-| Time for bed | JP FOX | ✗ |  | ✓ |  |  |  |
-| Twinkle, twinkle, little sheepy : a sleepy sheepy story | JP CUM | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Wan an, xiao xiong (Goodnight, Little Bear) | JP SCA | ✓ |  |  |  |  |  |
-| We're going on a bear hunt | JP ROS |  |  | ✓ |  |  |  |
-| Where do diggers sleep at night? | JP SAY | ✓ |  |  |  |  |  |
-| Where the wild things are | JP SEN |  | ✓ |  |  |  |  |
-| Where's Spot? | JP HIL | ✓ | ✓ | ✓ | ✓ | ✓ |  |
-| Xiao fang che | JP GER | ✓ |  |  |  |  |  |
-| Xiao xiang Suqi | JP JAC | ✓ |  |  |  |  |  |
-| Xiao xiong de du qi | JP SAS | ✓ |  |  |  |  |  |
-| Xiao xiong san bu | JP SAS | ✓ |  |  |  |  |  |
-| Yi zhi yi wei zi ji shi lao shu de mao (The cat who thought it was a mouse) | JP NOR | ✓ |  |  |  |  |  |
-| You can do it, Pout-Pout Fish! | JP DIE | ✓ |  | ✓ |  |  | ✓ |
-| Yue liang wan an (Goodnight Moon, Chinese) | JP BRO | ✓ |  |  |  |  |  |
-| Zhang da le dang shen me | JP SCA | ✓ |  |  |  |  |  |
-Legend: ✓ on shelf · in-library use only ✗ out (blank = not held there)
+| Title | Call # | Type | North | Lakeview | Main St | Lincoln | McClure | Outreach |
+|---|---|---|---|---|---|---|---|---|
+| A ti! a ti! (Achoo! Achoo!) | JP WAN | Other | ✓ |  |  |  |  |  |
+| Are you my mother? | JP EAS | Other | ✗ |  | ✓ | ✓ |  |  |
+| Bao bao biao qing ji: My Face Book (baby faces) | JP MYF | Other | ✓ |  | ✓ |  |  |  |
+| Big red barn | JP BRO | Other | ✗ |  |  |  | ✗ |  |
+| Blueberries for Sal | JP MCC | Picture |  |  |  | ✓ |  |  |
+| Bluey : the creek. | JP BLU | Picture | ✗ | ✓ |  | ✓ | ✗ | ✗ |
+| Bluey : zoo. | JP BLU | Picture | ✓ | ✗ | ✗ | ✓ | ✓ | ✗ |
+| Brown bear, brown bear, what do you see? | JP MAR | Board | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Caps for sale : a tale of a peddler, some monkeys, and their monkey business | JP SLO | Picture | ✗ | ✗ | ✓ |  |  |  |
+| Chicka chicka boom boom | JP MAR | Board | ✗ |  |  | ✓ | ✓ |  |
+| Chicka Chicka I love you | JP MAR | Other | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Chugga-chugga choo-choo | JP LEW | Other |  |  | · |  |  |  |
+| Dear zoo | JP CAM | Picture |  |  | ✓ |  |  |  |
+| Don't let the pigeon drive the bus | JP WIL | Picture |  | ✓ |  |  |  |  |
+| Don't let the pigeon drive the bus | JP WIL | Picture | ✓ |  | ✓ | ✗ | ✗ | ✗ |
+| Don't push the button! | JP COT | Picture | ✓ |  |  |  |  |  |
+| Dong wu yue dui (Animal Band) | JP ORE | Other | ✓ |  |  |  |  |  |
+| Dot! scribble! go! | JP TUL | Picture | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Dragons love tacos | JP RUB | Picture |  | ✓ | ✓ | ✓ | ✗ |  |
+| Duck & Goose go to the beach | JP HIL | Picture | ✗ | ✓ | ✓ |  |  |  |
+| Duck & Goose, honk! quack! boo! | JP HIL | Other | ✓ | ✓ | ✓ | ✓ |  | ✓ |
+| Duck stays in the truck | JP CRO | Other | ✓ | ✓ |  | ✓ |  | ✓ |
+| First Words: Mandarin | JP FIR | Other | ✓ |  |  |  |  |  |
+| Freight train = Tren de carga | JP CRE | Other |  |  | ✓ |  |  |  |
+| From head to toe | JP CAR | Board | ✗ | ✓ |  | ✓ |  |  |
+| Goodnight moon | JP BRO | Picture | ✗ | ✓ | ✓ | ✓ | ✗ |  |
+| Grumpy monkey | JP LAN | Picture | ✗ | ✓ |  | ✓ |  |  |
+| Grumpy monkey : mom for a day | JP LAN | Picture | ✗ | ✓ | ✓ | ✓ |  | ✓ |
+| Grumpy monkey party time! | JP LAN | Picture | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Grumpy monkey yuck! | JP LAN | Board | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ |
+| Higher! Higher! | JP PAT | Picture |  | ✓ |  |  |  |  |
+| How do dinosaurs say good night? | JP YOL | Board | ✗ |  | ✓ | ✓ | ✓ |  |
+| Hui jiang gu shi de dan ci shu | JP SCA | Other | ✓ |  |  |  |  |  |
+| I know an old lady who swallowed a pie | JP JAC | Other |  | ✓ | ✓ | ✓ |  |  |
+| I love you to the moon and back | JP HEP | Board | ✓ | ✓ | ✓ | ✓ |  | ✓ |
+| I stink! | JP MCM | Picture | ✓ |  |  |  |  |  |
+| If you give a mouse a cookie | JP NUM | Picture | ✓ | ✓ | ✓ | ✓ |  |  |
+| In my heart : a book of feelings | JP WIT | Picture | ✗ | ✓ | ✗ |  |  |  |
+| Kitten's first full moon | JP HEN | Picture | ✓ |  | ✓ |  | ✓ |  |
+| Knuffle Bunny : a cautionary tale | JP WIL | Picture | ✗ | ✓ | ✓ | ✓ |  |  |
+| Knuffle Bunny too : a case of mistaken identity | JP WIL | Picture |  | ✓ | ✓ | ✓ |  |  |
+| Kuai huo de fan dou che si ji (The happy little car driver) | JP MIR | Other | ✓ |  |  |  |  |  |
+| Liang ge hao huo ban (Two Good Friends) | JP HOB | Other | ✓ |  |  |  |  |  |
+| Little blue truck | JP SCH | Board |  |  | ✓ |  |  |  |
+| Llama Llama misses Mama | JP DEW | Picture |  | ✗ | ✓ |  |  |  |
+| Llama Llama red pajama | JP DEW | Other | ✗ | ✗ |  |  |  |  |
+| Long-haired girl (bilingual EN/ZH + audio) | AUDIO JP CHE | Other |  |  | ✓ |  |  |  |
+| Mang mang lu lu zhen (Busy Busy Town) | JP SCA | Other | ✓ |  |  |  |  |  |
+| Mike delivers : the duck is stuck! | JP REG | Other | ✓ | ✓ | ✓ | ✓ |  | ✓ |
+| Mina qu hai tan = Mina goes to the beach (bilingual + audio) | AUDIO JP LIU | Other |  | ✓ |  |  |  |  |
+| Moo, baa, fa la la la la! | JP BOY | Board | ✓ | ✓ |  | ✓ | ✓ |  |
+| Moo, baa, la la la! | JP BOY | Board | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Mouse paint | JP WAL | Picture |  | ✓ | ✓ |  |  |  |
+| Mr. Brown can moo! Can you? | JP SEU | Picture | ✓ |  | ✓ |  |  |  |
+| My First Mandarin Words with Gordon & Li Li (board) | JP MCS | Board |  | ✓ |  |  |  |  |
+| Nan guo de Fuloge (Frog is Sad) | JP VEL | Other | ✓ |  |  |  |  |  |
+| Polar bear, polar bear, what do you hear? | JP MAR | Board | ✗ | ✓ |  |  |  |  |
+| Press here | JP TUL | Other | ✗ |  |  |  |  |  |
+| Steam train, dream train | JP RIN | Board | ✗ | ✗ |  | ✓ | ✓ |  |
+| Tangmu zhu yuan | JP BAW | Other | ✓ |  |  |  |  |  |
+| Tap the magic tree | JP MAT | Picture | ✗ | ✓ | ✗ | ✓ |  |  |
+| Ten apples up on top! | JP SEU | Board | ✓ |  |  |  | ✗ | ✓ |
+| Ten little fingers and ten little toes | JP FOX | Picture | ✓ |  | · |  |  |  |
+| The color monster : a story about emotions | JP LLE | Picture | ✗ | ✓ | ✗ | ✓ | ✓ | ✗ |
+| The going to bed book | JP BOY | Board | ✗ | ✓ |  | ✓ | ✓ |  |
+| The napping house | JP WOO | Other |  |  | ✓ |  |  |  |
+| The pigeon needs a bath! | JP WIL | Picture | ✗ | ✓ | ✗ | ✓ | ✓ |  |
+| The sheep beauty = Yang gu niang (bilingual EN/ZH + audio) | AUDIO CHINESE JP LI | Other | ✓ |  |  |  |  |  |
+| The snowy day | JP KEA | Picture | ✗ |  | ✓ | ✓ |  |  |
+| The very busy spider | JP CAR | Picture | ✗ |  |  | ✓ | ✓ |  |
+| The very hungry caterpillar | JP CAR | Picture |  | ✓ | ✓ |  | ✓ |  |
+| The very hungry caterpillar | JP CAR | Board |  | ✓ |  | ✓ | ✓ |  |
+| The very quiet cricket | JP CAR | Picture |  |  | · | ✓ |  |  |
+| The watermelon seed | JP PIZ | Picture | ✗ | ✓ | ✗ | ✓ | ✓ |  |
+| Time for bed | JP FOX | Picture | ✗ |  | ✓ |  |  |  |
+| Twinkle, twinkle, little sheepy : a sleepy sheepy story | JP CUM | Board | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Wan an, xiao xiong (Goodnight, Little Bear) | JP SCA | Other | ✓ |  |  |  |  |  |
+| We're going on a bear hunt | JP ROS | Picture |  |  | ✓ |  |  |  |
+| Where do diggers sleep at night? | JP SAY | Board | ✓ |  |  |  |  |  |
+| Where the wild things are | JP SEN | Picture |  | ✓ |  |  |  |  |
+| Where's Spot? | JP HIL | Board | ✓ | ✓ | ✓ | ✓ | ✓ |  |
+| Xiao fang che | JP GER | Other | ✓ |  |  |  |  |  |
+| Xiao xiang Suqi | JP JAC | Other | ✓ |  |  |  |  |  |
+| Xiao xiong de du qi | JP SAS | Other | ✓ |  |  |  |  |  |
+| Xiao xiong san bu | JP SAS | Other | ✓ |  |  |  |  |  |
+| Yi zhi yi wei zi ji shi lao shu de mao (The cat who thought it was a mouse) | JP NOR | Other | ✓ |  |  |  |  |  |
+| You can do it, Pout-Pout Fish! | JP DIE | Other | ✓ |  | ✓ |  |  | ✓ |
+| Yue liang wan an (Goodnight Moon, Chinese) | JP BRO | Other | ✓ |  |  |  |  |  |
+| Zhang da le dang shen me | JP SCA | Other | ✓ |  |  |  |  |  |
+Legend: Type = Board / Picture / Other (readers, holiday, world-language, or checked out at every branch so the shelf isn't shown); ✓ on shelf · in-library use only ✗ out (blank = not held there)

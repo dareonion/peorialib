@@ -8,33 +8,31 @@ _Auto-generated from `peorialib.db` — data as of **2026-07-26T17:00:00**. Don'
 **37 titles on the shelf** (of 47 we track here).
 
 
-## Picture & board books
+## Board books
 
 - `JP BOY` Moo, baa, la la la!
+- `JP CUM` Twinkle, twinkle, little sheepy : a sleepy sheepy story
+- `JP HEP` I love you to the moon and back
+- `JP HIL` Where's Spot?
+- `JP MAR` Brown bear, brown bear, what do you see?
+- `JP SCH` Little blue truck
+- `JP YOL` How do dinosaurs say good night?
+
+## Picture books
+
 - `JP BRO` Goodnight moon
 - `JP CAM` Dear zoo
 - `JP CAR` The very hungry caterpillar
-- `JP CUM` Twinkle, twinkle, little sheepy : a sleepy sheepy story
 - `JP DEW` Llama Llama misses Mama
-- `JP DIE` You can do it, Pout-Pout Fish!
-- `JP EAS` Are you my mother?
 - `JP FOX` Time for bed
 - `JP HEN` Kitten's first full moon
-- `JP HEP` I love you to the moon and back
 - `JP HIL` Duck & Goose go to the beach
-- `JP HIL` Duck & Goose, honk! quack! boo!
-- `JP HIL` Where's Spot?
-- `JP JAC` I know an old lady who swallowed a pie
 - `JP KEA` The snowy day
 - `JP LAN` Grumpy monkey : mom for a day
 - `JP LAN` Grumpy monkey party time!
-- `JP MAR` Brown bear, brown bear, what do you see?
-- `JP MAR` Chicka Chicka I love you
 - `JP NUM` If you give a mouse a cookie
-- `JP REG` Mike delivers : the duck is stuck!
 - `JP ROS` We're going on a bear hunt
 - `JP RUB` Dragons love tacos
-- `JP SCH` Little blue truck
 - `JP SEU` Mr. Brown can moo! Can you?
 - `JP SLO` Caps for sale : a tale of a peddler, some monkeys, and their monkey business
 - `JP TUL` Dot! scribble! go!
@@ -42,8 +40,16 @@ _Auto-generated from `peorialib.db` — data as of **2026-07-26T17:00:00**. Don'
 - `JP WIL` Don't let the pigeon drive the bus
 - `JP WIL` Knuffle Bunny : a cautionary tale
 - `JP WIL` Knuffle Bunny too : a case of mistaken identity
+
+## Readers & holiday
+
+- `JP DIE` You can do it, Pout-Pout Fish!
+- `JP EAS` Are you my mother?
+- `JP HIL` Duck & Goose, honk! quack! boo!
+- `JP JAC` I know an old lady who swallowed a pie
+- `JP MAR` Chicka Chicka I love you
+- `JP REG` Mike delivers : the duck is stuck!
 - `JP WOO` The napping house
-- `JP YOL` How do dinosaurs say good night?
 
 ## Chinese / World Language
 

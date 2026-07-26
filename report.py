@@ -38,6 +38,20 @@ def _is_world_language(row) -> bool:
     return "World Language" in s or c.startswith("AUDIO CHINESE") or c.startswith("AUDIO ")
 
 
+def _shelf_cat(row) -> str:
+    """board / picture / other, from the catalog's shelf-location text (status_raw)."""
+    s = (row["status_raw"] or "").lower()
+    if "board book" in s:
+        return "board"
+    if "picture book" in s:
+        return "picture"
+    return "other"
+
+
+_TYPE_LABEL = {"board": "Board", "picture": "Picture", "other": "Other"}
+_TYPE_RANK = {"board": 3, "picture": 2, "other": 1}
+
+
 def _load(db_path):
     """Return (rows, as_of). rows = latest availability per (record, branch)."""
     conn = db.open_db(db_path)
@@ -76,21 +90,26 @@ def _books_md(rows, as_of) -> str:
 
 
 def matrix_body(rows) -> str:
-    grid, meta = {}, {}
+    grid, meta, types = {}, {}, {}
     for r in rows:
         key = r["record_id"]
         meta.setdefault(key, (r["title"], r["call_number"]))
         cur = grid.setdefault(key, {}).get(r["branch"])
         if cur is None or _RANK[r["state"]] > _RANK[cur]:
             grid[key][r["branch"]] = r["state"]
-    header = "| Title | Call # | " + " | ".join(BRANCH_ORDER) + " |"
-    sep = "|" + "---|" * (2 + len(BRANCH_ORDER))
+        cat = _shelf_cat(r)
+        if key not in types or _TYPE_RANK[cat] > _TYPE_RANK[types[key]]:
+            types[key] = cat
+    header = "| Title | Call # | Type | " + " | ".join(BRANCH_ORDER) + " |"
+    sep = "|" + "---|" * (3 + len(BRANCH_ORDER))
     lines = [header, sep]
     for key in sorted(meta, key=lambda k: (meta[k][0] or "").lower()):
         title, call = meta[key]
         cells = [CELL.get(grid[key].get(b, ""), "") for b in BRANCH_ORDER]
-        lines.append(f"| {title} | {call or ''} | " + " | ".join(cells) + " |")
-    return "\n".join(lines) + "\nLegend: ✓ on shelf · in-library use only ✗ out (blank = not held there)"
+        lines.append(f"| {title} | {call or ''} | {_TYPE_LABEL[types[key]]} | " + " | ".join(cells) + " |")
+    return ("\n".join(lines) + "\nLegend: Type = Board / Picture / Other (readers, holiday, "
+            "world-language, or checked out at every branch so the shelf isn't shown); "
+            "✓ on shelf · in-library use only ✗ out (blank = not held there)")
 
 
 def _branch_md(branch, rows, as_of) -> str:
@@ -104,18 +123,26 @@ def _branch_md(branch, rows, as_of) -> str:
     titles = list(best.values())
     on_shelf = [r for r in titles if r["state"] == "available"]
     out_rows = [r for r in titles if r["state"] != "available"]
-    wl = sorted((r for r in on_shelf if _is_world_language(r)),
-                key=lambda r: (r["call_number"] or "", r["title"] or ""))
-    reg = sorted((r for r in on_shelf if not _is_world_language(r)),
-                 key=lambda r: (r["call_number"] or "", r["title"] or ""))
+
+    def sortk(r):
+        return (r["call_number"] or "", r["title"] or "")
+
+    # World Language first, then split the rest by shelf format.
+    wl = sorted((r for r in on_shelf if _is_world_language(r)), key=sortk)
+    rest = [r for r in on_shelf if not _is_world_language(r)]
+    board = sorted((r for r in rest if _shelf_cat(r) == "board"), key=sortk)
+    picture = sorted((r for r in rest if _shelf_cat(r) == "picture"), key=sortk)
+    other = sorted((r for r in rest if _shelf_cat(r) == "other"), key=sortk)
 
     lines = [f"# {branch} Branch — on the shelf now\n", _gen_header(as_of),
              f"\n**{len(on_shelf)} titles on the shelf** (of {len(titles)} we track here).\n"]
-    lines.append("\n## Picture & board books\n")
-    lines += [f"- `{r['call_number'] or ''}` {r['title']}" for r in reg] or ["- (none right now)"]
-    if wl:
-        lines.append("\n## Chinese / World Language\n")
-        lines += [f"- `{r['call_number'] or ''}` {r['title']}" for r in wl]
+    if not on_shelf:
+        lines.append("\n(none right now)\n")
+    for name, items in [("Board books", board), ("Picture books", picture),
+                        ("Readers & holiday", other), ("Chinese / World Language", wl)]:
+        if items:
+            lines.append(f"\n## {name}\n")
+            lines += [f"- `{r['call_number'] or ''}` {r['title']}" for r in items]
     if out_rows:
         outs = ", ".join(sorted(r["title"] or "" for r in out_rows))
         lines.append(f"\n## Not on the shelf right now (out or in-library only)\n\n{outs}\n")

@@ -8,30 +8,36 @@ _Auto-generated from `peorialib.db` — data as of **2026-07-26T17:00:00**. Don'
 **41 titles on the shelf** (of 68 we track here).
 
 
-## Picture & board books
+## Board books
 
-- `JP BLU` Bluey : zoo.
 - `JP BOY` Moo, baa, fa la la la la!
 - `JP BOY` Moo, baa, la la la!
-- `JP COT` Don't push the button!
-- `JP CRO` Duck stays in the truck
-- `JP DIE` You can do it, Pout-Pout Fish!
-- `JP FOX` Ten little fingers and ten little toes
-- `JP HEN` Kitten's first full moon
 - `JP HEP` I love you to the moon and back
-- `JP HIL` Duck & Goose, honk! quack! boo!
 - `JP HIL` Where's Spot?
-- `JP LAN` Grumpy monkey party time!
 - `JP LAN` Grumpy monkey yuck!
 - `JP MAR` Brown bear, brown bear, what do you see?
-- `JP MAR` Chicka Chicka I love you
+- `JP SAY` Where do diggers sleep at night?
+- `JP SEU` Ten apples up on top!
+
+## Picture books
+
+- `JP BLU` Bluey : zoo.
+- `JP COT` Don't push the button!
+- `JP FOX` Ten little fingers and ten little toes
+- `JP HEN` Kitten's first full moon
+- `JP LAN` Grumpy monkey party time!
 - `JP MCM` I stink!
 - `JP NUM` If you give a mouse a cookie
-- `JP REG` Mike delivers : the duck is stuck!
-- `JP SAY` Where do diggers sleep at night?
 - `JP SEU` Mr. Brown can moo! Can you?
-- `JP SEU` Ten apples up on top!
 - `JP WIL` Don't let the pigeon drive the bus
+
+## Readers & holiday
+
+- `JP CRO` Duck stays in the truck
+- `JP DIE` You can do it, Pout-Pout Fish!
+- `JP HIL` Duck & Goose, honk! quack! boo!
+- `JP MAR` Chicka Chicka I love you
+- `JP REG` Mike delivers : the duck is stuck!
 
 ## Chinese / World Language
 
