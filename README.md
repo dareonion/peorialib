@@ -14,6 +14,7 @@ lists that started this repo.
 - `books.md` — curated, branch-verified booklist for a 2–3-year-old (North / Lakeview)
 - `north.md` / `main.md` / `lakeview.md` — per-branch shelf-walks (by section + call number)
 - `cross-branch.md` — a title-×-branch availability matrix, generated from the store
+- `chinese.md` — Chinese-language kids'-book collection (concentrated at North)
 
 ## Storing scrapes (SQLite)
 
