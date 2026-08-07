@@ -164,6 +164,16 @@ REMOTE_SYSTEMS = {  # key -> (display name, per-system output file)
 }
 REMOTE_ORDER = ["sccl", "sjpl", "mvpl"]
 
+# The branches the user actually visits — these lead every rendering.
+# (system, branch as stored in remote_availability, column label);
+# branch None = the whole system counts (Mountain View is a single building).
+FAVORITES = [
+    ("sccl", "Cupertino Library", "Cupertino"),
+    ("sccl", "Los Altos Library", "Los Altos"),
+    ("mvpl", None, "Mountain View"),
+    ("sjpl", "Calabazas", "Calabazas"),
+]
+
 
 def _load_remote(db_path):
     """Latest remote availability + match table. Returns (avail_rows, bibs, titles, as_of)."""
@@ -188,6 +198,7 @@ def _bayarea_md(rows, bibs, titles, as_of) -> str:
     # per (title-key, system): best state + branches with an available copy
     state = {}      # (tkey, system) -> 'available' | 'out' | 'reference'
     branches = {}   # (tkey, system) -> set of branches with a copy on shelf
+    bstate = {}     # (tkey, system, branch) -> best state at that branch
     searched = {}   # (tkey, system) -> True if that system was searched
     matched = {}    # (tkey, system) -> True if a bib matched
     meta = {}       # tkey -> (display title, format)
@@ -207,6 +218,9 @@ def _bayarea_md(rows, bibs, titles, as_of) -> str:
             state[k] = r["state"]
         if r["state"] == "available":
             branches.setdefault(k, set()).add(r["branch"])
+        bk = (tkey, r["system"], r["branch"])
+        if bk not in bstate or _RANK[r["state"]] > _RANK[bstate[bk]]:
+            bstate[bk] = r["state"]
 
     def cell(tkey, system):
         k = (tkey, system)
@@ -219,9 +233,24 @@ def _bayarea_md(rows, bibs, titles, as_of) -> str:
             return "—"
         return ""
 
+    def fav_cell(tkey, system, branch):
+        if (tkey, system) not in searched:
+            return ""
+        if (tkey, system) not in matched:
+            return "—"
+        if branch is None:
+            states = [s for (tk, sy, _), s in bstate.items()
+                      if tk == tkey and sy == system]
+        else:
+            states = [bstate.get((tkey, system, branch))]
+        states = [s for s in states if s]
+        if not states:
+            return ""
+        return CELL[max(states, key=lambda s: _RANK[s])]
+
     sys_names = [REMOTE_SYSTEMS[s][0] for s in REMOTE_ORDER]
     out = ["# Bay Area libraries — overview\n", _gen_header(as_of),
-           "\nThe Peoria want-list, looked up at three Bay Area systems "
+           "\nThe want-list, looked up at three Bay Area systems "
            "(`uv run bayarea_lookup.py`):\n",
            "| Key | System | In catalog | On a shelf now |", "|---|---|---|---|"]
     for s in REMOTE_ORDER:
@@ -230,6 +259,16 @@ def _bayarea_md(rows, bibs, titles, as_of) -> str:
         out.append(f"| `{s}` | {REMOTE_SYSTEMS[s][0]} | {in_cat} | {on_shelf} |")
     out += ["\nPer-system shelf lists: " +
             ", ".join(f"`{REMOTE_SYSTEMS[s][1]}`" for s in REMOTE_ORDER) + ".\n",
+            "\n## Your branches\n",
+            "| Title | Type | " + " | ".join(lbl for _, _, lbl in FAVORITES) + " |",
+            "|" + "---|" * (2 + len(FAVORITES))]
+    for tkey in sorted(meta, key=lambda k: k[0]):
+        title, fmt = meta[tkey]
+        cells = [fav_cell(tkey, s, b) for s, b, _ in FAVORITES]
+        out.append(f"| {title} | {fmt} | " + " | ".join(cells) + " |")
+    out += ["\nLegend: ✓ on that shelf now · in-library use only "
+            "✗ that branch's copies are all out (blank = that branch doesn't "
+            "hold it) — not in that system's catalog\n",
             "\n## Title × system\n",
             "| Title | Type | " + " | ".join(sys_names) + " |",
             "|" + "---|" * (2 + len(sys_names))]
@@ -273,10 +312,12 @@ def _system_md(system, rows, bibs, titles, as_of) -> str:
              f"catalog; **{len(have_shelf)}** have at least one copy on a shelf "
              f"right now.\n"]
 
+    fav_names = [b for s, b, _ in FAVORITES if s == system and b]
+
     def branch_key(item):
         bname, best = item
         n = sum(1 for r in best.values() if r["state"] == "available")
-        return (-n, bname)
+        return (bname not in fav_names, -n, bname)
 
     for bname, best in sorted(per_branch.items(), key=branch_key):
         avail = [r for r in best.values() if r["state"] == "available"]

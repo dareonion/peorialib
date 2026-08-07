@@ -141,14 +141,24 @@ def test_cjk_want_matches_romanized_and_simplified_records():
 
 
 def test_pinyin_lookalikes_are_rejected():
-    # 'That's Not My Hat' must not satisfy a want for 'This Is Mine!'
+    # 'That's Not My Hat' must not satisfy a want for 'This Is Mine!' —
+    # neither through its romanized title nor through its CJK multiscript title
     cands = [{"title": "Zhe bu shi wo de mao zi", "authors": [],
               "format_class": "picture"}]
+    best, _ = ba.pick_best("這是我的！", "三浦太郎", None, cands)
+    assert best is None
+    cands = [{"title": "Zhe bu shi wo de mao zi", "alt_title": "這不是我的帽子",
+              "authors": [], "format_class": "picture"}]
     best, _ = ba.pick_best("這是我的！", "三浦太郎", None, cands)
     assert best is None
     # native-pinyin want vs a sibling title from the same series
     cands = [{"title": "Xiao xiong de du qi", "authors": [], "format_class": "picture"}]
     best, _ = ba.pick_best("Xiao xiong de wei ba", None, None, cands)
+    assert best is None
+    # joined-syllable romanization ('Keke' = Corduroy) is still pinyin-ish
+    cands = [{"title": "Xiao xiong Keke de kou daii", "authors": [],
+              "format_class": "picture"}]
+    best, _ = ba.pick_best("Xiao xiong de ha qian", None, None, cands)
     assert best is None
     # …while the genuinely same title still passes, traditional → romanized
     cands = [{"title": "Hao e de mao mao chong", "authors": [], "format_class": "book"}]
@@ -322,6 +332,11 @@ def test_remote_store_and_bayarea_markdown():
         overview = open(os.path.join(d, "bayarea.md"), encoding="utf-8").read()
         assert "Dear zoo" in overview and "✓ 1" in overview
         assert "Xiao xiong san bu" in overview and "—" in overview
+        # favorites view: Cupertino's copy is out -> ✗ in the Cupertino column
+        assert "Your branches" in overview
+        fav_row = [l for l in overview.splitlines()
+                   if l.startswith("| Dear zoo") and "✗" in l]
+        assert fav_row, "Cupertino column should show the out state"
         sccl = open(os.path.join(d, "sccl.md"), encoding="utf-8").read()
         assert "Milpitas Library — 1 on the shelf" in sccl
         assert "Not found in this catalog" in sccl

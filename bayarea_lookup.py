@@ -126,9 +126,14 @@ _PINYIN_SYL = re.compile(r"^(zh|ch|sh|[bpmfdtnlgkhjqxrzcsyw])?[aeiouv]{1,3}(n|ng
 
 def _looks_pinyin(norm_text: str) -> bool:
     """True for romanized-Chinese strings ('xiao xiong de wei ba') — the DB's
-    Peoria want-list stores pinyin natively, so it never carries a CJK flag."""
+    Peoria want-list stores pinyin natively, so it never carries a CJK flag.
+    Majority vote, not all(): joined syllables ('Keke', 'Suqi') are common in
+    catalog romanization and shouldn't unmask the string as non-pinyin."""
     toks = norm_text.split()
-    return len(toks) >= 3 and all(_PINYIN_SYL.match(t) for t in toks)
+    if len(toks) < 3:
+        return False
+    hits = sum(1 for t in toks if _PINYIN_SYL.match(t))
+    return hits * 3 >= len(toks) * 2
 
 
 def _forms(title: str) -> list[tuple[str, bool, bool, bool]]:
@@ -166,9 +171,14 @@ def title_score(want_title: str, cand_titles) -> float:
                 if not cn:
                     continue
                 r = difflib.SequenceMatcher(None, wn, cn).ratio()
-                pinyinish = (w_pin or c_pin
-                             or (_looks_pinyin(wn) and _looks_pinyin(cn)))
-                if pinyinish and r < PINYIN_MIN_RATIO:
+                # Chinese comparisons — pinyin or CJK — must be near-exact:
+                # short syllable/character strings blur ('zhe shi wo de' vs
+                # 'zhe bu shi wo de mao zi' is That's Not My Hat, and one 不
+                # flips the meaning)
+                loose = (w_pin or c_pin
+                         or (_looks_pinyin(wn) and _looks_pinyin(cn))
+                         or (_CJK.search(wn) and _CJK.search(cn)))
+                if loose and r < PINYIN_MIN_RATIO:
                     continue
                 if w_stem or c_stem:
                     r *= 0.98  # an exact full-title match should win ties
@@ -286,6 +296,17 @@ class BiblioCommons:
     def search(self, query: str) -> list[dict]:
         url = (f"{GATEWAY}/{self.subdomain}/bibs/search?"
                f"query={urllib.parse.quote(query)}&searchType=smart")
+        return bc_parse_search(json.loads(_get(url)))
+
+    def search_fielded(self, title: str, surname: str = "") -> list[dict]:
+        """Boolean field search — smart search drowns classics in spinoffs
+        (25 'Very Hungry Caterpillar <theme>' board books before the original).
+        """
+        q = f"title:({re.sub(r'[():]', ' ', title)})"
+        if surname:
+            q += f" AND contributor:({surname})"
+        url = (f"{GATEWAY}/{self.subdomain}/bibs/search?"
+               f"query={urllib.parse.quote(q)}&searchType=bl")
         return bc_parse_search(json.loads(_get(url)))
 
     def availability(self, bib_id: str) -> list[dict]:
@@ -531,6 +552,14 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
                             break
                 best, score = pick_best(row["title"], row["author"],
                                         row["format"], cands)
+                if score < 1.0 and hasattr(client, "search_fielded"):
+                    # weak pick → try the exact-field search before settling
+                    fcands = client.search_fielded(t, surname)
+                    time.sleep(delay)
+                    fbest, fscore = pick_best(row["title"], row["author"],
+                                              row["format"], fcands)
+                    if fbest is not None and fscore > score:
+                        best, score = fbest, fscore
                 if best is None:
                     with conn:
                         db.upsert_remote_bib(conn, system, row["record_id"],
