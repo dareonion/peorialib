@@ -11,8 +11,14 @@ are produced. They are generated artifacts of `peorialib.db`; never hand-edit th
     lakeview.md    }  per-branch "on the shelf now" shelf-walks
     main.md       /
 
-ingest.py and library_lookup.py call `write_all` after every scrape, so the files
-stay current automatically.
+and, once bayarea_lookup.py has run at least once:
+    bayarea.md        title × system overview for the Bay Area lookups
+    sccl.md           \\
+    sjpl.md            }  per-system, per-branch shelf-walks
+    mountainview.md   /
+
+ingest.py, library_lookup.py, and bayarea_lookup.py call the writers after every
+scrape, so the files stay current automatically.
 """
 from __future__ import annotations
 
@@ -149,6 +155,163 @@ def _branch_md(branch, rows, as_of) -> str:
     return "\n".join(lines) + "\n"
 
 
+# --- Bay Area systems (bayarea_lookup.py) ---------------------------------------
+
+REMOTE_SYSTEMS = {  # key -> (display name, per-system output file)
+    "sccl": ("Santa Clara County Library District", "sccl.md"),
+    "sjpl": ("San José Public Library", "sjpl.md"),
+    "mvpl": ("Mountain View Public Library", "mountainview.md"),
+}
+REMOTE_ORDER = ["sccl", "sjpl", "mvpl"]
+
+
+def _load_remote(db_path):
+    """Latest remote availability + match table. Returns (avail_rows, bibs, titles, as_of)."""
+    conn = db.open_db(db_path)
+    rows = db.latest_remote_availability(conn)
+    bibs = conn.execute("SELECT * FROM remote_bibs").fetchall()
+    titles = {r["record_id"]: r for r in conn.execute("SELECT * FROM titles")}
+    as_of = conn.execute("SELECT MAX(checked_at) FROM remote_availability").fetchone()[0]
+    conn.close()
+    return rows, bibs, titles, as_of
+
+
+def _title_key(titles, record_id):
+    """Collapse duplicate want-list records (same book, two Peoria editions)."""
+    t = titles.get(record_id)
+    if t is None:
+        return (record_id, "")
+    return ((t["title"] or "").lower(), t["format"] or "")
+
+
+def _bayarea_md(rows, bibs, titles, as_of) -> str:
+    # per (title-key, system): best state + branches with an available copy
+    state = {}      # (tkey, system) -> 'available' | 'out' | 'reference'
+    branches = {}   # (tkey, system) -> set of branches with a copy on shelf
+    searched = {}   # (tkey, system) -> True if that system was searched
+    matched = {}    # (tkey, system) -> True if a bib matched
+    meta = {}       # tkey -> (display title, format)
+    for b in bibs:
+        tkey = _title_key(titles, b["record_id"])
+        t = titles.get(b["record_id"])
+        meta.setdefault(tkey, (t["title"] if t else b["record_id"],
+                               (t["format"] if t else "") or "?"))
+        searched[(tkey, b["system"])] = True
+        if b["bib_id"]:
+            matched[(tkey, b["system"])] = True
+    for r in rows:
+        tkey = _title_key(titles, r["record_id"])
+        k = (tkey, r["system"])
+        cur = state.get(k)
+        if cur is None or _RANK[r["state"]] > _RANK[cur]:
+            state[k] = r["state"]
+        if r["state"] == "available":
+            branches.setdefault(k, set()).add(r["branch"])
+
+    def cell(tkey, system):
+        k = (tkey, system)
+        if k in branches:
+            n = len(branches[k])
+            return "✓" if system == "mvpl" else f"✓ {n}"
+        if k in matched:
+            return "·" if state.get(k) == "reference" else "✗"
+        if k in searched:
+            return "—"
+        return ""
+
+    sys_names = [REMOTE_SYSTEMS[s][0] for s in REMOTE_ORDER]
+    out = ["# Bay Area libraries — overview\n", _gen_header(as_of),
+           "\nThe Peoria want-list, looked up at three Bay Area systems "
+           "(`uv run bayarea_lookup.py`):\n",
+           "| Key | System | In catalog | On a shelf now |", "|---|---|---|---|"]
+    for s in REMOTE_ORDER:
+        in_cat = sum(1 for (tk, sy) in matched if sy == s)
+        on_shelf = sum(1 for (tk, sy) in branches if sy == s)
+        out.append(f"| `{s}` | {REMOTE_SYSTEMS[s][0]} | {in_cat} | {on_shelf} |")
+    out += ["\nPer-system shelf lists: " +
+            ", ".join(f"`{REMOTE_SYSTEMS[s][1]}`" for s in REMOTE_ORDER) + ".\n",
+            "\n## Title × system\n",
+            "| Title | Type | " + " | ".join(sys_names) + " |",
+            "|" + "---|" * (2 + len(sys_names))]
+    for tkey in sorted(meta, key=lambda k: k[0]):
+        title, fmt = meta[tkey]
+        cells = [cell(tkey, s) for s in REMOTE_ORDER]
+        out.append(f"| {title} | {fmt} | " + " | ".join(cells) + " |")
+    out.append("\nLegend: ✓ on the shelf now (SCCLD/SJPL: at that many branches) "
+               "· in-library use only ✗ in the catalog but no copy on the shelf "
+               "— not found in that catalog (blank = not looked up there yet)")
+    return "\n".join(out) + "\n"
+
+
+def _system_md(system, rows, bibs, titles, as_of) -> str:
+    name, _ = REMOTE_SYSTEMS[system]
+    srows = [r for r in rows if r["system"] == system]
+    sbibs = [b for b in bibs if b["system"] == system]
+    matched = [b for b in sbibs if b["bib_id"]]
+    unmatched = [b for b in sbibs if not b["bib_id"]]
+
+    # branch -> {record_id: best availability row}
+    per_branch = {}
+    have_shelf = set()
+    for r in srows:
+        best = per_branch.setdefault(r["branch"], {})
+        cur = best.get(r["record_id"])
+        if cur is None or _RANK[r["state"]] > _RANK[cur["state"]]:
+            best[r["record_id"]] = r
+        if r["state"] == "available":
+            have_shelf.add(r["record_id"])
+
+    all_records = {b["record_id"] for b in matched}
+    nowhere = sorted({(titles[rid]["title"] if rid in titles else rid)
+                      for rid in all_records - have_shelf})
+    not_in_cat = sorted({(titles[b["record_id"]]["title"]
+                          if b["record_id"] in titles else b["record_id"])
+                         for b in unmatched})
+
+    lines = [f"# {name} — want-list on the shelf now\n", _gen_header(as_of),
+             f"\n**{len(all_records)}** of **{len(sbibs)}** titles are in the "
+             f"catalog; **{len(have_shelf)}** have at least one copy on a shelf "
+             f"right now.\n"]
+
+    def branch_key(item):
+        bname, best = item
+        n = sum(1 for r in best.values() if r["state"] == "available")
+        return (-n, bname)
+
+    for bname, best in sorted(per_branch.items(), key=branch_key):
+        avail = [r for r in best.values() if r["state"] == "available"]
+        if not avail:
+            continue
+        lines.append(f"\n## {bname} — {len(avail)} on the shelf\n")
+        for r in sorted(avail, key=lambda r: (r["call_number"] or "", r["title"] or "")):
+            lines.append(f"- `{r['call_number'] or '?'}` {r['title']}")
+    if nowhere:
+        lines.append("\n## In the catalog, but no copy on any shelf right now\n")
+        lines.append(", ".join(nowhere) + "\n")
+    if not_in_cat:
+        lines.append("\n## Not found in this catalog\n")
+        lines.append(", ".join(not_in_cat) + "\n")
+    return "\n".join(lines) + "\n"
+
+
+def write_bayarea(db_path: str, outdir: str = ".") -> list[str]:
+    """(Re)generate the Bay Area markdown. No-op (returns []) before any lookup."""
+    rows, bibs, titles, as_of = _load_remote(db_path)
+    if not bibs:
+        return []
+    outdir = Path(outdir)
+    written = []
+    (outdir / "bayarea.md").write_text(_bayarea_md(rows, bibs, titles, as_of),
+                                       encoding="utf-8")
+    written.append(str(outdir / "bayarea.md"))
+    for system, (_, fname) in REMOTE_SYSTEMS.items():
+        if any(b["system"] == system for b in bibs):
+            (outdir / fname).write_text(
+                _system_md(system, rows, bibs, titles, as_of), encoding="utf-8")
+            written.append(str(outdir / fname))
+    return written
+
+
 def write_all(db_path: str, outdir: str = ".") -> list[str]:
     """(Re)generate every markdown file from the DB. Returns the paths written."""
     rows, as_of = _load(db_path)
@@ -159,6 +322,7 @@ def write_all(db_path: str, outdir: str = ".") -> list[str]:
     for branch, fname in SHELF_FILES.items():
         (outdir / fname).write_text(_branch_md(branch, rows, as_of), encoding="utf-8")
         written.append(str(outdir / fname))
+    written += write_bayarea(db_path, outdir)
     return written
 
 

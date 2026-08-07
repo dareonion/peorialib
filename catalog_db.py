@@ -13,6 +13,11 @@ Schema (all `CREATE TABLE IF NOT EXISTS`, so init is idempotent):
   scrapes           one row per lookup event
   availability      one row per branch copy per check  (the time-series core)
   search_snapshots  per-search Peoria-wide availability signal
+
+Remote systems (the same want-list looked up at other libraries — see
+bayarea_lookup.py):
+  remote_bibs          which remote catalog record we matched each title to
+  remote_availability  one row per branch copy per check, tagged with the system
 """
 from __future__ import annotations
 
@@ -125,6 +130,37 @@ CREATE TABLE IF NOT EXISTS search_snapshots (
 CREATE INDEX IF NOT EXISTS ix_avail_record  ON availability(record_id);
 CREATE INDEX IF NOT EXISTS ix_avail_branch  ON availability(branch);
 CREATE INDEX IF NOT EXISTS ix_avail_checked ON availability(checked_at);
+
+CREATE TABLE IF NOT EXISTS remote_bibs (
+    system      TEXT NOT NULL,            -- 'sccl' | 'sjpl' | 'mvpl'
+    record_id   TEXT NOT NULL REFERENCES titles(record_id),
+    bib_id      TEXT,                     -- remote catalog id; NULL = no match found
+    title       TEXT,
+    author      TEXT,
+    format      TEXT,                     -- remote catalog's format label
+    year        TEXT,
+    match_score REAL,
+    checked_at  TEXT NOT NULL,
+    PRIMARY KEY (system, record_id)
+);
+
+CREATE TABLE IF NOT EXISTS remote_availability (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    scrape_id   INTEGER REFERENCES scrapes(id),
+    system      TEXT NOT NULL,
+    record_id   TEXT REFERENCES titles(record_id),
+    bib_id      TEXT,
+    title       TEXT,
+    branch      TEXT NOT NULL,            -- branch (sccl/sjpl) or shelf location (mvpl)
+    collection  TEXT,
+    call_number TEXT,
+    status_raw  TEXT,
+    state       TEXT,                     -- 'available' | 'out' | 'reference'
+    checked_at  TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS ix_ravail_sys_rec ON remote_availability(system, record_id);
+CREATE INDEX IF NOT EXISTS ix_ravail_checked ON remote_availability(checked_at);
 """
 
 _TITLE_FIELDS = ("author", "year", "isbns", "publisher", "phys_desc",
@@ -195,6 +231,32 @@ def add_availability(conn, scrape_id: int, record_id: str, title: str,
         )
 
 
+def upsert_remote_bib(conn, system: str, record_id: str, checked_at: str,
+                      bib: dict = None, match_score: float = None):
+    """Record which remote bib a title matched (bib=None → searched, nothing found)."""
+    bib = bib or {}
+    conn.execute(
+        "INSERT OR REPLACE INTO remote_bibs (system, record_id, bib_id, title, "
+        "author, format, year, match_score, checked_at) VALUES (?,?,?,?,?,?,?,?,?)",
+        (system, record_id, bib.get("bib_id"), bib.get("title"), bib.get("author"),
+         bib.get("format"), bib.get("year"), match_score, checked_at),
+    )
+
+
+def add_remote_availability(conn, scrape_id: int, system: str, record_id: str,
+                            bib_id: str, title: str, items, checked_at: str):
+    """items: iterable of dicts with branch/collection/call_number/status/state."""
+    for it in items:
+        conn.execute(
+            "INSERT INTO remote_availability (scrape_id, system, record_id, bib_id, "
+            "title, branch, collection, call_number, status_raw, state, checked_at) "
+            "VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+            (scrape_id, system, record_id, bib_id, title,
+             (it.get("branch") or "").strip() or "?", it.get("collection"),
+             it.get("call_number"), it.get("status"), it.get("state"), checked_at),
+        )
+
+
 def add_search_snapshot(conn, scrape_id, record_id, query, call_number,
                         local_count, avail_text, checked_at):
     conn.execute(
@@ -220,4 +282,23 @@ def latest_availability(conn, is_peoria_only: bool = True):
         ON a.record_id = last.record_id AND a.branch = last.branch
            AND a.checked_at = last.mx
         """
+    ).fetchall()
+
+
+def latest_remote_availability(conn, system: str = None):
+    """Most-recent remote_availability rows per (system, record_id, branch)."""
+    where = "WHERE system = ?" if system else ""
+    args = (system,) if system else ()
+    return conn.execute(
+        f"""
+        SELECT a.* FROM remote_availability a
+        JOIN (
+            SELECT system, record_id, branch, MAX(checked_at) AS mx
+            FROM remote_availability {where}
+            GROUP BY system, record_id, branch
+        ) last
+        ON a.system = last.system AND a.record_id = last.record_id
+           AND a.branch = last.branch AND a.checked_at = last.mx
+        """,
+        args,
     ).fetchall()
