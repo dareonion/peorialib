@@ -1,35 +1,200 @@
 [
-  {"title": "小金魚逃走了", "author": "五味太郎", "isbn": "9789861617084"},
-  {"title": "誰的家到了？", "author": "劉旭恭", "isbn": "9789861614601"},
-  {"title": "棕色的熊、棕色的熊，你在看什麼？", "author": "Martin, Bill", "isbn": "9789577621900"},
-  {"title": "小黃點", "author": "Tullet, Hervé", "isbn": "9789577625038"},
-  {"title": "從頭動到腳", "author": "Carle, Eric", "isbn": "9789577623171"},
-  {"title": "晚安，猩猩", "author": "Rathmann, Peggy", "isbn": "9789577622372"},
-  {"title": "米米坐馬桶", "author": "周逸芬", "isbn": "9789869646086"},
-  {"title": "好餓的毛毛蟲", "author": "Carle, Eric", "isbn": "9789577620989"},
-  {"title": "好大的紅蘋果", "author": "垂石眞子", "isbn": "9789861613024"},
-  {"title": "這是我的！", "author": "三浦太郎", "isbn": "9786267127261"},
-  {"title": "鱷魚怕怕．牙醫怕怕", "author": "五味太郎", "isbn": "9789577621382"},
-  {"title": "抱抱！", "author": "Alborough, Jez", "isbn": "9789577626103"},
-  {"title": "親愛的動物園", "author": "Campbell, Rod", "isbn": "9789577622426"},
-  {"title": "誰吃掉了？", "author": "五味太郎", "isbn": "9789577622969"},
-  {"title": "企鵝體操", "author": "齋藤槙", "isbn": "9786269648092"},
-  {"title": "寶寶喜歡吃", "author": "", "isbn": "9789861616063"},
-  {"title": "幼幼小書：我的一天．我喜歡．我愛玩", "author": "", "isbn": "9789861615226"},
-  {"title": "擦！擦！擦！", "author": "", "isbn": "9789862038918"},
-  {"title": "爸爸跟我玩", "author": "", "isbn": "9789866167466"},
-  {"title": "誰來玩躲貓貓？", "author": "湯姆牛", "isbn": "9789865258559"},
-  {"title": "小藍和小黃", "author": "Lionni, Leo", "isbn": "9789577625694"},
-  {"title": "點點玩聲音", "author": "Tullet, Hervé", "isbn": "9789577626110"},
-  {"title": "早安晚安：給0-3歲的自理兒歌", "author": "", "isbn": "9789861616513"},
-  {"title": "小雨滴：給0-3歲的律動兒歌", "author": "", "isbn": "9789861616506"},
-  {"title": "跑跑鎮", "author": "", "isbn": "9789861615097"},
-  {"title": "丹丹寶寶版：刷牙 刷～刷～刷", "author": "", "isbn": "9789577627247"},
-  {"title": "貝蒂好想好想吃香蕉", "author": "Antony, Steve", "isbn": "9786263055230"},
-  {"title": "媽媽買綠豆", "author": "曾陽晴", "isbn": "9789861612607"},
-  {"title": "子兒，吐吐", "author": "李瑾倫", "isbn": "9789861616308"},
-  {"title": "我變成一隻噴火龍了！", "author": "賴馬", "isbn": "9789869261456"},
-  {"title": "母雞蘿絲去散步", "author": "Hutchins, Pat", "isbn": ""},
-  {"title": "說不要的書！", "author": "", "isbn": ""},
-  {"title": "什麼唱歌：給0-3歲的傳統兒歌", "author": "", "isbn": ""}
+ {
+  "title": "小金魚逃走了",
+  "author": "五味太郎",
+  "isbn": "9789861617084",
+  "lang": "chi"
+ },
+ {
+  "title": "誰的家到了？",
+  "author": "劉旭恭",
+  "isbn": "9789861614601",
+  "lang": "chi"
+ },
+ {
+  "title": "棕色的熊、棕色的熊，你在看什麼？",
+  "author": "Martin, Bill",
+  "isbn": "9789577621900",
+  "lang": "chi"
+ },
+ {
+  "title": "小黃點",
+  "author": "Tullet, Hervé",
+  "isbn": "9789577625038",
+  "lang": "chi"
+ },
+ {
+  "title": "從頭動到腳",
+  "author": "Carle, Eric",
+  "isbn": "9789577623171",
+  "lang": "chi"
+ },
+ {
+  "title": "晚安，猩猩",
+  "author": "Rathmann, Peggy",
+  "isbn": "9789577622372",
+  "lang": "chi"
+ },
+ {
+  "title": "米米坐馬桶",
+  "author": "周逸芬",
+  "isbn": "9789869646086",
+  "lang": "chi"
+ },
+ {
+  "title": "好餓的毛毛蟲",
+  "author": "Carle, Eric",
+  "isbn": "9789577620989",
+  "lang": "chi"
+ },
+ {
+  "title": "好大的紅蘋果",
+  "author": "垂石眞子",
+  "isbn": "9789861613024",
+  "lang": "chi"
+ },
+ {
+  "title": "這是我的！",
+  "author": "三浦太郎",
+  "isbn": "9786267127261",
+  "lang": "chi"
+ },
+ {
+  "title": "鱷魚怕怕．牙醫怕怕",
+  "author": "五味太郎",
+  "isbn": "9789577621382",
+  "lang": "chi"
+ },
+ {
+  "title": "抱抱！",
+  "author": "Alborough, Jez",
+  "isbn": "9789577626103",
+  "lang": "chi"
+ },
+ {
+  "title": "親愛的動物園",
+  "author": "Campbell, Rod",
+  "isbn": "9789577622426",
+  "lang": "chi"
+ },
+ {
+  "title": "誰吃掉了？",
+  "author": "五味太郎",
+  "isbn": "9789577622969",
+  "lang": "chi"
+ },
+ {
+  "title": "企鵝體操",
+  "author": "齋藤槙",
+  "isbn": "9786269648092",
+  "lang": "chi"
+ },
+ {
+  "title": "寶寶喜歡吃",
+  "author": "",
+  "isbn": "9789861616063",
+  "lang": "chi"
+ },
+ {
+  "title": "幼幼小書：我的一天．我喜歡．我愛玩",
+  "author": "",
+  "isbn": "9789861615226",
+  "lang": "chi"
+ },
+ {
+  "title": "擦！擦！擦！",
+  "author": "",
+  "isbn": "9789862038918",
+  "lang": "chi"
+ },
+ {
+  "title": "爸爸跟我玩",
+  "author": "",
+  "isbn": "9789866167466",
+  "lang": "chi"
+ },
+ {
+  "title": "誰來玩躲貓貓？",
+  "author": "湯姆牛",
+  "isbn": "9789865258559",
+  "lang": "chi"
+ },
+ {
+  "title": "小藍和小黃",
+  "author": "Lionni, Leo",
+  "isbn": "9789577625694",
+  "lang": "chi"
+ },
+ {
+  "title": "點點玩聲音",
+  "author": "Tullet, Hervé",
+  "isbn": "9789577626110",
+  "lang": "chi"
+ },
+ {
+  "title": "早安晚安：給0-3歲的自理兒歌",
+  "author": "",
+  "isbn": "9789861616513",
+  "lang": "chi"
+ },
+ {
+  "title": "小雨滴：給0-3歲的律動兒歌",
+  "author": "",
+  "isbn": "9789861616506",
+  "lang": "chi"
+ },
+ {
+  "title": "跑跑鎮",
+  "author": "",
+  "isbn": "9789861615097",
+  "lang": "chi"
+ },
+ {
+  "title": "丹丹寶寶版：刷牙 刷～刷～刷",
+  "author": "",
+  "isbn": "9789577627247",
+  "lang": "chi"
+ },
+ {
+  "title": "貝蒂好想好想吃香蕉",
+  "author": "Antony, Steve",
+  "isbn": "9786263055230",
+  "lang": "chi"
+ },
+ {
+  "title": "媽媽買綠豆",
+  "author": "曾陽晴",
+  "isbn": "9789861612607",
+  "lang": "chi"
+ },
+ {
+  "title": "子兒，吐吐",
+  "author": "李瑾倫",
+  "isbn": "9789861616308",
+  "lang": "chi"
+ },
+ {
+  "title": "我變成一隻噴火龍了！",
+  "author": "賴馬",
+  "isbn": "9789869261456",
+  "lang": "chi"
+ },
+ {
+  "title": "母雞蘿絲去散步",
+  "author": "Hutchins, Pat",
+  "isbn": "",
+  "lang": "chi"
+ },
+ {
+  "title": "說不要的書！",
+  "author": "",
+  "isbn": "",
+  "lang": "chi"
+ },
+ {
+  "title": "什麼唱歌：給0-3歲的傳統兒歌",
+  "author": "",
+  "isbn": "",
+  "lang": "chi"
+ }
 ]

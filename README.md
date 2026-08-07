@@ -50,9 +50,10 @@ romanized fields), and the winning record's per-branch copies land in
 `remote_bibs` / `remote_availability`. "That library doesn't hold it" is a valid
 result and is recorded too. The Bay Area markdown regenerates after every run.
 
-**`wantlist_zh.json`** holds extra want-list books that have no Peoria record —
-CJK titles added by hand (with the Traditional-edition ISBN where known; an
-unmatched title gets one last search by ISBN). Every run merges it into `titles`
+**`wantlist_*.json`** files hold extra want-list books that have no Peoria
+record — added by hand: `wantlist_zh.json` (Traditional-Chinese picks, with the
+Traditional-edition ISBN where known; an unmatched title gets one last search by
+ISBN) and `wantlist_fr.json` (French picks). Every run merges them into `titles`
 (as `WANT:…` rows) before looking anything up. CJK titles are searched in CJK
 where the catalog supports it (BiblioCommons) and via pypinyin romanization
 where it doesn't (Mountain View's classic WebPAC 502s on CJK); scoring compares

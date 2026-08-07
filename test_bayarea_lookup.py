@@ -170,6 +170,29 @@ def test_pinyin_uses_catalog_romanization_for_shei():
     assert ba._pinyin("誰的家到了") == "shui de jia dao le"
 
 
+def test_language_pinned_wants():
+    # 'Cher zoo' (lang=fre) must not take the English Dear Zoo…
+    cands = [{"title": "Dear zoo", "authors": ["Campbell, Rod"],
+              "format_class": "picture", "language": "eng"}]
+    best, _ = ba.pick_best("Cher zoo", "Campbell, Rod", None, cands, "fre")
+    assert best is None
+    # …but does take the French edition
+    cands.append({"title": "Cher zoo", "authors": ["Campbell, Rod"],
+                  "format_class": "picture", "language": "fre"})
+    best, _ = ba.pick_best("Cher zoo", "Campbell, Rod", None, cands, "fre")
+    assert best is not None and best["language"] == "fre"
+    # series sibling in the right language still isn't the same book (0.8 bar)
+    cands = [{"title": "T'choupi visite Paris", "authors": ["Courtin, Thierry"],
+              "format_class": "picture", "language": "fre"}]
+    best, _ = ba.pick_best("T'choupi va sur le pot", "Courtin, Thierry", None,
+                           cands, "fre")
+    assert best is None
+    # MVPL: language derived from 'J FRENCH …' call numbers
+    items = [{"call_number": "J FRENCH J P TISON"}]
+    assert ba._webpac_language(items) == "fre"
+    assert ba._webpac_language([{"call_number": "J P SCHERTLE"}]) is None
+
+
 def test_sync_wantlist_inserts_want_rows():
     with tempfile.TemporaryDirectory() as d:
         dbp = os.path.join(d, "t.db")
@@ -288,6 +311,12 @@ def test_webpac_single_hit_record_page():
     assert rec["items"][0]["state"] == "available"
     best, score = ba.pick_best("I stink!", "McMullan, Kate", "picture", cands)
     assert best is rec and score > 0.9
+
+
+def test_webpac_query_folds_accents_and_cjk():
+    assert ba.webpac_query("Bébés chouettes Waddell") == "Bebes chouettes Waddell"
+    assert ba.webpac_query("T'choupi va sur le pot") == "T choupi va sur le pot"
+    assert ba.webpac_query("好餓的毛毛蟲") == "hao e de mao mao chong"
 
 
 def test_webpac_state_words():

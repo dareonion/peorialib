@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import difflib
+import glob
 import gzip
 import html as htmllib
 import json
@@ -195,8 +196,17 @@ def _fmt_bonus(our_format: str, cand_class: str) -> float:
     return 0.0
 
 
-def pick_best(row_title: str, row_author: str, row_format: str, candidates):
-    """candidates: dicts with title/subtitle/authors/format_class. → (cand, score)."""
+def pick_best(row_title: str, row_author: str, row_format: str, candidates,
+              lang: str = None):
+    """candidates: dicts with title/subtitle/authors/format_class. → (cand, score).
+
+    A want with `lang` set ('fre', 'chi') only accepts candidates in that
+    language, and at a stricter threshold — otherwise 'Cher zoo' happily takes
+    the English Dear Zoo, and 'T'choupi va sur le pot' any other T'choupi.
+    """
+    if lang:
+        candidates = [c for c in candidates if c.get("language") == lang]
+    threshold = 0.8 if lang else MATCH_THRESHOLD
     want_title, _ = query_terms(row_title)
     surname = query_terms("", row_author)[1] if row_author else ""
     best, best_key, best_score = None, None, 0.0
@@ -218,7 +228,7 @@ def pick_best(row_title: str, row_author: str, row_format: str, candidates):
         key = (round(score, 2), n_avail, len(items), -i)
         if best_key is None or key > best_key:
             best, best_key, best_score = cand, key, score
-    if best_score >= MATCH_THRESHOLD:
+    if best_score >= threshold:
         return best, round(best_score, 3)
     return None, round(best_score, 3)
 
@@ -259,6 +269,7 @@ def bc_parse_search(payload: dict) -> list[dict]:
                 "format_class": _bc_format_class(info.get("format")),
                 "year": info.get("publicationDate"),
                 "call_number": info.get("callNumber"),
+                "language": info.get("primaryLanguage"),
             })
     return out
 
@@ -355,6 +366,20 @@ def _webpac_items(chunk: str) -> list[dict]:
     return items
 
 
+# MVPL flags language in the call number: 'J FRENCH J P TISON', 'J CHINESE …'
+_WEBPAC_LANGS = {"FRENCH": "fre", "CHINESE": "chi", "SPANISH": "spa",
+                 "JAPANESE": "jpn", "KOREAN": "kor", "RUSSIAN": "rus",
+                 "GERMAN": "ger", "HINDI": "hin"}
+
+
+def _webpac_language(items: list[dict]) -> str | None:
+    blob = " ".join((i.get("call_number") or "").upper() for i in items)
+    for marker, code in _WEBPAC_LANGS.items():
+        if marker in blob:
+            return code
+    return None
+
+
 def _webpac_fmt_class(media: str, items: list[dict]) -> str:
     blob = f"{media} " + " ".join(i["call_number"] or "" for i in items)
     if "board" in blob.lower():
@@ -389,7 +414,8 @@ def _webpac_record_page(page: str) -> dict | None:
             "authors": [author] if author else [],
             "format": fields.get("Material", "Book"),
             "format_class": _webpac_fmt_class("", items),
-            "year": None, "items": items}
+            "year": None, "items": items,
+            "language": _webpac_language(items)}
 
 
 def webpac_parse_results(page: str) -> list[dict]:
@@ -432,23 +458,33 @@ def webpac_parse_results(page: str) -> list[dict]:
                     "authors": [author] if author else [],
                     "format": media or "Book",
                     "format_class": _webpac_fmt_class(media, items),
-                    "year": None, "items": items})
+                    "year": None, "items": items,
+                    "language": _webpac_language(items)})
     return out
+
+
+def webpac_query(query: str) -> str:
+    """What this catalog's search box can actually digest.
+
+    - CJK 502s the 2006-era server — Chinese records are searchable only
+      through their romanization.
+    - Diacritics must be folded, not stripped ('Bébés' → 'bebes', not 'b b s').
+    - Punctuation goes: '?' is a truncation wildcard here, and 'see?' quietly
+      turns an exact search into garbage matches.
+    """
+    if _CJK.search(query):
+        query = _pinyin(query)
+    query = unicodedata.normalize("NFKD", query)
+    query = "".join(c for c in query if not unicodedata.combining(c))
+    return re.sub(r"[^A-Za-z0-9 ]+", " ", query).strip()
 
 
 class MountainView:
     """Mountain View Public Library via its classic (server-rendered) WebPAC."""
 
     def search(self, query: str) -> list[dict]:
-        # This 2006-era WebPAC 502s on CJK in the query string — its Chinese
-        # records are searchable through their romanization only.
-        if _CJK.search(query):
-            query = _pinyin(query)
-        # Strip punctuation: '?' is a truncation wildcard to this WebPAC, and
-        # 'see?' quietly turns an exact search into garbage matches.
-        query = re.sub(r"[^A-Za-z0-9 ]+", " ", query).strip()
         url = (f"{MVPL_BASE}/search~S1/?searchtype=X"
-               f"&searcharg={urllib.parse.quote_plus(query)}&SORT=D")
+               f"&searcharg={urllib.parse.quote_plus(webpac_query(query))}&SORT=D")
         # cold keyword searches here can take >30s; be patient
         page = _get(url, accept="text/html", timeout=75).decode("iso-8859-1",
                                                                 "replace")
@@ -468,11 +504,11 @@ SYSTEMS = {
 
 # --- runner ---------------------------------------------------------------------
 
-WANTLIST_ZH = "wantlist_zh.json"
+WANTLIST_GLOB = "wantlist_*.json"  # wantlist_zh.json, wantlist_fr.json, …
 
 
-def sync_wantlist(conn, path: str = WANTLIST_ZH) -> int:
-    """Merge the hand-curated CJK want-list (checked into git) into `titles`.
+def sync_wantlist(conn, path: str) -> int:
+    """Merge a hand-curated want-list file (checked into git) into `titles`.
 
     These books have no Peoria record (yet), so they get synthetic WANT: ids;
     they ride along in every Bay Area lookup and in the generated markdown.
@@ -492,19 +528,32 @@ def sync_wantlist(conn, path: str = WANTLIST_ZH) -> int:
     return len(entries)
 
 
+def wantlist_langs() -> dict:
+    """{record_id: lang} for every want-list entry that pins a language."""
+    langs = {}
+    for wl in sorted(glob.glob(WANTLIST_GLOB)):
+        with open(wl, encoding="utf-8") as fh:
+            for e in json.load(fh):
+                if e.get("lang"):
+                    langs["WANT:" + re.sub(r"\s+", "", e["title"])] = e["lang"]
+    return langs
+
+
 def lookup_all(db_path: str, systems: list[str], limit: int = None,
                delay: float = 0.4, resume: bool = False,
                retry_misses: bool = False) -> None:
     conn = db.open_db(db_path)
-    n = sync_wantlist(conn)
-    if n:
-        conn.commit()
-        print(f"want-list: merged {n} entries from {WANTLIST_ZH}")
+    for wl in sorted(glob.glob(WANTLIST_GLOB)):
+        n = sync_wantlist(conn, wl)
+        if n:
+            conn.commit()
+            print(f"want-list: merged {n} entries from {wl}")
     rows = conn.execute(
         "SELECT record_id, title, author, format, isbns FROM titles ORDER BY title"
     ).fetchall()
     if limit:
         rows = rows[:limit]
+    langs = wantlist_langs()
 
     for system in systems:
         label, make_client = SYSTEMS[system]
@@ -527,6 +576,7 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
                                      source="bayarea_lookup", profile=system)
         print(f"[{system}] {label}: {len(todo)} titles")
         for i, row in enumerate(todo, 1):
+            lang = langs.get(row["record_id"])
             t, surname = query_terms(row["title"], row["author"])
             # CJK titles are specific enough alone; a Latin surname ANDed onto a
             # CJK query only knocks out legitimate hits
@@ -551,13 +601,13 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
                         if cands:
                             break
                 best, score = pick_best(row["title"], row["author"],
-                                        row["format"], cands)
+                                        row["format"], cands, lang)
                 if score < 1.0 and hasattr(client, "search_fielded"):
                     # weak pick → try the exact-field search before settling
                     fcands = client.search_fielded(t, surname)
                     time.sleep(delay)
                     fbest, fscore = pick_best(row["title"], row["author"],
-                                              row["format"], fcands)
+                                              row["format"], fcands, lang)
                     if fbest is not None and fscore > score:
                         best, score = fbest, fscore
                 if best is None:
