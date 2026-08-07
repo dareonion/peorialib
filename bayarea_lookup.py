@@ -51,7 +51,11 @@ GATEWAY = "https://gateway.bibliocommons.com/v2/libraries"
 BC_BOOK_FORMATS = {"BK", "BOARD_BK", "PICTURE_BOOK", "PAPERBACK", "LARGE_PRINT",
                    "BOOK_PCD", "BOOK_CD", "KIT"}
 
-MATCH_THRESHOLD = 0.62
+# Below ~0.75 nearly everything is a lookalike (shared series prefixes, 'my
+# first X' phrasing); the only legitimate sub-0.75 matches were exact titles
+# dragged down by the author penalty, so that penalty is mild (0.85).
+MATCH_THRESHOLD = 0.75
+AUTHOR_MISMATCH_PENALTY = 0.85
 
 
 # --- HTTP -----------------------------------------------------------------------
@@ -182,6 +186,12 @@ def title_score(want_title: str, cand_titles) -> float:
                 if loose and r < PINYIN_MIN_RATIO:
                     continue
                 if w_stem or c_stem:
+                    # a pair that dropped a subtitle must be near-exact on what
+                    # remains — 'Chicka Chicka I love you' vs the stem of
+                    # 'Chicka chicka you you : a mirror book' scores 0.84 on
+                    # shared prefix alone, and that's a different book
+                    if r < 0.9:
+                        continue
                     r *= 0.98  # an exact full-title match should win ties
                 best = max(best, r)
     return best
@@ -219,7 +229,9 @@ def pick_best(row_title: str, row_author: str, row_format: str, candidates,
         score = title_score(want_title, names)
         if surname and cand.get("authors"):
             if _norm(surname) not in _norm(" ".join(cand["authors"])):
-                score *= 0.7  # penalize, don't reject: cataloging varies
+                # penalize, don't reject: 'Ten apples up on top!' is cataloged
+                # under LeSieg, not Seuss
+                score *= AUTHOR_MISMATCH_PENALTY
         score += _fmt_bonus(row_format or "", cand.get("format_class") or "")
         # Near-equal scores: prefer the edition with more copies on the shelf
         # (WebPAC candidates carry their items), then catalog relevance order.

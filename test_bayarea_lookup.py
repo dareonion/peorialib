@@ -115,6 +115,23 @@ def test_series_subtitles_do_not_cross_match():
     assert best is not None
 
 
+def test_stem_pairs_must_be_near_exact():
+    # shared series prefix + dropped subtitle ≠ the same book
+    cands = [{"title": "Chicka chicka you you : a mirror book.",
+              "authors": ["Martin, Bill, 1916-2004."], "format_class": "board",
+              "items": [{"state": "available"}]}]
+    best, _ = ba.pick_best("Chicka Chicka I love you", "Martin, Bill, 1916-2004",
+                           "picture", cands)
+    assert best is None
+    # …while a true stem match still passes
+    cands = [{"title": "Dear zoo : a lift-the-flap book",
+              "authors": ["Campbell, Rod, 1945-"], "format_class": "board",
+              "items": []}]
+    best, _ = ba.pick_best("Dear zoo", "Campbell, Rod, 1945- author", "board",
+                           cands)
+    assert best is not None
+
+
 def test_exact_full_title_beats_stem_tie():
     cands = [{"title": "Grumpy monkey : Valentine gross-out",
               "authors": ["Lang, Suzanne"], "format_class": "picture",

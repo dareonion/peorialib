@@ -2,7 +2,7 @@
 
 <!-- AUTO-GENERATED from peorialib.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `peorialib.db` — data as of **2026-08-07T16:06:12**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don't hand-edit; run `uv run report.py --write`._
 
 
 **78** of **160** titles are in the catalog; **71** have at least one copy on a shelf right now.
@@ -421,14 +421,13 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:06:12**. Don'
 - `J PICTURE BOOK Rubin` Dragons love tacos
 - `J PICTURE BOOK Sendak` Where the wild things are
 
-## Rose Garden — 17 on the shelf
+## Rose Garden — 16 on the shelf
 
 - `641.5944 Marshall` Maman !
 - `J EASY READER Carle` The very quiet cricket
 - `J EASY READER Eastman` Are you my mother?
 - `J HARDPAGE` Moo, baa, la la la!
 - `J HARDPAGE` Twinkle, twinkle, little sheepy : a sleepy sheepy story
-- `J PB PICTURE BOOK` Bluey : the creek.
 - `J PICTURE BOOK Carle` The very hungry caterpillar
 - `J PICTURE BOOK Carle` The very hungry caterpillar
 - `J PICTURE BOOK Hills` Duck & Goose go to the beach
@@ -556,6 +555,19 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:06:12**. Don'
 - `J PICTURE BOOK Numeroff` If you give a mouse a cookie
 - `J PICTURE BOOK Sendak` Where the wild things are
 
+## Mount Pleasant — 10 on the shelf
+
+- `J HARDPAGE` Knuffle Bunny : a cautionary tale
+- `J HARDPAGE` Press here
+- `J PB PICTURE BOOK` Bluey : the creek.
+- `J PICTURE BOOK Dewdney` Llama Llama red pajama
+- `J PICTURE BOOK Martin` Brown bear, brown bear, what do you see?
+- `J PICTURE BOOK Martin` Chicka chicka boom boom
+- `J PICTURE BOOK Matheson` Tap the magic tree
+- `J PICTURE BOOK Numeroff` If you give a mouse a cookie
+- `J PICTURE BOOK Walsh` Mouse paint
+- `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
+
 ## Alviso — 9 on the shelf
 
 - `J HARDPAGE` From head to toe
@@ -567,18 +579,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:06:12**. Don'
 - `J PICTURE BOOK Martin` Chicka chicka boom boom
 - `J PICTURE BOOK Numeroff` If you give a mouse a cookie
 - `J PICTURE BOOK Sendak` Where the wild things are
-
-## Mount Pleasant — 9 on the shelf
-
-- `J HARDPAGE` Knuffle Bunny : a cautionary tale
-- `J HARDPAGE` Press here
-- `J PICTURE BOOK Dewdney` Llama Llama red pajama
-- `J PICTURE BOOK Martin` Brown bear, brown bear, what do you see?
-- `J PICTURE BOOK Martin` Chicka chicka boom boom
-- `J PICTURE BOOK Matheson` Tap the magic tree
-- `J PICTURE BOOK Numeroff` If you give a mouse a cookie
-- `J PICTURE BOOK Walsh` Mouse paint
-- `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
 
 ## In the catalog, but no copy on any shelf right now
 
