@@ -210,6 +210,15 @@ def test_language_pinned_wants():
     assert ba._webpac_language([{"call_number": "J P SCHERTLE"}]) is None
 
 
+def test_load_excludes():
+    with tempfile.TemporaryDirectory() as d:
+        p = os.path.join(d, "ex.json")
+        with open(p, "w", encoding="utf-8") as fh:
+            fh.write('{"_comment": "x", "titles": ["Xiao fang che"]}')
+        assert ba.load_excludes(p) == {"Xiao fang che"}
+        assert ba.load_excludes(os.path.join(d, "missing.json")) == set()
+
+
 def test_sync_wantlist_inserts_want_rows():
     with tempfile.TemporaryDirectory() as d:
         dbp = os.path.join(d, "t.db")

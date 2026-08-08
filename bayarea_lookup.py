@@ -624,6 +624,16 @@ SYSTEMS = {
 # --- runner ---------------------------------------------------------------------
 
 WANTLIST_GLOB = "wantlist_*.json"  # wantlist_zh.json, wantlist_fr.json, …
+EXCLUDE_FILE = "wantlist_exclude.json"
+
+
+def load_excludes(path: str = EXCLUDE_FILE) -> set:
+    """Exact DB titles to leave out of remote lookups (Peoria-only shelf finds)."""
+    try:
+        with open(path, encoding="utf-8") as fh:
+            return set(json.load(fh).get("titles", []))
+    except FileNotFoundError:
+        return set()
 
 
 def sync_wantlist(conn, path: str) -> int:
@@ -651,6 +661,8 @@ def wantlist_langs() -> dict:
     """{record_id: lang} for every want-list entry that pins a language."""
     langs = {}
     for wl in sorted(glob.glob(WANTLIST_GLOB)):
+        if wl == EXCLUDE_FILE:
+            continue
         with open(wl, encoding="utf-8") as fh:
             for e in json.load(fh):
                 if e.get("lang"):
@@ -663,6 +675,8 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
                retry_misses: bool = False) -> None:
     conn = db.open_db(db_path)
     for wl in sorted(glob.glob(WANTLIST_GLOB)):
+        if wl == EXCLUDE_FILE:
+            continue
         n = sync_wantlist(conn, wl)
         if n:
             conn.commit()
@@ -670,6 +684,12 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
     rows = conn.execute(
         "SELECT record_id, title, author, format, isbns FROM titles ORDER BY title"
     ).fetchall()
+    excludes = load_excludes()
+    if excludes:
+        before = len(rows)
+        rows = [r for r in rows if r["title"] not in excludes]
+        print(f"want-list: excluding {before - len(rows)} titles "
+              f"({EXCLUDE_FILE})")
     if limit:
         rows = rows[:limit]
     langs = wantlist_langs()

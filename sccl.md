@@ -5,7 +5,7 @@
 _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don't hand-edit; run `uv run report.py --write`._
 
 
-**86** of **171** titles are in the catalog; **71** have at least one copy on a shelf right now.
+**82** of **137** titles are in the catalog; **69** have at least one copy on a shelf right now.
 
 
 ## Cupertino Library — 39 on the shelf
@@ -50,7 +50,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `JP WILLEMS` The pigeon needs a bath!
 - `JP WITEK` In my heart : a book of feelings
 
-## Los Altos Library — 38 on the shelf
+## Los Altos Library — 37 on the shelf
 
 - `J TODDLER` Chicka chicka boom boom
 - `J TODDLER` Twinkle, twinkle, little sheepy : a sleepy sheepy story
@@ -65,7 +65,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `JP CARLE` The very quiet cricket
 - `JP CHINESE GOMI` 鱷魚怕怕．牙醫怕怕
 - `JP CHINESE LAIMA` 我變成一隻噴火龍了！
-- `JP CHINESE LI` The sheep beauty = Yang gu niang (bilingual EN/ZH + audio)
 - `JP CHINESE ZENG` 媽媽買綠豆
 - `JP CREWS` Freight train = Tren de carga
 - `JP DEWDNEY` Llama Llama misses Mama
@@ -124,39 +123,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `JP WILLEMS` Don't let the pigeon drive the bus
 - `JP WILLEMS` Don't let the pigeon drive the bus
 - `JP WILLEMS` Knuffle Bunny : a cautionary tale
-
-## Milpitas Library — 30 on the shelf
-
-- `J TODDLER` Brown bear, brown bear, what do you see?
-- `J TODDLER` Chicka chicka boom boom
-- `J TODDLER` From head to toe
-- `J TODDLER` How do dinosaurs say good night?
-- `JE CRONIN` Duck stays in the truck
-- `JE EASTMAN` Are you my mother?
-- `JE LANG` Grumpy monkey
-- `JE LESIEG` Ten apples up on top!
-- `JE SEUSS` Mr. Brown can moo! Can you?
-- `JP CARLE` The very hungry caterpillar
-- `JP CARLE` The very quiet cricket
-- `JP CHINESE GOMI` 鱷魚怕怕．牙醫怕怕
-- `JP CHINESE LI` The sheep beauty = Yang gu niang (bilingual EN/ZH + audio)
-- `JP CHINESE LIONNI` 小藍和小黃
-- `JP CHINESE LIU` Mina qu hai tan = Mina goes to the beach (bilingual + audio)
-- `JP DEWDNEY` Llama Llama misses Mama
-- `JP DEWDNEY` Llama Llama red pajama
-- `JP FOX` Time for bed
-- `JP HILLS` Duck & Goose, honk! quack! boo!
-- `JP JACKSON` I know an old lady who swallowed a pie
-- `JP MCCLOSK` Blueberries for Sal
-- `JP NUMEROF` If you give a mouse a cookie
-- `JP PIZZOLI` The watermelon seed
-- `JP ROSEN` We're going on a bear hunt
-- `JP RUBIN` Dragons love tacos
-- `JP WILLEMS` Don't let the pigeon drive the bus
-- `JP WILLEMS` Don't let the pigeon drive the bus
-- `JP WILLEMS` Knuffle Bunny : a cautionary tale
-- `JP WILLEMS` Knuffle Bunny too : a case of mistaken identity
-- `JP WILLEMS` The pigeon needs a bath!
 
 ## Woodland Library — 30 on the shelf
 
@@ -222,34 +188,36 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `JP WILLEMS` Knuffle Bunny too : a case of mistaken identity
 - `JP WILLEMS` The pigeon needs a bath!
 
-## Campbell Library — 26 on the shelf
+## Milpitas Library — 28 on the shelf
 
-- `J TODDLER` Moo, baa, fa la la la la!
-- `J TODDLER` The very hungry caterpillar
+- `J TODDLER` Brown bear, brown bear, what do you see?
+- `J TODDLER` Chicka chicka boom boom
+- `J TODDLER` From head to toe
+- `J TODDLER` How do dinosaurs say good night?
+- `JE CRONIN` Duck stays in the truck
 - `JE EASTMAN` Are you my mother?
+- `JE LANG` Grumpy monkey
+- `JE LESIEG` Ten apples up on top!
 - `JE SEUSS` Mr. Brown can moo! Can you?
-- `JP BROWN` Goodnight moon
-- `JP CARLE` The very busy spider
 - `JP CARLE` The very hungry caterpillar
 - `JP CARLE` The very quiet cricket
-- `JP CREWS` Freight train = Tren de carga
-- `JP FOX` Ten little fingers and ten little toes
-- `JP HENKES` Kitten's first full moon
+- `JP CHINESE GOMI` 鱷魚怕怕．牙醫怕怕
+- `JP CHINESE LIONNI` 小藍和小黃
+- `JP DEWDNEY` Llama Llama misses Mama
+- `JP DEWDNEY` Llama Llama red pajama
+- `JP FOX` Time for bed
 - `JP HILLS` Duck & Goose, honk! quack! boo!
 - `JP JACKSON` I know an old lady who swallowed a pie
-- `JP KEATS` The snowy day
-- `JP LANG` Grumpy monkey : mom for a day
-- `JP LANG` Grumpy monkey party time!
-- `JP LI` The sheep beauty = Yang gu niang (bilingual EN/ZH + audio)
-- `JP MATHESO` Tap the magic tree
 - `JP MCCLOSK` Blueberries for Sal
-- `JP MCMULLA` I stink!
-- `JP RINKER` Steam train, dream train
+- `JP NUMEROF` If you give a mouse a cookie
+- `JP PIZZOLI` The watermelon seed
 - `JP ROSEN` We're going on a bear hunt
-- `JP SENDAK` Where the wild things are
-- `JP SLOBODK` Caps for sale : a tale of a peddler, some monkeys, and their monkey business
+- `JP RUBIN` Dragons love tacos
 - `JP WILLEMS` Don't let the pigeon drive the bus
 - `JP WILLEMS` Don't let the pigeon drive the bus
+- `JP WILLEMS` Knuffle Bunny : a cautionary tale
+- `JP WILLEMS` Knuffle Bunny too : a case of mistaken identity
+- `JP WILLEMS` The pigeon needs a bath!
 
 ## Saratoga Library — 26 on the shelf
 
@@ -280,6 +248,34 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `JP WILLEMS` Don't let the pigeon drive the bus
 - `JP WILLEMS` The pigeon needs a bath!
 
+## Campbell Library — 25 on the shelf
+
+- `J TODDLER` Moo, baa, fa la la la la!
+- `J TODDLER` The very hungry caterpillar
+- `JE EASTMAN` Are you my mother?
+- `JE SEUSS` Mr. Brown can moo! Can you?
+- `JP BROWN` Goodnight moon
+- `JP CARLE` The very busy spider
+- `JP CARLE` The very hungry caterpillar
+- `JP CARLE` The very quiet cricket
+- `JP CREWS` Freight train = Tren de carga
+- `JP FOX` Ten little fingers and ten little toes
+- `JP HENKES` Kitten's first full moon
+- `JP HILLS` Duck & Goose, honk! quack! boo!
+- `JP JACKSON` I know an old lady who swallowed a pie
+- `JP KEATS` The snowy day
+- `JP LANG` Grumpy monkey : mom for a day
+- `JP LANG` Grumpy monkey party time!
+- `JP MATHESO` Tap the magic tree
+- `JP MCCLOSK` Blueberries for Sal
+- `JP MCMULLA` I stink!
+- `JP RINKER` Steam train, dream train
+- `JP ROSEN` We're going on a bear hunt
+- `JP SENDAK` Where the wild things are
+- `JP SLOBODK` Caps for sale : a tale of a peddler, some monkeys, and their monkey business
+- `JP WILLEMS` Don't let the pigeon drive the bus
+- `JP WILLEMS` Don't let the pigeon drive the bus
+
 ## Bookmobile Department — 24 on the shelf
 
 - `J TODDLER` Moo, baa, la la la!
@@ -309,10 +305,10 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 
 ## In the catalog, but no copy on any shelf right now
 
-Grumpy monkey yuck!, Mang mang lu lu zhen (Busy Busy Town), Polar bear, polar bear, what do you hear?, The color monster : a story about emotions, Where's Spot?, Yue liang wan an (Goodnight Moon, Chinese), 好大的紅蘋果, 好餓的毛毛蟲, 從頭動到腳, 晚安，猩猩, 棕色的熊、棕色的熊，你在看什麼？, 親愛的動物園, 誰的家到了？, 跑跑鎮, 點點玩聲音
+Grumpy monkey yuck!, Polar bear, polar bear, what do you hear?, The color monster : a story about emotions, Where's Spot?, 好大的紅蘋果, 好餓的毛毛蟲, 從頭動到腳, 晚安，猩猩, 棕色的熊、棕色的熊，你在看什麼？, 親愛的動物園, 誰的家到了？, 跑跑鎮, 點點玩聲音
 
 
 ## Not found in this catalog
 
-2 yeux ?, A ti! a ti! (Achoo! Achoo!), Bao bao biao qing ji: My Face Book (baby faces), Barbapapa, Bluey : the creek., Bluey : zoo., Bon appétit ! Monsieur Lapin, Bonne nuit tout le monde, Bonne nuit, Gorille, Bébés chouettes, Caca boudin, Cher zoo, Chut ! On a un plan, De la petite taupe qui voulait savoir qui lui avait fait sur la tête, Diandian ai qu you er yuan (Diandian loves preschool), Dong wu yue dui (Animal Band), Et dedans il y a..., First Words: Mandarin, Gros pipi, Hui jiang gu shi de dan ci shu, Kuai huo de fan dou che si ji (The happy little car driver), L'âne Trotro, La chenille qui fait des trous, Le cherche-et-trouve de mes 2 ans, Le loup qui voulait changer de couleur, Liang ge hao huo ban (Two Good Friends), Long-haired girl (bilingual EN/ZH + audio), Loup, Maman !, Mina de xing qing bi ji = Mina's ups and downs (bilingual), My First Mandarin Words with Gordon & Li Li (board), Méli-mélo, Nan guo de Fuloge (Frog is Sad), Ours brun, dis-moi ce que tu vois ?, Petit Ours Brun aime sa maman, Petit Ours Brun dit non, Petit Ours Brun joue dans son bain, Petit ours brun joue dans la neige, Petit ours brun va chez la docteure, Petit-Bleu et Petit-Jaune, Pop mange de toutes les couleurs, Regarde dans la nuit, Roule galette, Sikairui zui shou huan ying de gu shi (Scarry's best stories), T'choupi va sur le pot, T'choupi veut tout faire tout seul, Tangmu zhu yuan, Un livre, Un peu perdu, Va-t'en, Grand Monstre Vert !, Wan an, xiao xiong (Goodnight, Little Bear), Wo ai wo de wai gong = I love my grandpa (bilingual), Wo men qu nong fu shi chang ba = Let's go to the farmers market (bilingual), Xiao fang che, Xiao mao de ge, Xiao xiang Suqi, Xiao xiong de du qi, Xiao xiong de ha qian, Xiao xiong de wei ba, Xiao xiong san bu, Xiao yan shu niao chuang, Xiu da da de xiao mao, Yan shu ba ba de han sheng, Yi zhi yi wei zi ji shi lao shu de mao (The cat who thought it was a mouse), You can do it, Pout-Pout Fish!, Zhang da le dang shen me, Zhen xi wang ni men zai zhe er (Wish you were here), Zhu ba ba de pi, 丹丹寶寶版：刷牙 刷～刷～刷, 什麼唱歌：給0-3歲的傳統兒歌, 企鵝體操, 子兒，吐吐, 寶寶喜歡吃, 小雨滴：給0-3歲的律動兒歌, 小黃點, 幼幼小書：我的一天．我喜歡．我愛玩, 抱抱！, 擦！擦！擦！, 早安晚安：給0-3歲的自理兒歌, 母雞蘿絲去散步, 爸爸跟我玩, 說不要的書！, 誰來玩躲貓貓？, 貝蒂好想好想吃香蕉, 這是我的！
+2 yeux ?, Bao bao biao qing ji: My Face Book (baby faces), Barbapapa, Bluey : the creek., Bluey : zoo., Bon appétit ! Monsieur Lapin, Bonne nuit tout le monde, Bonne nuit, Gorille, Bébés chouettes, Caca boudin, Cher zoo, Chut ! On a un plan, De la petite taupe qui voulait savoir qui lui avait fait sur la tête, Et dedans il y a..., Gros pipi, L'âne Trotro, La chenille qui fait des trous, Le cherche-et-trouve de mes 2 ans, Le loup qui voulait changer de couleur, Loup, Maman !, Méli-mélo, Ours brun, dis-moi ce que tu vois ?, Petit Ours Brun aime sa maman, Petit Ours Brun dit non, Petit Ours Brun joue dans son bain, Petit ours brun joue dans la neige, Petit ours brun va chez la docteure, Petit-Bleu et Petit-Jaune, Pop mange de toutes les couleurs, Regarde dans la nuit, Roule galette, T'choupi va sur le pot, T'choupi veut tout faire tout seul, Un livre, Un peu perdu, Va-t'en, Grand Monstre Vert !, You can do it, Pout-Pout Fish!, 丹丹寶寶版：刷牙 刷～刷～刷, 什麼唱歌：給0-3歲的傳統兒歌, 企鵝體操, 子兒，吐吐, 寶寶喜歡吃, 小雨滴：給0-3歲的律動兒歌, 小黃點, 幼幼小書：我的一天．我喜歡．我愛玩, 抱抱！, 擦！擦！擦！, 早安晚安：給0-3歲的自理兒歌, 母雞蘿絲去散步, 爸爸跟我玩, 說不要的書！, 誰來玩躲貓貓？, 貝蒂好想好想吃香蕉, 這是我的！
 

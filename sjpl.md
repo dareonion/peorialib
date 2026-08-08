@@ -5,7 +5,7 @@
 _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don't hand-edit; run `uv run report.py --write`._
 
 
-**78** of **171** titles are in the catalog; **67** have at least one copy on a shelf right now.
+**75** of **137** titles are in the catalog; **65** have at least one copy on a shelf right now.
 
 
 ## Calabazas — 23 on the shelf
@@ -69,9 +69,8 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
 - `J PICTURE BOOK Willems` The pigeon needs a bath!
 
-## Vineland — 30 on the shelf
+## Vineland — 29 on the shelf
 
-- `J 495.1321 Tsai` First Words: Mandarin
 - `J CHI PICTURE BOOK Gomi` 小金魚逃走了
 - `J CHI PICTURE BOOK Lai` 我變成一隻噴火龍了！
 - `J CHI-ENG PICTURE BOOK Gomi` 鱷魚怕怕．牙醫怕怕
@@ -249,14 +248,12 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
 - `J PICTURE BOOK Willems` The pigeon needs a bath!
 
-## Edenvale — 24 on the shelf
+## Edenvale — 22 on the shelf
 
-- `J 495.1321 Tsai` First Words: Mandarin
 - `J CHI-ENG PICTURE BOOK Gomi` 鱷魚怕怕．牙醫怕怕
 - `J EASY READER Carle` The very busy spider
 - `J EASY READER Diesen` You can do it, Pout-Pout Fish!
 - `J EASY READER Eastman` Are you my mother?
-- `J ENG-CHI READ ALONG Li` The sheep beauty = Yang gu niang (bilingual EN/ZH + audio)
 - `J HARDPAGE` Dear zoo
 - `J HARDPAGE` Knuffle Bunny : a cautionary tale
 - `J PB EASY READER` Duck stays in the truck
@@ -276,9 +273,8 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `J PICTURE BOOK Walsh` Mouse paint
 - `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
 
-## Pearl Avenue — 23 on the shelf
+## Pearl Avenue — 22 on the shelf
 
-- `J 495.1321 Tsai` First Words: Mandarin
 - `J EASY READER Carle` The very busy spider
 - `J EASY READER Carle` The very quiet cricket
 - `J EASY READER Cronin` Duck stays in the truck
@@ -325,29 +321,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `J PICTURE BOOK Sendak` Where the wild things are
 - `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
 
-## Village Square — 20 on the shelf
-
-- `J CHI PICTURE BOOK Antony` 貝蒂好想好想吃香蕉
-- `J CHI PICTURE BOOK Hepworth` I love you to the moon and back
-- `J EASY READER Carle` The very quiet cricket
-- `J ENG-CHI READ ALONG Li` The sheep beauty = Yang gu niang (bilingual EN/ZH + audio)
-- `J HARDPAGE` Dear zoo
-- `J HARDPAGE` Moo, baa, la la la!
-- `J PB EASY READER` You can do it, Pout-Pout Fish!
-- `J PICTURE BOOK Carle` The very hungry caterpillar
-- `J PICTURE BOOK Carle` The very hungry caterpillar
-- `J PICTURE BOOK Henkes` Kitten's first full moon
-- `J PICTURE BOOK Hills` Duck & Goose go to the beach
-- `J PICTURE BOOK Jackson` I know an old lady who swallowed a pie
-- `J PICTURE BOOK Martin` Brown bear, brown bear, what do you see?
-- `J PICTURE BOOK Martin` Chicka chicka boom boom
-- `J PICTURE BOOK Numeroff` If you give a mouse a cookie
-- `J PICTURE BOOK Pizzoli` The watermelon seed
-- `J PICTURE BOOK Rubin` Dragons love tacos
-- `J PICTURE BOOK Schertle` Little blue truck
-- `J PICTURE BOOK Sendak` Where the wild things are
-- `J PICTURE BOOK Walsh` Mouse paint
-
 ## Tully — 19 on the shelf
 
 - `J CHI-ENG PICTURE BOOK Gomi` 鱷魚怕怕．牙醫怕怕
@@ -369,6 +342,28 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `J PICTURE BOOK Rubin` Dragons love tacos
 - `J PICTURE BOOK Sendak` Where the wild things are
 - `J PICTURE BOOK Willems` The pigeon needs a bath!
+
+## Village Square — 19 on the shelf
+
+- `J CHI PICTURE BOOK Antony` 貝蒂好想好想吃香蕉
+- `J CHI PICTURE BOOK Hepworth` I love you to the moon and back
+- `J EASY READER Carle` The very quiet cricket
+- `J HARDPAGE` Dear zoo
+- `J HARDPAGE` Moo, baa, la la la!
+- `J PB EASY READER` You can do it, Pout-Pout Fish!
+- `J PICTURE BOOK Carle` The very hungry caterpillar
+- `J PICTURE BOOK Carle` The very hungry caterpillar
+- `J PICTURE BOOK Henkes` Kitten's first full moon
+- `J PICTURE BOOK Hills` Duck & Goose go to the beach
+- `J PICTURE BOOK Jackson` I know an old lady who swallowed a pie
+- `J PICTURE BOOK Martin` Brown bear, brown bear, what do you see?
+- `J PICTURE BOOK Martin` Chicka chicka boom boom
+- `J PICTURE BOOK Numeroff` If you give a mouse a cookie
+- `J PICTURE BOOK Pizzoli` The watermelon seed
+- `J PICTURE BOOK Rubin` Dragons love tacos
+- `J PICTURE BOOK Schertle` Little blue truck
+- `J PICTURE BOOK Sendak` Where the wild things are
+- `J PICTURE BOOK Walsh` Mouse paint
 
 ## Evergreen — 18 on the shelf
 
@@ -499,22 +494,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `J PICTURE BOOK Rubin` Dragons love tacos
 - `J PICTURE BOOK Sendak` Where the wild things are
 
-## Joyce Ellington — 13 on the shelf
-
-- `J 495.1321 Tsai` First Words: Mandarin
-- `J CHI PICTURE BOOK Carle` 好餓的毛毛蟲
-- `J EASY READER Carle` The very busy spider
-- `J EASY READER Cronin` Duck stays in the truck
-- `J EASY READER Regan` Mike delivers : the duck is stuck!
-- `J ENG-CHI READ ALONG Li` The sheep beauty = Yang gu niang (bilingual EN/ZH + audio)
-- `J HARDPAGE` Knuffle Bunny : a cautionary tale
-- `J HARDPAGE` Press here
-- `J PB PICTURE BOOK` Bluey : the creek.
-- `J PICTURE BOOK Brown` Goodnight moon
-- `J PICTURE BOOK Carle` The very hungry caterpillar
-- `J PICTURE BOOK Carle` The very hungry caterpillar
-- `J PICTURE BOOK Martin` Chicka chicka boom boom
-
 ## Biblioteca Latinoamericana — 12 on the shelf
 
 - `J HARDPAGE` Dear zoo
@@ -529,6 +508,20 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 - `J PICTURE BOOK Martin` Chicka chicka boom boom
 - `J PICTURE BOOK Numeroff` If you give a mouse a cookie
 - `J PICTURE BOOK Rubin` Dragons love tacos
+
+## Joyce Ellington — 11 on the shelf
+
+- `J CHI PICTURE BOOK Carle` 好餓的毛毛蟲
+- `J EASY READER Carle` The very busy spider
+- `J EASY READER Cronin` Duck stays in the truck
+- `J EASY READER Regan` Mike delivers : the duck is stuck!
+- `J HARDPAGE` Knuffle Bunny : a cautionary tale
+- `J HARDPAGE` Press here
+- `J PB PICTURE BOOK` Bluey : the creek.
+- `J PICTURE BOOK Brown` Goodnight moon
+- `J PICTURE BOOK Carle` The very hungry caterpillar
+- `J PICTURE BOOK Carle` The very hungry caterpillar
+- `J PICTURE BOOK Martin` Chicka chicka boom boom
 
 ## Seven Trees — 11 on the shelf
 
@@ -571,10 +564,10 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don'
 
 ## In the catalog, but no copy on any shelf right now
 
-Big red barn, Caps for sale : a tale of a peddler, some monkeys, and their monkey business, Don't push the button!, Duck & Goose, honk! quack! boo!, Freight train = Tren de carga, In my heart : a book of feelings, My First Mandarin Words with Gordon & Li Li (board), The going to bed book, The napping house, We're going on a bear hunt, Where do diggers sleep at night?
+Big red barn, Caps for sale : a tale of a peddler, some monkeys, and their monkey business, Don't push the button!, Duck & Goose, honk! quack! boo!, Freight train = Tren de carga, In my heart : a book of feelings, The going to bed book, The napping house, We're going on a bear hunt, Where do diggers sleep at night?
 
 
 ## Not found in this catalog
 
-2 yeux ?, A ti! a ti! (Achoo! Achoo!), Bao bao biao qing ji: My Face Book (baby faces), Barbapapa, Bluey : zoo., Bonne nuit tout le monde, Bonne nuit, Gorille, Bébés chouettes, Caca boudin, Cher zoo, Chicka Chicka I love you, Chut ! On a un plan, De la petite taupe qui voulait savoir qui lui avait fait sur la tête, Diandian ai qu you er yuan (Diandian loves preschool), Dong wu yue dui (Animal Band), Dot! scribble! go!, Et dedans il y a..., Gros pipi, Grumpy monkey : mom for a day, Hui jiang gu shi de dan ci shu, Kuai huo de fan dou che si ji (The happy little car driver), L'âne Trotro, La couleur des émotions, Le cherche-et-trouve de mes 2 ans, Le loup qui voulait changer de couleur, Liang ge hao huo ban (Two Good Friends), Long-haired girl (bilingual EN/ZH + audio), Loup, Maman !, Mang mang lu lu zhen (Busy Busy Town), Mina de xing qing bi ji = Mina's ups and downs (bilingual), Mina qu hai tan = Mina goes to the beach (bilingual + audio), Moo, baa, fa la la la la!, Méli-mélo, Nan guo de Fuloge (Frog is Sad), Ours brun, dis-moi ce que tu vois ?, Petit Ours Brun aime sa maman, Petit Ours Brun dit non, Petit Ours Brun joue dans son bain, Petit ours brun joue dans la neige, Petit ours brun va chez la docteure, Petit-Bleu et Petit-Jaune, Pop mange de toutes les couleurs, Regarde dans la nuit, Sikairui zui shou huan ying de gu shi (Scarry's best stories), T'choupi va sur le pot, T'choupi veut tout faire tout seul, Tangmu zhu yuan, Un livre, Un peu perdu, Va-t'en, Grand Monstre Vert !, Wan an, xiao xiong (Goodnight, Little Bear), Wo ai wo de wai gong = I love my grandpa (bilingual), Wo men qu nong fu shi chang ba = Let's go to the farmers market (bilingual), Xiao fang che, Xiao mao de ge, Xiao xiang Suqi, Xiao xiong de du qi, Xiao xiong de ha qian, Xiao xiong de wei ba, Xiao xiong san bu, Xiao yan shu niao chuang, Xiu da da de xiao mao, Yan shu ba ba de han sheng, Yi zhi yi wei zi ji shi lao shu de mao (The cat who thought it was a mouse), Yue liang wan an (Goodnight Moon, Chinese), Zhang da le dang shen me, Zhen xi wang ni men zai zhe er (Wish you were here), Zhu ba ba de pi, 丹丹寶寶版：刷牙 刷～刷～刷, 什麼唱歌：給0-3歲的傳統兒歌, 好大的紅蘋果, 媽媽買綠豆, 子兒，吐吐, 寶寶喜歡吃, 小藍和小黃, 小雨滴：給0-3歲的律動兒歌, 幼幼小書：我的一天．我喜歡．我愛玩, 從頭動到腳, 抱抱！, 擦！擦！擦！, 早安晚安：給0-3歲的自理兒歌, 晚安，猩猩, 爸爸跟我玩, 米米坐馬桶, 親愛的動物園, 說不要的書！, 誰來玩躲貓貓？, 誰吃掉了？, 誰的家到了？, 跑跑鎮, 這是我的！, 點點玩聲音
+2 yeux ?, Bao bao biao qing ji: My Face Book (baby faces), Barbapapa, Bluey : zoo., Bonne nuit tout le monde, Bonne nuit, Gorille, Bébés chouettes, Caca boudin, Cher zoo, Chicka Chicka I love you, Chut ! On a un plan, De la petite taupe qui voulait savoir qui lui avait fait sur la tête, Dot! scribble! go!, Et dedans il y a..., Gros pipi, Grumpy monkey : mom for a day, L'âne Trotro, La couleur des émotions, Le cherche-et-trouve de mes 2 ans, Le loup qui voulait changer de couleur, Loup, Maman !, Moo, baa, fa la la la la!, Méli-mélo, Ours brun, dis-moi ce que tu vois ?, Petit Ours Brun aime sa maman, Petit Ours Brun dit non, Petit Ours Brun joue dans son bain, Petit ours brun joue dans la neige, Petit ours brun va chez la docteure, Petit-Bleu et Petit-Jaune, Pop mange de toutes les couleurs, Regarde dans la nuit, T'choupi va sur le pot, T'choupi veut tout faire tout seul, Un livre, Un peu perdu, Va-t'en, Grand Monstre Vert !, 丹丹寶寶版：刷牙 刷～刷～刷, 什麼唱歌：給0-3歲的傳統兒歌, 好大的紅蘋果, 媽媽買綠豆, 子兒，吐吐, 寶寶喜歡吃, 小藍和小黃, 小雨滴：給0-3歲的律動兒歌, 幼幼小書：我的一天．我喜歡．我愛玩, 從頭動到腳, 抱抱！, 擦！擦！擦！, 早安晚安：給0-3歲的自理兒歌, 晚安，猩猩, 爸爸跟我玩, 米米坐馬桶, 親愛的動物園, 說不要的書！, 誰來玩躲貓貓？, 誰吃掉了？, 誰的家到了？, 跑跑鎮, 這是我的！, 點點玩聲音
 
