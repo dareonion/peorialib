@@ -240,9 +240,16 @@ def test_sync_wantlist_inserts_want_rows():
 def test_bc_parse_search_orders_and_filters_formats():
     cands = ba.bc_parse_search(BC_SEARCH)
     ids = [c["bib_id"] for c in cands]
-    assert ids == ["S118C542544", "S118C131874", "S118C14525"]  # EBOOK dropped
+    assert ids == ["S118C542544", "S118C131874", "S118C14525", "S118C99001"]
     assert cands[0]["format_class"] == "board"
     assert cands[2]["format_class"] == "picture"
+    assert cands[3]["format_class"] == "ebook"   # digital tracked, classed
+    # movie/music formats never become candidates
+    import copy
+    dvd = copy.deepcopy(BC_SEARCH)
+    dvd["entities"]["bibs"]["S118C99001"]["briefInfo"]["format"] = "DVD"
+    assert [c["bib_id"] for c in ba.bc_parse_search(dvd)] == \
+        ["S118C542544", "S118C131874", "S118C14525"]
 
 
 def test_pick_best_prefers_exact_title_over_lookalike():
@@ -485,6 +492,224 @@ def test_write_bayarea_is_noop_without_remote_data():
         dbp = os.path.join(d, "t.db")
         db.open_db(dbp).close()
         assert report.write_bayarea(dbp, d) == []
+
+
+# --- record details: compilation contents / translation originals ---------------
+
+BC_MARC_PAGE = """
+<tr><td scope="row" class="marcTag"><strong>100</strong></td>
+<td class="marcIndicator">1 </td>
+<td class="marcTagData">$aMartin, Bill,$d1916-2004$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>240</strong></td>
+<td class="marcIndicator">10</td>
+<td class="marcTagData">$aPolar bear, polar bear, what do you hear?$lSpanish$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>245</strong></td>
+<td class="marcIndicator">10</td>
+<td class="marcTagData">$aOso polar, oso polar, que es ese ruido? /$cpor Bill Martin$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>505</strong></td>
+<td class="marcIndicator">0 </td>
+<td class="marcTagData">$aBrown bear, brown bear, what do you see? --
+Polar bear, polar bear, what do you hear? -- Panda bear, panda bear, what do
+you see?$</td></tr>
+"""
+
+MVPL_DETAIL_PAGE = """
+<tr><td width="20%" class="bibInfoLabel">Title</td>
+<td class="bibInfoData">Brown bear &amp; friends</td></tr>
+<tr><td width="20%" class="bibInfoLabel">Note</td>
+<td class="bibInfoData">Read by Gwyneth Paltrow.</td></tr>
+<tr><td width="20%" class="bibInfoLabel">Note</td>
+<td class="bibInfoData">Translation of: Polar bear, polar bear, what do you
+hear?</td></tr>
+<tr><td width="20%" class="bibInfoLabel">Contents</td>
+<td class="bibInfoData">Brown bear, brown bear, what do you see? --
+Baby bear, baby bear, what do you see?</td></tr>
+"""
+
+
+def test_bc_marc_details():
+    d = ba.bc_details_from_page(BC_MARC_PAGE)
+    assert d["orig_title"] == "Polar bear, polar bear, what do you hear?"
+    assert d["contents"].startswith("Brown bear, brown bear, what do you see?; "
+                                    "Polar bear")
+    assert "$" not in d["contents"]
+
+
+def test_mvpl_record_details():
+    d = ba.mvpl_details_from_page(MVPL_DETAIL_PAGE)
+    # the translation note is the SECOND Note row — must still be found
+    assert d["orig_title"] == "Polar bear, polar bear, what do you hear?"
+    assert d["contents"] == ("Brown bear, brown bear, what do you see?; "
+                             "Baby bear, baby bear, what do you see?")
+
+
+# --- multi-edition tracking (pick_all + remote_editions) ------------------------
+
+def _cand(bib, title, fmt_class, lang=None, authors=("Martin, Bill",),
+          strict=True, fmt=None):
+    return {"bib_id": bib, "strict": strict, "title": title, "subtitle": None,
+            "alt_title": None, "authors": list(authors),
+            "format": fmt or fmt_class, "format_class": fmt_class,
+            "year": None, "language": lang}
+
+
+POLAR_WANT = ("Polar bear, polar bear, what do you hear?", "Martin, Bill",
+              "picture")
+POLAR_CANDS = [
+    _cand("b1", "Polar Bear, Polar Bear, What Do You Hear?", "picture", "eng"),
+    _cand("b2", "Polar Bear, Polar Bear, What Do You Hear?", "board", "eng"),
+    _cand("b3", "Oso polar, oso polar, qué es ese ruido?", "picture", "spa"),
+    _cand("b4", "Brown bear & friends", "audio", "eng"),  # compilation audiobook
+    _cand("b5", "Panda Bear, Panda Bear, What Do You See?", "picture", "eng"),
+]
+
+
+def test_pick_all_collects_editions_translations_audio():
+    best, score, eds = ba.pick_all(*POLAR_WANT, POLAR_CANDS)
+    assert best["bib_id"] == "b1" and score > 0.9
+    kinds = {e["bib_id"]: e["kind"] for e in eds}
+    # board edition, Spanish translation, audio compilation — but NOT the
+    # series sibling: Panda Bear scores 0.773, above MATCH_THRESHOLD yet
+    # below EDITION_MIN_RATIO
+    assert kinds == {"b1": "primary", "b2": "edition",
+                     "b3": "translation", "b4": "audio"}
+
+
+def test_pick_all_loose_rules_need_strict_source():
+    # smart-search (non-strict) results can be the author's unrelated works,
+    # so the author-anchored rules must ignore them
+    cands = [dict(c, strict=False) for c in POLAR_CANDS]
+    _, _, eds = ba.pick_all(*POLAR_WANT, cands)
+    assert {e["kind"] for e in eds} == {"primary", "edition"}
+
+
+def test_pick_all_keeps_closest_translation_per_language():
+    # 'Translation of: <spinoff>' notes contain the original title's every
+    # word, so a spinoff translation reaches the strict result set too; the
+    # length-closest title per (language, format) wins
+    cands = POLAR_CANDS + [
+        _cand("b6", "Oso polar de Pascua, los colores del gran oso polar",
+              "picture", "spa")]
+    _, _, eds = ba.pick_all(*POLAR_WANT, cands)
+    assert [e["bib_id"] for e in eds if e["kind"] == "translation"] == ["b3"]
+
+
+def test_pick_all_pinned_lang_stays_narrow():
+    # a French want must not drag the English record along as an 'edition'
+    cands = [
+        _cand("f1", "Cher zoo", "picture", "fre", authors=("Campbell, Rod",)),
+        _cand("f2", "Dear zoo", "picture", "eng", authors=("Campbell, Rod",)),
+    ]
+    best, _, eds = ba.pick_all("Cher zoo", "Campbell, Rod", "picture", cands,
+                               lang="fre")
+    assert best["bib_id"] == "f1"
+    assert [e["bib_id"] for e in eds] == ["f1"]
+
+
+def test_audiobook_media_kept_and_classed():
+    items = [{"branch": "Children's Audiobooks", "collection": None,
+              "call_number": "J CD MARTIN", "status": "AVAILABLE",
+              "state": "available"}]
+    assert not ba._webpac_nonbook("Audiobook", items)
+    assert ba._webpac_fmt_class("Audiobook", items) == "audio"
+    assert ba._webpac_nonbook("DVD", items)            # movies still out
+    music = [dict(items[0], branch="Music - 2nd floor")]
+    assert ba._webpac_nonbook("Audiobook", music)      # music shelf still out
+    assert ba._bc_format_class("PLAYAWAY_AUDIOBOOK") == "audio"
+    assert "PLAYAWAY_AUDIOBOOK" in ba.BC_BOOK_FORMATS
+
+
+def test_digital_editions_kept_and_classed():
+    assert ba._bc_format_class("EBOOK") == "ebook"
+    assert ba._bc_format_class("EAUDIOBOOK") == "eaudio"
+    assert {"EBOOK", "EAUDIOBOOK"} <= ba.BC_BOOK_FORMATS
+    assert not ba._webpac_nonbook("eBook", [])
+    assert ba._webpac_fmt_class("eBook", []) == "ebook"
+    assert ba._webpac_fmt_class("Downloadable Audiobook", []) == "eaudio"
+    # same-title eBook joins as an edition; an eAudio compilation needs the
+    # author anchor, exactly like physical audio
+    cands = POLAR_CANDS + [
+        _cand("b7", "Polar Bear, Polar Bear, What Do You Hear?", "ebook", "eng"),
+        _cand("b8", "Bill Martin's bear stories", "eaudio", "eng"),
+    ]
+    _, _, eds = ba.pick_all(*POLAR_WANT, cands)
+    kinds = {e["bib_id"]: e["kind"] for e in eds}
+    assert kinds["b7"] == "edition" and kinds["b8"] == "audio"
+
+
+def test_editions_store_report_labels_links_and_supersede():
+    with tempfile.TemporaryDirectory() as d:
+        dbp = os.path.join(d, "t.db")
+        conn = db.open_db(dbp)
+        ts = "2026-08-08T10:00:00"
+        title = "Polar bear, polar bear, what do you hear?"
+        db.upsert_title(conn, "SD_ILS:1", title, ts, {"format": "picture"})
+        sid = db.record_scrape(conn, "remote", ts, source="test", profile="mvpl")
+        eds = [
+            {"bib_id": "b1", "title": title, "authors": ["Martin, Bill"],
+             "format": "Children's Picture Book", "format_class": "picture",
+             "language": None, "kind": "primary", "match_score": 1.0},
+            {"bib_id": "b3", "title": "Oso polar, oso polar, ¿qué es ese ruido?",
+             "authors": ["Martin, Bill"], "format": "Children's World Language",
+             "format_class": "board", "language": "spa", "kind": "translation",
+             "match_score": 0.3, "orig_title": title},
+            {"bib_id": "b4", "title": "Brown bear & friends",
+             "authors": ["Martin, Bill"], "format": "Audiobook",
+             "format_class": "audio", "language": None, "kind": "audio",
+             "match_score": 0.5,
+             "contents": "Brown bear, brown bear, what do you see?; "
+                         "Polar bear, polar bear, what do you hear?"},
+            {"bib_id": "b7", "title": title, "authors": ["Martin, Bill"],
+             "format": "eBook", "format_class": "ebook", "language": "eng",
+             "kind": "edition", "match_score": 1.0},
+        ]
+        db.upsert_remote_bib(conn, "mvpl", "SD_ILS:1", ts,
+                             {"bib_id": "b1", "title": title}, 1.0)
+        db.replace_remote_editions(conn, "mvpl", "SD_ILS:1", eds, ts)
+        db.add_remote_availability(conn, sid, "mvpl", "SD_ILS:1", "b1", title,
+                                   [{"branch": "Children's Picture Books",
+                                     "call_number": "J P MARTIN",
+                                     "status": "DUE 09-01-26", "state": "out"}],
+                                   ts)
+        db.add_remote_availability(conn, sid, "mvpl", "SD_ILS:1", "b3", title,
+                                   [{"branch": "Children's World Language",
+                                     "call_number": "J SPANISH J BOARD M",
+                                     "status": "AVAILABLE",
+                                     "state": "available"}], ts)
+        conn.commit()
+        # edition rows pass the current-bib join alongside the primary's
+        rows = db.latest_remote_availability(conn)
+        assert {r["bib_id"] for r in rows} == {"b1", "b3"}
+        conn.close()
+
+        report.write_bayarea(dbp, d)
+        mv = open(os.path.join(d, "mountainview.md"), encoding="utf-8").read()
+        # the Spanish board book is on the shelf: labeled with its real
+        # (spine) title, linked
+        assert ("— Spanish board book: “Oso polar, oso polar, ¿qué es ese "
+                "ruido?”" in mv)
+        assert "https://classiccatalog.mountainview.gov/record=b3" in mv
+        # the plain edition is checked out → linked in the 'no copy' section
+        assert (f"[{title}](https://classiccatalog.mountainview.gov/record=b1)"
+                in mv)
+        # the audio compilation is a different work — its own title AND what
+        # it contains must show
+        assert "audiobook: “Brown bear & friends”" in mv
+        assert ("(contains: Brown bear, brown bear, what do you see?; "
+                "Polar bear, polar bear, what do you hear?)" in mv)
+        # a translation names its original
+        assert f"— translation of “{title}”" in mv
+        # the eBook lands in the Digital section, not the shelf lists
+        assert "## Digital" in mv and "(eBook)" in mv
+
+        # a re-lookup that drops the translation supersedes its availability
+        conn = db.open_db(dbp)
+        db.replace_remote_editions(conn, "mvpl", "SD_ILS:1", eds[:1],
+                                   "2026-08-08T11:00:00")
+        conn.commit()
+        rows = db.latest_remote_availability(conn)
+        assert {r["bib_id"] for r in rows} == {"b1"}
+        conn.close()
 
 
 if __name__ == "__main__":

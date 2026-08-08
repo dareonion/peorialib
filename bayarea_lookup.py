@@ -13,15 +13,22 @@ no browser needed. Results land in the same SQLite store (`remote_bibs` +
 `remote_availability` in catalog_db) and the Bay Area markdown is regenerated
 after every run.
 
-    uv run bayarea_lookup.py                          # all titles, all systems
+    uv run bayarea_lookup.py                          # all titles; systems run in parallel
     uv run bayarea_lookup.py --system sccl --limit 5  # quick spot check
     uv run bayarea_lookup.py --resume                 # only titles not yet looked up
     uv run bayarea_lookup.py --title "dear zoo"       # ad-hoc probe, prints only
+    uv run bayarea_lookup.py --enrich                 # just the record-detail pass
 
 Matching is fuzzy: we search title + author-surname, then score candidates by
 normalized title similarity (works for the pinyin Chinese titles too, since
 these catalogs index romanized fields). A title can legitimately not match —
 that library just doesn't hold it — and that's recorded as bib_id NULL.
+
+The best match anchors the title, and every other version of the same work in
+the result set rides along (`remote_editions`): other physical formats and
+printings, audiobooks (physical and digital), eBooks, and Chinese / French /
+Spanish / Japanese editions. Movies and music are never candidates; digital
+editions are linked but carry no shelf state (a license queue isn't a shelf).
 """
 from __future__ import annotations
 
@@ -33,6 +40,7 @@ import html as htmllib
 import json
 import re
 import sys
+import threading
 import time
 import unicodedata
 import urllib.parse
@@ -46,10 +54,31 @@ USER_AGENT = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
 GATEWAY = "https://gateway.bibliocommons.com/v2/libraries"
 
-# BiblioCommons formats we'll accept as "this book" (physical, readable).
-# BOOK_PCD / BOOK_CD / KIT cover the bilingual book-plus-audio kits on the list.
+# BiblioCommons formats we'll accept as "this book". BOOK_PCD / BOOK_CD / KIT
+# cover the bilingual book-plus-audio kits on the list; audiobooks are physical
+# audio; EBOOK/EAUDIOBOOK are tracked as digital editions (movies and music
+# stay out).
 BC_BOOK_FORMATS = {"BK", "BOARD_BK", "PICTURE_BOOK", "PAPERBACK", "LARGE_PRINT",
-                   "BOOK_PCD", "BOOK_CD", "KIT"}
+                   "BOOK_PCD", "BOOK_CD", "KIT",
+                   "AB", "AUDIOBOOK_CD", "PLAYAWAY_AUDIOBOOK",
+                   "EBOOK", "EAUDIOBOOK"}
+_BC_AUDIO_FORMATS = {"AB", "AUDIOBOOK_CD", "PLAYAWAY_AUDIOBOOK",
+                     "BOOK_CD", "BOOK_PCD"}
+# Digital editions are listed and linked but have no shelf: their availability
+# is a licensing queue (Libby/hoopla), not a branch, so no state is recorded.
+DIGITAL_CLASSES = ("ebook", "eaudio")
+
+# Language editions we surface alongside the main match (in addition to
+# other physical formats of the same work).
+EXTRA_LANGS = ("chi", "fre", "spa", "jpn")
+# Versions tracked per (title, system) — bounds the per-title availability
+# fetches when a classic is printed in a dozen editions.
+MAX_EDITIONS = 8
+# Extra same-language versions must be near-exact: series siblings score far
+# above MATCH_THRESHOLD ('Panda Bear…What Do You See?' hits 0.773 against
+# Polar Bear, ''…Caterpillar's Easter Colors' 0.771 against the original), while
+# true editions of the same work sit at 0.98+ (subtitle variants included).
+EDITION_MIN_RATIO = 0.9
 
 # Below ~0.75 nearly everything is a lookalike (shared series prefixes, 'my
 # first X' phrasing); the only legitimate sub-0.75 matches were exact titles
@@ -60,12 +89,33 @@ AUTHOR_MISMATCH_PENALTY = 0.85
 
 # --- HTTP -----------------------------------------------------------------------
 
+# Minimum spacing between requests to the SAME host, across threads: sccl and
+# sjpl share gateway.bibliocommons.com, and two lookup threads interleaving on
+# it without coordination earned CJK searches HTTP 403s.
+_HOST_SPACING = 0.4
+_host_gate = threading.Lock()
+_host_last: dict = {}
+
+
+def _pace(url: str) -> None:
+    host = urllib.parse.urlsplit(url).netloc
+    while True:
+        with _host_gate:
+            now = time.monotonic()
+            wait = _host_last.get(host, 0.0) + _HOST_SPACING - now
+            if wait <= 0:
+                _host_last[host] = now
+                return
+        time.sleep(wait)
+
+
 def _get(url: str, accept: str = "application/json", tries: int = 3,
          timeout: float = 40) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT,
                                                "Accept": accept})
     last_err = None
     for attempt in range(tries):
+        _pace(url)
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 data = resp.read()
@@ -74,7 +124,7 @@ def _get(url: str, accept: str = "application/json", tries: int = 3,
                 return data
         except Exception as e:  # URLError, HTTPError, timeout
             last_err = e
-            if getattr(e, "code", None) == 429:  # rate-limited: back off hard
+            if getattr(e, "code", None) in (403, 429):  # throttled: back off hard
                 time.sleep(20 * (attempt + 1))
             else:
                 time.sleep(1.5 * (attempt + 1))
@@ -209,6 +259,26 @@ def _fmt_bonus(our_format: str, cand_class: str) -> float:
     return 0.0
 
 
+def _author_matches(surname: str, cand) -> bool:
+    return bool(surname) and bool(cand.get("authors")) and \
+        _norm(surname) in _norm(" ".join(cand["authors"]))
+
+
+def _cand_score(want_title: str, surname: str, cand) -> float:
+    """Title similarity for one candidate, with the author-mismatch damp."""
+    names = [cand.get("title") or ""]
+    if cand.get("subtitle"):
+        names.append(f"{cand['title']} {cand['subtitle']}")
+    if cand.get("alt_title"):
+        names.append(cand["alt_title"])
+    score = title_score(want_title, names)
+    if surname and cand.get("authors") and not _author_matches(surname, cand):
+        # penalize, don't reject: 'Ten apples up on top!' is cataloged
+        # under LeSieg, not Seuss
+        score *= AUTHOR_MISMATCH_PENALTY
+    return score
+
+
 def pick_best(row_title: str, row_author: str, row_format: str, candidates,
               lang: str = None, enforce_lang: bool = True):
     """candidates: dicts with title/subtitle/authors/format_class. → (cand, score).
@@ -226,28 +296,86 @@ def pick_best(row_title: str, row_author: str, row_format: str, candidates,
     surname = query_terms("", row_author)[1] if row_author else ""
     best, best_key, best_score = None, None, 0.0
     for i, cand in enumerate(candidates):
-        names = [cand.get("title") or ""]
-        if cand.get("subtitle"):
-            names.append(f"{cand['title']} {cand['subtitle']}")
-        if cand.get("alt_title"):
-            names.append(cand["alt_title"])
-        score = title_score(want_title, names)
-        if surname and cand.get("authors"):
-            if _norm(surname) not in _norm(" ".join(cand["authors"])):
-                # penalize, don't reject: 'Ten apples up on top!' is cataloged
-                # under LeSieg, not Seuss
-                score *= AUTHOR_MISMATCH_PENALTY
+        score = _cand_score(want_title, surname, cand)
         score += _fmt_bonus(row_format or "", cand.get("format_class") or "")
-        # Near-equal scores: prefer the edition with more copies on the shelf
-        # (WebPAC candidates carry their items), then catalog relevance order.
+        # Near-equal scores: prefer a physical edition (the primary anchors the
+        # shelf matrix; digital rides along as an extra), then the edition with
+        # more copies on the shelf (WebPAC candidates carry their items), then
+        # catalog relevance order.
         items = cand.get("items") or []
         n_avail = sum(1 for it in items if it.get("state") == "available")
-        key = (round(score, 2), n_avail, len(items), -i)
+        key = (round(score, 2),
+               (cand.get("format_class") or "") not in DIGITAL_CLASSES,
+               n_avail, len(items), -i)
         if best_key is None or key > best_key:
             best, best_key, best_score = cand, key, score
     if best_score >= threshold:
         return best, round(best_score, 3)
     return None, round(best_score, 3)
+
+
+def pick_all(row_title: str, row_author: str, row_format: str, candidates,
+             lang: str = None, enforce_lang: bool = True,
+             max_editions: int = MAX_EDITIONS):
+    """(primary, score, editions) — the best match plus every other version of
+    the same work worth showing: other physical formats/printings that clear
+    the normal title bar ('edition'), translations in EXTRA_LANGS
+    ('translation' — a translated title can't fuzzy-match the original, so
+    same-author + language stands in), and physical audiobooks ('audio' —
+    compilations like 'Brown bear & friends' carry the story retitled).
+
+    The loose rules only trust candidates from an AND-semantics search
+    (cand['strict']: WebPAC keyword results, BC's fielded search — where a
+    translation surfaces via its 'Translation of:' note / uniform title), so a
+    fuzzy smart-search result can't drift to the author's *other* works. Even
+    then, spinoff translations can sneak in ('Translation of: The Very Hungry
+    Caterpillar's Easter Colors' contains the original title's every word), so
+    only one translation per (language, format) is kept — the one whose title
+    length sits closest to the want's, and spinoff titles run long.
+    Editions include the primary (kind='primary').
+    """
+    primary, score = pick_best(row_title, row_author, row_format, candidates,
+                               lang, enforce_lang)
+    if primary is None:
+        return None, score, []
+    want_title, _ = query_terms(row_title)
+    surname = query_terms("", row_author)[1] if row_author else ""
+    editions = [dict(primary, kind="primary", match_score=score)]
+    seen = {primary.get("bib_id")}
+    trans = {}  # (language, format_class) -> (title_len_diff, cand, score)
+    for cand in candidates:
+        bid = cand.get("bib_id")
+        if not bid or bid in seen:
+            continue
+        clang = cand.get("language")
+        s = round(_cand_score(want_title, surname, cand), 3)
+        if s >= EDITION_MIN_RATIO and (lang is None or not enforce_lang
+                                       or clang in (lang, None)):
+            seen.add(bid)
+            editions.append(dict(cand, kind="edition", match_score=s))
+        elif cand.get("strict") and \
+                cand.get("format_class") in ("audio", "eaudio") and \
+                _author_matches(surname, cand) and \
+                (lang is None or clang in (lang, None)):
+            seen.add(bid)
+            editions.append(dict(cand, kind="audio", match_score=s))
+        elif cand.get("strict") and lang is None and clang in EXTRA_LANGS and \
+                _author_matches(surname, cand):
+            key = (clang, cand.get("format_class"))
+            diff = abs(len(_norm(cand.get("title") or "")) - len(_norm(want_title)))
+            if key not in trans or diff < trans[key][0]:
+                trans[key] = (diff, cand, s)
+    for diff, cand, s in trans.values():
+        if cand["bib_id"] not in seen:
+            seen.add(cand["bib_id"])
+            editions.append(dict(cand, kind="translation", match_score=s))
+    if len(editions) > max_editions:
+        # translations and audiobooks are the rare finds; the Nth same-language
+        # printing is what gets cut
+        rest = sorted(editions[1:], key=lambda e:
+                      {"translation": 0, "audio": 1, "edition": 2}[e["kind"]])
+        editions = editions[:1] + rest[:max_editions - 1]
+    return dict(editions[0]), score, editions
 
 
 # --- BiblioCommons (SCCLD, SJPL) ------------------------------------------------
@@ -257,11 +385,21 @@ def _bc_format_class(fmt: str) -> str:
         return "board"
     if fmt == "PICTURE_BOOK":
         return "picture"
+    if fmt in _BC_AUDIO_FORMATS:
+        return "audio"
+    if fmt == "EBOOK":
+        return "ebook"
+    if fmt == "EAUDIOBOOK":
+        return "eaudio"
     return "book"
 
 
-def bc_parse_search(payload: dict) -> list[dict]:
-    """Gateway search JSON → candidate list in result order (book formats only)."""
+def bc_parse_search(payload: dict, strict: bool = False) -> list[dict]:
+    """Gateway search JSON → candidate list in result order (book formats only).
+
+    strict marks candidates from an AND-semantics query (the fielded search) —
+    the only ones pick_all's author-anchored rules are allowed to trust.
+    """
     bibs = payload.get("entities", {}).get("bibs", {})
     seen, out = set(), []
     for res in payload.get("catalogSearch", {}).get("results", []):
@@ -276,6 +414,7 @@ def bc_parse_search(payload: dict) -> list[dict]:
                 continue
             out.append({
                 "bib_id": bid,
+                "strict": strict,
                 "title": info.get("title"),
                 "subtitle": info.get("subtitle"),
                 "alt_title": (info.get("multiscriptTitle") or {}).get("title")
@@ -335,11 +474,67 @@ class BiblioCommons:
             q += f" AND contributor:({surname})"
         url = (f"{GATEWAY}/{self.subdomain}/bibs/search?"
                f"query={urllib.parse.quote(q)}&searchType=bl")
-        return bc_parse_search(json.loads(_get(url)))
+        return bc_parse_search(json.loads(_get(url)), strict=True)
 
     def availability(self, bib_id: str) -> list[dict]:
         url = f"{GATEWAY}/{self.subdomain}/bibs/{bib_id}/availability"
         return bc_parse_availability(json.loads(_get(url)))
+
+
+def bc_marc_fields(page: str) -> dict:
+    """The classic MARC display (item/catalogue_info) → {tag: [field data]}."""
+    out = {}
+    for m in re.finditer(r'class="marcTag"><strong>(\d+)</strong></td>.*?'
+                         r'class="marcTagData">(.*?)</td>', page, re.S):
+        out.setdefault(m.group(1), []).append(
+            htmllib.unescape(m.group(2)).strip())
+    return out
+
+
+def _marc_subfields(data: str) -> dict:
+    return {m.group(1): m.group(2).strip()
+            for m in re.finditer(r"\$([a-z0-9])([^$]*)", data)}
+
+
+_BC_BIB_ID = re.compile(r"^S(\d+)C(\d+)$")
+
+
+def bc_details(subdomain: str, bib_id: str) -> dict:
+    """contents (MARC 505) + original title (240 uniform title, else a
+    'Translation of' 500/765 note) — from the classic MARC display, the one
+    server-rendered detail view BiblioCommons still has. The gateway search
+    payload carries neither."""
+    m = _BC_BIB_ID.match(bib_id or "")
+    if not m:
+        return {}
+    url = (f"https://{subdomain}.bibliocommons.com/item/catalogue_info/"
+           f"{m.group(2)}{m.group(1)}")
+    page = _get(url, accept="text/html", timeout=60).decode("utf-8", "replace")
+    return bc_details_from_page(page)
+
+
+def bc_details_from_page(page: str) -> dict:
+    marc = bc_marc_fields(page)
+    parts = []
+    for d in marc.get("505", []):
+        t = re.sub(r"\$[a-z0-9]", " ", d)
+        t = re.sub(r"\s*--\s*", "; ", t)
+        t = re.sub(r"\s+", " ", t).strip(" ;$")
+        if t:
+            parts.append(t)
+    orig = ""
+    for d in marc.get("240", []):
+        orig = _marc_subfields(d).get("a", "").strip(" /:;,.$")
+        if orig:
+            break
+    if not orig:
+        for d in marc.get("500", []) + marc.get("765", []):
+            m2 = re.search(r"Translation of:?\s*(.+)",
+                           re.sub(r"\$[a-z0-9]", " ", d), re.I)
+            if m2:
+                orig = m2.group(1).strip(" .$")
+                break
+    return {"contents": "; ".join(parts), "orig_title": orig}
 
 
 # --- Mountain View classic WebPAC -----------------------------------------------
@@ -388,8 +583,15 @@ def _webpac_items(chunk: str) -> list[dict]:
     return items
 
 
-# books only — an exact-title DVD, soundtrack CD, or audiobook must never
-# satisfy a book want, no matter how well the title scores
+# Digital editions we keep — checked first: 'eAudiobook' contains 'Audiobook',
+# which contains 'Audio'.
+_DIGITAL_MEDIA = re.compile(r"e-?Book|e-?Audio|Downloadable", re.I)
+# Physical audiobooks are a format we keep (classed 'audio'); checked before
+# _NONBOOK_MEDIA because 'Audiobook' would otherwise trip its 'Audio'.
+_AUDIO_MEDIA = re.compile(r"Audiobook|Book on CD|CD Book|Playaway(?!\s*Video)",
+                          re.I)
+# an exact-title DVD, soundtrack CD, or eBook must never satisfy a want,
+# no matter how well the title scores
 _NONBOOK_MEDIA = re.compile(r"DVD|Blu-?ray|Compact Dis|\bCD\b|Audio|Video|"
                             r"Playaway|eBook|Magazine|Kit\b|videodisc|sound disc",
                             re.I)
@@ -397,8 +599,12 @@ _NONBOOK_SHELF = re.compile(r"Movies|Music", re.I)
 
 
 def _webpac_nonbook(media: str, items: list[dict]) -> bool:
-    if _NONBOOK_MEDIA.search(media or ""):
+    m = media or ""
+    if not _DIGITAL_MEDIA.search(m) and not _AUDIO_MEDIA.search(m) \
+            and _NONBOOK_MEDIA.search(m):
         return True
+    # a record whose every copy shelves under Movies/Music is one of those,
+    # whatever it calls itself
     return bool(items) and all(_NONBOOK_SHELF.search(i.get("branch") or "")
                                for i in items)
 
@@ -418,6 +624,10 @@ def _webpac_language(items: list[dict]) -> str | None:
 
 
 def _webpac_fmt_class(media: str, items: list[dict]) -> str:
+    if _DIGITAL_MEDIA.search(media or ""):
+        return "eaudio" if re.search("audio", media, re.I) else "ebook"
+    if _AUDIO_MEDIA.search(media or ""):
+        return "audio"
     blob = f"{media} " + " ".join(i["call_number"] or "" for i in items)
     if "board" in blob.lower():
         return "board"
@@ -426,16 +636,22 @@ def _webpac_fmt_class(media: str, items: list[dict]) -> str:
     return "book"
 
 
+def _webpac_fields(page: str) -> dict:
+    """Record-view metadata: bibInfoLabel → cleaned bibInfoData text."""
+    fields = {}
+    for m in re.finditer(r'<td[^>]*class="bibInfoLabel">\s*([^<]+?)\s*</td>\s*'
+                         r'<td[^>]*class="bibInfoData">(.*?)</td>', page, re.S):
+        fields.setdefault(m.group(1).strip(), _strip_html(m.group(2)))
+    return fields
+
+
 def _webpac_record_page(page: str) -> dict | None:
     """A single-hit keyword search jumps straight to the record view; parse that.
 
     The record page lays metadata out as bibInfoLabel/bibInfoData pairs and has
     the same bibItems table the results list embeds.
     """
-    fields = {}
-    for m in re.finditer(r'<td[^>]*class="bibInfoLabel">\s*([^<]+?)\s*</td>\s*'
-                         r'<td[^>]*class="bibInfoData">(.*?)</td>', page, re.S):
-        fields.setdefault(m.group(1).strip(), _strip_html(m.group(2)))
+    fields = _webpac_fields(page)
     title_stmt = fields.get("Title")
     if not title_stmt:
         return None
@@ -449,10 +665,10 @@ def _webpac_record_page(page: str) -> dict | None:
     items = _webpac_items(page)
     if _webpac_nonbook(fields.get("Material", ""), items):
         return None
-    return {"bib_id": bid, "title": title, "subtitle": None, "alt_title": None,
-            "authors": [author] if author else [],
+    return {"bib_id": bid, "strict": True, "title": title, "subtitle": None,
+            "alt_title": None, "authors": [author] if author else [],
             "format": fields.get("Material", "Book"),
-            "format_class": _webpac_fmt_class("", items),
+            "format_class": _webpac_fmt_class(fields.get("Material", ""), items),
             "year": None, "items": items,
             "language": _webpac_language(items)}
 
@@ -489,8 +705,8 @@ def webpac_parse_results(page: str) -> list[dict]:
         items = _webpac_items(chunk)
         if _webpac_nonbook(media, items):
             continue
-        out.append({"bib_id": bid, "title": title, "subtitle": None,
-                    "alt_title": None,
+        out.append({"bib_id": bid, "strict": True, "title": title,
+                    "subtitle": None, "alt_title": None,
                     "authors": [author] if author else [],
                     "format": media or "Book",
                     "format_class": _webpac_fmt_class(media, items),
@@ -531,6 +747,28 @@ class MountainView:
         return bib_or_cand.get("items", [])
 
 
+def mvpl_details(bib_id: str) -> dict:
+    """contents + 'Translation of' original title from the classic record view."""
+    page = _get(f"{MVPL_BASE}/record={bib_id}", accept="text/html",
+                timeout=75).decode("iso-8859-1", "replace")
+    return mvpl_details_from_page(page)
+
+
+def mvpl_details_from_page(page: str) -> dict:
+    fields = _webpac_fields(page)
+    contents = re.sub(r"\s*--\s*", "; ",
+                      fields.get("Contents", "")).strip(" ;")
+    orig = ""
+    # scan every metadata cell: the translation note is one of several 'Note'
+    # rows and _webpac_fields keeps only the first per label
+    for m in re.finditer(r'class="bibInfoData">(.*?)</td>', page, re.S):
+        m2 = re.match(r"Translation of:?\s*(.+)", _strip_html(m.group(1)), re.I)
+        if m2:
+            orig = m2.group(1).strip(" .")
+            break
+    return {"contents": contents, "orig_title": orig}
+
+
 # --- LINK+ (INN-Reach union catalog) --------------------------------------------
 
 LINKPLUS_BASE = "https://csul.iii.com"
@@ -558,8 +796,9 @@ def linkplus_parse_results(page: str) -> list[dict]:
         desc = _strip_html(chunk[m.end():m.end() + 800])
         if _NONBOOK_MEDIA.search(desc):
             continue
-        out.append({"bib_id": bid, "title": title, "subtitle": None,
-                    "alt_title": None, "authors": [author] if author else [],
+        out.append({"bib_id": bid, "strict": True, "title": title,
+                    "subtitle": None, "alt_title": None,
+                    "authors": [author] if author else [],
                     "format": "Book", "format_class": "book",
                     "year": None, "language": None})
     return out
@@ -620,6 +859,10 @@ SYSTEMS = {
     "linkplus": ("LINK+ union catalog", LinkPlus),
 }
 
+# Politeness per host, applied within each system's own (serial) thread —
+# LINK+ 429s below a full second; the others tolerate a brisker pace.
+SYSTEM_DELAYS = {"sccl": 0.4, "sjpl": 0.4, "mvpl": 0.4, "linkplus": 1.0}
+
 
 # --- runner ---------------------------------------------------------------------
 
@@ -671,8 +914,12 @@ def wantlist_langs() -> dict:
 
 
 def lookup_all(db_path: str, systems: list[str], limit: int = None,
-               delay: float = 0.4, resume: bool = False,
+               delay: float = None, resume: bool = False,
                retry_misses: bool = False) -> None:
+    """Look the want-list up at every requested system — systems in parallel
+    (one thread + one DB connection each; each host still gets serial,
+    delay-spaced requests), then the detail-enrichment pass, then the reports.
+    """
     conn = db.open_db(db_path)
     for wl in sorted(glob.glob(WANTLIST_GLOB)):
         if wl == EXCLUDE_FILE:
@@ -692,9 +939,31 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
               f"({EXCLUDE_FILE})")
     if limit:
         rows = rows[:limit]
+    conn.close()
     langs = wantlist_langs()
 
+    threads = []
     for system in systems:
+        d = delay if delay is not None else SYSTEM_DELAYS.get(system, 0.4)
+        t = threading.Thread(target=_lookup_system, name=system,
+                             args=(db_path, system, rows, langs, d,
+                                   resume, retry_misses))
+        t.start()
+        threads.append(t)
+    for t in threads:
+        t.join()
+
+    n = enrich_editions(db_path, systems, delay if delay is not None else 0.5)
+    if n:
+        print(f"details: enriched {n} compilation/translation records")
+    for path in report.write_bayarea(db_path):
+        print(f"wrote {path}")
+
+
+def _lookup_system(db_path: str, system: str, rows, langs: dict, delay: float,
+                   resume: bool, retry_misses: bool) -> None:
+    conn = db.open_db(db_path)
+    try:
         label, make_client = SYSTEMS[system]
         client = make_client()
         todo = rows
@@ -708,11 +977,13 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
             todo = [r for r in rows if r["record_id"] not in done]
         if not todo:
             print(f"[{system}] nothing to do")
-            continue
+            return
         checked_at = datetime.now().isoformat(timespec="seconds")
-        scrape_id = db.record_scrape(conn, kind="remote", checked_at=checked_at,
-                                     query=f"{len(todo)} titles",
-                                     source="bayarea_lookup", profile=system)
+        with conn:  # commit at once — an open write transaction stalls the others
+            scrape_id = db.record_scrape(conn, kind="remote",
+                                         checked_at=checked_at,
+                                         query=f"{len(todo)} titles",
+                                         source="bayarea_lookup", profile=system)
         print(f"[{system}] {label}: {len(todo)} titles")
         for i, row in enumerate(todo, 1):
             lang = langs.get(row["record_id"])
@@ -740,29 +1011,34 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
                         if cands:
                             break
                 enforce = system != "linkplus"
-                best, score = pick_best(row["title"], row["author"],
-                                        row["format"], cands, lang, enforce)
-                if score < 1.0 and hasattr(client, "search_fielded"):
-                    # weak pick → try the exact-field search before settling
+                if hasattr(client, "search_fielded"):
+                    # always pool in the boolean field search: it rescues weak
+                    # smart-search picks AND is the only strict source for
+                    # translations/audiobooks (pick_all trusts nothing else)
                     fcands = client.search_fielded(t, surname)
                     time.sleep(delay)
-                    fbest, fscore = pick_best(row["title"], row["author"],
-                                              row["format"], fcands, lang,
-                                              enforce)
-                    if fbest is not None and fscore > score:
-                        best, score = fbest, fscore
+                    known = {c.get("bib_id") for c in cands}
+                    fids = {c.get("bib_id") for c in fcands}
+                    for c in cands:      # a bib in both sets is strict
+                        if c.get("bib_id") in fids:
+                            c["strict"] = True
+                    cands = cands + [c for c in fcands
+                                     if c.get("bib_id") not in known]
+                # LINK+ holdings cost a page fetch per edition; keep it tight
+                max_ed = 4 if system == "linkplus" else MAX_EDITIONS
+                best, score, editions = pick_all(row["title"], row["author"],
+                                                 row["format"], cands, lang,
+                                                 enforce, max_ed)
                 if best is None:
                     with conn:
                         db.upsert_remote_bib(conn, system, row["record_id"],
                                              checked_at, None, score)
-                    print(f"  {i:3}/{len(todo)} ✗ {row['title'][:50]!r} "
+                        db.replace_remote_editions(conn, system,
+                                                   row["record_id"], [],
+                                                   checked_at)
+                    print(f"[{system}] {i:3}/{len(todo)} ✗ {row['title'][:50]!r} "
                           f"no match (best {score})")
                     continue
-                items = client.availability(best if system in ("mvpl", "linkplus")
-                                            else best["bib_id"])
-                if system != "mvpl":
-                    time.sleep(delay)
-                n_avail = sum(1 for it in items if it["state"] == "available")
                 with conn:
                     db.upsert_remote_bib(conn, system, row["record_id"], checked_at,
                                          {"bib_id": best["bib_id"],
@@ -770,19 +1046,80 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
                                           "author": ", ".join(best["authors"]) or None,
                                           "format": best["format"],
                                           "year": best.get("year")}, score)
-                    db.add_remote_availability(conn, scrape_id, system,
-                                               row["record_id"], best["bib_id"],
-                                               row["title"], items, checked_at)
-                print(f"  {i:3}/{len(todo)} ✓ {row['title'][:50]!r} → "
+                    db.replace_remote_editions(conn, system, row["record_id"],
+                                               editions, checked_at)
+                n_avail = n_items = 0
+                for ed in editions:
+                    if (ed.get("format_class") or "") in DIGITAL_CLASSES:
+                        continue  # linked, but a license queue isn't a shelf
+                    items = client.availability(ed if system in ("mvpl", "linkplus")
+                                                else ed["bib_id"])
+                    if system != "mvpl":
+                        time.sleep(delay)
+                    n_avail += sum(1 for it in items if it["state"] == "available")
+                    n_items += len(items)
+                    with conn:
+                        db.add_remote_availability(conn, scrape_id, system,
+                                                   row["record_id"], ed["bib_id"],
+                                                   row["title"], items, checked_at)
+                extras = ", ".join(
+                    "+" + ((e.get("language") or "?") if e["kind"] == "translation"
+                           else e.get("format_class") or "ed")
+                    for e in editions if e["kind"] != "primary")
+                print(f"[{system}] {i:3}/{len(todo)} ✓ {row['title'][:50]!r} → "
                       f"{best['title'][:40]!r} ({best['format']}, {score}) "
-                      f"{n_avail}/{len(items)} on shelf")
+                      f"{n_avail}/{n_items} on shelf"
+                      + (f" [{extras}]" if extras else ""))
             except Exception as e:
-                print(f"  {i:3}/{len(todo)} ! {row['title'][:50]!r} ERROR: {e}")
+                print(f"[{system}] {i:3}/{len(todo)} ! {row['title'][:50]!r} "
+                      f"ERROR: {e}")
         conn.commit()
+    finally:
+        conn.close()
 
+
+def enrich_editions(db_path: str, systems, delay: float = 0.5) -> int:
+    """Fetch record details for the versions that are other works: what a
+    compilation contains (505 contents), what a translation is a translation
+    of (uniform title / note). Idempotent — only rows never fetched are hit —
+    and parallel per system, like the lookups.
+    """
+    conn = db.open_db(db_path)
+    todo = [r for r in db.unenriched_editions(conn) if r["system"] in systems]
     conn.close()
-    for path in report.write_bayarea(db_path):
-        print(f"wrote {path}")
+    by_sys = {}
+    for r in todo:
+        if r["system"] != "linkplus":   # linkplus carries neither kind
+            by_sys.setdefault(r["system"], []).append(r)
+    done = []
+
+    def work(system, rows_):
+        c = db.open_db(db_path)
+        try:
+            for r in rows_:
+                try:
+                    d = (bc_details(system, r["bib_id"])
+                         if system in ("sccl", "sjpl")
+                         else mvpl_details(r["bib_id"]))
+                    time.sleep(delay)
+                except Exception as e:
+                    print(f"  enrich ! {system}/{r['bib_id']}: {e}")
+                    continue
+                with c:
+                    db.set_edition_details(c, system, r["record_id"],
+                                           r["bib_id"], d.get("contents"),
+                                           d.get("orig_title"))
+                done.append(1)
+        finally:
+            c.close()
+
+    threads = [threading.Thread(target=work, args=(s, rs), name=f"enrich-{s}")
+               for s, rs in by_sys.items()]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    return len(done)
 
 
 def probe(systems: list[str], query: str) -> None:
@@ -792,37 +1129,59 @@ def probe(systems: list[str], query: str) -> None:
         client = make_client()
         print(f"== {label}")
         cands = client.search(query)
-        best, score = pick_best(query, None, None, cands)
+        if hasattr(client, "search_fielded"):   # same union a real run pools
+            fcands = client.search_fielded(query)
+            known = {c.get("bib_id") for c in cands}
+            fids = {c.get("bib_id") for c in fcands}
+            for c in cands:
+                if c.get("bib_id") in fids:
+                    c["strict"] = True
+            cands += [c for c in fcands if c.get("bib_id") not in known]
+        best, score, editions = pick_all(query, None, None, cands)
         if best is None:
             print(f"  no match (best score {score})")
             continue
-        items = client.availability(best if system in ("mvpl", "linkplus")
-                                    else best["bib_id"])
-        print(f"  {best['title']!r} ({best['format']}, score {score})")
-        for it in items:
-            mark = {"available": "✓", "reference": "·"}.get(it["state"], "✗")
-            print(f"   {mark} {it['branch']}: {it['call_number']} — {it['status']}")
+        for ed in editions:
+            items = client.availability(ed if system in ("mvpl", "linkplus")
+                                        else ed["bib_id"])
+            tag = ed["kind"] + (f":{ed['language']}" if ed.get("language") else "")
+            print(f"  {ed['title']!r} [{tag}] ({ed['format']}, "
+                  f"score {ed['match_score']})")
+            for it in items:
+                mark = {"available": "✓", "reference": "·"}.get(it["state"], "✗")
+                print(f"   {mark} {it['branch']}: {it['call_number']} — "
+                      f"{it['status']}")
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(
         description="Look up the want-list at SCCLD / SJPL / Mountain View.")
     ap.add_argument("--system", action="append", choices=sorted(SYSTEMS),
-                    help="limit to a system (repeatable; default: all three)")
+                    help="limit to a system (repeatable; default: all four)")
     ap.add_argument("--limit", type=int, help="only the first N titles (testing)")
-    ap.add_argument("--delay", type=float, default=0.4,
-                    help="seconds between requests (default 0.4)")
+    ap.add_argument("--delay", type=float, default=None,
+                    help="seconds between requests, same for every system "
+                         "(default: per-system — 0.4, but 1.0 for LINK+)")
     ap.add_argument("--resume", action="store_true",
                     help="skip titles already looked up in that system")
     ap.add_argument("--retry-misses", action="store_true",
                     help="like --resume, but also redo titles that never matched")
     ap.add_argument("--title", help="ad-hoc query: print availability, touch nothing")
+    ap.add_argument("--enrich", action="store_true",
+                    help="only fetch missing compilation/translation details, "
+                         "then rewrite the reports")
     ap.add_argument("--db", default="peorialib.db")
     args = ap.parse_args(argv)
 
     systems = args.system or sorted(SYSTEMS)
     if args.title:
         probe(systems, args.title)
+    elif args.enrich:
+        n = enrich_editions(args.db, systems,
+                            delay=args.delay if args.delay is not None else 0.5)
+        print(f"details: enriched {n} records")
+        for path in report.write_bayarea(args.db):
+            print(f"wrote {path}")
     else:
         lookup_all(args.db, systems, limit=args.limit, delay=args.delay,
                    resume=args.resume, retry_misses=args.retry_misses)

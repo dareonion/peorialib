@@ -144,6 +144,23 @@ CREATE TABLE IF NOT EXISTS remote_bibs (
     PRIMARY KEY (system, record_id)
 );
 
+CREATE TABLE IF NOT EXISTS remote_editions (
+    system      TEXT NOT NULL,
+    record_id   TEXT NOT NULL REFERENCES titles(record_id),
+    bib_id      TEXT NOT NULL,
+    title       TEXT,
+    author      TEXT,
+    format      TEXT,                     -- remote catalog's format label
+    format_class TEXT,                    -- book | picture | board | audio | ebook | eaudio
+    language    TEXT,                     -- 'eng' | 'spa' | 'chi' | … | NULL
+    kind        TEXT,                     -- primary | edition | translation | audio
+    match_score REAL,
+    checked_at  TEXT NOT NULL,
+    contents    TEXT,                     -- compilation contents note ('' = fetched, none)
+    orig_title  TEXT,                     -- translation's original title ('' = fetched, none)
+    PRIMARY KEY (system, record_id, bib_id)
+);
+
 CREATE TABLE IF NOT EXISTS remote_availability (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,
     scrape_id   INTEGER REFERENCES scrapes(id),
@@ -172,7 +189,17 @@ def open_db(path: str) -> sqlite3.Connection:
     conn = sqlite3.connect(path)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
+    # the Bay Area lookup runs its systems in parallel threads, one connection
+    # each: WAL lets readers pass the writer, and a generous busy timeout makes
+    # concurrent writers queue instead of throwing 'database is locked'
+    conn.execute("PRAGMA busy_timeout = 30000")
+    conn.execute("PRAGMA journal_mode = WAL")
     conn.executescript(SCHEMA)
+    # light migration: columns added after the table first shipped
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(remote_editions)")}
+    for col in ("contents", "orig_title"):
+        if col not in cols:
+            conn.execute(f"ALTER TABLE remote_editions ADD COLUMN {col} TEXT")
     conn.commit()
     return conn
 
@@ -243,6 +270,52 @@ def upsert_remote_bib(conn, system: str, record_id: str, checked_at: str,
     )
 
 
+def replace_remote_editions(conn, system: str, record_id: str, editions,
+                            checked_at: str):
+    """Replace the full edition set (all matched versions incl. the primary).
+
+    A re-lookup supersedes the previous set wholesale, so a corrected match or a
+    vanished edition can't leave a stale row behind.
+    """
+    conn.execute("DELETE FROM remote_editions WHERE system = ? AND record_id = ?",
+                 (system, record_id))
+    for e in editions:
+        if not e.get("bib_id"):
+            continue
+        conn.execute(
+            "INSERT OR REPLACE INTO remote_editions (system, record_id, bib_id, "
+            "title, author, format, format_class, language, kind, match_score, "
+            "checked_at, contents, orig_title) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            (system, record_id, e["bib_id"], e.get("title"),
+             ", ".join(e.get("authors") or []) or None, e.get("format"),
+             e.get("format_class"), e.get("language"), e.get("kind"),
+             e.get("match_score"), checked_at, e.get("contents"),
+             e.get("orig_title")),
+        )
+
+
+def unenriched_editions(conn):
+    """Compilation/translation editions whose record details aren't fetched yet."""
+    return conn.execute(
+        "SELECT system, record_id, bib_id, kind FROM remote_editions "
+        "WHERE kind IN ('audio', 'translation') "
+        "AND contents IS NULL AND orig_title IS NULL").fetchall()
+
+
+def set_edition_details(conn, system: str, record_id: str, bib_id: str,
+                        contents: str, orig_title: str):
+    """'' (not NULL) marks 'fetched, record has none' so we don't refetch."""
+    conn.execute(
+        "UPDATE remote_editions SET contents = ?, orig_title = ? "
+        "WHERE system = ? AND record_id = ? AND bib_id = ?",
+        (contents or "", orig_title or "", system, record_id, bib_id))
+
+
+def remote_editions(conn):
+    """All current edition rows, for labeling availability in reports."""
+    return conn.execute("SELECT * FROM remote_editions").fetchall()
+
+
 def add_remote_availability(conn, scrape_id: int, system: str, record_id: str,
                             bib_id: str, title: str, items, checked_at: str):
     """items: iterable of dicts with branch/collection/call_number/status/state."""
@@ -290,8 +363,9 @@ def latest_remote_availability(conn, system: str = None):
 
     Rows come only from the newest scrape per (system, record_id) — an older
     scrape's branches must not linger once a re-scrape has replaced them — and
-    only when they belong to the currently-matched bib, so availability recorded
-    for a since-corrected mismatch disappears with the correction.
+    only when they belong to a currently-matched bib (the primary in remote_bibs
+    or any current remote_editions row), so availability recorded for a
+    since-corrected mismatch disappears with the correction.
     """
     where = "WHERE system = ?" if system else ""
     args = (system,) if system else ()
@@ -305,9 +379,12 @@ def latest_remote_availability(conn, system: str = None):
         ) last
         ON a.system = last.system AND a.record_id = last.record_id
            AND a.checked_at = last.mx
-        JOIN remote_bibs rb
-        ON rb.system = a.system AND rb.record_id = a.record_id
-           AND rb.bib_id = a.bib_id
+        WHERE EXISTS (SELECT 1 FROM remote_bibs rb
+                      WHERE rb.system = a.system AND rb.record_id = a.record_id
+                        AND rb.bib_id = a.bib_id)
+           OR EXISTS (SELECT 1 FROM remote_editions re
+                      WHERE re.system = a.system AND re.record_id = a.record_id
+                        AND re.bib_id = a.bib_id)
         """,
         args,
     ).fetchall()

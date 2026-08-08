@@ -7,4 +7,6 @@ __pycache__/
 out.json
 *.db
 *.db-journal
+*.db-wal
+*.db-shm
 scrapes/

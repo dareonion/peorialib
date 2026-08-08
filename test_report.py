@@ -47,6 +47,18 @@ def test_write_all_creates_files_from_db():
         assert "| North |" in books
 
 
+def test_peoria_records_are_linked():
+    with tempfile.TemporaryDirectory() as d:
+        dbp = os.path.join(d, "t.db")
+        _seed(dbp)
+        report.write_all(dbp, outdir=d)
+        books = open(os.path.join(d, "books.md"), encoding="utf-8").read()
+        assert ("detailnonmodal/ent:$002f$002fSD_ILS$002f0$002fSD_ILS:2/one"
+                in books)
+        north = open(os.path.join(d, "north.md"), encoding="utf-8").read()
+        assert "[Kitten's first full moon](https://alsi.sdp.sirsi.net" in north
+
+
 def test_lakeview_empty_is_graceful():
     with tempfile.TemporaryDirectory() as d:
         dbp = os.path.join(d, "t.db")
