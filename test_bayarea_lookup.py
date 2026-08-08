@@ -291,7 +291,7 @@ def test_webpac_skips_non_book_media():
     shelf_page = WEBPAC_PAGE.replace(
         ' <img src="/screens/media_book.gif" alt="Children\'s Board Book"><br />',
         '').replace("Children's Board Books - 1st Floor",
-                    "Children's Movies - 1st Floor")
+                    "Children's Movies - 1st Floor", 2)  # both rows of entry 1 only
     cands = ba.webpac_parse_results(shelf_page)
     assert [c["bib_id"] for c in cands] == ["b1229472"]
     # single-hit record view for a DVD → no candidate either
