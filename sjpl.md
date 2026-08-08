@@ -5,7 +5,7 @@
 _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don't hand-edit; run `uv run report.py --write`._
 
 
-**78** of **160** titles are in the catalog; **71** have at least one copy on a shelf right now.
+**78** of **160** titles are in the catalog; **67** have at least one copy on a shelf right now.
 
 
 ## Calabazas — 23 on the shelf
@@ -34,11 +34,9 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
 - `J PICTURE BOOK Willems` The pigeon needs a bath!
 
-## Berryessa — 34 on the shelf
+## Berryessa — 32 on the shelf
 
-- `J 495.1321 First` First Words: Mandarin
 - `J CHI PICTURE BOOK Antony` 貝蒂好想好想吃香蕉
-- `J CHI PICTURE BOOK Tullet` Un livre
 - `J CHI PICTURE BOOK Tullet` 小黃點
 - `J EASY READER Carle` The very busy spider
 - `J EASY READER Carle` The very quiet cricket
@@ -104,38 +102,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
 - `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
 
-## Educational Park — 29 on the shelf
-
-- `J 495.1321 First` First Words: Mandarin
-- `J CHI PICTURE BOOK Gomi` 小金魚逃走了
-- `J CHI PICTURE BOOK McDonnel` 抱抱！
-- `J EASY READER Carle` The very busy spider
-- `J EASY READER Carle` The very quiet cricket
-- `J EASY READER Diesen` You can do it, Pout-Pout Fish!
-- `J EASY READER Regan` Mike delivers : the duck is stuck!
-- `J HARDPAGE` Grumpy monkey yuck!
-- `J HARDPAGE` Knuffle Bunny : a cautionary tale
-- `J HARDPAGE` Moo, baa, la la la!
-- `J HARDPAGE` Mr. Brown can moo! Can you?
-- `J HARDPAGE` Press here
-- `J PB EASY READER` Duck stays in the truck
-- `J PB PICTURE BOOK` Bluey : the creek.
-- `J PICTURE BOOK Brown` Goodnight moon
-- `J PICTURE BOOK Carle` The very hungry caterpillar
-- `J PICTURE BOOK Carle` The very hungry caterpillar
-- `J PICTURE BOOK Dewdney` Llama Llama misses Mama
-- `J PICTURE BOOK Henkes` Kitten's first full moon
-- `J PICTURE BOOK Jackson` I know an old lady who swallowed a pie
-- `J PICTURE BOOK Llenas` The color monster : a story about emotions
-- `J PICTURE BOOK Martin` Brown bear, brown bear, what do you see?
-- `J PICTURE BOOK Martin` Chicka chicka boom boom
-- `J PICTURE BOOK Numeroff` If you give a mouse a cookie
-- `J PICTURE BOOK Rubin` Dragons love tacos
-- `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
-- `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
-- `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
-- `J PICTURE BOOK Willems` The pigeon needs a bath!
-
 ## West Valley — 29 on the shelf
 
 - `J CHI HARDPAGE Saito` 企鵝體操
@@ -168,13 +134,42 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
 - `J PICTURE BOOK Willems` The pigeon needs a bath!
 
-## King — 28 on the shelf
+## Educational Park — 27 on the shelf
+
+- `J CHI PICTURE BOOK Gomi` 小金魚逃走了
+- `J EASY READER Carle` The very busy spider
+- `J EASY READER Carle` The very quiet cricket
+- `J EASY READER Diesen` You can do it, Pout-Pout Fish!
+- `J EASY READER Regan` Mike delivers : the duck is stuck!
+- `J HARDPAGE` Grumpy monkey yuck!
+- `J HARDPAGE` Knuffle Bunny : a cautionary tale
+- `J HARDPAGE` Moo, baa, la la la!
+- `J HARDPAGE` Mr. Brown can moo! Can you?
+- `J HARDPAGE` Press here
+- `J PB EASY READER` Duck stays in the truck
+- `J PB PICTURE BOOK` Bluey : the creek.
+- `J PICTURE BOOK Brown` Goodnight moon
+- `J PICTURE BOOK Carle` The very hungry caterpillar
+- `J PICTURE BOOK Carle` The very hungry caterpillar
+- `J PICTURE BOOK Dewdney` Llama Llama misses Mama
+- `J PICTURE BOOK Henkes` Kitten's first full moon
+- `J PICTURE BOOK Jackson` I know an old lady who swallowed a pie
+- `J PICTURE BOOK Llenas` The color monster : a story about emotions
+- `J PICTURE BOOK Martin` Brown bear, brown bear, what do you see?
+- `J PICTURE BOOK Martin` Chicka chicka boom boom
+- `J PICTURE BOOK Numeroff` If you give a mouse a cookie
+- `J PICTURE BOOK Rubin` Dragons love tacos
+- `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
+- `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
+- `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
+- `J PICTURE BOOK Willems` The pigeon needs a bath!
+
+## King — 27 on the shelf
 
 - `J CHI HARDPAGE Martin` 棕色的熊、棕色的熊，你在看什麼？
 - `J CHI PICTURE BOOK Antony` 貝蒂好想好想吃香蕉
 - `J CHI PICTURE BOOK Carle` 好餓的毛毛蟲
 - `J CHI PICTURE BOOK Hutchins` 母雞蘿絲去散步
-- `J CHI PICTURE BOOK Tullet` Un livre
 - `J CHI PICTURE BOOK Tullet` 小黃點
 - `J CHI-ENG PICTURE BOOK Gomi` 鱷魚怕怕．牙醫怕怕
 - `J EASY READER Regan` Mike delivers : the duck is stuck!
@@ -199,39 +194,8 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J PICTURE BOOK Rubin` Dragons love tacos
 - `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
 
-## Almaden — 27 on the shelf
+## Cambrian — 25 on the shelf
 
-- `641.5944 Marshall` Maman !
-- `J 495.1321 First` First Words: Mandarin
-- `J CHI PICTURE BOOK Antony` 貝蒂好想好想吃香蕉
-- `J CHI PICTURE BOOK Tullet` Un livre
-- `J CHI PICTURE BOOK Tullet` 小黃點
-- `J EASY READER Carle` The very busy spider
-- `J EASY READER Carle` The very quiet cricket
-- `J EASY READER Cronin` Duck stays in the truck
-- `J EASY READER Diesen` You can do it, Pout-Pout Fish!
-- `J EASY READER Eastman` Are you my mother?
-- `J HARDPAGE` From head to toe
-- `J HARDPAGE` Twinkle, twinkle, little sheepy : a sleepy sheepy story
-- `J PICTURE BOOK Brown` Goodnight moon
-- `J PICTURE BOOK Carle` The very hungry caterpillar
-- `J PICTURE BOOK Carle` The very hungry caterpillar
-- `J PICTURE BOOK Jackson` I know an old lady who swallowed a pie
-- `J PICTURE BOOK Keats` The snowy day
-- `J PICTURE BOOK Lang` Grumpy monkey
-- `J PICTURE BOOK Martin` Chicka chicka boom boom
-- `J PICTURE BOOK McMullan` I stink!
-- `J PICTURE BOOK Numeroff` If you give a mouse a cookie
-- `J PICTURE BOOK Pizzoli` The watermelon seed
-- `J PICTURE BOOK Rubin` Dragons love tacos
-- `J PICTURE BOOK Sendak` Where the wild things are
-- `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
-- `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
-- `J PICTURE BOOK Willems` The pigeon needs a bath!
-
-## Cambrian — 26 on the shelf
-
-- `641.5944 Marshall` Maman !
 - `J CHI-ENG PICTURE BOOK Gomi` 鱷魚怕怕．牙醫怕怕
 - `J EASY READER Carle` The very busy spider
 - `J EASY READER Carle` The very quiet cricket
@@ -256,6 +220,33 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J PICTURE BOOK Schertle` Little blue truck
 - `J PICTURE BOOK Sendak` Where the wild things are
 - `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
+- `J PICTURE BOOK Willems` The pigeon needs a bath!
+
+## Almaden — 24 on the shelf
+
+- `J CHI PICTURE BOOK Antony` 貝蒂好想好想吃香蕉
+- `J CHI PICTURE BOOK Tullet` 小黃點
+- `J EASY READER Carle` The very busy spider
+- `J EASY READER Carle` The very quiet cricket
+- `J EASY READER Cronin` Duck stays in the truck
+- `J EASY READER Diesen` You can do it, Pout-Pout Fish!
+- `J EASY READER Eastman` Are you my mother?
+- `J HARDPAGE` From head to toe
+- `J HARDPAGE` Twinkle, twinkle, little sheepy : a sleepy sheepy story
+- `J PICTURE BOOK Brown` Goodnight moon
+- `J PICTURE BOOK Carle` The very hungry caterpillar
+- `J PICTURE BOOK Carle` The very hungry caterpillar
+- `J PICTURE BOOK Jackson` I know an old lady who swallowed a pie
+- `J PICTURE BOOK Keats` The snowy day
+- `J PICTURE BOOK Lang` Grumpy monkey
+- `J PICTURE BOOK Martin` Chicka chicka boom boom
+- `J PICTURE BOOK McMullan` I stink!
+- `J PICTURE BOOK Numeroff` If you give a mouse a cookie
+- `J PICTURE BOOK Pizzoli` The watermelon seed
+- `J PICTURE BOOK Rubin` Dragons love tacos
+- `J PICTURE BOOK Sendak` Where the wild things are
+- `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
+- `J PICTURE BOOK Willems` Don't let the pigeon drive the bus
 - `J PICTURE BOOK Willems` The pigeon needs a bath!
 
 ## Edenvale — 24 on the shelf
@@ -311,7 +302,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J PICTURE BOOK Schertle` Little blue truck
 - `J PICTURE BOOK Sendak` Where the wild things are
 
-## Santa Teresa — 21 on the shelf
+## Santa Teresa — 20 on the shelf
 
 - `J CHI PICTURE BOOK Gomi` 小金魚逃走了
 - `J EASY READER Carle` The very busy spider
@@ -333,7 +324,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J PICTURE BOOK Schertle` Little blue truck
 - `J PICTURE BOOK Sendak` Where the wild things are
 - `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
-- `J VIE PICTURE BOOK Horikawa` A ti! a ti! (Achoo! Achoo!)
 
 ## Village Square — 20 on the shelf
 
@@ -421,25 +411,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J PICTURE BOOK Rubin` Dragons love tacos
 - `J PICTURE BOOK Sendak` Where the wild things are
 
-## Rose Garden — 16 on the shelf
-
-- `641.5944 Marshall` Maman !
-- `J EASY READER Carle` The very quiet cricket
-- `J EASY READER Eastman` Are you my mother?
-- `J HARDPAGE` Moo, baa, la la la!
-- `J HARDPAGE` Twinkle, twinkle, little sheepy : a sleepy sheepy story
-- `J PICTURE BOOK Carle` The very hungry caterpillar
-- `J PICTURE BOOK Carle` The very hungry caterpillar
-- `J PICTURE BOOK Hills` Duck & Goose go to the beach
-- `J PICTURE BOOK Jackson` I know an old lady who swallowed a pie
-- `J PICTURE BOOK Martin` Chicka chicka boom boom
-- `J PICTURE BOOK Martin` Polar bear, polar bear, what do you hear?
-- `J PICTURE BOOK McCloske` Blueberries for Sal
-- `J PICTURE BOOK Numeroff` If you give a mouse a cookie
-- `J PICTURE BOOK Rubin` Dragons love tacos
-- `J PICTURE BOOK Sendak` Where the wild things are
-- `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
-
 ## Willow Glen — 16 on the shelf
 
 - `J EASY READER Carle` The very busy spider
@@ -476,6 +447,24 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J PICTURE BOOK Martin` Chicka chicka boom boom
 - `J PICTURE BOOK Patricel` Higher! Higher!
 - `J PICTURE BOOK Schertle` Little blue truck
+
+## Rose Garden — 15 on the shelf
+
+- `J EASY READER Carle` The very quiet cricket
+- `J EASY READER Eastman` Are you my mother?
+- `J HARDPAGE` Moo, baa, la la la!
+- `J HARDPAGE` Twinkle, twinkle, little sheepy : a sleepy sheepy story
+- `J PICTURE BOOK Carle` The very hungry caterpillar
+- `J PICTURE BOOK Carle` The very hungry caterpillar
+- `J PICTURE BOOK Hills` Duck & Goose go to the beach
+- `J PICTURE BOOK Jackson` I know an old lady who swallowed a pie
+- `J PICTURE BOOK Martin` Chicka chicka boom boom
+- `J PICTURE BOOK Martin` Polar bear, polar bear, what do you hear?
+- `J PICTURE BOOK McCloske` Blueberries for Sal
+- `J PICTURE BOOK Numeroff` If you give a mouse a cookie
+- `J PICTURE BOOK Rubin` Dragons love tacos
+- `J PICTURE BOOK Sendak` Where the wild things are
+- `J PICTURE BOOK Willems` Knuffle Bunny too : a case of mistaken identity
 
 ## Alum Rock — 14 on the shelf
 

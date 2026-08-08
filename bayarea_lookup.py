@@ -378,6 +378,21 @@ def _webpac_items(chunk: str) -> list[dict]:
     return items
 
 
+# books only — an exact-title DVD, soundtrack CD, or audiobook must never
+# satisfy a book want, no matter how well the title scores
+_NONBOOK_MEDIA = re.compile(r"DVD|Blu-?ray|Compact Dis|\bCD\b|Audio|Video|"
+                            r"Playaway|eBook|Magazine|Kit\b|videodisc|sound disc",
+                            re.I)
+_NONBOOK_SHELF = re.compile(r"Movies|Music", re.I)
+
+
+def _webpac_nonbook(media: str, items: list[dict]) -> bool:
+    if _NONBOOK_MEDIA.search(media or ""):
+        return True
+    return bool(items) and all(_NONBOOK_SHELF.search(i.get("branch") or "")
+                               for i in items)
+
+
 # MVPL flags language in the call number: 'J FRENCH J P TISON', 'J CHINESE …'
 _WEBPAC_LANGS = {"FRENCH": "fre", "CHINESE": "chi", "SPANISH": "spa",
                  "JAPANESE": "jpn", "KOREAN": "kor", "RUSSIAN": "rus",
@@ -422,6 +437,8 @@ def _webpac_record_page(page: str) -> dict | None:
     if m:
         bid = m.group(1)
     items = _webpac_items(page)
+    if _webpac_nonbook(fields.get("Material", ""), items):
+        return None
     return {"bib_id": bid, "title": title, "subtitle": None, "alt_title": None,
             "authors": [author] if author else [],
             "format": fields.get("Material", "Book"),
@@ -459,12 +476,9 @@ def webpac_parse_results(page: str) -> list[dict]:
         m4 = re.search(r'/screens/media_[a-z_]+\.gif"\s+alt="([^"]*)"', chunk)
         if m4:
             media = m4.group(1)
-        # books only — an exact-title DVD or CD would otherwise outscore an
-        # all-checked-out book edition
-        if re.search(r"DVD|Blu-?ray|Compact Dis|\bCD\b|Audio|Video|Playaway|"
-                     r"eBook|Magazine|Kit\b", media, re.I):
-            continue
         items = _webpac_items(chunk)
+        if _webpac_nonbook(media, items):
+            continue
         out.append({"bib_id": bid, "title": title, "subtitle": None,
                     "alt_title": None,
                     "authors": [author] if author else [],

@@ -287,6 +287,20 @@ def test_webpac_skips_non_book_media():
         'src="/screens/media_dvd.gif" alt="DVD"')
     cands = ba.webpac_parse_results(dvd_page)
     assert [c["bib_id"] for c in cands] == ["b1229472"]  # DVD entry dropped
+    # no media icon, but every copy shelved under Movies/Music → still dropped
+    shelf_page = WEBPAC_PAGE.replace(
+        ' <img src="/screens/media_book.gif" alt="Children\'s Board Book"><br />',
+        '').replace("Children's Board Books - 1st Floor",
+                    "Children's Movies - 1st Floor")
+    cands = ba.webpac_parse_results(shelf_page)
+    assert [c["bib_id"] for c in cands] == ["b1229472"]
+    # single-hit record view for a DVD → no candidate either
+    dvd_record = WEBPAC_RECORD_PAGE.replace(
+        'class="bibInfoLabel">Author</td>',
+        'class="bibInfoLabel">Material</td>').replace(
+        '<span style="color:RED" ><strong>McMullan</strong></span>, Kate.',
+        '1 videodisc (DVD) : sound, color')
+    assert ba.webpac_parse_results(dvd_record) == []
 
 
 def test_webpac_match_end_to_end():
@@ -386,6 +400,24 @@ def test_remote_store_and_bayarea_markdown():
         sccl = open(os.path.join(d, "sccl.md"), encoding="utf-8").read()
         assert "Milpitas Library — 1 on the shelf" in sccl
         assert "Not found in this catalog" in sccl
+
+        # a corrected match supersedes the old scrape's whole footprint: the
+        # old branches must vanish, not linger as "latest" for their shelves
+        conn = db.open_db(dbp)
+        ts2 = "2026-08-07T12:00:00"
+        sid2 = db.record_scrape(conn, "remote", ts2, source="test", profile="sccl")
+        db.upsert_remote_bib(conn, "sccl", "SD_ILS:1", ts2,
+                             {"bib_id": "S118C99999", "title": "Dear Zoo",
+                              "format": "BOARD_BK"}, 1.0)
+        db.add_remote_availability(conn, sid2, "sccl", "SD_ILS:1", "S118C99999",
+                                   "Dear zoo",
+                                   [{"branch": "Saratoga Library",
+                                     "call_number": "J TODDLER",
+                                     "status": "In", "state": "available"}], ts2)
+        conn.commit()
+        rows = db.latest_remote_availability(conn)
+        assert {r["branch"] for r in rows} == {"Saratoga Library"}
+        conn.close()
 
 
 def test_write_bayarea_is_noop_without_remote_data():

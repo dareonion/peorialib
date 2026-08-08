@@ -5,10 +5,10 @@
 _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don't hand-edit; run `uv run report.py --write`._
 
 
-**86** of **160** titles are in the catalog; **73** have at least one copy on a shelf right now.
+**86** of **160** titles are in the catalog; **71** have at least one copy on a shelf right now.
 
 
-## Cupertino Library — 40 on the shelf
+## Cupertino Library — 39 on the shelf
 
 - `J TODDLER` I love you to the moon and back
 - `J TODDLER` Moo, baa, fa la la la la!
@@ -25,7 +25,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `JP COTTER` Don't push the button!
 - `JP DEWDNEY` Llama Llama red pajama
 - `JP FOX` Ten little fingers and ten little toes
-- `JP FRENCH GUETTIE` L'âne Trotro
 - `JP HENKES` Kitten's first full moon
 - `JP HILLS` Duck & Goose go to the beach
 - `JP HILLS` Duck & Goose, honk! quack! boo!
@@ -92,7 +91,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `JP WILLEMS` Knuffle Bunny too : a case of mistaken identity
 - `JP WILLEMS` The pigeon needs a bath!
 
-## Morgan Hill Library — 32 on the shelf
+## Morgan Hill Library — 31 on the shelf
 
 - `J TODDLER` Brown bear, brown bear, what do you see?
 - `J TODDLER` Chicka chicka boom boom
@@ -113,7 +112,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `JP DEWDNEY` Llama Llama misses Mama
 - `JP FOX` Ten little fingers and ten little toes
 - `JP FRENCH BROWN` Bonsoir Lune
-- `JP FRENCH GUETTIE` L'âne Trotro
 - `JP FRENCH LLENAS` La couleur des émotions
 - `JP LEWIS` Chugga-chugga choo-choo
 - `JP MATHESO` Tap the magic tree
@@ -126,40 +124,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `JP WILLEMS` Don't let the pigeon drive the bus
 - `JP WILLEMS` Don't let the pigeon drive the bus
 - `JP WILLEMS` Knuffle Bunny : a cautionary tale
-
-## Gilroy Library — 31 on the shelf
-
-- `J LOBBY LANG` Grumpy monkey
-- `J LOBBY SEUSS` Ten apples up on top!
-- `J TODDLER` Brown bear, brown bear, what do you see?
-- `J TODDLER` The very hungry caterpillar
-- `J TODDLER` Twinkle, twinkle, little sheepy : a sleepy sheepy story
-- `JE CRONIN` Duck stays in the truck
-- `JE EASTMAN` Are you my mother?
-- `JE REGAN` Mike delivers : the duck is stuck!
-- `JE SEUSS` Mr. Brown can moo! Can you?
-- `JP BROWN` Big red barn
-- `JP FOX` Ten little fingers and ten little toes
-- `JP FOX` Time for bed
-- `JP FRENCH GUETTIE` L'âne Trotro
-- `JP HENKES` Kitten's first full moon
-- `JP HILLS` Duck & Goose go to the beach
-- `JP HILLS` Duck & Goose, honk! quack! boo!
-- `JP JACKSON` I know an old lady who swallowed a pie
-- `JP KEATS` The snowy day
-- `JP LANG` Grumpy monkey : mom for a day
-- `JP LEWIS` Chugga-chugga choo-choo
-- `JP MATHESO` Tap the magic tree
-- `JP MCCLOSK` Blueberries for Sal
-- `JP MCMULLA` I stink!
-- `JP PATRICE` Higher! Higher!
-- `JP RUBIN` Dragons love tacos
-- `JP SENDAK` Where the wild things are
-- `JP SPANISH RAMOS` Maman !
-- `JP TULLET` Dot! scribble! go!
-- `JP WILLEMS` Knuffle Bunny : a cautionary tale
-- `JP WILLEMS` Knuffle Bunny too : a case of mistaken identity
-- `JP WILLEMS` The pigeon needs a bath!
 
 ## Milpitas Library — 30 on the shelf
 
@@ -227,34 +191,35 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `JP WILLEMS` Knuffle Bunny too : a case of mistaken identity
 - `JP WILLEMS` The pigeon needs a bath!
 
-## Saratoga Library — 27 on the shelf
+## Gilroy Library — 28 on the shelf
 
-- `J TODDLER` From head to toe
-- `J TODDLER` Little blue truck
-- `J TODDLER` The very hungry caterpillar
+- `J LOBBY LANG` Grumpy monkey
+- `J LOBBY SEUSS` Ten apples up on top!
+- `J TODDLER` Brown bear, brown bear, what do you see?
 - `J TODDLER` Twinkle, twinkle, little sheepy : a sleepy sheepy story
 - `JE CRONIN` Duck stays in the truck
 - `JE EASTMAN` Are you my mother?
-- `JE LANG` Grumpy monkey
 - `JE REGAN` Mike delivers : the duck is stuck!
 - `JE SEUSS` Mr. Brown can moo! Can you?
-- `JP CHINESE GOMI` 誰吃掉了？
-- `JP CHINESE GOMI` 鱷魚怕怕．牙醫怕怕
-- `JP CREWS` Freight train = Tren de carga
+- `JP BROWN` Big red barn
 - `JP FOX` Ten little fingers and ten little toes
 - `JP FOX` Time for bed
+- `JP HENKES` Kitten's first full moon
+- `JP HILLS` Duck & Goose go to the beach
 - `JP HILLS` Duck & Goose, honk! quack! boo!
 - `JP JACKSON` I know an old lady who swallowed a pie
 - `JP KEATS` The snowy day
-- `JP MARTIN` Chicka Chicka I love you
-- `JP ROSEN` We're going on a bear hunt
-- `JP SAYRES` Where do diggers sleep at night?
+- `JP LANG` Grumpy monkey : mom for a day
+- `JP LEWIS` Chugga-chugga choo-choo
+- `JP MATHESO` Tap the magic tree
+- `JP MCCLOSK` Blueberries for Sal
+- `JP MCMULLA` I stink!
+- `JP PATRICE` Higher! Higher!
+- `JP RUBIN` Dragons love tacos
 - `JP SENDAK` Where the wild things are
-- `JP SPANISH RAMOS` Maman !
-- `JP TULLET` Press here
-- `JP WALSH` Mouse paint
-- `JP WILLEMS` Don't let the pigeon drive the bus
-- `JP WILLEMS` Don't let the pigeon drive the bus
+- `JP TULLET` Dot! scribble! go!
+- `JP WILLEMS` Knuffle Bunny : a cautionary tale
+- `JP WILLEMS` Knuffle Bunny too : a case of mistaken identity
 - `JP WILLEMS` The pigeon needs a bath!
 
 ## Campbell Library — 26 on the shelf
@@ -285,6 +250,35 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `JP SLOBODK` Caps for sale : a tale of a peddler, some monkeys, and their monkey business
 - `JP WILLEMS` Don't let the pigeon drive the bus
 - `JP WILLEMS` Don't let the pigeon drive the bus
+
+## Saratoga Library — 26 on the shelf
+
+- `J TODDLER` From head to toe
+- `J TODDLER` Little blue truck
+- `J TODDLER` The very hungry caterpillar
+- `J TODDLER` Twinkle, twinkle, little sheepy : a sleepy sheepy story
+- `JE CRONIN` Duck stays in the truck
+- `JE EASTMAN` Are you my mother?
+- `JE LANG` Grumpy monkey
+- `JE REGAN` Mike delivers : the duck is stuck!
+- `JE SEUSS` Mr. Brown can moo! Can you?
+- `JP CHINESE GOMI` 誰吃掉了？
+- `JP CHINESE GOMI` 鱷魚怕怕．牙醫怕怕
+- `JP CREWS` Freight train = Tren de carga
+- `JP FOX` Ten little fingers and ten little toes
+- `JP FOX` Time for bed
+- `JP HILLS` Duck & Goose, honk! quack! boo!
+- `JP JACKSON` I know an old lady who swallowed a pie
+- `JP KEATS` The snowy day
+- `JP MARTIN` Chicka Chicka I love you
+- `JP ROSEN` We're going on a bear hunt
+- `JP SAYRES` Where do diggers sleep at night?
+- `JP SENDAK` Where the wild things are
+- `JP TULLET` Press here
+- `JP WALSH` Mouse paint
+- `JP WILLEMS` Don't let the pigeon drive the bus
+- `JP WILLEMS` Don't let the pigeon drive the bus
+- `JP WILLEMS` The pigeon needs a bath!
 
 ## Bookmobile Department — 24 on the shelf
 

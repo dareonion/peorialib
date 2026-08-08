@@ -5,7 +5,7 @@
 _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don't hand-edit; run `uv run report.py --write`._
 
 
-**72** of **160** titles are in the catalog; **44** have at least one copy on a shelf right now.
+**72** of **160** titles are in the catalog; **27** have at least one copy on a shelf right now.
 
 
 ## Children's Picture Books - 1st Floor — 14 on the shelf
@@ -25,18 +25,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J P WOOD` The napping house
 - `J P YOLEN` How do dinosaurs say good night?
 
-## Children's World Languages - 1st Floor — 9 on the shelf
-
-- `J CHINESE J 305.232 Dong` 丹丹寶寶版：刷牙 刷～刷～刷
-- `J CHINESE J FICTION GRAHAME` 我變成一隻噴火龍了！
-- `J CHINESE J FICTION ZHENG` Diandian ai qu you er yuan (Diandian loves preschool)
-- `J CHINESE J P BROWN` Liang ge hao huo ban (Two Good Friends)
-- `J CHINESE J P GOMI` 小金魚逃走了
-- `J CHINESE J P KLASSEN` 這是我的！
-- `J CHINESE J P YOLEN` Xiao xiang Suqi
-- `J FRENCH J P BROWN` Bonsoir Lune
-- `J SPANISH J P LLENAS` La couleur des émotions
-
 ## Children's Early Readers Fiction - 1st Floor — 7 on the shelf
 
 - `J E CARLE` The very busy spider
@@ -47,44 +35,27 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don'
 - `J E REGAN Mike` Mike delivers : the duck is stuck!
 - `J E SEUSS` Mr. Brown can moo! Can you?
 
-## Childrens Holiday Books - 1st Floor — 4 on the shelf
+## Children's World Languages - 1st Floor — 2 on the shelf
+
+- `J CHINESE J P GOMI` 小金魚逃走了
+- `J FRENCH J P BROWN` Bonsoir Lune
+
+## Childrens Holiday Books - 1st Floor — 2 on the shelf
 
 - `J BOARD HOLIDAY Christmas` Moo, baa, fa la la la la!
 - `J P JACKSON THA` I know an old lady who swallowed a pie
-- `J P LANG VAL` Grumpy monkey
-- `J P LANG VAL` Grumpy monkey : mom for a day
 
-## Children's Board Books - 1st Floor — 2 on the shelf
+## Children's Board Books - 1st Floor — 1 on the shelf
 
 - `J BOARD M` Brown bear, brown bear, what do you see?
-- `J BOARD TOUCH & FEEL` Chicka Chicka I love you
-
-## Children's Movies - 1st Floor — 2 on the shelf
-
-- `J DVD 808.8 WILLEMS-1` Don't let the pigeon drive the bus
-- `J DVD 808.8 WILLEMS-1` Don't let the pigeon drive the bus
-
-## Children's Music CD - 1st Floor — 2 on the shelf
-
-- `J MUSIC SOUNDTRACK TV Bluey` Bluey : the creek.
-- `J MUSIC SOUNDTRACK TV Bluey` Bluey : zoo.
-
-## World Languages - 2nd Floor — 2 on the shelf
-
-- `CHINESE 641.5622 Bao` Bao bao biao qing ji: My Face Book (baby faces)
-- `CHINESE FICTION ZHANG` Nan guo de Fuloge (Frog is Sad)
 
 ## Children's Concept Books - 1st Floor — 1 on the shelf
 
 - `J P CREWS VEH` Freight train = Tren de carga
 
-## Movies - 2nd Floor — 1 on the shelf
-
-- `DVD WHERE` Where the wild things are
-
 ## In the catalog, but no copy on any shelf right now
 
-Barbapapa, Blueberries for Sal, Caps for sale : a tale of a peddler, some monkeys, and their monkey business, Chicka chicka boom boom, Chugga-chugga choo-choo, Dear zoo, Don't push the button!, Dragons love tacos, Duck & Goose, honk! quack! boo!, From head to toe, Grumpy monkey yuck!, I love you to the moon and back, I stink!, Knuffle Bunny : a cautionary tale, Little blue truck, Llama Llama misses Mama, Moo, baa, la la la!, Mouse paint, Polar bear, polar bear, what do you hear?, Press here, Steam train, dream train, Ten apples up on top!, Ten little fingers and ten little toes, The going to bed book, The pigeon needs a bath!, The very hungry caterpillar, The watermelon seed, Time for bed, Twinkle, twinkle, little sheepy : a sleepy sheepy story, We're going on a bear hunt, Where do diggers sleep at night?, 好大的紅蘋果, 好餓的毛毛蟲, 抱抱！, 晚安，猩猩, 棕色的熊、棕色的熊，你在看什麼？, 親愛的動物園, 鱷魚怕怕．牙醫怕怕
+Barbapapa, Blueberries for Sal, Bluey : zoo., Caps for sale : a tale of a peddler, some monkeys, and their monkey business, Chicka chicka boom boom, Chugga-chugga choo-choo, Dear zoo, Don't let the pigeon drive the bus, Don't push the button!, Dragons love tacos, Duck & Goose, honk! quack! boo!, From head to toe, Grumpy monkey, Grumpy monkey : mom for a day, Grumpy monkey yuck!, I love you to the moon and back, I stink!, Knuffle Bunny : a cautionary tale, Little blue truck, Llama Llama misses Mama, Moo, baa, la la la!, Mouse paint, Polar bear, polar bear, what do you hear?, Press here, Steam train, dream train, Ten apples up on top!, Ten little fingers and ten little toes, The going to bed book, The pigeon needs a bath!, The very hungry caterpillar, The watermelon seed, Time for bed, Twinkle, twinkle, little sheepy : a sleepy sheepy story, We're going on a bear hunt, Where do diggers sleep at night?, Where the wild things are, 好大的紅蘋果, 好餓的毛毛蟲, 抱抱！, 晚安，猩猩, 棕色的熊、棕色的熊，你在看什麼？, 親愛的動物園, 鱷魚怕怕．牙醫怕怕
 
 
 ## Not found in this catalog

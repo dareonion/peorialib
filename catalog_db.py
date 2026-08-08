@@ -286,19 +286,28 @@ def latest_availability(conn, is_peoria_only: bool = True):
 
 
 def latest_remote_availability(conn, system: str = None):
-    """Most-recent remote_availability rows per (system, record_id, branch)."""
+    """The current footprint of each title at each system.
+
+    Rows come only from the newest scrape per (system, record_id) — an older
+    scrape's branches must not linger once a re-scrape has replaced them — and
+    only when they belong to the currently-matched bib, so availability recorded
+    for a since-corrected mismatch disappears with the correction.
+    """
     where = "WHERE system = ?" if system else ""
     args = (system,) if system else ()
     return conn.execute(
         f"""
         SELECT a.* FROM remote_availability a
         JOIN (
-            SELECT system, record_id, branch, MAX(checked_at) AS mx
+            SELECT system, record_id, MAX(checked_at) AS mx
             FROM remote_availability {where}
-            GROUP BY system, record_id, branch
+            GROUP BY system, record_id
         ) last
         ON a.system = last.system AND a.record_id = last.record_id
-           AND a.branch = last.branch AND a.checked_at = last.mx
+           AND a.checked_at = last.mx
+        JOIN remote_bibs rb
+        ON rb.system = a.system AND rb.record_id = a.record_id
+           AND rb.bib_id = a.bib_id
         """,
         args,
     ).fetchall()

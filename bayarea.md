@@ -9,9 +9,9 @@ The want-list, looked up at three Bay Area systems (`uv run bayarea_lookup.py`):
 
 | Key | System | In catalog | On a shelf now |
 |---|---|---|---|
-| `sccl` | Santa Clara County Library District | 85 | 72 |
-| `sjpl` | San José Public Library | 77 | 70 |
-| `mvpl` | Mountain View Public Library | 71 | 43 |
+| `sccl` | Santa Clara County Library District | 85 | 70 |
+| `sjpl` | San José Public Library | 77 | 66 |
+| `mvpl` | Mountain View Public Library | 71 | 27 |
 
 Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 
@@ -27,7 +27,7 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 | Big red barn | picture | ✗ | ✗ | — |  |
 | Blueberries for Sal | picture | ✓ | ✓ | ✗ |  |
 | Bluey : the creek. | picture | — | — | — | ✗ |
-| Bluey : zoo. | picture | — | — | ✓ | — |
+| Bluey : zoo. | picture | — | — | ✗ | — |
 | Bon appétit ! Monsieur Lapin | ? | — | — | — |  |
 | Bonne nuit, Gorille | ? | — | — | — | — |
 | Bonsoir Lune | ? |  |  | ✓ |  |
@@ -42,7 +42,7 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 | De la petite taupe qui voulait savoir qui lui avait fait sur la tête | ? | — | — | — | — |
 | Dear zoo | picture |  | ✓ | ✗ |  |
 | Diandian ai qu you er yuan (Diandian loves preschool) | ? | — | — | — | — |
-| Don't let the pigeon drive the bus | picture | ✓ | ✓ | ✓ | ✗ |
+| Don't let the pigeon drive the bus | picture | ✓ | ✓ | ✗ | ✗ |
 | Don't push the button! | picture | ✓ | ✗ | ✗ |  |
 | Dong wu yue dui (Animal Band) | picture | — | — | — | — |
 | Dot! scribble! go! | picture | ✗ | ✗ | ✓ | — |
@@ -56,8 +56,8 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 | From head to toe | board |  | ✗ | ✗ | ✗ |
 | Goodnight moon | picture | ✓ | ✓ | ✓ | ✓ |
 | Gros pipi | ? | — | — | — | — |
-| Grumpy monkey | picture | ✓ | ✓ | ✓ | ✗ |
-| Grumpy monkey : mom for a day | picture | ✓ | ✓ | ✓ | — |
+| Grumpy monkey | picture | ✓ | ✓ | ✗ | ✗ |
+| Grumpy monkey : mom for a day | picture | ✓ | ✓ | ✗ | — |
 | Grumpy monkey party time! | picture | ✗ | ✓ | ✓ |  |
 | Grumpy monkey yuck! | picture | ✗ | ✗ | ✗ |  |
 | Higher! Higher! | picture | ✓ |  | — | ✓ |
@@ -126,7 +126,7 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 | Wan an, xiao xiong (Goodnight, Little Bear) | picture | — | — | — | — |
 | We're going on a bear hunt | picture | ✓ | ✓ | ✗ |  |
 | Where do diggers sleep at night? | board | ✗ | ✓ | ✗ |  |
-| Where the wild things are | picture | ✓ | ✓ | ✓ | ✓ |
+| Where the wild things are | picture | ✓ | ✓ | ✗ | ✓ |
 | Where's Spot? | board | ✗ |  | — |  |
 | Wo ai wo de wai gong = I love my grandpa (bilingual) | ? | — | — | — | — |
 | Wo men qu nong fu shi chang ba = Let's go to the farmers market (bilingual) | ? | — | — | — | — |
@@ -187,14 +187,14 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 
 | Title | Type | Santa Clara County Library District | San José Public Library | Mountain View Public Library |
 |---|---|---|---|---|
-| A ti! a ti! (Achoo! Achoo!) | picture | — | ✓ 1 | — |
+| A ti! a ti! (Achoo! Achoo!) | picture | — | — | — |
 | Are you my mother? | reader | ✓ 9 | ✓ 6 | ✓ |
-| Bao bao biao qing ji: My Face Book (baby faces) | picture | — | — | ✓ |
+| Bao bao biao qing ji: My Face Book (baby faces) | picture | — | — | — |
 | Barbapapa | ? | — | — | ✗ |
 | Big red barn | picture | ✓ 2 | ✗ | — |
 | Blueberries for Sal | picture | ✓ 5 | ✓ 4 | ✗ |
-| Bluey : the creek. | picture | — | ✓ 11 | ✓ |
-| Bluey : zoo. | picture | — | — | ✓ |
+| Bluey : the creek. | picture | — | ✓ 11 | — |
+| Bluey : zoo. | picture | — | — | ✗ |
 | Bon appétit ! Monsieur Lapin | ? | — | ✓ 1 | — |
 | Bonne nuit, Gorille | ? | — | — | — |
 | Bonsoir Lune | ? | ✓ 1 | ✓ 1 | ✓ |
@@ -204,12 +204,12 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | Caps for sale : a tale of a peddler, some monkeys, and their monkey business | picture | ✓ 3 | ✗ | ✗ |
 | Cher zoo | ? | — | — | — |
 | Chicka chicka boom boom | board | ✓ 3 | ✓ 16 | ✗ |
-| Chicka Chicka I love you | picture | ✓ 4 | — | ✓ |
+| Chicka Chicka I love you | picture | ✓ 4 | — | — |
 | Chugga-chugga choo-choo | picture | ✓ 2 | ✓ 6 | ✗ |
 | De la petite taupe qui voulait savoir qui lui avait fait sur la tête | ? | — | — | — |
 | Dear zoo | picture | ✓ 2 | ✓ 3 | ✗ |
-| Diandian ai qu you er yuan (Diandian loves preschool) | ? | — | — | ✓ |
-| Don't let the pigeon drive the bus | picture | ✓ 8 | ✓ 6 | ✓ |
+| Diandian ai qu you er yuan (Diandian loves preschool) | ? | — | — | — |
+| Don't let the pigeon drive the bus | picture | ✓ 8 | ✓ 6 | ✗ |
 | Don't push the button! | picture | ✓ 1 | ✗ | ✗ |
 | Dong wu yue dui (Animal Band) | picture | — | — | — |
 | Dot! scribble! go! | picture | ✓ 3 | — | ✓ |
@@ -218,13 +218,13 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | Duck & Goose, honk! quack! boo! | picture | ✓ 6 | ✗ | ✗ |
 | Duck stays in the truck | reader | ✓ 8 | ✓ 15 | ✓ |
 | Et dedans il y a... | ? | — | — | — |
-| First Words: Mandarin | picture | — | ✓ 7 | — |
+| First Words: Mandarin | picture | — | ✓ 4 | — |
 | Freight train = Tren de carga | picture | ✓ 5 | ✗ | ✓ |
 | From head to toe | board | ✓ 3 | ✓ 5 | ✗ |
 | Goodnight moon | picture | ✓ 5 | ✓ 12 | ✓ |
 | Gros pipi | ? | — | — | — |
-| Grumpy monkey | picture | ✓ 8 | ✓ 5 | ✓ |
-| Grumpy monkey : mom for a day | picture | ✓ 5 | — | ✓ |
+| Grumpy monkey | picture | ✓ 8 | ✓ 5 | ✗ |
+| Grumpy monkey : mom for a day | picture | ✓ 5 | — | ✗ |
 | Grumpy monkey party time! | picture | ✓ 2 | ✓ 5 | ✓ |
 | Grumpy monkey yuck! | picture | ✗ | ✓ 5 | ✗ |
 | Higher! Higher! | picture | ✓ 3 | ✓ 3 | — |
@@ -239,17 +239,17 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | Knuffle Bunny : a cautionary tale | picture | ✓ 6 | ✓ 6 | ✗ |
 | Knuffle Bunny too : a case of mistaken identity | picture | ✓ 6 | ✓ 11 | ✓ |
 | Kuai huo de fan dou che si ji (The happy little car driver) | picture | — | — | — |
-| L'âne Trotro | ? | ✓ 3 | — | — |
+| L'âne Trotro | ? | — | — | — |
 | La chenille qui fait des trous | ? | — | ✓ 1 | — |
-| La couleur des émotions | ? | ✓ 1 | — | ✓ |
+| La couleur des émotions | ? | ✓ 1 | — | — |
 | Le loup qui voulait changer de couleur | ? | — | — | — |
-| Liang ge hao huo ban (Two Good Friends) | picture | — | — | ✓ |
+| Liang ge hao huo ban (Two Good Friends) | picture | — | — | — |
 | Little blue truck | board | ✓ 1 | ✓ 10 | ✗ |
 | Llama Llama misses Mama | picture | ✓ 3 | ✓ 8 | ✗ |
 | Llama Llama red pajama | picture | ✓ 4 | ✓ 15 | ✓ |
 | Long-haired girl (bilingual EN/ZH + audio) | picture | — | — | — |
 | Loup | ? | — | — | — |
-| Maman ! | ? | ✓ 2 | ✓ 3 | — |
+| Maman ! | ? | — | — | — |
 | Mang mang lu lu zhen (Busy Busy Town) | picture | ✗ | — | — |
 | Mike delivers : the duck is stuck! | reader | ✓ 2 | ✓ 14 | ✓ |
 | Mina de xing qing bi ji = Mina's ups and downs (bilingual) | ? | — | — | — |
@@ -259,7 +259,7 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | Mouse paint | picture | ✓ 4 | ✓ 4 | ✗ |
 | Mr. Brown can moo! Can you? | picture | ✓ 6 | ✓ 1 | ✓ |
 | My First Mandarin Words with Gordon & Li Li (board) | board | — | ✗ | — |
-| Nan guo de Fuloge (Frog is Sad) | picture | — | — | ✓ |
+| Nan guo de Fuloge (Frog is Sad) | picture | — | — | — |
 | Ours brun, dis-moi ce que tu vois ? | ? | — | — | — |
 | Petit Ours Brun dit non | ? | — | — | — |
 | Petit-Bleu et Petit-Jaune | ? | — | — | — |
@@ -283,23 +283,23 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | The snowy day | picture | ✓ 7 | ✓ 4 | ✓ |
 | The very busy spider | picture | ✓ 5 | ✓ 17 | ✓ |
 | The very hungry caterpillar | picture | ✓ 4 | ✓ 19 | ✗ |
-| The very hungry caterpillar | board | ✓ 6 | ✓ 19 | ✗ |
+| The very hungry caterpillar | board | ✓ 5 | ✓ 19 | ✗ |
 | The very quiet cricket | picture | ✓ 5 | ✓ 14 | ✓ |
 | The watermelon seed | picture | ✓ 5 | ✓ 8 | ✗ |
 | Time for bed | picture | ✓ 4 | ✓ 1 | ✗ |
 | Twinkle, twinkle, little sheepy : a sleepy sheepy story | board | ✓ 6 | ✓ 10 | ✗ |
-| Un livre | ? | — | ✓ 3 | — |
+| Un livre | ? | — | — | — |
 | Va-t'en, Grand Monstre Vert ! | ? | — | — | — |
 | Wan an, xiao xiong (Goodnight, Little Bear) | picture | — | — | — |
 | We're going on a bear hunt | picture | ✓ 6 | ✗ | ✗ |
 | Where do diggers sleep at night? | board | ✓ 2 | ✗ | ✗ |
-| Where the wild things are | picture | ✓ 6 | ✓ 18 | ✓ |
+| Where the wild things are | picture | ✓ 6 | ✓ 18 | ✗ |
 | Where's Spot? | board | ✗ | ✓ 9 | — |
 | Wo ai wo de wai gong = I love my grandpa (bilingual) | ? | — | — | — |
 | Wo men qu nong fu shi chang ba = Let's go to the farmers market (bilingual) | ? | — | — | — |
 | Xiao fang che | picture | — | — | — |
 | Xiao mao de ge | ? | — | — | — |
-| Xiao xiang Suqi | picture | — | — | ✓ |
+| Xiao xiang Suqi | picture | — | — | — |
 | Xiao xiong de du qi | picture | — | — | — |
 | Xiao xiong de ha qian | ? | — | — | — |
 | Xiao xiong de wei ba | ? | — | — | — |
@@ -313,7 +313,7 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | Zhang da le dang shen me | picture | — | — | — |
 | Zhen xi wang ni men zai zhe er (Wish you were here) | ? | — | — | — |
 | Zhu ba ba de pi | ? | — | — | — |
-| 丹丹寶寶版：刷牙 刷～刷～刷 | ? | — | — | ✓ |
+| 丹丹寶寶版：刷牙 刷～刷～刷 | ? | — | — | — |
 | 什麼唱歌：給0-3歲的傳統兒歌 | ? | — | — | — |
 | 企鵝體操 | ? | — | ✓ 1 | — |
 | 好大的紅蘋果 | ? | ✗ | — | ✗ |
@@ -327,8 +327,8 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | 小黃點 | ? | — | ✓ 3 | — |
 | 幼幼小書：我的一天．我喜歡．我愛玩 | ? | — | — | — |
 | 從頭動到腳 | ? | ✗ | — | — |
-| 我變成一隻噴火龍了！ | ? | ✓ 1 | ✓ 2 | ✓ |
-| 抱抱！ | ? | — | ✓ 1 | ✗ |
+| 我變成一隻噴火龍了！ | ? | ✓ 1 | ✓ 2 | — |
+| 抱抱！ | ? | — | — | ✗ |
 | 擦！擦！擦！ | ? | — | — | — |
 | 早安晚安：給0-3歲的自理兒歌 | ? | — | — | — |
 | 晚安，猩猩 | ? | ✗ | — | ✗ |
@@ -343,7 +343,7 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | 誰的家到了？ | ? | ✗ | — | — |
 | 貝蒂好想好想吃香蕉 | ? | — | ✓ 4 | — |
 | 跑跑鎮 | ? | ✗ | — | — |
-| 這是我的！ | ? | — | — | ✓ |
+| 這是我的！ | ? | — | — | — |
 | 鱷魚怕怕．牙醫怕怕 | ? | ✓ 3 | ✓ 8 | ✗ |
 | 點點玩聲音 | ? | ✗ | — | — |
 
