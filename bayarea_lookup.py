@@ -74,7 +74,10 @@ def _get(url: str, accept: str = "application/json", tries: int = 3,
                 return data
         except Exception as e:  # URLError, HTTPError, timeout
             last_err = e
-            time.sleep(1.5 * (attempt + 1))
+            if getattr(e, "code", None) == 429:  # rate-limited: back off hard
+                time.sleep(20 * (attempt + 1))
+            else:
+                time.sleep(1.5 * (attempt + 1))
     raise RuntimeError(f"GET failed after {tries} tries: {url}: {last_err}")
 
 
@@ -207,14 +210,16 @@ def _fmt_bonus(our_format: str, cand_class: str) -> float:
 
 
 def pick_best(row_title: str, row_author: str, row_format: str, candidates,
-              lang: str = None):
+              lang: str = None, enforce_lang: bool = True):
     """candidates: dicts with title/subtitle/authors/format_class. → (cand, score).
 
     A want with `lang` set ('fre', 'chi') only accepts candidates in that
     language, and at a stricter threshold — otherwise 'Cher zoo' happily takes
     the English Dear Zoo, and 'T'choupi va sur le pot' any other T'choupi.
+    enforce_lang=False keeps just the stricter threshold, for catalogs whose
+    search results don't say what language a record is in (LINK+).
     """
-    if lang:
+    if lang and enforce_lang:
         candidates = [c for c in candidates if c.get("language") == lang]
     threshold = 0.8 if lang else MATCH_THRESHOLD
     want_title, _ = query_terms(row_title)
@@ -345,12 +350,17 @@ MVPL_BASE = "https://classiccatalog.mountainview.gov"
 # ON HOLDSHELF, IN TRANSIT, MISSING, …) counts as out.
 _WEBPAC_AVAILABLE = ("AVAILABLE", "CHECK SHELF", "NEW SHELF")
 _WEBPAC_REFERENCE = ("LIB USE ONLY", "REFERENCE", "NON-CIRC")
+# checked before the available markers: 'UNAVAILABLE' (LINK+) would otherwise
+# hit the 'AVAILABLE' substring
+_WEBPAC_OUT = ("UNAVAILABLE", "NOT AVAILABLE")
 
 
 def webpac_state(status: str) -> str:
     s = (status or "").upper()
     if any(m in s for m in _WEBPAC_REFERENCE):
         return "reference"
+    if any(m in s for m in _WEBPAC_OUT):
+        return "out"
     if any(m in s for m in _WEBPAC_AVAILABLE):
         return "available"
     return "out"
@@ -521,10 +531,93 @@ class MountainView:
         return bib_or_cand.get("items", [])
 
 
+# --- LINK+ (INN-Reach union catalog) --------------------------------------------
+
+LINKPLUS_BASE = "https://csul.iii.com"
+
+
+def linkplus_parse_results(page: str) -> list[dict]:
+    """LINK+ results list → candidates (no items; holdings need a second fetch).
+
+    Same WebPAC family as Mountain View but the 2009-era INN-Reach skin:
+    div.briefcitRow (lower-case c), h2.briefcitTitle, no media icons — non-book
+    formats are visible only in the description line ('1 videodisc …').
+    """
+    out = []
+    for chunk in re.split(r'class="briefcitRow"', page)[1:]:
+        m = re.search(r'<h2 class="briefcitTitle">\s*<a[^>]*>(.*?)</a>', chunk, re.S)
+        if not m:
+            continue
+        title = _strip_html(m.group(1))
+        author = ""
+        m2 = re.search(r"<br\s*>\s*([^<]*)<br", chunk[m.end():], re.S)
+        if m2:
+            author = _strip_html(m2.group(1))
+        m3 = re.search(r'name="save"\s+value="(b\d+)"', chunk)
+        bid = m3.group(1) if m3 else None
+        desc = _strip_html(chunk[m.end():m.end() + 800])
+        if _NONBOOK_MEDIA.search(desc):
+            continue
+        out.append({"bib_id": bid, "title": title, "subtitle": None,
+                    "alt_title": None, "authors": [author] if author else [],
+                    "format": "Book", "format_class": "book",
+                    "year": None, "language": None})
+    return out
+
+
+def linkplus_parse_holdings(page: str) -> list[dict]:
+    """centralDetailHoldings rows → per-copy dicts (branch = owning library)."""
+    items = []
+    m = re.search(r'<table[^>]*class="centralDetailHoldings".*?</table>', page, re.S)
+    if not m:
+        return items
+    for row in re.finditer(r"<tr[^>]*>(.*?)</tr>", m.group(0), re.S):
+        cells = [_strip_html(c) for c in
+                 re.findall(r"<td[^>]*>(.*?)(?:</td>|$)", row.group(1), re.S)]
+        if len(cells) < 5 or not cells[0]:
+            continue
+        library, shelf, _link, call, status = cells[:5]
+        items.append({"branch": library, "collection": shelf,
+                      "call_number": call, "status": status,
+                      "state": webpac_state(status)})
+    return items
+
+
+class LinkPlus:
+    """LINK+ union catalog: any hit is requestable for pickup at a member library."""
+
+    def search(self, query: str) -> list[dict]:
+        url = (f"{LINKPLUS_BASE}/search~S0/?searchtype=X"
+               f"&searcharg={urllib.parse.quote_plus(webpac_query(query))}&SORT=D")
+        # unlike MVPL's latin-1 WebPAC, the INN-Reach central serves UTF-8
+        page = _get(url, accept="text/html", timeout=75).decode("utf-8",
+                                                                "replace")
+        cands = linkplus_parse_results(page)
+        if not cands and "centralDetailHoldings" in page:
+            rec = _webpac_record_page(page)  # single hit → detail view
+            if rec:
+                rec["items"] = linkplus_parse_holdings(page)
+                return [rec]
+        return cands
+
+    def availability(self, cand) -> list[dict]:
+        if isinstance(cand, dict):
+            if cand.get("items") is not None:
+                return cand["items"]
+            cand = cand["bib_id"]
+        bib = cand
+        url = (f"{LINKPLUS_BASE}/search?/.{bib}/.{bib}/1,1,1,B/"
+               f"detlframeset~{bib}&FF=&1,0,")
+        page = _get(url, accept="text/html", timeout=75).decode("utf-8",
+                                                                "replace")
+        return linkplus_parse_holdings(page)
+
+
 SYSTEMS = {
     "sccl": ("Santa Clara County Library District", lambda: BiblioCommons("sccl")),
     "sjpl": ("San José Public Library", lambda: BiblioCommons("sjpl")),
     "mvpl": ("Mountain View Public Library", MountainView),
+    "linkplus": ("LINK+ union catalog", LinkPlus),
 }
 
 
@@ -626,14 +719,16 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
                         time.sleep(delay)
                         if cands:
                             break
+                enforce = system != "linkplus"
                 best, score = pick_best(row["title"], row["author"],
-                                        row["format"], cands, lang)
+                                        row["format"], cands, lang, enforce)
                 if score < 1.0 and hasattr(client, "search_fielded"):
                     # weak pick → try the exact-field search before settling
                     fcands = client.search_fielded(t, surname)
                     time.sleep(delay)
                     fbest, fscore = pick_best(row["title"], row["author"],
-                                              row["format"], fcands, lang)
+                                              row["format"], fcands, lang,
+                                              enforce)
                     if fbest is not None and fscore > score:
                         best, score = fbest, fscore
                 if best is None:
@@ -643,7 +738,7 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
                     print(f"  {i:3}/{len(todo)} ✗ {row['title'][:50]!r} "
                           f"no match (best {score})")
                     continue
-                items = client.availability(best if system == "mvpl"
+                items = client.availability(best if system in ("mvpl", "linkplus")
                                             else best["bib_id"])
                 if system != "mvpl":
                     time.sleep(delay)
@@ -681,7 +776,8 @@ def probe(systems: list[str], query: str) -> None:
         if best is None:
             print(f"  no match (best score {score})")
             continue
-        items = client.availability(best if system == "mvpl" else best["bib_id"])
+        items = client.availability(best if system in ("mvpl", "linkplus")
+                                    else best["bib_id"])
         print(f"  {best['title']!r} ({best['format']}, score {score})")
         for it in items:
             mark = {"available": "✓", "reference": "·"}.get(it["state"], "✗")

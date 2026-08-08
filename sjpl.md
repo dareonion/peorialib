@@ -2,7 +2,7 @@
 
 <!-- AUTO-GENERATED from peorialib.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `peorialib.db` — data as of **2026-08-07T21:35:32**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `peorialib.db` — data as of **2026-08-07T22:18:23**. Don't hand-edit; run `uv run report.py --write`._
 
 
 **78** of **171** titles are in the catalog; **67** have at least one copy on a shelf right now.

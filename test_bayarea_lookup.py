@@ -356,6 +356,57 @@ def test_webpac_state_words():
     assert ba.webpac_state("DUE 08-16-26") == "out"
     assert ba.webpac_state("ON HOLDSHELF") == "out"
     assert ba.webpac_state("LIB USE ONLY") == "reference"
+    assert ba.webpac_state("UNAVAILABLE") == "out"     # substring trap (LINK+)
+    assert ba.webpac_state("1 HOLD") == "out"
+
+
+LINKPLUS_RESULTS = """
+<tr><td class="briefcitCell"><div class="briefcitRow"><div class="briefcitLeft">
+<div class="briefcitEntryNum"><a name='anchor_2'></a> 2</div>
+<div class="briefcitMark"><input type="checkbox" name="save" value="b50144994" ></div>
+</div><div class="briefcitJacket">&nbsp;</div><div class="briefcitDetail">
+<div class="briefcitDetailMain"><h2 class="briefcitTitle">
+<a href="/x">Dear zoo</a></h2><br >Campbell, Rod, 1945- author, illustrator.<br >
+New York : Little Simon, 2019.<br />1 volume (unpaged) :&nbsp;</div></div></div></td></tr>
+<tr><td class="briefcitCell"><div class="briefcitRow"><div class="briefcitLeft">
+<div class="briefcitMark"><input type="checkbox" name="save" value="b45943117" ></div>
+</div><div class="briefcitDetail"><div class="briefcitDetailMain">
+<h2 class="briefcitTitle"><a href="/x">Dear zoo</a></h2><br >Campbell, Rod.<br >
+[S.l.] : Weston Woods, 2005.<br />1 videodisc (10 min.) :&nbsp;</div></div></div></td></tr>
+"""
+
+LINKPLUS_HOLDINGS = """
+<table width=100% class="centralDetailHoldings" align="center"><tr>
+<th align="left">Library</th><th>Shelving Location</th><th>Electronic Link</th>
+<th>Call Number and Holdings</th><th>Request Status</th></tr>
+<tr class="holdings9alam"><td><a name="9alam"></a>Alameda County Public</td>
+<td>Albany Childrens Picture Book</td><td>&nbsp; </td>
+<td>JPB CAMPBELL,R </td><td>DUE 08-15-26</td><td></tr>
+<tr class="holdings92pal"><td><a name="92pal"></a>Palo Alto Public Library</td>
+<td>Mitchell Park - Children's - Picture Book</td><td>&nbsp; </td>
+<td>J PICTURE BOOK CAMPBELL </td><td>AVAILABLE</td><td></tr>
+<tr class="holdings9cruz"><td><a name="9cruz"></a>Santa Cruz Public Libraries</td>
+<td>Aptos Children's</td><td>&nbsp; </td>
+<td>JJ CAMPBELL </td><td>UNAVAILABLE</td><td></tr>
+</table>
+"""
+
+
+def test_linkplus_parse_results_drops_videodisc():
+    cands = ba.linkplus_parse_results(LINKPLUS_RESULTS)
+    assert [c["bib_id"] for c in cands] == ["b50144994"]  # DVD edition dropped
+    assert cands[0]["title"] == "Dear zoo"
+    assert cands[0]["authors"] == ["Campbell, Rod, 1945- author, illustrator."]
+
+
+def test_linkplus_parse_holdings():
+    items = ba.linkplus_parse_holdings(LINKPLUS_HOLDINGS)
+    assert len(items) == 3
+    by_lib = {i["branch"]: i for i in items}
+    assert by_lib["Palo Alto Public Library"]["state"] == "available"
+    assert by_lib["Alameda County Public"]["state"] == "out"
+    assert by_lib["Santa Cruz Public Libraries"]["state"] == "out"
+    assert by_lib["Palo Alto Public Library"]["call_number"] == "J PICTURE BOOK CAMPBELL"
 
 
 # --- store + report round-trip --------------------------------------------------

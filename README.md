@@ -33,6 +33,12 @@ they're always current:
 | `sccl` | Santa Clara County Library District | BiblioCommons (gateway JSON API) |
 | `sjpl` | San José Public Library | BiblioCommons (gateway JSON API) |
 | `mvpl` | Mountain View Public Library | classic Innovative WebPAC (HTML) |
+| `linkplus` | LINK+ union catalog (~70 CA/NV systems) | INN-Reach WebPAC (HTML) |
+
+A LINK+ hit means any member-library copy can be requested for pickup at
+Mountain View (searching needs no login; requesting uses your card). Its
+`linkplus.md` is title-centric — per-branch shelf-walks make no sense across
+seventy library systems.
 
 No Cloudflare wall on these catalogs, so it's plain HTTP — no browser needed:
 

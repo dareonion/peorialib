@@ -161,8 +161,9 @@ REMOTE_SYSTEMS = {  # key -> (display name, per-system output file)
     "sccl": ("Santa Clara County Library District", "sccl.md"),
     "sjpl": ("San José Public Library", "sjpl.md"),
     "mvpl": ("Mountain View Public Library", "mountainview.md"),
+    "linkplus": ("LINK+ (union catalog — request for pickup)", "linkplus.md"),
 }
-REMOTE_ORDER = ["sccl", "sjpl", "mvpl"]
+REMOTE_ORDER = ["sccl", "sjpl", "mvpl", "linkplus"]
 
 # The branches the user actually visits — these lead every rendering.
 # (system, branch as stored in remote_availability, column label);
@@ -227,6 +228,7 @@ def _bayarea_md(rows, bibs, titles, as_of) -> str:
         if k in branches:
             n = len(branches[k])
             return "✓" if system == "mvpl" else f"✓ {n}"
+        # (linkplus: n counts member library systems with a copy on shelf)
         if k in matched:
             return "·" if state.get(k) == "reference" else "✗"
         if k in searched:
@@ -282,7 +284,47 @@ def _bayarea_md(rows, bibs, titles, as_of) -> str:
     return "\n".join(out) + "\n"
 
 
+def _linkplus_md(rows, bibs, titles, as_of) -> str:
+    """LINK+ spans ~70 member systems, so this is title-centric, not per-branch."""
+    srows = [r for r in rows if r["system"] == "linkplus"]
+    sbibs = [b for b in bibs if b["system"] == "linkplus"]
+    matched = {b["record_id"] for b in sbibs if b["bib_id"]}
+    per_rec = {}
+    for r in srows:
+        per_rec.setdefault(r["record_id"], []).append(r)
+    lines = ["# LINK+ — want-list in the union catalog\n", _gen_header(as_of),
+             "\nAnything below can be **requested for pickup at a member "
+             "library** (Mountain View is one). ✓ counts are library systems "
+             "with a copy on the shelf right now.\n",
+             f"\n**{len(matched)}** of **{len(sbibs)}** titles are in LINK+.\n"]
+    have, nowhere = [], []
+    for rid in sorted(matched, key=lambda r: (titles[r]["title"].lower()
+                                              if r in titles else r)):
+        title = titles[rid]["title"] if rid in titles else rid
+        rs = per_rec.get(rid, [])
+        libs = sorted({r["branch"] for r in rs if r["state"] == "available"})
+        if libs:
+            shown = ", ".join(libs[:6]) + (f", +{len(libs) - 6} more"
+                                           if len(libs) > 6 else "")
+            have.append(f"- **{title}** — ✓ {len(libs)}: {shown}")
+        else:
+            nowhere.append(title)
+    lines += have
+    if nowhere:
+        lines.append("\n## In LINK+, but no copy on any member shelf right now\n")
+        lines.append(", ".join(sorted(nowhere)) + "\n")
+    not_in = sorted({(titles[b["record_id"]]["title"]
+                      if b["record_id"] in titles else b["record_id"])
+                     for b in sbibs if not b["bib_id"]})
+    if not_in:
+        lines.append("\n## Not found in LINK+\n")
+        lines.append(", ".join(not_in) + "\n")
+    return "\n".join(lines) + "\n"
+
+
 def _system_md(system, rows, bibs, titles, as_of) -> str:
+    if system == "linkplus":
+        return _linkplus_md(rows, bibs, titles, as_of)
     name, _ = REMOTE_SYSTEMS[system]
     srows = [r for r in rows if r["system"] == system]
     sbibs = [b for b in bibs if b["system"] == system]
