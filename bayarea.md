@@ -2,7 +2,7 @@
 
 <!-- AUTO-GENERATED from peorialib.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `peorialib.db` — data as of **2026-08-07T16:55:01**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `peorialib.db` — data as of **2026-08-07T21:35:32**. Don't hand-edit; run `uv run report.py --write`._
 
 
 The want-list, looked up at three Bay Area systems (`uv run bayarea_lookup.py`):
@@ -11,7 +11,7 @@ The want-list, looked up at three Bay Area systems (`uv run bayarea_lookup.py`):
 |---|---|---|---|
 | `sccl` | Santa Clara County Library District | 85 | 70 |
 | `sjpl` | San José Public Library | 77 | 66 |
-| `mvpl` | Mountain View Public Library | 71 | 27 |
+| `mvpl` | Mountain View Public Library | 75 | 28 |
 
 Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 
@@ -20,6 +20,7 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 
 | Title | Type | Cupertino | Los Altos | Mountain View | Calabazas |
 |---|---|---|---|---|---|
+| 2 yeux ? | ? | — | — | — | — |
 | A ti! a ti! (Achoo! Achoo!) | picture | — | — | — | — |
 | Are you my mother? | reader | ✓ | ✓ | ✓ | ✗ |
 | Bao bao biao qing ji: My Face Book (baby faces) | picture | — | — | — | — |
@@ -29,6 +30,7 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 | Bluey : the creek. | picture | — | — | — | ✗ |
 | Bluey : zoo. | picture | — | — | ✗ | — |
 | Bon appétit ! Monsieur Lapin | ? | — | — | — |  |
+| Bonne nuit tout le monde | ? | — | — | ✗ | — |
 | Bonne nuit, Gorille | ? | — | — | — | — |
 | Bonsoir Lune | ? |  |  | ✓ |  |
 | Brown bear, brown bear, what do you see? | board | ✗ | ✗ | ✓ | ✓ |
@@ -39,6 +41,7 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 | Chicka chicka boom boom | board | ✗ | ✓ | ✗ | ✗ |
 | Chicka Chicka I love you | picture | ✓ | ✓ | — | — |
 | Chugga-chugga choo-choo | picture | ✗ | ✗ | ✗ | ✓ |
+| Chut ! On a un plan | ? | — | — | — | — |
 | De la petite taupe qui voulait savoir qui lui avait fait sur la tête | ? | — | — | — | — |
 | Dear zoo | picture |  | ✓ | ✗ |  |
 | Diandian ai qu you er yuan (Diandian loves preschool) | ? | — | — | — | — |
@@ -75,6 +78,7 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 | L'âne Trotro | ? | — | — | — | — |
 | La chenille qui fait des trous | ? | — | — | — |  |
 | La couleur des émotions | ? | ✗ |  | — | — |
+| Le cherche-et-trouve de mes 2 ans | ? | — | — | — | — |
 | Le loup qui voulait changer de couleur | ? | — | — | — | — |
 | Liang ge hao huo ban (Two Good Friends) | picture | — | — | — | — |
 | Little blue truck | board | ✗ | ✗ | ✗ | ✓ |
@@ -92,9 +96,14 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 | Mouse paint | picture | ✓ | ✓ | ✗ |  |
 | Mr. Brown can moo! Can you? | picture | ✗ | ✗ | ✓ |  |
 | My First Mandarin Words with Gordon & Li Li (board) | board | — | — | — |  |
+| Méli-mélo | ? | — | — | — | — |
 | Nan guo de Fuloge (Frog is Sad) | picture | — | — | — | — |
 | Ours brun, dis-moi ce que tu vois ? | ? | — | — | — | — |
+| Petit Ours Brun aime sa maman | ? | — | — | — | — |
 | Petit Ours Brun dit non | ? | — | — | — | — |
+| Petit ours brun joue dans la neige | ? | — | — | ✗ | — |
+| Petit Ours Brun joue dans son bain | ? | — | — | ✗ | — |
+| Petit ours brun va chez la docteure | ? | — | — | ✓ | — |
 | Petit-Bleu et Petit-Jaune | ? | — | — | — | — |
 | Polar bear, polar bear, what do you hear? | board |  |  | ✗ | ✗ |
 | Pop mange de toutes les couleurs | ? | — | — | — | — |
@@ -104,6 +113,7 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 | Sikairui zui shou huan ying de gu shi (Scarry's best stories) | ? | — | — | — | — |
 | Steam train, dream train | picture | ✓ | ✗ | ✗ | ✓ |
 | T'choupi va sur le pot | ? | — | — | — | — |
+| T'choupi veut tout faire tout seul | ? | — | — | — | — |
 | Tangmu zhu yuan | picture | — | — | — | — |
 | Tap the magic tree | picture | ✓ | ✗ | ✓ |  |
 | Ten apples up on top! | picture | ✓ | ✓ | ✗ |  |
@@ -122,6 +132,7 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`.
 | Time for bed | picture |  | ✓ | ✗ |  |
 | Twinkle, twinkle, little sheepy : a sleepy sheepy story | board | ✗ | ✓ | ✗ | ✗ |
 | Un livre | ? | — | — | — | — |
+| Un peu perdu | ? | — | — | — | — |
 | Va-t'en, Grand Monstre Vert ! | ? | — | — | — | — |
 | Wan an, xiao xiong (Goodnight, Little Bear) | picture | — | — | — | — |
 | We're going on a bear hunt | picture | ✓ | ✓ | ✗ |  |
@@ -187,6 +198,7 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 
 | Title | Type | Santa Clara County Library District | San José Public Library | Mountain View Public Library |
 |---|---|---|---|---|
+| 2 yeux ? | ? | — | — | — |
 | A ti! a ti! (Achoo! Achoo!) | picture | — | — | — |
 | Are you my mother? | reader | ✓ 9 | ✓ 6 | ✓ |
 | Bao bao biao qing ji: My Face Book (baby faces) | picture | — | — | — |
@@ -196,6 +208,7 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | Bluey : the creek. | picture | — | ✓ 11 | — |
 | Bluey : zoo. | picture | — | — | ✗ |
 | Bon appétit ! Monsieur Lapin | ? | — | ✓ 1 | — |
+| Bonne nuit tout le monde | ? | — | — | ✗ |
 | Bonne nuit, Gorille | ? | — | — | — |
 | Bonsoir Lune | ? | ✓ 1 | ✓ 1 | ✓ |
 | Brown bear, brown bear, what do you see? | board | ✓ 3 | ✓ 17 | ✓ |
@@ -206,6 +219,7 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | Chicka chicka boom boom | board | ✓ 3 | ✓ 16 | ✗ |
 | Chicka Chicka I love you | picture | ✓ 4 | — | — |
 | Chugga-chugga choo-choo | picture | ✓ 2 | ✓ 6 | ✗ |
+| Chut ! On a un plan | ? | — | — | — |
 | De la petite taupe qui voulait savoir qui lui avait fait sur la tête | ? | — | — | — |
 | Dear zoo | picture | ✓ 2 | ✓ 3 | ✗ |
 | Diandian ai qu you er yuan (Diandian loves preschool) | ? | — | — | — |
@@ -242,6 +256,7 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | L'âne Trotro | ? | — | — | — |
 | La chenille qui fait des trous | ? | — | ✓ 1 | — |
 | La couleur des émotions | ? | ✓ 1 | — | — |
+| Le cherche-et-trouve de mes 2 ans | ? | — | — | — |
 | Le loup qui voulait changer de couleur | ? | — | — | — |
 | Liang ge hao huo ban (Two Good Friends) | picture | — | — | — |
 | Little blue truck | board | ✓ 1 | ✓ 10 | ✗ |
@@ -259,9 +274,14 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | Mouse paint | picture | ✓ 4 | ✓ 4 | ✗ |
 | Mr. Brown can moo! Can you? | picture | ✓ 6 | ✓ 1 | ✓ |
 | My First Mandarin Words with Gordon & Li Li (board) | board | — | ✗ | — |
+| Méli-mélo | ? | — | — | — |
 | Nan guo de Fuloge (Frog is Sad) | picture | — | — | — |
 | Ours brun, dis-moi ce que tu vois ? | ? | — | — | — |
+| Petit Ours Brun aime sa maman | ? | — | — | — |
 | Petit Ours Brun dit non | ? | — | — | — |
+| Petit ours brun joue dans la neige | ? | — | — | ✗ |
+| Petit Ours Brun joue dans son bain | ? | — | — | ✗ |
+| Petit ours brun va chez la docteure | ? | — | — | ✓ |
 | Petit-Bleu et Petit-Jaune | ? | — | — | — |
 | Polar bear, polar bear, what do you hear? | board | ✗ | ✓ 4 | ✗ |
 | Pop mange de toutes les couleurs | ? | — | — | — |
@@ -271,6 +291,7 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | Sikairui zui shou huan ying de gu shi (Scarry's best stories) | ? | — | — | — |
 | Steam train, dream train | picture | ✓ 4 | ✓ 3 | ✗ |
 | T'choupi va sur le pot | ? | — | — | — |
+| T'choupi veut tout faire tout seul | ? | — | — | — |
 | Tangmu zhu yuan | picture | — | — | — |
 | Tap the magic tree | picture | ✓ 4 | ✓ 4 | ✓ |
 | Ten apples up on top! | picture | ✓ 6 | ✓ 5 | ✗ |
@@ -289,6 +310,7 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | Time for bed | picture | ✓ 4 | ✓ 1 | ✗ |
 | Twinkle, twinkle, little sheepy : a sleepy sheepy story | board | ✓ 6 | ✓ 10 | ✗ |
 | Un livre | ? | — | — | — |
+| Un peu perdu | ? | — | — | — |
 | Va-t'en, Grand Monstre Vert ! | ? | — | — | — |
 | Wan an, xiao xiong (Goodnight, Little Bear) | picture | — | — | — |
 | We're going on a bear hunt | picture | ✓ 6 | ✗ | ✗ |
