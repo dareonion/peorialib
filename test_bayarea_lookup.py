@@ -362,8 +362,15 @@ def test_webpac_single_hit_record_page():
 
 def test_webpac_query_folds_accents_and_cjk():
     assert ba.webpac_query("Bébés chouettes Waddell") == "Bebes chouettes Waddell"
-    assert ba.webpac_query("T'choupi va sur le pot") == "T choupi va sur le pot"
     assert ba.webpac_query("好餓的毛毛蟲") == "hao e de mao mao chong"
+    # apostrophes join — a split leaves stray one-letter tokens ('t', 'T')
+    # that AND a keyword search down to zero hits
+    assert ba.webpac_query("Giraffes can't dance") == "Giraffes cant dance"
+    assert ba.webpac_query("Mr. Gumpy's outing") == "Mr Gumpys outing"
+    assert ba.webpac_query("T'choupi va sur le pot") == "Tchoupi va sur le pot"
+    # mid-query 'not' is a boolean operator to WebPAC; leading 'not' is a term
+    assert ba.webpac_query("But not the hippopotamus") == "But the hippopotamus"
+    assert ba.webpac_query("Not a box") == "Not a box"
 
 
 def test_webpac_state_words():

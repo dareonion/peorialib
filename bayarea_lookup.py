@@ -721,14 +721,25 @@ def webpac_query(query: str) -> str:
     - CJK 502s the 2006-era server — Chinese records are searchable only
       through their romanization.
     - Diacritics must be folded, not stripped ('Bébés' → 'bebes', not 'b b s').
-    - Punctuation goes: '?' is a truncation wildcard here, and 'see?' quietly
-      turns an exact search into garbage matches.
+    - Apostrophes must be joined, not split: the III keyword index matches
+      "can't" to 'cant', while a split leaves a stray 't' (or the 'T' of
+      T'choupi) that ANDs the search down to nothing.
+    - Other punctuation goes: '?' is a truncation wildcard here, and 'see?'
+      quietly turns an exact search into garbage matches.
     """
     if _CJK.search(query):
         query = _pinyin(query)
     query = unicodedata.normalize("NFKD", query)
     query = "".join(c for c in query if not unicodedata.combining(c))
-    return re.sub(r"[^A-Za-z0-9 ]+", " ", query).strip()
+    query = re.sub(r"['’]", "", query)
+    query = re.sub(r"[^A-Za-z0-9 ]+", " ", query)
+    query = re.sub(r"\s+", " ", query).strip()
+    # mid-query 'not' is a boolean operator here — 'But not the hippopotamus'
+    # finds nothing. A *leading* 'not' has nothing to negate and stays a term.
+    toks = query.split()
+    if toks:
+        query = " ".join([toks[0]] + [t for t in toks[1:] if t.lower() != "not"])
+    return query
 
 
 class MountainView:
