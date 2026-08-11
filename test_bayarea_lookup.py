@@ -494,6 +494,57 @@ def test_remote_store_and_bayarea_markdown():
         conn.close()
 
 
+def test_report_dedupes_and_discloses_odd_editions():
+    with tempfile.TemporaryDirectory() as d:
+        dbp = os.path.join(d, "t.db")
+        conn = db.open_db(dbp)
+        ts = "2026-08-10T10:00:00"
+        title = "The very hungry caterpillar"
+        # two want rows (duplicate Peoria editions of the same book)
+        db.upsert_title(conn, "SD_ILS:1", title, ts, {"format": "picture"})
+        db.upsert_title(conn, "SD_ILS:2", title, ts, {"format": "board"})
+        sid = db.record_scrape(conn, "remote", ts, source="test", profile="sccl")
+        item = [{"branch": "Cupertino Library", "call_number": "J TODDLER",
+                 "status": "Available", "state": "available"}]
+        for rid, kind in (("SD_ILS:1", "primary"), ("SD_ILS:2", "edition")):
+            db.upsert_remote_bib(conn, "sccl", rid, ts,
+                                 {"bib_id": "b1", "title": title}, 1.0)
+            db.replace_remote_editions(conn, "sccl", rid, [
+                {"bib_id": "b1", "title": title, "authors": [],
+                 "format": "BOARD_BK", "format_class": "board",
+                 "language": "eng", "kind": kind, "match_score": 1.0},
+                # a second printing of the same work — renders identically
+                {"bib_id": "b2", "title": title, "authors": [],
+                 "format": "BOARD_BK", "format_class": "board",
+                 "language": "eng", "kind": "edition", "match_score": 1.0},
+                # an odd-titled 'edition' must disclose its real title
+                {"bib_id": "b3", "title": "The Very Hungry Caterpillar's Eid",
+                 "authors": [], "format": "BOARD_BK", "format_class": "board",
+                 "language": "eng", "kind": "edition", "match_score": 0.95},
+            ], ts)
+            db.add_remote_availability(conn, sid, "sccl", rid, "b1", title,
+                                       item, ts)
+            db.add_remote_availability(conn, sid, "sccl", rid, "b2", title,
+                                       item, ts)
+            db.add_remote_availability(conn, sid, "sccl", rid, "b3", title,
+                                       item, ts)
+        conn.commit()
+        conn.close()
+        report.write_bayarea(dbp, d)
+        md = open(os.path.join(d, "sccl.md"), encoding="utf-8").read()
+        # 2 want rows x 2 identical printings collapse into ONE shelf line...
+        cupertino = md.split("## Cupertino")[1].split("##")[0]
+        plain = [l for l in cupertino.splitlines()
+                 if l.startswith("- ") and "Eid" not in l]
+        assert len(plain) == 1, plain
+        # ...and the primary's bib supplies the link
+        assert "/record/b1" in plain[0]
+        # the odd-titled edition is one line too, disclosing its real title
+        eid = [l for l in cupertino.splitlines() if "Eid" in l]
+        assert len(eid) == 1
+        assert "board book: “The Very Hungry Caterpillar's Eid”" in eid[0]
+
+
 def test_write_bayarea_is_noop_without_remote_data():
     with tempfile.TemporaryDirectory() as d:
         dbp = os.path.join(d, "t.db")
@@ -588,6 +639,44 @@ def test_pick_all_loose_rules_need_strict_source():
     cands = [dict(c, strict=False) for c in POLAR_CANDS]
     _, _, eds = ba.pick_all(*POLAR_WANT, cands)
     assert {e["kind"] for e in eds} == {"primary", "edition"}
+
+
+def test_pick_all_rejects_suffix_spinoffs():
+    # short-suffix spinoffs land just under 0.95 — 'Eid' scored 0.900 and
+    # 'Dragons Love Tacos 2' 0.947, and both sailed under the want's name
+    cands = [
+        _cand("v1", "The Very Hungry Caterpillar", "picture", "eng",
+              authors=("Carle, Eric",)),
+        _cand("v2", "The Very Hungry Caterpillar's Eid", "board", "eng",
+              authors=("Carle, Eric",)),
+    ]
+    _, _, eds = ba.pick_all("The very hungry caterpillar", "Carle, Eric",
+                            "picture", cands)
+    assert [e["bib_id"] for e in eds] == ["v1"]
+    cands = [
+        _cand("d1", "Dragons Love Tacos", "picture", "eng",
+              authors=("Rubin, Adam",)),
+        _cand("d2", "Dragons Love Tacos 2", "picture", "eng",
+              authors=("Rubin, Adam",)),
+    ]
+    _, _, eds = ba.pick_all("Dragons love tacos", "Rubin, Adam",
+                            "picture", cands)
+    assert [e["bib_id"] for e in eds] == ["d1"]
+
+
+def test_borderline_translation_reenters_via_translation_rule():
+    # 'Pete el gato' scores ~0.91 on the shared subtitle — too low for an
+    # edition now, but the translation rule takes it, correctly labeled
+    cands = [
+        _cand("p1", "Pete the cat : I love my white shoes", "picture", "eng",
+              authors=("Litwin, Eric",)),
+        _cand("p2", "Pete el gato : I love my white shoes", "picture", "spa",
+              authors=("Litwin, Eric",)),
+    ]
+    _, _, eds = ba.pick_all("Pete the cat : I love my white shoes",
+                            "Litwin, Eric", "picture", cands)
+    kinds = {e["bib_id"]: e["kind"] for e in eds}
+    assert kinds == {"p1": "primary", "p2": "translation"}
 
 
 def test_pick_all_keeps_closest_translation_per_language():

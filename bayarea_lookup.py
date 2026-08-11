@@ -74,11 +74,13 @@ EXTRA_LANGS = ("chi", "fre", "spa", "jpn")
 # Versions tracked per (title, system) — bounds the per-title availability
 # fetches when a classic is printed in a dozen editions.
 MAX_EDITIONS = 8
-# Extra same-language versions must be near-exact: series siblings score far
-# above MATCH_THRESHOLD ('Panda Bear…What Do You See?' hits 0.773 against
-# Polar Bear, ''…Caterpillar's Easter Colors' 0.771 against the original), while
-# true editions of the same work sit at 0.98+ (subtitle variants included).
-EDITION_MIN_RATIO = 0.9
+# Extra same-language versions must be near-exact: true editions of the same
+# work sit at 0.98+ (subtitle variants ride the stem rule), while short-suffix
+# spinoffs crowd the band just below — 'The Very Hungry Caterpillar's Eid'
+# 0.900, '…Drive the Sleigh!' 0.901, 'Chicka Chicka I Love Mom' 0.917,
+# 'Dragons Love Tacos 2' 0.947. A borderline true translation ('Ye shou guo',
+# 'Pete el gato') re-enters through the translation rule, correctly labeled.
+EDITION_MIN_RATIO = 0.95
 
 # Below ~0.75 nearly everything is a lookalike (shared series prefixes, 'my
 # first X' phrasing); the only legitimate sub-0.75 matches were exact titles

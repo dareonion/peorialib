@@ -23,6 +23,8 @@ scrape, so the files stay current automatically.
 from __future__ import annotations
 
 import argparse
+import re
+import unicodedata
 from pathlib import Path
 
 import catalog_db as db
@@ -236,14 +238,24 @@ _ED_FMT_LABEL = {"board": "board book", "audio": "audiobook",
 _DIGITAL_CLASSES = ("ebook", "eaudio")
 
 
-def _edition_label(ed) -> str:
+def _stem_key(s) -> str:
+    """Pre-subtitle stem, folded flat — for 'is this really the same title?'."""
+    s = re.split(r"[:：=/]", s or "")[0]
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return re.sub(r"[^a-z0-9一-鿿]+", "", s.lower())
+
+
+def _edition_label(ed, want_title: str = None) -> str:
     """'Spanish board book: “Oso polar…”' / 'audiobook: “Brown bear & friends”'
     / 'board book' / '' for the want's plain edition.
 
     kind='audio' means the record was accepted *without* a title match — it is
     its own work (a compilation that carries the story), not this book, so its
     real title must show. A translation's real title is what's printed on the
-    spine you'd hunt for, so it shows too.
+    spine you'd hunt for, so it shows too. And an 'edition' whose stem doesn't
+    match the want's discloses its title as well — nothing may sail under the
+    want's name unless it really carries it.
     """
     if ed is None:
         return ""
@@ -254,7 +266,10 @@ def _edition_label(ed) -> str:
     if fmt:
         parts.append(fmt)
     label = " ".join(parts)
-    if ed["kind"] in ("audio", "translation") and ed["title"]:
+    show_title = (ed["kind"] in ("audio", "translation")
+                  or (ed["kind"] == "edition" and want_title
+                      and _stem_key(ed["title"]) != _stem_key(want_title)))
+    if show_title and ed["title"]:
         label = f"{label}: “{ed['title']}”" if label else f"“{ed['title']}”"
     if ed["kind"] == "translation" and (ed["orig_title"] or "").strip():
         label += f" — translation of “{ed['orig_title'].strip()}”"
@@ -422,7 +437,8 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
     unmatched = [b for b in sbibs if not b["bib_id"]]
 
     def label(rid, bib_id):
-        return _edition_label(editions.get((system, rid, bib_id)))
+        want = titles[rid]["title"] if rid in titles else None
+        return _edition_label(editions.get((system, rid, bib_id)), want)
 
     # branch -> {(record_id, bib_id): best availability row} — one line per
     # tracked version (board/audio/translation), not per title
@@ -455,7 +471,21 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
         lab = label(rid, bib_id)
         return _link(t, record_url(system, bib_id)) + (f" ({lab})" if lab else "")
 
-    nowhere = sorted({named(rid, bib) for rid, bib in all_versions - have_shelf})
+    def kind_rank(rid, bib_id):
+        ed = editions.get((system, rid, bib_id))
+        return 0 if ed and ed["kind"] == "primary" else 1
+
+    def dedupe_named(pairs):
+        """One entry per rendered text — several bibs of the same printing
+        differ only in their link, and that reads as a duplicate. The
+        primary's link wins."""
+        out = {}
+        for rid, bib in sorted(pairs, key=lambda p: (kind_rank(*p), p[1])):
+            s = named(rid, bib)
+            out.setdefault(re.sub(r"\]\([^)]*\)", "]", s), s)
+        return sorted(out.values())
+
+    nowhere = dedupe_named(all_versions - have_shelf)
     not_in_cat = sorted({(titles[b["record_id"]]["title"]
                           if b["record_id"] in titles else b["record_id"])
                          for b in unmatched})
@@ -479,20 +509,30 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
         avail = [(k, r) for k, r in best.items() if r["state"] == "available"]
         if not avail:
             continue
-        lines.append(f"\n## {bname} — {len(avail)} on the shelf\n")
+        # collapse lines that render identically — two want rows (duplicate
+        # Peoria editions) matching one bib, or two same-shelf printings of
+        # the same work, should read as one entry (the primary's link wins)
+        entries, seen_txt = [], set()
         for (rid, bib_id), r in sorted(
                 avail, key=lambda kr: (kr[1]["call_number"] or "",
-                                       kr[1]["title"] or "")):
+                                       kr[1]["title"] or "",
+                                       kind_rank(*kr[0]), kr[0][1])):
             lab = label(rid, bib_id)
-            lines.append(f"- `{r['call_number'] or '?'}` "
-                         f"{_link(r['title'], record_url(system, bib_id))}"
-                         + (f" — {lab}" if lab else ""))
+            line = (f"- `{r['call_number'] or '?'}` "
+                    f"{_link(r['title'], record_url(system, bib_id))}"
+                    + (f" — {lab}" if lab else ""))
+            key = re.sub(r"\]\([^)]*\)", "]", line)
+            if key in seen_txt:
+                continue
+            seen_txt.add(key)
+            entries.append(line)
+        lines.append(f"\n## {bname} — {len(entries)} on the shelf\n")
+        lines += entries
     if digital:
         lines.append("\n## Digital (eBook / eAudiobook — borrow via the "
                      "library's app; availability is a license queue, not a "
                      "shelf)\n")
-        lines.append(", ".join(sorted({named(rid, bib)
-                                       for rid, bib in digital})) + "\n")
+        lines.append(", ".join(dedupe_named(digital)) + "\n")
     if nowhere:
         lines.append("\n## In the catalog, but no copy on any shelf right now\n")
         lines.append(", ".join(nowhere) + "\n")

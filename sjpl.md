@@ -2,21 +2,19 @@
 
 <!-- AUTO-GENERATED from peorialib.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `peorialib.db` — data as of **2026-08-10T18:17:20**. Don't hand-edit; run `uv run report.py --write`._
 
 
 **101** of **165** titles are in the catalog; **99** have at least one copy on a shelf right now. Titles link to the record in this catalog; unlabeled lines are the plain edition, labels mark the other versions we track (board book / audiobook / eBook / eAudiobook / translations).
 
 
-## West Valley — 58 on the shelf
+## West Valley — 53 on the shelf
 
 - `J CHI HARDPAGE Saito` [企鵝體操](https://sjpl.bibliocommons.com/v2/record/S156C5882281)
 - `J CHI PICTURE BOOK Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6672622) — Chinese: “Xin fan de hou zi he ta de di di” — translation of “Grumpy monkey up all night”
 - `J CHI-ENG PICTURE BOOK Gomi` [鱷魚怕怕．牙醫怕怕](https://sjpl.bibliocommons.com/v2/record/S156C5892977)
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C4632780)
 - `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
-- `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C4772180)
 - `J EASY READER Eastman` [Go, dog. Go!](https://sjpl.bibliocommons.com/v2/record/S156C2154053)
 - `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
 - `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
@@ -32,7 +30,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PB PICTURE BOOK` [Bluey : the creek.](https://sjpl.bibliocommons.com/v2/record/S156C6274428)
 - `J PB PICTURE BOOK` [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C3248913)
 - `J PICTURE BOOK Carle` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C2133914)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Cousins` [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6632361)
 - `J PICTURE BOOK Dewdney` [Llama Llama misses Mama](https://sjpl.bibliocommons.com/v2/record/S156C3800297)
@@ -55,28 +52,24 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Rinker` [Steam train, dream train](https://sjpl.bibliocommons.com/v2/record/S156C4487673)
 - `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
 - `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
 - `J PICTURE BOOK Slobodki` [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sjpl.bibliocommons.com/v2/record/S156C3659138)
 - `J PICTURE BOOK Walsh` [Mouse paint](https://sjpl.bibliocommons.com/v2/record/S156C1648898)
-- `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
 - `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
 - `J PICTURE BOOK Willems` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C4701385)
 - `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
 - `J SPA HARDPAGE Boynton` [Barnyard dance!](https://sjpl.bibliocommons.com/v2/record/S156C6657414) — Spanish: “¡danza del corral!” — translation of “Barnyard dance!”
 - `J SPA PICTURE BOOK Henkes` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C3111593) — Spanish: “La primera luna llena de gatita” — translation of “Kitten's first full moon”
 - `J SPA PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C5353980) — Spanish: “Felices sueños, camiones grandes y pequeños” — translation of “Goodnight, goodnight, construction site”
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 - `J VIE-ENG PICTURE BOOK Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5847875)
 
-## Calabazas — 44 on the shelf
+## Calabazas — 40 on the shelf
 
 - `J CHI PICTURE BOOK Hepworth` [I love you to the moon and back](https://sjpl.bibliocommons.com/v2/record/S156C6657336)
 - `J CHI-ENG PICTURE BOOK Gomi` [鱷魚怕怕．牙醫怕怕](https://sjpl.bibliocommons.com/v2/record/S156C5892977)
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C4632780)
 - `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
-- `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C4772180)
 - `J EASY READER Cronin` [Duck stays in the truck](https://sjpl.bibliocommons.com/v2/record/S156C6020915)
 - `J EASY READER Diesen` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
 - `J EASY READER Eastman` [Go, dog. Go!](https://sjpl.bibliocommons.com/v2/record/S156C2154053)
@@ -105,29 +98,25 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Rinker` [Steam train, dream train](https://sjpl.bibliocommons.com/v2/record/S156C4487673)
 - `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
 - `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Scarry` [Cars and trucks and things that go](https://sjpl.bibliocommons.com/v2/record/S156C6652228)
 - `J PICTURE BOOK Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C3431980)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
-- `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2255372)
 - `J PICTURE BOOK Slobodki` [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sjpl.bibliocommons.com/v2/record/S156C3659138)
 - `J PICTURE BOOK Willems` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C3251823)
 - `J PICTURE BOOK Willems` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C4701385)
 - `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
 - `J SPA PICTURE BOOK McCloske` [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C4399064) — Spanish: “Arándanos para Sal” — translation of “Blueberries for Sal”
 
-## Berryessa — 58 on the shelf
+## Berryessa — 54 on the shelf
 
 - `J CHI PICTURE BOOK Antony` [貝蒂好想好想吃香蕉](https://sjpl.bibliocommons.com/v2/record/S156C5709834)
 - `J CHI PICTURE BOOK Numeroff` [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C6672606) — Chinese: “Yao shi ni gei lao shu chi bing gan” — translation of “If you give a mouse a cookie”
 - `J CHI PICTURE BOOK Tullet` [小黃點](https://sjpl.bibliocommons.com/v2/record/S156C6369933)
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C4632780)
 - `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
 - `J EASY READER Cronin` [Duck stays in the truck](https://sjpl.bibliocommons.com/v2/record/S156C6020915)
 - `J EASY READER Diesen` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
 - `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
-- `J EASY READER Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5588686)
 - `J EASY READER Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C1711944)
 - `J EASY READER Seuss` [Ten apples up on top!](https://sjpl.bibliocommons.com/v2/record/S156C5581421)
 - `J HARDPAGE` [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C4673272)
@@ -142,7 +131,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Campbell` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C2132911)
 - `J PICTURE BOOK Carle` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C2133914)
 - `J PICTURE BOOK Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C1158305)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Cousins` [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6632361)
 - `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C1049398)
@@ -165,24 +153,23 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Pizzoli` [The watermelon seed](https://sjpl.bibliocommons.com/v2/record/S156C6631965)
 - `J PICTURE BOOK Rinker` [Steam train, dream train](https://sjpl.bibliocommons.com/v2/record/S156C4487673)
 - `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
+- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
 - `J PICTURE BOOK Scarry` [Cars and trucks and things that go](https://sjpl.bibliocommons.com/v2/record/S156C6652228)
 - `J PICTURE BOOK Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C3431980)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
 - `J PICTURE BOOK Slobodki` [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sjpl.bibliocommons.com/v2/record/S156C3659138)
-- `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
 - `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
 - `J PICTURE BOOK Willems` [Knuffle Bunny : a cautionary tale](https://sjpl.bibliocommons.com/v2/record/S156C2597957)
 - `J PICTURE BOOK Willems` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C3251823)
 - `J PICTURE BOOK Willems` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C4701385)
 - `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
 
-## King — 57 on the shelf
+## King — 54 on the shelf
 
 - `J CHI HARDPAGE Martin` [棕色的熊、棕色的熊，你在看什麼？](https://sjpl.bibliocommons.com/v2/record/S156C5876495)
 - `J CHI PICTURE BOOK Antony` [貝蒂好想好想吃香蕉](https://sjpl.bibliocommons.com/v2/record/S156C5709834)
 - `J CHI PICTURE BOOK Carle` [好餓的毛毛蟲](https://sjpl.bibliocommons.com/v2/record/S156C5876504)
-- `J CHI PICTURE BOOK Gomi` [小金魚逃走了](https://sjpl.bibliocommons.com/v2/record/S156C3159693)
+- `J CHI PICTURE BOOK Gomi` [小金魚逃走了](https://sjpl.bibliocommons.com/v2/record/S156C3159693) — “Xiao jin yu tao zou le”
 - `J CHI PICTURE BOOK Hutchins` [母雞蘿絲去散步](https://sjpl.bibliocommons.com/v2/record/S156C4317199)
 - `J CHI PICTURE BOOK Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6672622) — Chinese: “Xin fan de hou zi he ta de di di” — translation of “Grumpy monkey up all night”
 - `J CHI PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6773871) — Chinese: “Wo men yi qi zhao da xiong” — translation of “We're going on a bear hunt”
@@ -194,11 +181,9 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
 - `J FRE PICTURE BOOK Boujon` [Bon appétit ! Monsieur Lapin](https://sjpl.bibliocommons.com/v2/record/S156C2607003)
 - `J FRE PICTURE BOOK Brown` [Bonsoir Lune](https://sjpl.bibliocommons.com/v2/record/S156C3367618)
-- `J FRE PICTURE BOOK Brown` [Bonsoir Lune](https://sjpl.bibliocommons.com/v2/record/S156C2128244)
 - `J FRE PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C3367618) — French: “Bonsoir lune” — translation of “Goodnight moon”
 - `J FRE PICTURE BOOK Caputo` [Roule galette](https://sjpl.bibliocommons.com/v2/record/S156C2133457)
 - `J FRE PICTURE BOOK Carle` [La chenille qui fait des trous](https://sjpl.bibliocommons.com/v2/record/S156C3921097)
-- `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C6768249)
 - `J HARDPAGE` [Old MacDonald had a truck](https://sjpl.bibliocommons.com/v2/record/S156C5911463)
@@ -207,9 +192,8 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J HARDPAGE` [Twinkle, twinkle, little sheepy : a sleepy sheepy story](https://sjpl.bibliocommons.com/v2/record/S156C6801747)
 - `J HARDPAGE` [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C3985841)
 - `J JPN PICTURE BOOK Cotter` [Don't push the button!](https://sjpl.bibliocommons.com/v2/record/S156C5883790) — Japanese: “Zettaini oshicha dame” — translation of “Don't push the button!”
-- `J JPN PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C3093371)
+- `J JPN PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C3093371) — “Kaijūtachi no iru tokoro”
 - `J PB PICTURE BOOK` [Bluey : the creek.](https://sjpl.bibliocommons.com/v2/record/S156C6274428)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C1049398)
 - `J PICTURE BOOK Degen` [Jamberry](https://sjpl.bibliocommons.com/v2/record/S156C1123306)
@@ -237,7 +221,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C4456603) — Spanish: “Donde viven los monstruos” — translation of “Where the wild things are”
 - `J SPA-ENG PICTURE BOOK Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C5843233)
 
-## Vineland — 54 on the shelf
+## Vineland — 50 on the shelf
 
 - `J CHI PICTURE BOOK Gomi` [小金魚逃走了](https://sjpl.bibliocommons.com/v2/record/S156C6370352)
 - `J CHI PICTURE BOOK Lai` [我變成一隻噴火龍了！](https://sjpl.bibliocommons.com/v2/record/S156C6370349)
@@ -245,13 +229,11 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J CHI-ENG PICTURE BOOK Gomi` [鱷魚怕怕．牙醫怕怕](https://sjpl.bibliocommons.com/v2/record/S156C5892977)
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
 - `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
-- `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C4772180)
 - `J EASY READER Diesen` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
 - `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
 - `J EASY READER Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5588686)
 - `J EASY READER Seuss` [Ten apples up on top!](https://sjpl.bibliocommons.com/v2/record/S156C5581421)
 - `J HARDPAGE` [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C6816164)
-- `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [How do dinosaurs say good night?](https://sjpl.bibliocommons.com/v2/record/S156C6023708)
 - `J HARDPAGE` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C6769300)
@@ -262,7 +244,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
 - `J PICTURE BOOK Campbell` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C2132911)
 - `J PICTURE BOOK Carle` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C2133914)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C1773026)
 - `J PICTURE BOOK Cousins` [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6632361)
@@ -285,7 +266,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
 - `J PICTURE BOOK Slobodki` [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sjpl.bibliocommons.com/v2/record/S156C3659138)
 - `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
-- `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
 - `J PICTURE BOOK Willems` [Knuffle Bunny : a cautionary tale](https://sjpl.bibliocommons.com/v2/record/S156C2597957)
 - `J PICTURE BOOK Willems` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C3251823)
 - `J PICTURE BOOK Willems` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C4701385)
@@ -294,17 +274,15 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA HARDPAGE Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C5809791) — Spanish: “El camioncito azul abre el camino” — translation of “Little blue truck leads the way”
 - `J SPA PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C5353980) — Spanish: “Felices sueños, camiones grandes y pequeños” — translation of “Goodnight, goodnight, construction site”
 
-## Edenvale — 53 on the shelf
+## Edenvale — 47 on the shelf
 
 - `J CHI PICTURE BOOK Haughton` [Oh no, George!](https://sjpl.bibliocommons.com/v2/record/S156C4885016) — Chinese: “Bu yao ba, Xiaoguai !” — translation of “Oh no, George!”
 - `J CHI PICTURE BOOK Klassen` [I want my hat back](https://sjpl.bibliocommons.com/v2/record/S156C5130281) — Chinese: “Zhao hui wo de mao zi” — translation of “I want my hat back”
 - `J CHI-ENG PICTURE BOOK Gomi` [鱷魚怕怕．牙醫怕怕](https://sjpl.bibliocommons.com/v2/record/S156C5892977)
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C4632780)
 - `J EASY READER Diesen` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
 - `J EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C2154030)
 - `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
-- `J EASY READER Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5588686)
 - `J EASY READER Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C1711944)
 - `J HARDPAGE` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C3114067)
 - `J HARDPAGE` [Giraffes can't dance](https://sjpl.bibliocommons.com/v2/record/S156C6694722)
@@ -316,7 +294,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
 - `J PICTURE BOOK Carle` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C2133914)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C5848111)
 - `J PICTURE BOOK Degen` [Jamberry](https://sjpl.bibliocommons.com/v2/record/S156C1123306)
 - `J PICTURE BOOK Dewdney` [Llama Llama misses Mama](https://sjpl.bibliocommons.com/v2/record/S156C3800297)
@@ -324,7 +301,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Hills` [Duck & Goose, honk! quack! boo!](https://sjpl.bibliocommons.com/v2/record/S156C5693662)
 - `J PICTURE BOOK Jackson` [I know an old lady who swallowed a pie](https://sjpl.bibliocommons.com/v2/record/S156C5832493)
 - `J PICTURE BOOK Keats` [The snowy day](https://sjpl.bibliocommons.com/v2/record/S156C1523415)
-- `J PICTURE BOOK Keats` [The snowy day](https://sjpl.bibliocommons.com/v2/record/S156C5848109)
 - `J PICTURE BOOK Klassen` [I want my hat back](https://sjpl.bibliocommons.com/v2/record/S156C4246749)
 - `J PICTURE BOOK Lang` [Grumpy monkey party time!](https://sjpl.bibliocommons.com/v2/record/S156C5898961)
 - `J PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C4240266)
@@ -334,7 +310,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Portis` [Not a box](https://sjpl.bibliocommons.com/v2/record/S156C3054198)
 - `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
 - `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C3881629)
-- `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
 - `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
 - `J PICTURE BOOK Scarry` [Cars and trucks and things that go](https://sjpl.bibliocommons.com/v2/record/S156C6652228)
 - `J PICTURE BOOK Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C3431980)
@@ -347,10 +322,9 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Numeroff` [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C2225761) — Spanish: “Si le das una galletita a un ratón” — translation of “If you give a mouse a cookie”
 - `J SPA PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C4456603) — Spanish: “Donde viven los monstruos” — translation of “Where the wild things are”
 - `J SPA-ENG PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C6723358)
-- `J SPA-ENG PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C6723358)
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 
-## Alum Rock — 52 on the shelf
+## Alum Rock — 50 on the shelf
 
 - `J CHI PICTURE BOOK Haughton` [Oh no, George!](https://sjpl.bibliocommons.com/v2/record/S156C4885016) — Chinese: “Bu yao ba, Xiaoguai !” — translation of “Oh no, George!”
 - `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
@@ -380,7 +354,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Numeroff` [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C1165469)
 - `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
 - `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Scarry` [Cars and trucks and things that go](https://sjpl.bibliocommons.com/v2/record/S156C6652228)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
 - `J READ ALONG Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C4427690) — audiobook
@@ -398,24 +371,71 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Shannon` [Duck on a bike](https://sjpl.bibliocommons.com/v2/record/S156C4546720) — Spanish: “Pato va en bici” — translation of “Duck on a bike”
 - `J SPA PICTURE BOOK Waddell` [Owl babies](https://sjpl.bibliocommons.com/v2/record/S156C6146205) — Spanish: “Las lechucitas” — translation of “Owl babies”
 - `J SPA PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C4473901) — Spanish: “¡No dejes que la paloma conduzca el autobús!” — translation of “Don't let the pigeon drive the bus!”
-- `J SPA PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C4473901) — Spanish: “¡No dejes que la paloma conduzca el autobús!” — translation of “Don't let the pigeon drive the bus!”
 - `J SPA-ENG EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C5843233)
 - `J SPA-ENG HARDPAGE Carle` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C6129901)
 - `J SPA-ENG HARDPAGE Martin` [Polar bear, polar bear, what do you hear?](https://sjpl.bibliocommons.com/v2/record/S156C6494068)
 - `J SPA-ENG PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C2555019)
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 
-## Educational Park — 51 on the shelf
+## Cambrian — 47 on the shelf
+
+- `J CHI PICTURE BOOK Haughton` [Oh no, George!](https://sjpl.bibliocommons.com/v2/record/S156C4885016) — Chinese: “Bu yao ba, Xiaoguai !” — translation of “Oh no, George!”
+- `J CHI-ENG PICTURE BOOK Gomi` [鱷魚怕怕．牙醫怕怕](https://sjpl.bibliocommons.com/v2/record/S156C5892977)
+- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
+- `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
+- `J EASY READER Diesen` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
+- `J EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C2154030)
+- `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
+- `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
+- `J EASY READER Seuss` [Ten apples up on top!](https://sjpl.bibliocommons.com/v2/record/S156C5581421)
+- `J HARDPAGE` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C6768249)
+- `J HARDPAGE` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C6769300)
+- `J HARDPAGE` [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C6754442)
+- `J PB EASY READER` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674505)
+- `J PB PICTURE BOOK` [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C3248913)
+- `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
+- `J PICTURE BOOK Campbell` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C2132911)
+- `J PICTURE BOOK Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C1158305)
+- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
+- `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C1049398)
+- `J PICTURE BOOK Degen` [Jamberry](https://sjpl.bibliocommons.com/v2/record/S156C1123306)
+- `J PICTURE BOOK Dewdney` [Llama Llama red pajama](https://sjpl.bibliocommons.com/v2/record/S156C2625879)
+- `J PICTURE BOOK Donaldso` [The Gruffalo](https://sjpl.bibliocommons.com/v2/record/S156C5886122)
+- `J PICTURE BOOK Fox` [Ten little fingers and ten little toes](https://sjpl.bibliocommons.com/v2/record/S156C3694772)
+- `J PICTURE BOOK Gravett` [Monkey and me](https://sjpl.bibliocommons.com/v2/record/S156C3370402)
+- `J PICTURE BOOK Hills` [Duck & Goose go to the beach](https://sjpl.bibliocommons.com/v2/record/S156C4701335)
+- `J PICTURE BOOK Jackson` [I know an old lady who swallowed a pie](https://sjpl.bibliocommons.com/v2/record/S156C5832493)
+- `J PICTURE BOOK Keats` [The snowy day](https://sjpl.bibliocommons.com/v2/record/S156C1523415)
+- `J PICTURE BOOK Klassen` [I want my hat back](https://sjpl.bibliocommons.com/v2/record/S156C4246749)
+- `J PICTURE BOOK Lang` [Grumpy monkey party time!](https://sjpl.bibliocommons.com/v2/record/S156C5898961)
+- `J PICTURE BOOK Llenas` [The color monster : a story about emotions](https://sjpl.bibliocommons.com/v2/record/S156C5837301)
+- `J PICTURE BOOK Martin` [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C2209000)
+- `J PICTURE BOOK Martin` [Chicka chicka boom boom](https://sjpl.bibliocommons.com/v2/record/S156C1146942)
+- `J PICTURE BOOK Martin` [Polar bear, polar bear, what do you hear?](https://sjpl.bibliocommons.com/v2/record/S156C1681071)
+- `J PICTURE BOOK Numeroff` [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C1165469)
+- `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
+- `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
+- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
+- `J PICTURE BOOK Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C3431980)
+- `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
+- `J PICTURE BOOK Willems` [Knuffle Bunny : a cautionary tale](https://sjpl.bibliocommons.com/v2/record/S156C2597957)
+- `J PICTURE BOOK Willems` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C3251823)
+- `J PICTURE BOOK Willems` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C4701385)
+- `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
+- `J SPA HARDPAGE Boynton` [Barnyard dance!](https://sjpl.bibliocommons.com/v2/record/S156C6657414) — Spanish: “¡danza del corral!” — translation of “Barnyard dance!”
+- `J SPA HARDPAGE Brown` [Big red barn](https://sjpl.bibliocommons.com/v2/record/S156C5808863) — Spanish: “El gran granero rojo” — translation of “Big red barn”
+- `J SPA PICTURE BOOK Henkes` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C3111593) — Spanish: “La primera luna llena de gatita” — translation of “Kitten's first full moon”
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
+
+## Educational Park — 45 on the shelf
 
 - `J CHI PICTURE BOOK Gomi` [小金魚逃走了](https://sjpl.bibliocommons.com/v2/record/S156C6370352)
 - `J CHI PICTURE BOOK Haughton` [Oh no, George!](https://sjpl.bibliocommons.com/v2/record/S156C4885016) — Chinese: “Bu yao ba, Xiaoguai !” — translation of “Oh no, George!”
 - `J CHI PICTURE BOOK Klassen` [I want my hat back](https://sjpl.bibliocommons.com/v2/record/S156C5130281) — Chinese: “Zhao hui wo de mao zi” — translation of “I want my hat back”
 - `J CHI PICTURE BOOK McDonnel` [抱抱！](https://sjpl.bibliocommons.com/v2/record/S156C4433175)
 - `J CHI-ENG PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C4528110) — Chinese: “Fei chang ji e di mao mao chong” — translation of “Very hungry caterpillar”
-- `J CHI-ENG PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C4528110) — Chinese: “Fei chang ji e di mao mao chong” — translation of “Very hungry caterpillar”
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
 - `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
-- `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C4772180)
 - `J EASY READER Diesen` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
 - `J EASY READER Eastman` [Go, dog. Go!](https://sjpl.bibliocommons.com/v2/record/S156C2154053)
 - `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
@@ -432,7 +452,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PB PICTURE BOOK` [Bluey : the creek.](https://sjpl.bibliocommons.com/v2/record/S156C6274428)
 - `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Cousins` [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6632361)
 - `J PICTURE BOOK Dewdney` [Llama Llama misses Mama](https://sjpl.bibliocommons.com/v2/record/S156C3800297)
 - `J PICTURE BOOK Henkes` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C2595426)
@@ -445,8 +464,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Martin` [Chicka chicka boom boom](https://sjpl.bibliocommons.com/v2/record/S156C1146942)
 - `J PICTURE BOOK Numeroff` [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C1165469)
 - `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
-- `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
 - `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
 - `J PICTURE BOOK Willems` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C3251823)
 - `J PICTURE BOOK Willems` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C4701385)
@@ -456,15 +473,13 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C5353980) — Spanish: “Felices sueños, camiones grandes y pequeños” — translation of “Goodnight, goodnight, construction site”
 - `J SPA PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C4456603) — Spanish: “Donde viven los monstruos” — translation of “Where the wild things are”
 - `J SPA PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C4473901) — Spanish: “¡No dejes que la paloma conduzca el autobús!” — translation of “Don't let the pigeon drive the bus!”
-- `J SPA PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C4473901) — Spanish: “¡No dejes que la paloma conduzca el autobús!” — translation of “Don't let the pigeon drive the bus!”
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 
-## Hillview — 50 on the shelf
+## Hillview — 46 on the shelf
 
 - `J CHI PICTURE BOOK Haughton` [Oh no, George!](https://sjpl.bibliocommons.com/v2/record/S156C4885016) — Chinese: “Bu yao ba, Xiaoguai !” — translation of “Oh no, George!”
 - `J CHI PICTURE BOOK Klassen` [I want my hat back](https://sjpl.bibliocommons.com/v2/record/S156C5130281) — Chinese: “Zhao hui wo de mao zi” — translation of “I want my hat back”
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C4632780)
 - `J EASY READER Cronin` [Duck stays in the truck](https://sjpl.bibliocommons.com/v2/record/S156C6020915)
 - `J EASY READER Diesen` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
 - `J EASY READER Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5588686)
@@ -488,7 +503,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Patricel` [Higher! Higher!](https://sjpl.bibliocommons.com/v2/record/S156C3818180)
 - `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
 - `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Scarry` [Cars and trucks and things that go](https://sjpl.bibliocommons.com/v2/record/S156C6652228)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
 - `J SPA FICTION Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6782245) — Spanish: “Gruñón” — translation of “Grumpy Monkey”
@@ -505,75 +519,19 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA-ENG EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C5843233)
 - `J SPA-ENG HARDPAGE Carle` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C6129901)
 - `J SPA-ENG HARDPAGE Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C4378177)
-- `J SPA-ENG HARDPAGE Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C4378177)
 - `J SPA-ENG HARDPAGE Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C5812563)
 - `J SPA-ENG HARDPAGE Martin` [Polar bear, polar bear, what do you hear?](https://sjpl.bibliocommons.com/v2/record/S156C6494068)
 - `J SPA-ENG HARDPAGE Walsh` [Mouse paint](https://sjpl.bibliocommons.com/v2/record/S156C4400886)
 - `J SPA-ENG PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C6723358)
-- `J SPA-ENG PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C6723358)
 
-## Cambrian — 49 on the shelf
-
-- `J CHI PICTURE BOOK Haughton` [Oh no, George!](https://sjpl.bibliocommons.com/v2/record/S156C4885016) — Chinese: “Bu yao ba, Xiaoguai !” — translation of “Oh no, George!”
-- `J CHI-ENG PICTURE BOOK Gomi` [鱷魚怕怕．牙醫怕怕](https://sjpl.bibliocommons.com/v2/record/S156C5892977)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C4632780)
-- `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
-- `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C4772180)
-- `J EASY READER Diesen` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
-- `J EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C2154030)
-- `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
-- `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
-- `J EASY READER Seuss` [Ten apples up on top!](https://sjpl.bibliocommons.com/v2/record/S156C5581421)
-- `J HARDPAGE` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C6768249)
-- `J HARDPAGE` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C6769300)
-- `J HARDPAGE` [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C6754442)
-- `J PB EASY READER` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674505)
-- `J PB PICTURE BOOK` [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C3248913)
-- `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
-- `J PICTURE BOOK Campbell` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C2132911)
-- `J PICTURE BOOK Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C1158305)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
-- `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C1049398)
-- `J PICTURE BOOK Degen` [Jamberry](https://sjpl.bibliocommons.com/v2/record/S156C1123306)
-- `J PICTURE BOOK Dewdney` [Llama Llama red pajama](https://sjpl.bibliocommons.com/v2/record/S156C2625879)
-- `J PICTURE BOOK Donaldso` [The Gruffalo](https://sjpl.bibliocommons.com/v2/record/S156C5886122)
-- `J PICTURE BOOK Fox` [Ten little fingers and ten little toes](https://sjpl.bibliocommons.com/v2/record/S156C3694772)
-- `J PICTURE BOOK Gravett` [Monkey and me](https://sjpl.bibliocommons.com/v2/record/S156C3370402)
-- `J PICTURE BOOK Hills` [Duck & Goose go to the beach](https://sjpl.bibliocommons.com/v2/record/S156C4701335)
-- `J PICTURE BOOK Jackson` [I know an old lady who swallowed a pie](https://sjpl.bibliocommons.com/v2/record/S156C5832493)
-- `J PICTURE BOOK Keats` [The snowy day](https://sjpl.bibliocommons.com/v2/record/S156C1523415)
-- `J PICTURE BOOK Klassen` [I want my hat back](https://sjpl.bibliocommons.com/v2/record/S156C4246749)
-- `J PICTURE BOOK Lang` [Grumpy monkey party time!](https://sjpl.bibliocommons.com/v2/record/S156C5898961)
-- `J PICTURE BOOK Llenas` [The color monster : a story about emotions](https://sjpl.bibliocommons.com/v2/record/S156C5837301)
-- `J PICTURE BOOK Martin` [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C2209000)
-- `J PICTURE BOOK Martin` [Chicka chicka boom boom](https://sjpl.bibliocommons.com/v2/record/S156C1146942)
-- `J PICTURE BOOK Martin` [Polar bear, polar bear, what do you hear?](https://sjpl.bibliocommons.com/v2/record/S156C1681071)
-- `J PICTURE BOOK Numeroff` [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C1165469)
-- `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
-- `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
-- `J PICTURE BOOK Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C3431980)
-- `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
-- `J PICTURE BOOK Willems` [Knuffle Bunny : a cautionary tale](https://sjpl.bibliocommons.com/v2/record/S156C2597957)
-- `J PICTURE BOOK Willems` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C3251823)
-- `J PICTURE BOOK Willems` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C4701385)
-- `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
-- `J SPA HARDPAGE Boynton` [Barnyard dance!](https://sjpl.bibliocommons.com/v2/record/S156C6657414) — Spanish: “¡danza del corral!” — translation of “Barnyard dance!”
-- `J SPA HARDPAGE Brown` [Big red barn](https://sjpl.bibliocommons.com/v2/record/S156C5808863) — Spanish: “El gran granero rojo” — translation of “Big red barn”
-- `J SPA PICTURE BOOK Henkes` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C3111593) — Spanish: “La primera luna llena de gatita” — translation of “Kitten's first full moon”
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
-
-## Santa Teresa — 48 on the shelf
+## Santa Teresa — 45 on the shelf
 
 - `J CHI PICTURE BOOK Gomi` [小金魚逃走了](https://sjpl.bibliocommons.com/v2/record/S156C6370352)
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C4632780)
 - `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
 - `J EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C2154030)
 - `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
 - `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
-- `J EASY READER Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5588686)
 - `J EASY READER Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C1711944)
 - `J EASY READER Seuss` [Ten apples up on top!](https://sjpl.bibliocommons.com/v2/record/S156C5581421)
 - `J HARDPAGE` [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C6816164)
@@ -602,7 +560,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Portis` [Not a box](https://sjpl.bibliocommons.com/v2/record/S156C3054198)
 - `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
 - `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Scarry` [Cars and trucks and things that go](https://sjpl.bibliocommons.com/v2/record/S156C6652228)
 - `J PICTURE BOOK Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C3431980)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
@@ -615,11 +572,10 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C2128250) — Spanish: “Buenas noches, Luna” — translation of “Goodnight moon”
 - `J SPA PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C5353980) — Spanish: “Felices sueños, camiones grandes y pequeños” — translation of “Goodnight, goodnight, construction site”
 
-## Pearl Avenue — 46 on the shelf
+## Pearl Avenue — 43 on the shelf
 
 - `J CHI PICTURE BOOK Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6672622) — Chinese: “Xin fan de hou zi he ta de di di” — translation of “Grumpy monkey up all night”
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C4632780)
 - `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
 - `J EASY READER Cronin` [Duck stays in the truck](https://sjpl.bibliocommons.com/v2/record/S156C6020915)
 - `J EASY READER Diesen` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
@@ -632,10 +588,9 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J HARDPAGE` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C6768249)
 - `J HARDPAGE` [Twinkle, twinkle, little sheepy : a sleepy sheepy story](https://sjpl.bibliocommons.com/v2/record/S156C6801747)
 - `J JPN PICTURE BOOK Cotter` [Don't push the button!](https://sjpl.bibliocommons.com/v2/record/S156C5883790) — Japanese: “Zettaini oshicha dame” — translation of “Don't push the button!”
-- `J JPN PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C3093371)
+- `J JPN PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C3093371) — “Kaijūtachi no iru tokoro”
 - `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
 - `J PICTURE BOOK Campbell` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C2132911)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Cousins` [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6632361)
 - `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C1049398)
@@ -654,7 +609,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Pizzoli` [The watermelon seed](https://sjpl.bibliocommons.com/v2/record/S156C6631965)
 - `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
 - `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C3431980)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
 - `J PICTURE BOOK Slobodki` [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sjpl.bibliocommons.com/v2/record/S156C3659138)
@@ -664,7 +618,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C5353980) — Spanish: “Felices sueños, camiones grandes y pequeños” — translation of “Goodnight, goodnight, construction site”
 - `J SPA-ENG EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C5843233)
 
-## Tully — 46 on the shelf
+## Tully — 43 on the shelf
 
 - `J CHI PICTURE BOOK Haughton` [Oh no, George!](https://sjpl.bibliocommons.com/v2/record/S156C4885016) — Chinese: “Bu yao ba, Xiaoguai !” — translation of “Oh no, George!”
 - `J CHI PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6773871) — Chinese: “Wo men yi qi zhao da xiong” — translation of “We're going on a bear hunt”
@@ -674,7 +628,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
 - `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
 - `J HARDPAGE` [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C6816164)
-- `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [I want my hat back](https://sjpl.bibliocommons.com/v2/record/S156C5898648)
 - `J HARDPAGE` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C6768249)
@@ -689,7 +642,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
 - `J PICTURE BOOK Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C1158305)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Cousins` [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6632361)
 - `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C1049398)
 - `J PICTURE BOOK Degen` [Jamberry](https://sjpl.bibliocommons.com/v2/record/S156C1123306)
@@ -703,24 +655,22 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
 - `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
 - `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Scarry` [Cars and trucks and things that go](https://sjpl.bibliocommons.com/v2/record/S156C6652228)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
 - `J PICTURE BOOK Willems` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C4701385)
 - `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
 - `J SPA PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C4456603) — Spanish: “Donde viven los monstruos” — translation of “Where the wild things are”
 - `J SPA-ENG HARDPAGE Walsh` [Mouse paint](https://sjpl.bibliocommons.com/v2/record/S156C4400886)
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 - `J VIE-ENG PICTURE BOOK Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5847875)
 
-## Almaden — 41 on the shelf
+## Almaden — 37 on the shelf
 
 - `J CHI PICTURE BOOK Antony` [貝蒂好想好想吃香蕉](https://sjpl.bibliocommons.com/v2/record/S156C5709834)
 - `J CHI PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6773871) — Chinese: “Wo men yi qi zhao da xiong” — translation of “We're going on a bear hunt”
 - `J CHI PICTURE BOOK Tullet` [小黃點](https://sjpl.bibliocommons.com/v2/record/S156C6369933)
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
 - `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6148665)
-- `J EASY READER Carle` [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C4772180)
 - `J EASY READER Cronin` [Duck stays in the truck](https://sjpl.bibliocommons.com/v2/record/S156C6020915)
 - `J EASY READER Diesen` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
 - `J EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C2154030)
@@ -734,13 +684,11 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J JPN HARDPAGE Rinker` [Mighty, mighty construction site](https://sjpl.bibliocommons.com/v2/record/S156C6763894) — Japanese: “Ohayō hataraku kurumatachi” — translation of “Mighty, mighty construction site”
 - `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Degen` [Jamberry](https://sjpl.bibliocommons.com/v2/record/S156C1123306)
 - `J PICTURE BOOK Donaldso` [The Gruffalo](https://sjpl.bibliocommons.com/v2/record/S156C5886122)
 - `J PICTURE BOOK Hills` [Duck & Goose, honk! quack! boo!](https://sjpl.bibliocommons.com/v2/record/S156C5693662)
 - `J PICTURE BOOK Jackson` [I know an old lady who swallowed a pie](https://sjpl.bibliocommons.com/v2/record/S156C5832493)
 - `J PICTURE BOOK Keats` [The snowy day](https://sjpl.bibliocommons.com/v2/record/S156C4208827)
-- `J PICTURE BOOK Keats` [The snowy day](https://sjpl.bibliocommons.com/v2/record/S156C1523415)
 - `J PICTURE BOOK Krauss` [The carrot seed](https://sjpl.bibliocommons.com/v2/record/S156C2367560)
 - `J PICTURE BOOK Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C5810325)
 - `J PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C4240266)
@@ -752,16 +700,14 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
 - `J PICTURE BOOK Slobodki` [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sjpl.bibliocommons.com/v2/record/S156C3659138)
 - `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
-- `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
 - `J PICTURE BOOK Willems` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C4701385)
 - `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
 - `J READ ALONG Martin` [Polar bear, polar bear, what do you hear?](https://sjpl.bibliocommons.com/v2/record/S156C6065187) — audiobook
 
-## Bascom — 40 on the shelf
+## Bascom — 38 on the shelf
 
 - `J CHI PICTURE BOOK Haughton` [Oh no, George!](https://sjpl.bibliocommons.com/v2/record/S156C4885016) — Chinese: “Bu yao ba, Xiaoguai !” — translation of “Oh no, George!”
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C4632780)
 - `J EASY READER Cronin` [Duck stays in the truck](https://sjpl.bibliocommons.com/v2/record/S156C6020915)
 - `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
 - `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
@@ -777,7 +723,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PB EASY READER` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674505)
 - `J PB PICTURE BOOK` [Bluey : the creek.](https://sjpl.bibliocommons.com/v2/record/S156C6274428)
 - `J PB PICTURE BOOK` [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C3248913)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Dewdney` [Llama Llama red pajama](https://sjpl.bibliocommons.com/v2/record/S156C2625879)
 - `J PICTURE BOOK Gravett` [Monkey and me](https://sjpl.bibliocommons.com/v2/record/S156C3370402)
@@ -798,9 +743,9 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Willems` [Knuffle Bunny : a cautionary tale](https://sjpl.bibliocommons.com/v2/record/S156C2597957)
 - `J SPA PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C4456603) — Spanish: “Donde viven los monstruos” — translation of “Where the wild things are”
 - `J SPA-ENG PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C2555019)
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 
-## Village Square — 39 on the shelf
+## Village Square — 38 on the shelf
 
 - `J CHI PICTURE BOOK Antony` [貝蒂好想好想吃香蕉](https://sjpl.bibliocommons.com/v2/record/S156C5709834)
 - `J CHI PICTURE BOOK Hepworth` [I love you to the moon and back](https://sjpl.bibliocommons.com/v2/record/S156C6657336)
@@ -816,7 +761,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J HARDPAGE` [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C6763683)
 - `J PB EASY READER` [You can do it, Pout-Pout Fish!](https://sjpl.bibliocommons.com/v2/record/S156C5871163)
 - `J PICTURE BOOK Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C1158305)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Cousins` [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6632361)
 - `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C1049398)
@@ -842,7 +786,44 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA-ENG EASY READER Beaton` [Go, dog. Go!](https://sjpl.bibliocommons.com/v2/record/S156C1893482) — Spanish: “Corre, perro, corre!” — translation of “Go, dog, go!”
 - `J VIE-ENG PICTURE BOOK Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5847875)
 
-## Rose Garden — 38 on the shelf
+## Evergreen — 34 on the shelf
+
+- `J CHI HARDPAGE Haughton` [Shh! We have a plan](https://sjpl.bibliocommons.com/v2/record/S156C5555236) — Chinese: “Xu! Wo men you ge ji hua” — translation of “Shh! We have a plan”
+- `J CHI PICTURE BOOK Hepworth` [I love you to the moon and back](https://sjpl.bibliocommons.com/v2/record/S156C6657336)
+- `J CHI PICTURE BOOK Lai` [我變成一隻噴火龍了！](https://sjpl.bibliocommons.com/v2/record/S156C6370349)
+- `J CHI PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6773871) — Chinese: “Wo men yi qi zhao da xiong” — translation of “We're going on a bear hunt”
+- `J CHI-ENG PICTURE BOOK Gomi` [鱷魚怕怕．牙醫怕怕](https://sjpl.bibliocommons.com/v2/record/S156C5892977)
+- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
+- `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
+- `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
+- `J HARDPAGE` [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C6816164)
+- `J HARDPAGE` [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C4673272)
+- `J HARDPAGE` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C3114067)
+- `J HARDPAGE` [Giraffes can't dance](https://sjpl.bibliocommons.com/v2/record/S156C6694722)
+- `J HARDPAGE` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C6769300)
+- `J HARDPAGE` [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C6754442)
+- `J HARDPAGE` [Twinkle, twinkle, little sheepy : a sleepy sheepy story](https://sjpl.bibliocommons.com/v2/record/S156C6801747)
+- `J PAN-ENG PICTURE BOOK Martin` [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C3009374)
+- `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
+- `J PICTURE BOOK Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C1158305)
+- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
+- `J PICTURE BOOK Degen` [Jamberry](https://sjpl.bibliocommons.com/v2/record/S156C1123306)
+- `J PICTURE BOOK Jackson` [I know an old lady who swallowed a pie](https://sjpl.bibliocommons.com/v2/record/S156C5832493)
+- `J PICTURE BOOK Krauss` [The carrot seed](https://sjpl.bibliocommons.com/v2/record/S156C2367560)
+- `J PICTURE BOOK Llenas` [The color monster : a story about emotions](https://sjpl.bibliocommons.com/v2/record/S156C5837301)
+- `J PICTURE BOOK Martin` [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C2209000)
+- `J PICTURE BOOK Numeroff` [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C1165469)
+- `J PICTURE BOOK Pizzoli` [The watermelon seed](https://sjpl.bibliocommons.com/v2/record/S156C6631965)
+- `J PICTURE BOOK Portis` [Not a box](https://sjpl.bibliocommons.com/v2/record/S156C3054198)
+- `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
+- `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
+- `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
+- `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
+- `J PICTURE BOOK Willems` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C3251823)
+- `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
+- `J SPA-ENG HARDPAGE Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C4378177)
+
+## Rose Garden — 35 on the shelf
 
 - `J CHI PICTURE BOOK Klassen` [I want my hat back](https://sjpl.bibliocommons.com/v2/record/S156C5130281) — Chinese: “Zhao hui wo de mao zi” — translation of “I want my hat back”
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C4632780)
@@ -850,14 +831,12 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C2154030)
 - `J EASY READER Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5588686)
 - `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
-- `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C6754442)
 - `J HARDPAGE` [Moo, baa, la la la!](https://sjpl.bibliocommons.com/v2/record/S156C6129892)
 - `J HARDPAGE` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C6800947)
 - `J HARDPAGE` [Twinkle, twinkle, little sheepy : a sleepy sheepy story](https://sjpl.bibliocommons.com/v2/record/S156C6801747)
 - `J HARDPAGE` [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C6763683)
 - `J PICTURE BOOK Carle` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C2133914)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C1049398)
 - `J PICTURE BOOK Gravett` [Monkey and me](https://sjpl.bibliocommons.com/v2/record/S156C3370402)
@@ -871,7 +850,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK McCloske` [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C2212224)
 - `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
 - `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
 - `J PICTURE BOOK Willems` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C3251823)
 - `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
@@ -881,9 +859,9 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C4456603) — Spanish: “Donde viven los monstruos” — translation of “Where the wild things are”
 - `J SPA PICTURE BOOK Shannon` [Duck on a bike](https://sjpl.bibliocommons.com/v2/record/S156C4546720) — Spanish: “Pato va en bici” — translation of “Duck on a bike”
 - `J SPA-ENG EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C5843233)
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 
-## Willow Glen — 38 on the shelf
+## Willow Glen — 36 on the shelf
 
 - `J CHI PICTURE BOOK Haughton` [Oh no, George!](https://sjpl.bibliocommons.com/v2/record/S156C4885016) — Chinese: “Bu yao ba, Xiaoguai !” — translation of “Oh no, George!”
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
@@ -911,10 +889,8 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Matheson` [Tap the magic tree](https://sjpl.bibliocommons.com/v2/record/S156C4619313)
 - `J PICTURE BOOK Numeroff` [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C1165469)
 - `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C3431980)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
-- `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
 - `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
 - `J PICTURE BOOK Willems` [Knuffle Bunny : a cautionary tale](https://sjpl.bibliocommons.com/v2/record/S156C2597957)
 - `J PICTURE BOOK Willems` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C3251823)
@@ -924,11 +900,10 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA FICTION Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6782245) — Spanish: “Gruñón” — translation of “Grumpy Monkey”
 - `J SPA PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C4456603) — Spanish: “Donde viven los monstruos” — translation of “Where the wild things are”
 
-## Biblioteca Latinoamericana — 37 on the shelf
+## Biblioteca Latinoamericana — 34 on the shelf
 
 - `J HARDPAGE` [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C6816164)
 - `J HARDPAGE` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C3114067)
-- `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C5804959)
 - `J HARDPAGE` [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C6754442)
@@ -938,7 +913,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J HARDPAGE` [Twinkle, twinkle, little sheepy : a sleepy sheepy story](https://sjpl.bibliocommons.com/v2/record/S156C6801747)
 - `J HARDPAGE` [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C6763683)
 - `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Cousins` [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6632361)
 - `J PICTURE BOOK Dewdney` [Llama Llama red pajama](https://sjpl.bibliocommons.com/v2/record/S156C2625879)
@@ -953,7 +927,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Portis` [Not a box](https://sjpl.bibliocommons.com/v2/record/S156C3054198)
 - `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
 - `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4321176)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Scarry` [Cars and trucks and things that go](https://sjpl.bibliocommons.com/v2/record/S156C6652228)
 - `J SPA FICTION Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6782245) — Spanish: “Gruñón” — translation of “Grumpy Monkey”
 - `J SPA PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C2128250) — Spanish: “Buenas noches, Luna” — translation of “Goodnight moon”
@@ -962,55 +935,14 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C5353980) — Spanish: “Felices sueños, camiones grandes y pequeños” — translation of “Goodnight, goodnight, construction site”
 - `J SPA-ENG EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C5843233)
 - `J SPA-ENG PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C2555019)
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 
-## Evergreen — 37 on the shelf
-
-- `J CHI HARDPAGE Haughton` [Shh! We have a plan](https://sjpl.bibliocommons.com/v2/record/S156C5555236) — Chinese: “Xu! Wo men you ge ji hua” — translation of “Shh! We have a plan”
-- `J CHI PICTURE BOOK Hepworth` [I love you to the moon and back](https://sjpl.bibliocommons.com/v2/record/S156C6657336)
-- `J CHI PICTURE BOOK Lai` [我變成一隻噴火龍了！](https://sjpl.bibliocommons.com/v2/record/S156C6370349)
-- `J CHI PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6773871) — Chinese: “Wo men yi qi zhao da xiong” — translation of “We're going on a bear hunt”
-- `J CHI-ENG PICTURE BOOK Gomi` [鱷魚怕怕．牙醫怕怕](https://sjpl.bibliocommons.com/v2/record/S156C5892977)
-- `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
-- `J EASY READER Lang` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674485)
-- `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
-- `J HARDPAGE` [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C6816164)
-- `J HARDPAGE` [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C4673272)
-- `J HARDPAGE` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C3114067)
-- `J HARDPAGE` [Giraffes can't dance](https://sjpl.bibliocommons.com/v2/record/S156C6694722)
-- `J HARDPAGE` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C6769300)
-- `J HARDPAGE` [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C6754442)
-- `J HARDPAGE` [Twinkle, twinkle, little sheepy : a sleepy sheepy story](https://sjpl.bibliocommons.com/v2/record/S156C6801747)
-- `J PAN-ENG PICTURE BOOK Martin` [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C3009374)
-- `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
-- `J PICTURE BOOK Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C1158305)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
-- `J PICTURE BOOK Degen` [Jamberry](https://sjpl.bibliocommons.com/v2/record/S156C1123306)
-- `J PICTURE BOOK Jackson` [I know an old lady who swallowed a pie](https://sjpl.bibliocommons.com/v2/record/S156C5832493)
-- `J PICTURE BOOK Krauss` [The carrot seed](https://sjpl.bibliocommons.com/v2/record/S156C2367560)
-- `J PICTURE BOOK Llenas` [The color monster : a story about emotions](https://sjpl.bibliocommons.com/v2/record/S156C5837301)
-- `J PICTURE BOOK Martin` [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C2209000)
-- `J PICTURE BOOK Numeroff` [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C1165469)
-- `J PICTURE BOOK Pizzoli` [The watermelon seed](https://sjpl.bibliocommons.com/v2/record/S156C6631965)
-- `J PICTURE BOOK Portis` [Not a box](https://sjpl.bibliocommons.com/v2/record/S156C3054198)
-- `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
-- `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
-- `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
-- `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
-- `J PICTURE BOOK Willems` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C2530651)
-- `J PICTURE BOOK Willems` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C3251823)
-- `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
-- `J SPA-ENG HARDPAGE Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C4378177)
-- `J SPA-ENG HARDPAGE Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C4378177)
-
-## East SJ Carnegie — 34 on the shelf
+## East SJ Carnegie — 31 on the shelf
 
 - `J EASY READER Carle` [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6148671)
 - `J EASY READER Cronin` [Duck stays in the truck](https://sjpl.bibliocommons.com/v2/record/S156C6020915)
 - `J EASY READER Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5588686)
 - `J HARDPAGE` [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C6816164)
-- `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)
 - `J HARDPAGE` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C5804959)
 - `J HARDPAGE` [Giraffes can't dance](https://sjpl.bibliocommons.com/v2/record/S156C6694722)
@@ -1019,7 +951,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PB PICTURE BOOK` [Bluey : the creek.](https://sjpl.bibliocommons.com/v2/record/S156C6274428)
 - `J PB PICTURE BOOK` [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C3248913)
 - `J PICTURE BOOK Campbell` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C2132911)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Cousins` [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6632361)
 - `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C1049398)
@@ -1034,14 +965,13 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Patricel` [Higher! Higher!](https://sjpl.bibliocommons.com/v2/record/S156C3818180)
 - `J PICTURE BOOK Rinker` [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C4151651)
 - `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Scarry` [Cars and trucks and things that go](https://sjpl.bibliocommons.com/v2/record/S156C6652228)
 - `J PICTURE BOOK Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C3431980)
 - `J SPA HARDPAGE Boynton` [Barnyard dance!](https://sjpl.bibliocommons.com/v2/record/S156C6657414) — Spanish: “¡danza del corral!” — translation of “Barnyard dance!”
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 - `J VIE-ENG PICTURE BOOK Seuss` [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C5847875)
 
-## Joyce Ellington — 32 on the shelf
+## Joyce Ellington — 31 on the shelf
 
 - `J CHI HARDPAGE Haughton` [Shh! We have a plan](https://sjpl.bibliocommons.com/v2/record/S156C5555236) — Chinese: “Xu! Wo men you ge ji hua” — translation of “Shh! We have a plan”
 - `J CHI PICTURE BOOK Carle` [好餓的毛毛蟲](https://sjpl.bibliocommons.com/v2/record/S156C5876504)
@@ -1056,7 +986,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PAN-ENG PICTURE BOOK Martin` [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C3009374)
 - `J PB PICTURE BOOK` [Bluey : the creek.](https://sjpl.bibliocommons.com/v2/record/S156C6274428)
 - `J PICTURE BOOK Brown` [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6020675)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C1049398)
 - `J PICTURE BOOK Gravett` [Monkey and me](https://sjpl.bibliocommons.com/v2/record/S156C3370402)
@@ -1074,9 +1003,9 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Shannon` [Duck on a bike](https://sjpl.bibliocommons.com/v2/record/S156C4546720) — Spanish: “Pato va en bici” — translation of “Duck on a bike”
 - `J SPA-ENG EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C5843233)
 - `J SPA-ENG HARDPAGE Crews` [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C5812563)
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 
-## Seven Trees — 28 on the shelf
+## Seven Trees — 27 on the shelf
 
 - `J CHI HARDPAGE Haughton` [Shh! We have a plan](https://sjpl.bibliocommons.com/v2/record/S156C5555236) — Chinese: “Xu! Wo men you ge ji hua” — translation of “Shh! We have a plan”
 - `J CHI PICTURE BOOK Haughton` [Oh no, George!](https://sjpl.bibliocommons.com/v2/record/S156C4885016) — Chinese: “Bu yao ba, Xiaoguai !” — translation of “Oh no, George!”
@@ -1086,7 +1015,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PB EASY READER` [Duck stays in the truck](https://sjpl.bibliocommons.com/v2/record/S156C6020915)
 - `J PICTURE BOOK Campbell` [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C2132911)
 - `J PICTURE BOOK Carle` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C2133914)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Henkes` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C2595426)
 - `J PICTURE BOOK Hills` [Duck & Goose, honk! quack! boo!](https://sjpl.bibliocommons.com/v2/record/S156C5693662)
@@ -1107,7 +1035,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Shannon` [Duck on a bike](https://sjpl.bibliocommons.com/v2/record/S156C4546720) — Spanish: “Pato va en bici” — translation of “Duck on a bike”
 - `J SPA-ENG EASY READER Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C5843233)
 
-## Alviso — 26 on the shelf
+## Alviso — 23 on the shelf
 
 - `J CHI PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6773871) — Chinese: “Wo men yi qi zhao da xiong” — translation of “We're going on a bear hunt”
 - `J HARDPAGE` [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C6816164)
@@ -1115,10 +1043,9 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J HARDPAGE` [Knuffle Bunny too : a case of mistaken identity](https://sjpl.bibliocommons.com/v2/record/S156C6769300)
 - `J HARDPAGE` [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C6754442)
 - `J HARDPAGE` [The going to bed book](https://sjpl.bibliocommons.com/v2/record/S156C5848135)
-- `J JPN PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C3093371)
+- `J JPN PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C3093371) — “Kaijūtachi no iru tokoro”
 - `J PB EASY READER` [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6674505)
 - `J PB PICTURE BOOK` [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C3248913)
-- `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C2945517)
 - `J PICTURE BOOK Jackson` [I know an old lady who swallowed a pie](https://sjpl.bibliocommons.com/v2/record/S156C5832493)
 - `J PICTURE BOOK Krauss` [The carrot seed](https://sjpl.bibliocommons.com/v2/record/S156C2367560)
@@ -1126,14 +1053,12 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J PICTURE BOOK Martin` [Chicka chicka boom boom](https://sjpl.bibliocommons.com/v2/record/S156C1146942)
 - `J PICTURE BOOK Numeroff` [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C1165469)
 - `J PICTURE BOOK Rosen` [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C6196123)
-- `J PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5650272)
 - `J PICTURE BOOK Scarry` [Cars and trucks and things that go](https://sjpl.bibliocommons.com/v2/record/S156C6652228)
 - `J PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C2375876)
 - `J SPA HARDPAGE Schertle` [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C5809791) — Spanish: “El camioncito azul abre el camino” — translation of “Little blue truck leads the way”
 - `J SPA PICTURE BOOK Carle` [From head to toe](https://sjpl.bibliocommons.com/v2/record/S156C3091970) — Spanish: “De la cabeza a los pies” — translation of “From head to toe”
 - `J SPA PICTURE BOOK Henkes` [Kitten's first full moon](https://sjpl.bibliocommons.com/v2/record/S156C3111593) — Spanish: “La primera luna llena de gatita” — translation of “Kitten's first full moon”
 - `J SPA PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C4456603) — Spanish: “Donde viven los monstruos” — translation of “Where the wild things are”
-- `J SPA-ENG HARDPAGE Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C4378177)
 - `J SPA-ENG HARDPAGE Carle` [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C4378177)
 
 ## Mount Pleasant — 22 on the shelf
@@ -1159,16 +1084,16 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T16:15:12**. Don'
 - `J SPA PICTURE BOOK Rubin` [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5844804) — Spanish: “Dragones y tacos” — translation of “Dragons love tacos”
 - `J SPA PICTURE BOOK Sendak` [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C4456603) — Spanish: “Donde viven los monstruos” — translation of “Where the wild things are”
 - `J SPA-ENG PICTURE BOOK Eastman` [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C5843233)
-- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570)
+- `J SPA-ENG PICTURE BOOK Litwin` [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5696570) — Spanish: “Pete el gato” — translation of “Pete the cat : I love my white shoes”
 
 ## Digital (eBook / eAudiobook — borrow via the library's app; availability is a license queue, not a shelf)
 
-[Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C6024632) (eBook), [Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C6576070) (eBook), [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C5835096) (eBook), [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C6031280) (eBook), [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sjpl.bibliocommons.com/v2/record/S156C6576699) (eBook), [Chicka chicka boom boom](https://sjpl.bibliocommons.com/v2/record/S156C4932286) (eBook), [Don't push the button!](https://sjpl.bibliocommons.com/v2/record/S156C5873917) (eBook), [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4932285) (eBook), [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5630732) (eBook), [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5630813) (eBook), [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C5708201) (eBook), [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C6066057) (Spanish eBook: “Dragones y tacos” — translation of “Dragons love tacos”), [Go, dog. Go!](https://sjpl.bibliocommons.com/v2/record/S156C6575122) (eBook), [Go, dog. Go!](https://sjpl.bibliocommons.com/v2/record/S156C6582851) (Spanish eBook: “Ve, perro. ve!”), [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C5630706) (eBook), [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C6577467) (eBook), [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C6793226) (eBook), [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6017245) (eBook), [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6017008) (eBook), [I stink!](https://sjpl.bibliocommons.com/v2/record/S156C6016525) (eBook), [I want my hat back](https://sjpl.bibliocommons.com/v2/record/S156C6795218) (eBook), [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C6510415) (eBook), [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C5695901) (eBook), [Llama Llama misses Mama](https://sjpl.bibliocommons.com/v2/record/S156C5694176) (eBook), [Llama Llama red pajama](https://sjpl.bibliocommons.com/v2/record/S156C5672622) (eBook), [Mighty, mighty construction site](https://sjpl.bibliocommons.com/v2/record/S156C5589229) (eBook), [Mighty, mighty construction site](https://sjpl.bibliocommons.com/v2/record/S156C5630788) (eBook), [Mighty, mighty construction site](https://sjpl.bibliocommons.com/v2/record/S156C6795277) (eBook), [Mighty, mighty construction site](https://sjpl.bibliocommons.com/v2/record/S156C6816465) (Chinese eBook: “Zao an, gong cheng che zao an” — translation of “Mighty, mighty construction site”), [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C4931921) (eBook), [Owl babies](https://sjpl.bibliocommons.com/v2/record/S156C6016583) (eBook), [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5542655) (eBook), [Sheep in a jeep](https://sjpl.bibliocommons.com/v2/record/S156C6786734) (eBook), [Shh! We have a plan](https://sjpl.bibliocommons.com/v2/record/S156C6722775) (eBook), [Steam train, dream train](https://sjpl.bibliocommons.com/v2/record/S156C5589219) (eBook), [Steam train, dream train](https://sjpl.bibliocommons.com/v2/record/S156C6020196) (eBook), [Steam train, dream train](https://sjpl.bibliocommons.com/v2/record/S156C6580291) (eBook), [The snowy day](https://sjpl.bibliocommons.com/v2/record/S156C5542660) (eBook), [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C5630704) (eBook), [The watermelon seed](https://sjpl.bibliocommons.com/v2/record/S156C6628016) (eBook)
+[Are you my mother?](https://sjpl.bibliocommons.com/v2/record/S156C6024632) (eBook), [Blueberries for Sal](https://sjpl.bibliocommons.com/v2/record/S156C5835096) (eBook), [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C6031280) (eBook), [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sjpl.bibliocommons.com/v2/record/S156C6576699) (eBook), [Chicka chicka boom boom](https://sjpl.bibliocommons.com/v2/record/S156C4932286) (eBook), [Don't push the button!](https://sjpl.bibliocommons.com/v2/record/S156C5873917) (eBook), [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C4932285) (eBook), [Dragons love tacos](https://sjpl.bibliocommons.com/v2/record/S156C6066057) (Spanish eBook: “Dragones y tacos” — translation of “Dragons love tacos”), [Go, dog. Go!](https://sjpl.bibliocommons.com/v2/record/S156C6575122) (eBook), [Go, dog. Go!](https://sjpl.bibliocommons.com/v2/record/S156C6582851) (Spanish eBook: “Ve, perro. ve!”), [Goodnight, goodnight, construction site](https://sjpl.bibliocommons.com/v2/record/S156C5630706) (eBook), [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6017245) (eBook), [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C6017008) (eBook), [I stink!](https://sjpl.bibliocommons.com/v2/record/S156C6016525) (eBook), [I want my hat back](https://sjpl.bibliocommons.com/v2/record/S156C6795218) (eBook), [If you give a mouse a cookie](https://sjpl.bibliocommons.com/v2/record/S156C6510415) (eBook), [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C5695901) (eBook), [Llama Llama misses Mama](https://sjpl.bibliocommons.com/v2/record/S156C5694176) (eBook), [Llama Llama red pajama](https://sjpl.bibliocommons.com/v2/record/S156C5672622) (eBook), [Mighty, mighty construction site](https://sjpl.bibliocommons.com/v2/record/S156C5589229) (eBook), [Mighty, mighty construction site](https://sjpl.bibliocommons.com/v2/record/S156C6816465) (Chinese eBook: “Zao an, gong cheng che zao an” — translation of “Mighty, mighty construction site”), [Mr. Brown can moo! Can you?](https://sjpl.bibliocommons.com/v2/record/S156C4931921) (eBook), [Owl babies](https://sjpl.bibliocommons.com/v2/record/S156C6016583) (eBook), [Pete the cat : I love my white shoes](https://sjpl.bibliocommons.com/v2/record/S156C5542655) (eBook), [Sheep in a jeep](https://sjpl.bibliocommons.com/v2/record/S156C6786734) (eBook), [Shh! We have a plan](https://sjpl.bibliocommons.com/v2/record/S156C6722775) (eBook), [Steam train, dream train](https://sjpl.bibliocommons.com/v2/record/S156C5589219) (eBook), [The snowy day](https://sjpl.bibliocommons.com/v2/record/S156C5542660) (eBook), [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C5630704) (eBook), [The watermelon seed](https://sjpl.bibliocommons.com/v2/record/S156C6628016) (eBook)
 
 
 ## In the catalog, but no copy on any shelf right now
 
-[Big red barn](https://sjpl.bibliocommons.com/v2/record/S156C2409890), [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C4004430), [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C5803119), [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C6569703) (audiobook), [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sjpl.bibliocommons.com/v2/record/S156C2261164), [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C5524124), [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6063851) (audiobook), [Don't push the button!](https://sjpl.bibliocommons.com/v2/record/S156C5907283) (audiobook), [Duck & Goose go to the beach](https://sjpl.bibliocommons.com/v2/record/S156C6519431) (audiobook), [Duck & Goose, honk! quack! boo!](https://sjpl.bibliocommons.com/v2/record/S156C6519430) (audiobook), [Duck & Goose, honk! quack! boo!](https://sjpl.bibliocommons.com/v2/record/S156C6812829), [Duck on a bike](https://sjpl.bibliocommons.com/v2/record/S156C1983989), [Each peach pear plum](https://sjpl.bibliocommons.com/v2/record/S156C1054613), [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C6129921), [Giraffes can't dance](https://sjpl.bibliocommons.com/v2/record/S156C2408497), [Giraffes can't dance](https://sjpl.bibliocommons.com/v2/record/S156C4450483) (Chinese: “Chang jing Lu bu hui tiao wu” — translation of “Giraffes can't dance”), [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C2753967) (audiobook), [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6025204) (audiobook: “The Runaway Bunny”), [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6569269) (audiobook), [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6817297), [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C5689066), [How do dinosaurs say good night?](https://sjpl.bibliocommons.com/v2/record/S156C6569225) (audiobook), [In my heart : a book of feelings](https://sjpl.bibliocommons.com/v2/record/S156C4968334), [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C5670730), [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C5848475), [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C6020346) (audiobook), [Llama Llama misses Mama](https://sjpl.bibliocommons.com/v2/record/S156C5676453) (audiobook: “The Llama Llama Audiobook Collection”), [Llama Llama red pajama](https://sjpl.bibliocommons.com/v2/record/S156C5870739) (audiobook: “Llama Llama Red Pajama and 19 Other Favorites”), [Mighty, mighty construction site](https://sjpl.bibliocommons.com/v2/record/S156C5558376), [Owl babies](https://sjpl.bibliocommons.com/v2/record/S156C2613323), [Owl babies](https://sjpl.bibliocommons.com/v2/record/S156C5077002), [Polar bear, polar bear, what do you hear?](https://sjpl.bibliocommons.com/v2/record/S156C6569503) (audiobook), [Press here](https://sjpl.bibliocommons.com/v2/record/S156C4940812), [Sheep in a jeep](https://sjpl.bibliocommons.com/v2/record/S156C1192386), [Ten apples up on top!](https://sjpl.bibliocommons.com/v2/record/S156C2255722), [The Gruffalo](https://sjpl.bibliocommons.com/v2/record/S156C6031249) (audiobook), [The going to bed book](https://sjpl.bibliocommons.com/v2/record/S156C4938045), [The napping house](https://sjpl.bibliocommons.com/v2/record/S156C3823930), [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6197199) (audiobook), [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C6188131) (audiobook), [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C6197181) (audiobook), [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6197162) (audiobook), [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C2586605), [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C5679250) (Spanish: “Vamos a cazar un oso” — translation of “We're going on a bear hunt”), [Where do diggers sleep at night?](https://sjpl.bibliocommons.com/v2/record/S156C4321181), [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C6568954) (audiobook), [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C6651158) (audiobook), [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C6653388) (audiobook), [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C2696419)
+[Big red barn](https://sjpl.bibliocommons.com/v2/record/S156C2409890), [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C4004430), [Brown bear, brown bear, what do you see?](https://sjpl.bibliocommons.com/v2/record/S156C6569703) (audiobook), [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sjpl.bibliocommons.com/v2/record/S156C2261164), [Dear zoo](https://sjpl.bibliocommons.com/v2/record/S156C5524124), [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6063851) (audiobook), [Don't push the button!](https://sjpl.bibliocommons.com/v2/record/S156C5907283) (audiobook), [Duck & Goose go to the beach](https://sjpl.bibliocommons.com/v2/record/S156C6519431) (audiobook), [Duck & Goose, honk! quack! boo!](https://sjpl.bibliocommons.com/v2/record/S156C6519430) (audiobook), [Duck & Goose, honk! quack! boo!](https://sjpl.bibliocommons.com/v2/record/S156C6812829), [Duck on a bike](https://sjpl.bibliocommons.com/v2/record/S156C1983989), [Each peach pear plum](https://sjpl.bibliocommons.com/v2/record/S156C1054613), [Freight train = Tren de carga](https://sjpl.bibliocommons.com/v2/record/S156C6129921), [Giraffes can't dance](https://sjpl.bibliocommons.com/v2/record/S156C2408497), [Giraffes can't dance](https://sjpl.bibliocommons.com/v2/record/S156C4450483) (Chinese: “Chang jing Lu bu hui tiao wu” — translation of “Giraffes can't dance”), [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C2753967) (audiobook), [Goodnight moon](https://sjpl.bibliocommons.com/v2/record/S156C6025204) (audiobook: “The Runaway Bunny”), [Grumpy monkey](https://sjpl.bibliocommons.com/v2/record/S156C6817297), [Hooray for fish!](https://sjpl.bibliocommons.com/v2/record/S156C5689066), [How do dinosaurs say good night?](https://sjpl.bibliocommons.com/v2/record/S156C6569225) (audiobook), [In my heart : a book of feelings](https://sjpl.bibliocommons.com/v2/record/S156C4968334), [Little Excavator](https://sjpl.bibliocommons.com/v2/record/S156C5670730), [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C5848475), [Little blue truck](https://sjpl.bibliocommons.com/v2/record/S156C6020346) (audiobook), [Llama Llama misses Mama](https://sjpl.bibliocommons.com/v2/record/S156C5676453) (audiobook: “The Llama Llama Audiobook Collection”), [Llama Llama red pajama](https://sjpl.bibliocommons.com/v2/record/S156C5870739) (audiobook: “Llama Llama Red Pajama and 19 Other Favorites”), [Mighty, mighty construction site](https://sjpl.bibliocommons.com/v2/record/S156C5558376), [Owl babies](https://sjpl.bibliocommons.com/v2/record/S156C2613323), [Polar bear, polar bear, what do you hear?](https://sjpl.bibliocommons.com/v2/record/S156C6569503) (audiobook), [Press here](https://sjpl.bibliocommons.com/v2/record/S156C4940812), [Sheep in a jeep](https://sjpl.bibliocommons.com/v2/record/S156C1192386), [Ten apples up on top!](https://sjpl.bibliocommons.com/v2/record/S156C2255722), [The Gruffalo](https://sjpl.bibliocommons.com/v2/record/S156C6031249) (audiobook), [The going to bed book](https://sjpl.bibliocommons.com/v2/record/S156C4938045), [The napping house](https://sjpl.bibliocommons.com/v2/record/S156C3823930), [The very busy spider](https://sjpl.bibliocommons.com/v2/record/S156C6197199) (audiobook), [The very hungry caterpillar](https://sjpl.bibliocommons.com/v2/record/S156C6188131) (audiobook), [The very quiet cricket](https://sjpl.bibliocommons.com/v2/record/S156C6197162) (audiobook), [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C2586605), [We're going on a bear hunt](https://sjpl.bibliocommons.com/v2/record/S156C5679250) (Spanish: “Vamos a cazar un oso” — translation of “We're going on a bear hunt”), [Where do diggers sleep at night?](https://sjpl.bibliocommons.com/v2/record/S156C4321181), [Where the wild things are](https://sjpl.bibliocommons.com/v2/record/S156C6568954) (audiobook), [Where's Spot?](https://sjpl.bibliocommons.com/v2/record/S156C2696419)
 
 
 ## Not found in this catalog
