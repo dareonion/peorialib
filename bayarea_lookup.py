@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Look up the peorialib want-list at Bay Area library systems.
+"""Look up the shelfwalk want-list at Bay Area library systems.
 
-Takes every title already in `peorialib.db` (the Peoria want-list) and checks
+Takes every title already in `shelfwalk.db` (the Peoria want-list) and checks
 whether — and where — each one is on the shelf at:
 
   sccl  Santa Clara County Library District   (BiblioCommons; gateway JSON API)
@@ -1468,7 +1468,7 @@ def main(argv=None):
     ap.add_argument("--enrich", action="store_true",
                     help="only fetch missing compilation/translation details, "
                          "then rewrite the reports")
-    ap.add_argument("--db", default="peorialib.db")
+    ap.add_argument("--db", default="shelfwalk.db")
     args = ap.parse_args(argv)
 
     systems = args.system or sorted(SYSTEMS)

@@ -5,7 +5,7 @@ This is the path used when scraping happens in a real browser via Claude-in-Chro
 (the live library_lookup.py scraper needs a display). Capture the browser results
 as JSON in this shape, then load it:
 
-    uv run ingest.py scraped.json                 # -> peorialib.db
+    uv run ingest.py scraped.json                 # -> shelfwalk.db
     uv run ingest.py --db other.db scraped.json
 
 Expected JSON:
@@ -97,7 +97,7 @@ def ingest(path: str, db_path: str) -> dict:
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Load catalog-scrape JSON into SQLite.")
     ap.add_argument("json_file", help="scrape JSON to load")
-    ap.add_argument("--db", default="peorialib.db", help="SQLite path (default peorialib.db)")
+    ap.add_argument("--db", default="shelfwalk.db", help="SQLite path (default shelfwalk.db)")
     ap.add_argument("--no-report", action="store_true",
                     help="don't regenerate the markdown files after loading")
     args = ap.parse_args(argv)

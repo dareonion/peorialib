@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Render the catalog store (catalog_db) into markdown — the ONLY way the .md files
-are produced. They are generated artifacts of `peorialib.db`; never hand-edit them.
+are produced. They are generated artifacts of `shelfwalk.db`; never hand-edit them.
 
     uv run report.py --write      # (re)generate all markdown from the DB
     uv run report.py --matrix     # just print the cross-branch matrix to stdout
@@ -36,7 +36,7 @@ SHELF_FILES = {"North": "north.md", "Lakeview": "lakeview.md", "Main St": "main.
 CELL = {"available": "✓", "reference": "·", "out": "✗"}
 _RANK = {"available": 3, "reference": 2, "out": 1}
 
-BANNER = ("<!-- AUTO-GENERATED from peorialib.db by report.py — do not edit by hand. "
+BANNER = ("<!-- AUTO-GENERATED from shelfwalk.db by report.py — do not edit by hand. "
           "Regenerate: `uv run report.py --write` -->")
 
 # Public per-record catalog pages (what a human clicks; the lookups themselves
@@ -100,7 +100,7 @@ def _load(db_path):
 
 def _gen_header(as_of):
     return (f"{BANNER}\n\n"
-            f"_Auto-generated from `peorialib.db` — data as of **{as_of or 'n/a'}**. "
+            f"_Auto-generated from `shelfwalk.db` — data as of **{as_of or 'n/a'}**. "
             f"Don't hand-edit; run `uv run report.py --write`._\n")
 
 
@@ -620,7 +620,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="Render the catalog store as markdown.")
     ap.add_argument("--matrix", action="store_true", help="print the cross-branch matrix")
     ap.add_argument("--write", action="store_true", help="regenerate all markdown files")
-    ap.add_argument("--db", default="peorialib.db", help="SQLite path (default peorialib.db)")
+    ap.add_argument("--db", default="shelfwalk.db", help="SQLite path (default shelfwalk.db)")
     args = ap.parse_args(argv)
     if args.write:
         for p in write_all(args.db):

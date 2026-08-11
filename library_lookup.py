@@ -373,8 +373,8 @@ def main(argv=None):
     ap.add_argument("--headless", action="store_true",
                     help="run the browser headless (faster; usually blocked by the bot check)")
     ap.add_argument("--json", action="store_true", help="emit JSON instead of text")
-    ap.add_argument("--db", default="peorialib.db", metavar="PATH",
-                    help="SQLite store to append each scrape to (default peorialib.db)")
+    ap.add_argument("--db", default="shelfwalk.db", metavar="PATH",
+                    help="SQLite store to append each scrape to (default shelfwalk.db)")
     ap.add_argument("--no-db", action="store_true", help="don't record this run to SQLite")
     args = ap.parse_args(argv)
 

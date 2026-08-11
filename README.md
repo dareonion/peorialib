@@ -1,13 +1,15 @@
-# peorialib
+# shelfwalk
 
-Look up book availability at the **Peoria Public Library** (RSAcat / SirsiDynix
-Enterprise) from the command line, plus the curated toddler/preschool pickup
-lists that started this repo.
+Track a curated toddler/preschool want-list against **Bay Area library
+systems** — which branches have which books on the shelf right now, across
+every edition we can find (board/picture printings, audiobooks, eBooks, and
+Chinese / French / Spanish / Japanese translations), with every listing linked
+to the live catalog record.
 
-> **Status:** the Peoria side is no longer actively refreshed — the want-list it
-> seeded lives on in the DB, and the **Bay Area lookups** below are the part
-> that gets updated. The Peoria markdown remains as a snapshot of the last
-> scrape.
+> **History:** this repo began as `peorialib`, a Peoria Public Library
+> (RSAcat / SirsiDynix) lookup tool. The Peoria side is no longer refreshed —
+> the want-list it seeded lives on in the DB, its markdown remains as a
+> snapshot, and the Bay Area lookups below are the live part.
 
 ## Contents
 
@@ -105,7 +107,7 @@ syllable streams blur together ('zhe shi wo de' would otherwise happily match
 
 ## Storing scrapes (SQLite)
 
-Every lookup can be appended to a local SQLite database (`peorialib.db`, gitignored)
+Every lookup can be appended to a local SQLite database (`shelfwalk.db`, gitignored)
 so availability accumulates as a time-series. Two ways in:
 
 ```bash

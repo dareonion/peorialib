@@ -1,8 +1,8 @@
 # North Branch — on the shelf now
 
-<!-- AUTO-GENERATED from peorialib.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
+<!-- AUTO-GENERATED from shelfwalk.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `peorialib.db` — data as of **2026-07-26T17:00:00**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `shelfwalk.db` — data as of **2026-07-26T17:00:00**. Don't hand-edit; run `uv run report.py --write`._
 
 
 **41 titles on the shelf** (of 68 we track here).

@@ -1,5 +1,5 @@
 [project]
-name = "peorialib"
+name = "shelfwalk"
 version = "0.1.0"
 description = "Look up Peoria Public Library book availability from the command line"
 requires-python = ">=3.11"
