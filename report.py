@@ -207,6 +207,7 @@ FAVORITES = [
     ("sccl", "Los Altos Library", "Los Altos"),
     ("mvpl", None, "Mountain View"),
     ("sjpl", "Calabazas", "Calabazas"),
+    ("sjpl", "West Valley", "West Valley"),
 ]
 
 
