@@ -163,7 +163,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T18:17:20**. Don'
 - `J PICTURE BOOK Willems` [The pigeon needs a bath!](https://sjpl.bibliocommons.com/v2/record/S156C4701385)
 - `J PICTURE BOOK Wilson` [Bear snores on](https://sjpl.bibliocommons.com/v2/record/S156C2401797)
 
-## King — 52 on the shelf
+## King — 53 on the shelf
 
 - `J CHI HARDPAGE Martin` [棕色的熊、棕色的熊，你在看什麼？](https://sjpl.bibliocommons.com/v2/record/S156C5876495)
 - `J CHI PICTURE BOOK Antony` [貝蒂好想好想吃香蕉](https://sjpl.bibliocommons.com/v2/record/S156C5709834)
@@ -179,6 +179,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-10T18:17:20**. Don'
 - `J EASY READER Regan` [Mike delivers : the duck is stuck!](https://sjpl.bibliocommons.com/v2/record/S156C6273637)
 - `J FRE PICTURE BOOK Boujon` [Bon appétit ! Monsieur Lapin](https://sjpl.bibliocommons.com/v2/record/S156C2607003)
 - `J FRE PICTURE BOOK Brown` [Bonsoir Lune](https://sjpl.bibliocommons.com/v2/record/S156C2128244)
+- `J FRE PICTURE BOOK Brown` [Bonsoir Lune](https://sjpl.bibliocommons.com/v2/record/S156C3367618) — translation of “Goodnight moon”
 - `J FRE PICTURE BOOK Caputo` [Roule galette](https://sjpl.bibliocommons.com/v2/record/S156C2133457)
 - `J FRE PICTURE BOOK Carle` [La chenille qui fait des trous](https://sjpl.bibliocommons.com/v2/record/S156C3921097)
 - `J HARDPAGE` [Don't let the pigeon drive the bus](https://sjpl.bibliocommons.com/v2/record/S156C6762592)

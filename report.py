@@ -475,18 +475,39 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
         ed = editions.get((system, rid, bib_id))
         return 0 if ed and ed["kind"] == "primary" else 1
 
+    def trans_note(bib_id, rids, winner_rid):
+        """A collapsed claim's translation info survives on the winning line:
+        Bonsoir Lune keeps 'translation of “Goodnight moon”' from the
+        Goodnight moon row it absorbed."""
+        wed = editions.get((system, winner_rid, bib_id))
+        if wed and wed["kind"] == "translation":
+            return ""       # its own label already says so
+        for rid in rids:
+            if rid == winner_rid:
+                continue
+            ed = editions.get((system, rid, bib_id))
+            if ed and ed["kind"] == "translation":
+                orig = (ed["orig_title"] or "").strip() or \
+                       (titles[rid]["title"] if rid in titles else "")
+                if orig:
+                    return f"translation of “{orig}”"
+        return ""
+
     def dedupe_named(pairs):
         """One entry per bib and per rendered text. Several want rows can
         claim one record (Bonsoir Lune is both its own want and Goodnight
         moon's French edition) — the row that owns it as primary wins; and
         several bibs of the same printing differ only in their link, which
         reads as a duplicate too."""
-        out, seen_bib = {}, set()
+        by_bib = {}
         for rid, bib in sorted(pairs, key=lambda p: (kind_rank(*p), p[1])):
-            if bib in seen_bib:
-                continue
-            seen_bib.add(bib)
-            s = named(rid, bib)
+            by_bib.setdefault(bib, []).append(rid)
+        out = {}
+        for bib, rids in by_bib.items():
+            s = named(rids[0], bib)
+            note = trans_note(bib, rids, rids[0])
+            if note:
+                s += f" ({note})"
             out.setdefault(re.sub(r"\]\([^)]*\)", "]", s), s)
         return sorted(out.values())
 
@@ -518,8 +539,9 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
         # same bib (Bonsoir Lune is both its own want and Goodnight moon's
         # French edition), the row that owns it as primary wins; lines that
         # still render identically (two same-shelf printings) collapse too
-        by_bib = {}
+        by_bib, claims = {}, {}
         for (rid, bib_id), r in avail:
+            claims.setdefault(bib_id, []).append(rid)
             cur = by_bib.get(bib_id)
             if cur is None or kind_rank(rid, bib_id) < kind_rank(*cur[0]):
                 by_bib[bib_id] = ((rid, bib_id), r)
@@ -529,6 +551,9 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
                                                  kr[1]["title"] or "",
                                                  kr[0][1])):
             lab = label(rid, bib_id)
+            note = trans_note(bib_id, claims[bib_id], rid)
+            if note:
+                lab = f"{lab} — {note}" if lab else note
             line = (f"- `{r['call_number'] or '?'}` "
                     f"{_link(r['title'], record_url(system, bib_id))}"
                     + (f" — {lab}" if lab else ""))

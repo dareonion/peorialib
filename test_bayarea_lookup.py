@@ -592,7 +592,9 @@ def test_cross_want_claims_collapse_to_the_primary_owner():
         b9_lines = [l for l in wl.splitlines() if "record=b9" in l]
         assert len(b9_lines) == 1, b9_lines
         assert "[Bonsoir Lune]" in b9_lines[0]      # the dedicated want wins
-        assert "Goodnight moon" not in wl
+        # …but the absorbed claim's cross-reference survives on the line
+        assert "— translation of “Goodnight moon”" in b9_lines[0]
+        assert "[Goodnight moon]" not in wl         # no second line for b9
 
 
 def test_write_bayarea_is_noop_without_remote_data():
