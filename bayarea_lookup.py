@@ -197,11 +197,19 @@ def _looks_pinyin(norm_text: str) -> bool:
 
 
 def _forms(title: str) -> list[tuple[str, bool, bool, bool]]:
-    """[(text, is_stem, has_subtitle, is_pinyin)] — title, stem, pinyin forms."""
-    stem = re.split(r"[:=/：]", title)[0].strip()
-    has_sub = bool(stem) and stem != title
+    """[(text, is_stem, has_subtitle, is_pinyin)] — title, stem, pinyin forms.
+
+    A stem form only exists when what it drops is a parallel title ('= Tren
+    de carga', '/ …') or a *descriptive* subtitle ('a lift-the-flap book') —
+    dropping a volume-naming subtitle would turn 'Grumpy monkey : mom for a
+    day' into every other Grumpy Monkey.
+    """
+    m = re.search(r"[:=/：]", title or "")
+    stem = (title[:m.start()] if m else title).strip()
+    has_sub = bool(stem) and stem != (title or "").strip()
     out = [(title, False, has_sub, False)]
-    if has_sub:
+    if has_sub and (m.group(0) in "=/"
+                    or _DESCRIPTIVE_SUB.search(title[m.end():])):
         out.append((stem, True, has_sub, False))
     for text, is_stem, hs, _ in list(out):
         if _CJK.search(text):
@@ -266,11 +274,37 @@ def _author_matches(surname: str, cand) -> bool:
         _norm(surname) in _norm(" ".join(cand["authors"]))
 
 
+# Subtitles that describe the printing, not a different work — these may ride
+# the stem rule ('Dear zoo : a lift-the-flap book' is still Dear Zoo).
+_DESCRIPTIVE_SUB = re.compile(
+    r"^\s*(a|an|the)\b|^\s*\[|\bbook\b|\bstory\b|\bstories\b|\btale\b|"
+    r"\banniversary\b|\bedition\b", re.I)
+
+
+def _display_title(cand) -> str:
+    """What we store/print: BiblioCommons splits 'Grumpy Monkey : Too Many
+    Bugs' into title + subtitle, and the bare half misidentifies the record."""
+    sub = (cand.get("subtitle") or "").strip()
+    t = cand.get("title") or ""
+    return f"{t} : {sub}" if sub else t
+
+
 def _cand_score(want_title: str, surname: str, cand) -> float:
-    """Title similarity for one candidate, with the author-mismatch damp."""
-    names = [cand.get("title") or ""]
-    if cand.get("subtitle"):
-        names.append(f"{cand['title']} {cand['subtitle']}")
+    """Title similarity for one candidate, with the author-mismatch damp.
+
+    A candidate's subtitle is part of its identity — the bare title never
+    scores alone ('Grumpy Monkey' + subtitle 'Too Many Bugs' is a series
+    volume, not the picture book). A descriptive subtitle joins with ':' so
+    the stem rule still recognizes the same work; a volume-naming one is
+    fused in, leaving only the full title to match.
+    """
+    sub = (cand.get("subtitle") or "").strip()
+    if sub:
+        joiner = " : " if (_DESCRIPTIVE_SUB.search(sub)
+                           or _norm(sub) in _norm(want_title)) else " "
+        names = [f"{cand.get('title') or ''}{joiner}{sub}"]
+    else:
+        names = [cand.get("title") or ""]
     if cand.get("alt_title"):
         names.append(cand["alt_title"])
     score = title_score(want_title, names)
@@ -344,15 +378,20 @@ def pick_all(row_title: str, row_author: str, row_format: str, candidates,
     surname = query_terms("", row_author)[1] if row_author else ""
     editions = [dict(primary, kind="primary", match_score=score)]
     seen = {primary.get("bib_id")}
+    plang = primary.get("language")
     trans = {}  # (language, format_class) -> (title_len_diff, cand, score)
     for cand in candidates:
         bid = cand.get("bib_id")
         if not bid or bid in seen:
             continue
         clang = cand.get("language")
+        # editions must share the primary's language (or the pinned one) —
+        # a foreign-language record is a translation and takes the verified
+        # translation route, labeled, or not at all
+        lang_ok = (clang in ((lang, None) if lang else (plang, None))
+                   or not enforce_lang)
         s = round(_cand_score(want_title, surname, cand), 3)
-        if s >= EDITION_MIN_RATIO and (lang is None or not enforce_lang
-                                       or clang in (lang, None)):
+        if s >= EDITION_MIN_RATIO and lang_ok:
             seen.add(bid)
             editions.append(dict(cand, kind="edition", match_score=s))
         elif cand.get("strict") and \
@@ -1102,10 +1141,11 @@ def _lookup_system(db_path: str, system: str, rows, langs: dict, delay: float,
                     print(f"[{system}] {i:3}/{len(todo)} ✗ {row['title'][:50]!r} "
                           f"no match (best {score})")
                     continue
+                editions = [dict(e, title=_display_title(e)) for e in editions]
                 with conn:
                     db.upsert_remote_bib(conn, system, row["record_id"], checked_at,
                                          {"bib_id": best["bib_id"],
-                                          "title": best["title"],
+                                          "title": _display_title(best),
                                           "author": ", ".join(best["authors"]) or None,
                                           "format": best["format"],
                                           "year": best.get("year")}, score)
@@ -1130,7 +1170,7 @@ def _lookup_system(db_path: str, system: str, rows, langs: dict, delay: float,
                            else e.get("format_class") or "ed")
                     for e in editions if e["kind"] != "primary")
                 print(f"[{system}] {i:3}/{len(todo)} ✓ {row['title'][:50]!r} → "
-                      f"{best['title'][:40]!r} ({best['format']}, {score}) "
+                      f"{_display_title(best)[:40]!r} ({best['format']}, {score}) "
                       f"{n_avail}/{n_items} on shelf"
                       + (f" [{extras}]" if extras else ""))
             except Exception as e:
@@ -1220,7 +1260,7 @@ def probe(systems: list[str], query: str) -> None:
             items = client.availability(ed if system in ("mvpl", "linkplus")
                                         else ed["bib_id"])
             tag = ed["kind"] + (f":{ed['language']}" if ed.get("language") else "")
-            print(f"  {ed['title']!r} [{tag}] ({ed['format']}, "
+            print(f"  {_display_title(ed)!r} [{tag}] ({ed['format']}, "
                   f"score {ed['match_score']})")
             for it in items:
                 mark = {"available": "✓", "reference": "·"}.get(it["state"], "✗")

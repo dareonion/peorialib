@@ -110,9 +110,10 @@ def test_series_subtitles_do_not_cross_match():
     best, score = ba.pick_best("Grumpy monkey : mom for a day", "Lang, Suzanne",
                                "picture", cands)
     assert best is None  # different adventure, must not match on the shared stem
-    # …but the bare series title may still take a subtitled edition
+    # …and the bare series want must not take a volume either: dropping a
+    # volume-naming subtitle is exactly how spinoffs impersonated the original
     best, _ = ba.pick_best("Grumpy monkey", "Lang, Suzanne", "picture", cands)
-    assert best is not None
+    assert best is None
 
 
 def test_stem_pairs_must_be_near_exact():
@@ -730,6 +731,39 @@ def test_pick_all_loose_rules_need_strict_source():
     cands = [dict(c, strict=False) for c in POLAR_CANDS]
     _, _, eds = ba.pick_all(*POLAR_WANT, cands)
     assert {e["kind"] for e in eds} == {"primary", "edition"}
+
+
+def test_subtitled_series_volumes_never_match_the_bare_title():
+    # BiblioCommons files 'Grumpy Monkey : Too Many Bugs' as title='Grumpy
+    # Monkey' + subtitle='Too Many Bugs' — the bare half must never score
+    cands = [
+        dict(_cand("g1", "Grumpy Monkey", "book", "eng",
+                   authors=("Lang, Suzanne",)), subtitle="Too Many Bugs"),
+        _cand("g2", "Grumpy Monkey", "picture", "eng",
+              authors=("Lang, Suzanne",)),
+        dict(_cand("g3", "Grumpy Monkey", "picture", "eng",
+                   authors=("Lang, Suzanne",)), subtitle="Freshly Squeezed"),
+    ]
+    best, score, eds = ba.pick_all("Grumpy monkey", "Lang, Suzanne",
+                                   "picture", cands)
+    assert best["bib_id"] == "g2"           # the real picture book wins
+    assert [e["bib_id"] for e in eds] == ["g2"]  # volumes don't ride along
+    # …but a want that IS that volume still matches it
+    best, score, _ = ba.pick_all("Grumpy monkey : mom for a day",
+                                 "Lang, Suzanne", "picture",
+                                 [dict(_cand("g4", "Grumpy Monkey", "picture",
+                                             "eng", authors=("Lang, Suzanne",)),
+                                       subtitle="Mom for A Day")])
+    assert best is not None and best["bib_id"] == "g4"
+    # …and a descriptive subtitle is still the same work
+    best, score, _ = ba.pick_all("Dear zoo", "Campbell, Rod", "picture",
+                                 [dict(_cand("d1", "Dear zoo", "picture", "eng",
+                                             authors=("Campbell, Rod",)),
+                                       subtitle="a lift-the-flap book")])
+    assert best is not None and score >= 0.95
+    assert ba._display_title({"title": "Grumpy Monkey",
+                              "subtitle": "Too Many Bugs"}) == \
+        "Grumpy Monkey : Too Many Bugs"
 
 
 def test_pick_all_rejects_suffix_spinoffs():
