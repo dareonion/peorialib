@@ -476,11 +476,16 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
         return 0 if ed and ed["kind"] == "primary" else 1
 
     def dedupe_named(pairs):
-        """One entry per rendered text — several bibs of the same printing
-        differ only in their link, and that reads as a duplicate. The
-        primary's link wins."""
-        out = {}
+        """One entry per bib and per rendered text. Several want rows can
+        claim one record (Bonsoir Lune is both its own want and Goodnight
+        moon's French edition) — the row that owns it as primary wins; and
+        several bibs of the same printing differ only in their link, which
+        reads as a duplicate too."""
+        out, seen_bib = {}, set()
         for rid, bib in sorted(pairs, key=lambda p: (kind_rank(*p), p[1])):
+            if bib in seen_bib:
+                continue
+            seen_bib.add(bib)
             s = named(rid, bib)
             out.setdefault(re.sub(r"\]\([^)]*\)", "]", s), s)
         return sorted(out.values())
@@ -509,14 +514,20 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
         avail = [(k, r) for k, r in best.items() if r["state"] == "available"]
         if not avail:
             continue
-        # collapse lines that render identically — two want rows (duplicate
-        # Peoria editions) matching one bib, or two same-shelf printings of
-        # the same work, should read as one entry (the primary's link wins)
+        # one line per record on the shelf: when several want rows claim the
+        # same bib (Bonsoir Lune is both its own want and Goodnight moon's
+        # French edition), the row that owns it as primary wins; lines that
+        # still render identically (two same-shelf printings) collapse too
+        by_bib = {}
+        for (rid, bib_id), r in avail:
+            cur = by_bib.get(bib_id)
+            if cur is None or kind_rank(rid, bib_id) < kind_rank(*cur[0]):
+                by_bib[bib_id] = ((rid, bib_id), r)
         entries, seen_txt = [], set()
         for (rid, bib_id), r in sorted(
-                avail, key=lambda kr: (kr[1]["call_number"] or "",
-                                       kr[1]["title"] or "",
-                                       kind_rank(*kr[0]), kr[0][1])):
+                by_bib.values(), key=lambda kr: (kr[1]["call_number"] or "",
+                                                 kr[1]["title"] or "",
+                                                 kr[0][1])):
             lab = label(rid, bib_id)
             line = (f"- `{r['call_number'] or '?'}` "
                     f"{_link(r['title'], record_url(system, bib_id))}"

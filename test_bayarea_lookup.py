@@ -545,6 +545,56 @@ def test_report_dedupes_and_discloses_odd_editions():
         assert "board book: “The Very Hungry Caterpillar's Eid”" in eid[0]
 
 
+def test_cross_want_claims_collapse_to_the_primary_owner():
+    # 'Bonsoir Lune' is its own want AND Goodnight moon's French edition —
+    # the one physical record must appear once, as the dedicated want
+    with tempfile.TemporaryDirectory() as d:
+        dbp = os.path.join(d, "t.db")
+        conn = db.open_db(dbp)
+        ts = "2026-08-11T10:00:00"
+        db.upsert_title(conn, "WANT:BonsoirLune", "Bonsoir Lune", ts,
+                        {"format": "picture"})
+        db.upsert_title(conn, "SD_ILS:1", "Goodnight moon", ts,
+                        {"format": "picture"})
+        sid = db.record_scrape(conn, "remote", ts, source="test", profile="mvpl")
+        item = [{"branch": "Children's World Language",
+                 "call_number": "J FRENCH J P BROWN",
+                 "status": "AVAILABLE", "state": "available"}]
+        db.upsert_remote_bib(conn, "mvpl", "WANT:BonsoirLune", ts,
+                             {"bib_id": "b9", "title": "Bonsoir lune"}, 1.0)
+        db.replace_remote_editions(conn, "mvpl", "WANT:BonsoirLune", [
+            {"bib_id": "b9", "title": "Bonsoir lune", "authors": [],
+             "format": "Book", "format_class": "picture", "language": "fre",
+             "kind": "primary", "match_score": 1.0}], ts)
+        db.add_remote_availability(conn, sid, "mvpl", "WANT:BonsoirLune", "b9",
+                                   "Bonsoir Lune", item, ts)
+        db.upsert_remote_bib(conn, "mvpl", "SD_ILS:1", ts,
+                             {"bib_id": "b1", "title": "Goodnight moon"}, 1.0)
+        db.replace_remote_editions(conn, "mvpl", "SD_ILS:1", [
+            {"bib_id": "b1", "title": "Goodnight moon", "authors": [],
+             "format": "Book", "format_class": "picture", "language": "eng",
+             "kind": "primary", "match_score": 1.0},
+            {"bib_id": "b9", "title": "Bonsoir lune", "authors": [],
+             "format": "Book", "format_class": "picture", "language": "fre",
+             "kind": "translation", "match_score": 0.4,
+             "orig_title": "Goodnight moon"}], ts)
+        db.add_remote_availability(conn, sid, "mvpl", "SD_ILS:1", "b1",
+                                   "Goodnight moon",
+                                   [dict(item[0], branch="Children's Picture "
+                                                         "Books")], ts)
+        db.add_remote_availability(conn, sid, "mvpl", "SD_ILS:1", "b9",
+                                   "Goodnight moon", item, ts)
+        conn.commit()
+        conn.close()
+        report.write_bayarea(dbp, d)
+        md = open(os.path.join(d, "mountainview.md"), encoding="utf-8").read()
+        wl = md.split("## Children's World Language")[1].split("##")[0]
+        b9_lines = [l for l in wl.splitlines() if "record=b9" in l]
+        assert len(b9_lines) == 1, b9_lines
+        assert "[Bonsoir Lune]" in b9_lines[0]      # the dedicated want wins
+        assert "Goodnight moon" not in wl
+
+
 def test_write_bayarea_is_noop_without_remote_data():
     with tempfile.TemporaryDirectory() as d:
         dbp = os.path.join(d, "t.db")
@@ -591,6 +641,45 @@ def test_bc_marc_details():
     assert d["contents"].startswith("Brown bear, brown bear, what do you see?; "
                                     "Polar bear")
     assert "$" not in d["contents"]
+
+
+def test_translation_verification_against_stated_original():
+    ok = ba.translation_matches_want
+    # exact / punctuation / leading-article variants of the want
+    assert ok("The very hungry caterpillar", "Carle, Eric",
+              "Very hungry caterpillar")
+    assert ok("Go, dog. Go!", "Eastman, P. D.", "Go, dog, go!")
+    assert ok("Freight train = Tren de carga", "Crews, Donald", "Freight train")
+    # uniform-title forms bundling author or language around the real title
+    assert ok("The snowy day", "Keats, Ezra Jack",
+              "The snowy day by Ezra Jack Keats")
+    assert ok("I want my hat back", "Klassen, Jon",
+              "Klassen, Jon. I want my hat back. Spanish")
+    assert ok("Cars and trucks and things that go", "Scarry, Richard",
+              "Richard Scarry's cars and trucks and things that go")
+    # a record with no stated original can't be checked — kept, label discloses
+    assert ok("Giraffes can't dance", "Andreae, Giles", "")
+    # …but a stated DIFFERENT work is dropped, same author or not
+    assert not ok("Giraffes can't dance", "Andreae, Giles",
+                  "Love is a handful of honey")
+    assert not ok("Dragons love tacos", "Rubin, Adam", "Dragons love tacos 2")
+    assert not ok("Little blue truck", "Schertle, Alice",
+                  "Little blue truck leads the way")
+    assert not ok("Goodnight moon", "Brown, Margaret Wise", "One more rabbit")
+    assert not ok("Mr. Gumpy's outing", "Burningham, John", ": Picnic")
+
+
+def test_mvpl_uniform_title_names_the_original():
+    page = MVPL_DETAIL_PAGE.replace(
+        "Translation of: Polar bear, polar bear, what do you\nhear?",
+        "Read along in Chinese!").replace(
+        '<td class="bibInfoData">Brown bear &amp; friends</td>',
+        '<td class="bibInfoData">Ai shi yi peng nong nong de feng mi</td>')
+    page += ('<tr><td width="20%" class="bibInfoLabel">Add Title</td>\n'
+             '<td class="bibInfoData">Love is a handful of honey. '
+             'Chinese.</td></tr>\n')
+    d = ba.mvpl_details_from_page(page)
+    assert d["orig_title"] == "Love is a handful of honey"
 
 
 def test_mvpl_record_details():

@@ -302,6 +302,15 @@ def unenriched_editions(conn):
         "AND contents IS NULL AND orig_title IS NULL").fetchall()
 
 
+def delete_remote_edition(conn, system: str, record_id: str, bib_id: str):
+    """Drop one tracked version (a verification failure); its availability
+    rows stop being 'latest' the moment the edition row is gone."""
+    conn.execute(
+        "DELETE FROM remote_editions "
+        "WHERE system = ? AND record_id = ? AND bib_id = ?",
+        (system, record_id, bib_id))
+
+
 def set_edition_details(conn, system: str, record_id: str, bib_id: str,
                         contents: str, orig_title: str):
     """'' (not NULL) marks 'fetched, record has none' so we don't refetch."""

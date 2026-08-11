@@ -531,12 +531,53 @@ def bc_details_from_page(page: str) -> dict:
             break
     if not orig:
         for d in marc.get("500", []) + marc.get("765", []):
-            m2 = re.search(r"Translation of:?\s*(.+)",
+            m2 = re.search(r"Translation of\s*:?\s*(.+)",
                            re.sub(r"\$[a-z0-9]", " ", d), re.I)
             if m2:
                 orig = m2.group(1).strip(" .$")
                 break
     return {"contents": "; ".join(parts), "orig_title": orig}
+
+
+# A translated record's uniform title reads '<original title>. <Language>.'
+_UNIFORM_LANG = re.compile(
+    r"^(.*?)[.,]?\s*(Chinese|Spanish|French|Japanese|Korean|Vietnamese|"
+    r"Russian|German)\.?\s*$", re.I)
+
+
+def translation_matches_want(want_title: str, want_author: str,
+                             orig_title: str) -> bool:
+    """Does a record's stated original ('Translation of:' note / uniform
+    title) actually name this want?
+
+    The translation rule can't check titles across languages, so a same-author
+    record riding a keyword result ('Love is a handful of honey' carries a
+    'creators of Giraffes Can't Dance' note) looks identical to a real
+    translation — until its own record names what it translates. True notes
+    match the want modulo articles and punctuation, or bundle author/language
+    around it ('The snowy day by Ezra Jack Keats'); spinoff notes ('Dragons
+    love tacos 2') sit just below the edition bar.
+    """
+    orig = re.sub(r"^[\s:.]+", "", orig_title or "").strip()
+    if not orig:
+        return True     # nothing to check against — keep; the label discloses
+
+    def flat(s):
+        s = re.split(r"[:：=/]", s or "")[0]
+        s = re.sub(r"^(the|a|an|el|la|los|las|le|les|un|une)\s+", "",
+                   s.strip(), flags=re.I)
+        return re.sub(r"[^a-z0-9一-鿿]", "", _norm(s))
+
+    wn, on = flat(want_title), flat(orig)
+    if wn and wn == on:
+        return True
+    if title_score(want_title, [orig]) >= EDITION_MIN_RATIO:
+        return True
+    surname = query_terms("", want_author)[1] if want_author else ""
+    if wn and wn in on and surname and \
+            re.sub(r"[^a-z0-9]", "", _norm(surname)) in on:
+        return True
+    return False
 
 
 # --- Mountain View classic WebPAC -----------------------------------------------
@@ -775,10 +816,19 @@ def mvpl_details_from_page(page: str) -> dict:
     # scan every metadata cell: the translation note is one of several 'Note'
     # rows and _webpac_fields keeps only the first per label
     for m in re.finditer(r'class="bibInfoData">(.*?)</td>', page, re.S):
-        m2 = re.match(r"Translation of:?\s*(.+)", _strip_html(m.group(1)), re.I)
+        m2 = re.match(r"Translation of\s*:?\s*(.+)",
+                      _strip_html(m.group(1)), re.I)
         if m2:
             orig = m2.group(1).strip(" .")
             break
+    if not orig:
+        # no note — the uniform title ('Love is a handful of honey. Chinese.')
+        # names the original just as well
+        for key in ("Uniform Title", "Add Title", "Other Title"):
+            m3 = _UNIFORM_LANG.match(fields.get(key, ""))
+            if m3 and m3.group(1).strip():
+                orig = m3.group(1).strip(" .")
+                break
     return {"contents": contents, "orig_title": orig}
 
 
@@ -1099,6 +1149,8 @@ def enrich_editions(db_path: str, systems, delay: float = 0.5) -> int:
     """
     conn = db.open_db(db_path)
     todo = [r for r in db.unenriched_editions(conn) if r["system"] in systems]
+    wants = {r["record_id"]: (r["title"], r["author"])
+             for r in conn.execute("SELECT record_id, title, author FROM titles")}
     conn.close()
     by_sys = {}
     for r in todo:
@@ -1117,6 +1169,16 @@ def enrich_editions(db_path: str, systems, delay: float = 0.5) -> int:
                     time.sleep(delay)
                 except Exception as e:
                     print(f"  enrich ! {system}/{r['bib_id']}: {e}")
+                    continue
+                want_t, want_a = wants.get(r["record_id"], ("", ""))
+                if r["kind"] == "translation" and not translation_matches_want(
+                        want_t, want_a, d.get("orig_title")):
+                    # the record itself says it translates a different work
+                    with c:
+                        db.delete_remote_edition(c, system, r["record_id"],
+                                                 r["bib_id"])
+                    print(f"  enrich ✂ {system}: {want_t[:34]!r} is not "
+                          f"{d.get('orig_title')[:40]!r} — dropped")
                     continue
                 with c:
                     db.set_edition_details(c, system, r["record_id"],
