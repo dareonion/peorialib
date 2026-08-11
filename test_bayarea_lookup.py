@@ -598,6 +598,26 @@ def test_cross_want_claims_collapse_to_the_primary_owner():
         assert "[Goodnight moon]" not in wl         # no second line for b9
 
 
+def test_raw_page_mirror_round_trip():
+    with tempfile.TemporaryDirectory() as d:
+        dbp = os.path.join(d, "t.db")
+        ba.set_archive(dbp)
+        try:
+            ba._archive("https://example.org/x?q=1", b"<html>hi</html>")
+        finally:
+            c = getattr(ba._archive_local, "conn", None)
+            if c is not None:
+                c.close()
+            ba._archive_local.__dict__.clear()
+            ba.set_archive(None)
+        conn = db.open_db(dbp)
+        assert db.get_raw_page(conn, "https://example.org/x?q=1") == \
+            b"<html>hi</html>"
+        row = conn.execute("SELECT host, nbytes FROM raw_pages").fetchone()
+        assert row["host"] == "example.org" and row["nbytes"] == 15
+        conn.close()
+
+
 def test_write_bayarea_is_noop_without_remote_data():
     with tempfile.TemporaryDirectory() as d:
         dbp = os.path.join(d, "t.db")
@@ -622,6 +642,34 @@ BC_MARC_PAGE = """
 <td class="marcTagData">$aBrown bear, brown bear, what do you see? --
 Polar bear, polar bear, what do you hear? -- Panda bear, panda bear, what do
 you see?$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>020</strong></td>
+<td class="marcIndicator">  </td>
+<td class="marcTagData">$a9780805017595 (board book)$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>250</strong></td>
+<td class="marcIndicator">  </td>
+<td class="marcTagData">$aBoard book edition.$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>264</strong></td>
+<td class="marcIndicator"> 1</td>
+<td class="marcTagData">$aNew York :$bHenry Holt,$c[1998]$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>300</strong></td>
+<td class="marcIndicator">  </td>
+<td class="marcTagData">$a1 volume (unpaged) :$bcolor illustrations ;$c13 cm$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>520</strong></td>
+<td class="marcIndicator">  </td>
+<td class="marcTagData">$aZoo animals from polar bear to walrus make their
+distinctive sounds for each other.$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>521</strong></td>
+<td class="marcIndicator">  </td>
+<td class="marcTagData">$aAges 1-3.$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>650</strong></td>
+<td class="marcIndicator"> 0</td>
+<td class="marcTagData">$aZoo animals$vFiction$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>650</strong></td>
+<td class="marcIndicator"> 0</td>
+<td class="marcTagData">$aAnimal sounds$vFiction$</td></tr>
+<tr><td scope="row" class="marcTag"><strong>655</strong></td>
+<td class="marcIndicator"> 7</td>
+<td class="marcTagData">$aBoard books.$2lcgft$</td></tr>
 """
 
 MVPL_DETAIL_PAGE = """
@@ -635,6 +683,22 @@ hear?</td></tr>
 <tr><td width="20%" class="bibInfoLabel">Contents</td>
 <td class="bibInfoData">Brown bear, brown bear, what do you see? --
 Baby bear, baby bear, what do you see?</td></tr>
+<tr><td width="20%" class="bibInfoLabel">Edition</td>
+<td class="bibInfoData">1st ed.</td></tr>
+<tr><td width="20%" class="bibInfoLabel">Publication</td>
+<td class="bibInfoData">New York : Macmillan Young Listeners, 2010.</td></tr>
+<tr><td width="20%" class="bibInfoLabel">Summary</td>
+<td class="bibInfoData">Four bear stories read aloud with music.</td></tr>
+<tr><td width="20%" class="bibInfoLabel">ISBN</td>
+<td class="bibInfoData">9781427210593</td></tr>
+<tr><td width="20%" class="bibInfoLabel">Series</td>
+<td class="bibInfoData">Brown bear and friends.</td></tr>
+<tr><td width="20%" class="bibInfoLabel">Subject</td>
+<td class="bibInfoData">Bears -- Fiction.</td></tr>
+<tr><td width="20%" class="bibInfoLabel">Subject</td>
+<td class="bibInfoData">Animal sounds -- Fiction.</td></tr>
+<tr><td width="20%" class="bibInfoLabel">Genre</td>
+<td class="bibInfoData">Audiobooks.</td></tr>
 """
 
 
@@ -644,6 +708,16 @@ def test_bc_marc_details():
     assert d["contents"].startswith("Brown bear, brown bear, what do you see?; "
                                     "Polar bear")
     assert "$" not in d["contents"]
+    det = d["details"]
+    assert det["isbn"] == "9780805017595 (board book)"
+    assert det["edition"] == "Board book edition"
+    assert det["publisher"] == "New York : Henry Holt, [1998]"
+    assert det["phys_desc"].startswith("1 volume (unpaged)")
+    assert det["summary"].startswith("Zoo animals from polar bear")
+    assert det["audience"] == "Ages 1-3"
+    assert det["subjects"] == ["Zoo animals -- Fiction",
+                               "Animal sounds -- Fiction"]
+    assert det["genres"] == "Board books"
 
 
 def test_translation_verification_against_stated_original():
@@ -685,12 +759,71 @@ def test_mvpl_uniform_title_names_the_original():
     assert d["orig_title"] == "Love is a handful of honey"
 
 
+MVPL_MARC_PAGE = """
+<div align="left"><pre style="margin-left: 15px;">
+LEADER 00000cam  2200409Ki 4500
+001    56825648
+010    2004025149
+020    9780670059836
+020    0670059838|q(hc)
+099    J P DEWDNEY
+100 1  Dewdney, Anna.|0http://id.loc.gov/authorities/names/
+       n94016640
+245 10 Llama, llama red pajama /|cwritten and illustrated by Anna
+       Dewdney.
+264  1 New York :|bViking,|c2005.
+300    1 volume (unpaged) :|bcolor illustrations ;|c27 cm
+520    At bedtime, a little llama worries after his mother puts
+       him to bed and goes downstairs.
+521 8  AD420L|bLexile
+526 0  Accelerated Reader AR|bLG|c2.0|d0.5|z87616.
+650  0 Mother and child|vFiction.|0http://id.loc.gov/authorities/
+       subjects/sh2008107476
+650  1 Bedtime|0http://id.loc.gov/authorities/childrensSubjects/
+       sj96004893|vFiction.|0http://id.loc.gov/authorities/
+       childrensSubjects/sj2020050019
+655  7 Stories in rhyme.|2lcgft|0http://id.loc.gov/authorities/
+       genreForms/gf2014026559
+655  7 Picture books.|2lcgft|0http://id.loc.gov/authorities/
+       genreForms/gf2016026096
+</pre></div>
+"""
+
+
+def test_mvpl_marc_display_details():
+    marc = ba.iii_marc_fields(MVPL_MARC_PAGE)
+    # continuation lines rejoin, '|x' normalizes to '$x', first $a implicit
+    assert marc["020"] == ["$a9780670059836", "$a0670059838$q(hc)"]
+    assert marc["100"][0].startswith("$aDewdney, Anna.$0http://id.loc.gov/"
+                                     "authorities/names/n94016640")
+    d = ba.marc_details_bundle(marc)
+    det = d["details"]
+    assert det["isbn"] == ["9780670059836", "0670059838 (hc)"]
+    assert det["call_number"] == "J P DEWDNEY"
+    assert det["publisher"] == "New York : Viking, 2005"
+    assert det["summary"].startswith("At bedtime, a little llama")
+    assert det["audience"] == "AD420L Lexile"
+    assert det["reading_program"] == "Accelerated Reader AR LG 2.0 0.5 87616"
+    assert det["subjects"] == ["Mother and child -- Fiction",
+                               "Bedtime -- Fiction"]
+    assert det["genres"] == ["Stories in rhyme", "Picture books"]
+    assert det["lccn"] == "2004025149"
+
+
 def test_mvpl_record_details():
     d = ba.mvpl_details_from_page(MVPL_DETAIL_PAGE)
     # the translation note is the SECOND Note row — must still be found
     assert d["orig_title"] == "Polar bear, polar bear, what do you hear?"
     assert d["contents"] == ("Brown bear, brown bear, what do you see?; "
                              "Baby bear, baby bear, what do you see?")
+    det = d["details"]
+    assert det["isbn"] == "9781427210593"
+    assert det["edition"] == "1st ed."
+    assert det["publisher"] == "New York : Macmillan Young Listeners, 2010."
+    assert det["summary"] == "Four bear stories read aloud with music."
+    assert det["series"] == "Brown bear and friends."
+    assert det["subjects"] == ["Bears -- Fiction.", "Animal sounds -- Fiction."]
+    assert det["genres"] == "Audiobooks."
 
 
 # --- multi-edition tracking (pick_all + remote_editions) ------------------------

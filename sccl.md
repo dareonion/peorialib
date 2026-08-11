@@ -2,7 +2,7 @@
 
 <!-- AUTO-GENERATED from peorialib.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `peorialib.db` — data as of **2026-08-11T09:35:09**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `peorialib.db` — data as of **2026-08-11T10:44:12**. Don't hand-edit; run `uv run report.py --write`._
 
 
 **113** of **165** titles are in the catalog; **100** have at least one copy on a shelf right now. Titles link to the record in this catalog; unlabeled lines are the plain edition, labels mark the other versions we track (board book / audiobook / eBook / eAudiobook / translations).
@@ -161,7 +161,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-11T09:35:09**. Don'
 | `JP WITEK` | [In my heart : a book of feelings](https://sccl.bibliocommons.com/v2/record/S118C437008) |  |
 | `JP WOOD` | [The napping house](https://sccl.bibliocommons.com/v2/record/S118C14620) |  |
 
-## Milpitas Library — 74 on the shelf
+## Milpitas Library — 76 on the shelf
 
 | Call # | Title | Version |
 |---|---|---|
@@ -180,6 +180,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-11T09:35:09**. Don'
 | `J TODDLER` | [The very busy spider](https://sccl.bibliocommons.com/v2/record/S118C194486) | board book |
 | `J TODDLER` | [The very hungry caterpillar](https://sccl.bibliocommons.com/v2/record/S118C196388) | board book |
 | `J TODDLER` | [We're going on a bear hunt](https://sccl.bibliocommons.com/v2/record/S118C945478) | board book |
+| `J TODDLER` | [Where's Spot?](https://sccl.bibliocommons.com/v2/record/S118C104812) | board book |
 | `JE CARLE` | [The very quiet cricket](https://sccl.bibliocommons.com/v2/record/S118C620847) |  |
 | `JE CRONIN` | [Duck stays in the truck](https://sccl.bibliocommons.com/v2/record/S118C771400) |  |
 | `JE EASTMAN` | [Are you my mother?](https://sccl.bibliocommons.com/v2/record/S118C5033) |  |
@@ -231,6 +232,7 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-11T09:35:09**. Don'
 | `JP SPANISH TALK BROWN PRELOAD` | [Big red barn](https://sccl.bibliocommons.com/v2/record/S118C1181410) | audiobook: “El gran granero rojo” |
 | `JP SPANISH TALK BROWN PRELOAD` | [Goodnight moon](https://sccl.bibliocommons.com/v2/record/S118C759014) | audiobook: “Buenas noches, Luna” |
 | `JP SPANISH TALK CREWS PRELOAD` | [Freight train = Tren de carga](https://sccl.bibliocommons.com/v2/record/S118C1163925) | audiobook: “Freight Train : Tren De Carga” |
+| `JP TALK MARTIN PRELOAD` | [Polar bear, polar bear, what do you hear?](https://sccl.bibliocommons.com/v2/record/S118C974495) | audiobook |
 | `JP TALK MCCLOSK PRELOAD` | [Blueberries for Sal](https://sccl.bibliocommons.com/v2/record/S118C1021951) | audiobook: “Blueberries for Sal” |
 | `JP WADDELL` | [Owl babies](https://sccl.bibliocommons.com/v2/record/S118C33847) |  |
 | `JP WILLEMS` | [Don't let the pigeon drive the bus](https://sccl.bibliocommons.com/v2/record/S118C138660) |  |
@@ -493,6 +495,45 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-11T09:35:09**. Don'
 | `JP WILLEMS` | [Knuffle Bunny too : a case of mistaken identity](https://sccl.bibliocommons.com/v2/record/S118C219128) |  |
 | `JP WILLEMS` | [The pigeon needs a bath!](https://sccl.bibliocommons.com/v2/record/S118C407291) |  |
 
+## Campbell Library — 34 on the shelf
+
+| Call # | Title | Version |
+|---|---|---|
+| `J TODDLER` | [Knuffle Bunny too : a case of mistaken identity](https://sccl.bibliocommons.com/v2/record/S118C1341238) | board book |
+| `J TODDLER` | [Moo, baa, fa la la la la!](https://sccl.bibliocommons.com/v2/record/S118C1066724) | board book |
+| `JE EASTMAN` | [Are you my mother?](https://sccl.bibliocommons.com/v2/record/S118C5033) |  |
+| `JE EASTMAN` | [Go, dog. Go!](https://sccl.bibliocommons.com/v2/record/S118C5302) |  |
+| `JP AHLBERG` | [Each peach pear plum](https://sccl.bibliocommons.com/v2/record/S118C11853) |  |
+| `JP BROWN` | [Goodnight moon](https://sccl.bibliocommons.com/v2/record/S118C3950) |  |
+| `JP CARLE` | [From head to toe](https://sccl.bibliocommons.com/v2/record/S118C59289) |  |
+| `JP CARLE` | [The very busy spider](https://sccl.bibliocommons.com/v2/record/S118C15845) |  |
+| `JP CARLE` | [The very hungry caterpillar](https://sccl.bibliocommons.com/v2/record/S118C7975) |  |
+| `JP CHINESE CREWS` | [Freight train = Tren de carga](https://sccl.bibliocommons.com/v2/record/S118C928639) | Chinese: “Huo che kuai pao” — translation of “Freight train” |
+| `JP COUSINS` | [Hooray for fish!](https://sccl.bibliocommons.com/v2/record/S118C162412) |  |
+| `JP FOX` | [Ten little fingers and ten little toes](https://sccl.bibliocommons.com/v2/record/S118C246888) |  |
+| `JP GOETZ` | [Old MacDonald had a truck](https://sccl.bibliocommons.com/v2/record/S118C501791) |  |
+| `JP HENKES` | [Kitten's first full moon](https://sccl.bibliocommons.com/v2/record/S118C143699) |  |
+| `JP HILLS` | [Duck & Goose, honk! quack! boo!](https://sccl.bibliocommons.com/v2/record/S118C587717) |  |
+| `JP JACKSON` | [I know an old lady who swallowed a pie](https://sccl.bibliocommons.com/v2/record/S118C62742) |  |
+| `JP KEATS` | [The snowy day](https://sccl.bibliocommons.com/v2/record/S118C5414) |  |
+| `JP MARTIN` | [Brown bear, brown bear, what do you see?](https://sccl.bibliocommons.com/v2/record/S118C14618) |  |
+| `JP MARTIN` | [Chicka chicka boom boom](https://sccl.bibliocommons.com/v2/record/S118C24027) |  |
+| `JP MARTIN` | [Polar bear, polar bear, what do you hear?](https://sccl.bibliocommons.com/v2/record/S118C30253) |  |
+| `JP MATHESO` | [Tap the magic tree](https://sccl.bibliocommons.com/v2/record/S118C383304) |  |
+| `JP MCCLOSK` | [Blueberries for Sal](https://sccl.bibliocommons.com/v2/record/S118C3978) |  |
+| `JP MCMULLA` | [I stink!](https://sccl.bibliocommons.com/v2/record/S118C114918) |  |
+| `JP RINKER` | [Steam train, dream train](https://sccl.bibliocommons.com/v2/record/S118C372893) |  |
+| `JP SCARRY` | [Cars and trucks and things that go](https://sccl.bibliocommons.com/v2/record/S118C22437) |  |
+| `JP SENDAK` | [Where the wild things are](https://sccl.bibliocommons.com/v2/record/S118C5702) |  |
+| `JP SLOBODK` | [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sccl.bibliocommons.com/v2/record/S118C1161154) |  |
+| `JP SPANISH HENKES` | [Kitten's first full moon](https://sccl.bibliocommons.com/v2/record/S118C183658) | Spanish: “La primera luna llena de gatita” — translation of “Kitten's first full moon” |
+| `JP SPANISH SHANNON` | [Duck on a bike](https://sccl.bibliocommons.com/v2/record/S118C126280) | Spanish: “Pato va en bici” — translation of “Duck on a bike” |
+| `JP TALK RUBIN PRELOAD` | [Dragons love tacos](https://sccl.bibliocommons.com/v2/record/S118C1081030) | audiobook |
+| `JP TALK SCHERTL PRELOAD` | [Little blue truck](https://sccl.bibliocommons.com/v2/record/S118C1257342) | audiobook: “Little Blue Truck Makes A Friend” |
+| `JP WILLEMS` | [Don't let the pigeon drive the bus](https://sccl.bibliocommons.com/v2/record/S118C138660) |  |
+| `JP WILLEMS` | [Knuffle Bunny : a cautionary tale](https://sccl.bibliocommons.com/v2/record/S118C154311) |  |
+| `JP WOOD` | [The napping house](https://sccl.bibliocommons.com/v2/record/S118C14620) |  |
+
 ## Woodland Library — 35 on the shelf
 
 | Call # | Title | Version |
@@ -533,49 +574,12 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-11T09:35:09**. Don'
 | `JP WILLEMS` | [Knuffle Bunny too : a case of mistaken identity](https://sccl.bibliocommons.com/v2/record/S118C219128) |  |
 | `JP WOOD` | [The napping house](https://sccl.bibliocommons.com/v2/record/S118C14620) |  |
 
-## Campbell Library — 33 on the shelf
-
-| Call # | Title | Version |
-|---|---|---|
-| `J TODDLER` | [Knuffle Bunny too : a case of mistaken identity](https://sccl.bibliocommons.com/v2/record/S118C1341238) | board book |
-| `J TODDLER` | [Moo, baa, fa la la la la!](https://sccl.bibliocommons.com/v2/record/S118C1066724) | board book |
-| `JE EASTMAN` | [Are you my mother?](https://sccl.bibliocommons.com/v2/record/S118C5033) |  |
-| `JE EASTMAN` | [Go, dog. Go!](https://sccl.bibliocommons.com/v2/record/S118C5302) |  |
-| `JP AHLBERG` | [Each peach pear plum](https://sccl.bibliocommons.com/v2/record/S118C11853) |  |
-| `JP BROWN` | [Goodnight moon](https://sccl.bibliocommons.com/v2/record/S118C3950) |  |
-| `JP CARLE` | [From head to toe](https://sccl.bibliocommons.com/v2/record/S118C59289) |  |
-| `JP CARLE` | [The very busy spider](https://sccl.bibliocommons.com/v2/record/S118C15845) |  |
-| `JP CARLE` | [The very hungry caterpillar](https://sccl.bibliocommons.com/v2/record/S118C7975) |  |
-| `JP CHINESE CREWS` | [Freight train = Tren de carga](https://sccl.bibliocommons.com/v2/record/S118C928639) | Chinese: “Huo che kuai pao” — translation of “Freight train” |
-| `JP COUSINS` | [Hooray for fish!](https://sccl.bibliocommons.com/v2/record/S118C162412) |  |
-| `JP FOX` | [Ten little fingers and ten little toes](https://sccl.bibliocommons.com/v2/record/S118C246888) |  |
-| `JP GOETZ` | [Old MacDonald had a truck](https://sccl.bibliocommons.com/v2/record/S118C501791) |  |
-| `JP HENKES` | [Kitten's first full moon](https://sccl.bibliocommons.com/v2/record/S118C143699) |  |
-| `JP HILLS` | [Duck & Goose, honk! quack! boo!](https://sccl.bibliocommons.com/v2/record/S118C587717) |  |
-| `JP JACKSON` | [I know an old lady who swallowed a pie](https://sccl.bibliocommons.com/v2/record/S118C62742) |  |
-| `JP KEATS` | [The snowy day](https://sccl.bibliocommons.com/v2/record/S118C5414) |  |
-| `JP MARTIN` | [Brown bear, brown bear, what do you see?](https://sccl.bibliocommons.com/v2/record/S118C14618) |  |
-| `JP MARTIN` | [Chicka chicka boom boom](https://sccl.bibliocommons.com/v2/record/S118C24027) |  |
-| `JP MARTIN` | [Polar bear, polar bear, what do you hear?](https://sccl.bibliocommons.com/v2/record/S118C30253) |  |
-| `JP MATHESO` | [Tap the magic tree](https://sccl.bibliocommons.com/v2/record/S118C383304) |  |
-| `JP MCCLOSK` | [Blueberries for Sal](https://sccl.bibliocommons.com/v2/record/S118C3978) |  |
-| `JP MCMULLA` | [I stink!](https://sccl.bibliocommons.com/v2/record/S118C114918) |  |
-| `JP RINKER` | [Steam train, dream train](https://sccl.bibliocommons.com/v2/record/S118C372893) |  |
-| `JP SCARRY` | [Cars and trucks and things that go](https://sccl.bibliocommons.com/v2/record/S118C22437) |  |
-| `JP SENDAK` | [Where the wild things are](https://sccl.bibliocommons.com/v2/record/S118C5702) |  |
-| `JP SLOBODK` | [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sccl.bibliocommons.com/v2/record/S118C1161154) |  |
-| `JP SPANISH HENKES` | [Kitten's first full moon](https://sccl.bibliocommons.com/v2/record/S118C183658) | Spanish: “La primera luna llena de gatita” — translation of “Kitten's first full moon” |
-| `JP SPANISH SHANNON` | [Duck on a bike](https://sccl.bibliocommons.com/v2/record/S118C126280) | Spanish: “Pato va en bici” — translation of “Duck on a bike” |
-| `JP TALK RUBIN PRELOAD` | [Dragons love tacos](https://sccl.bibliocommons.com/v2/record/S118C1081030) | audiobook |
-| `JP WILLEMS` | [Don't let the pigeon drive the bus](https://sccl.bibliocommons.com/v2/record/S118C138660) |  |
-| `JP WILLEMS` | [Knuffle Bunny : a cautionary tale](https://sccl.bibliocommons.com/v2/record/S118C154311) |  |
-| `JP WOOD` | [The napping house](https://sccl.bibliocommons.com/v2/record/S118C14620) |  |
-
 ## Digital (eBook / eAudiobook — borrow via the library's app; availability is a license queue, not a shelf)
 
 | Title | Version |
 |---|---|
 | [Bear snores on](https://sccl.bibliocommons.com/v2/record/S980C3020957) | eAudiobook |
+| [Big red barn](https://sccl.bibliocommons.com/v2/record/S981C18743286) | eAudiobook: “Goodnight Moon and Other Stories : Children's Audiobook: Bedtime Classics Goodnight Moon, The Runaway Bunny, Big Red Barn – Relaxing Be” |
 | [Blueberries for Sal](https://sccl.bibliocommons.com/v2/record/S980C1289562) | eAudiobook: “Blueberries For Sal” |
 | [Blueberries for Sal](https://sccl.bibliocommons.com/v2/record/S981C17236939) | eAudiobook: “Blueberries for Sal” |
 | [Bluey : the creek.](https://sccl.bibliocommons.com/v2/record/S980C5329700) | eBook |
@@ -596,7 +600,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-11T09:35:09**. Don'
 | [Each peach pear plum](https://sccl.bibliocommons.com/v2/record/S981C17237366) | eAudiobook: “Each Peach Pear Plum” |
 | [Giraffes can't dance](https://sccl.bibliocommons.com/v2/record/S980C3291461) | eAudiobook |
 | [Goodnight moon](https://sccl.bibliocommons.com/v2/record/S981C11353057) | eAudiobook: “The Runaway Bunny, including The Story of Babar & Goodnight Moon” |
-| [Goodnight moon](https://sccl.bibliocommons.com/v2/record/S981C18743286) | eAudiobook: “Goodnight Moon and Other Stories : Children's Audiobook: Bedtime Classics Goodnight Moon, The Runaway Bunny, Big Red Barn – Relaxing Be” |
 | [Goodnight, goodnight, construction site](https://sccl.bibliocommons.com/v2/record/S980C3291464) | eAudiobook |
 | [Goodnight, goodnight, construction site](https://sccl.bibliocommons.com/v2/record/S980C589410) | eBook |
 | [Goodnight, goodnight, construction site](https://sccl.bibliocommons.com/v2/record/S981C15700439) | Spanish eBook: “Buenas noches, construcción. Buenas noches, diversión. (Goodnight, Goodnight, Construction Site S” |
@@ -650,10 +653,10 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-11T09:35:09**. Don'
 | [The snowy day](https://sccl.bibliocommons.com/v2/record/S980C1289594) | eAudiobook |
 | [The snowy day](https://sccl.bibliocommons.com/v2/record/S980C1583668) | eBook |
 | [The very busy spider](https://sccl.bibliocommons.com/v2/record/S980C3359960) | eAudiobook |
+| [The very busy spider](https://sccl.bibliocommons.com/v2/record/S980C5651247) | eAudiobook: “The Very Eric Carle Treasury : The Very Busy Spider / The Very Quiet Cricket / The Very Clumsy Click Beetle / The Very Lonely Firefly” |
 | [The very hungry caterpillar](https://sccl.bibliocommons.com/v2/record/S980C3014825) | eBook |
 | [The very hungry caterpillar](https://sccl.bibliocommons.com/v2/record/S980C3359961) | eAudiobook |
 | [The very quiet cricket](https://sccl.bibliocommons.com/v2/record/S980C3359962) | eAudiobook |
-| [The very quiet cricket](https://sccl.bibliocommons.com/v2/record/S980C5651247) | eAudiobook: “The Very Eric Carle Treasury : The Very Busy Spider / The Very Quiet Cricket / The Very Clumsy Click Beetle / The Very Lonely Firefly” |
 | [The very quiet cricket](https://sccl.bibliocommons.com/v2/record/S980C7253511) | eBook |
 | [The watermelon seed](https://sccl.bibliocommons.com/v2/record/S118C793523) | Chinese eBook: “Xi gua zi” — translation of “The watermelon seed” |
 | [The watermelon seed](https://sccl.bibliocommons.com/v2/record/S980C2231135) | eBook |
@@ -698,7 +701,6 @@ _Auto-generated from `peorialib.db` — data as of **2026-08-11T09:35:09**. Don'
 | [The very quiet cricket](https://sccl.bibliocommons.com/v2/record/S118C1360499) | Spanish: “El grillo muy silencioso : The very quiet cricket” |
 | [The watermelon seed](https://sccl.bibliocommons.com/v2/record/S118C999623) | audiobook |
 | [We're going on a bear hunt](https://sccl.bibliocommons.com/v2/record/S118C397617) | French: “La chasse à l'ours : We're going on a bear hunt” — translation of “We're going on a bear hunt” |
-| [Where's Spot?](https://sccl.bibliocommons.com/v2/record/S118C104812) | board book |
 | [好大的紅蘋果](https://sccl.bibliocommons.com/v2/record/S118C1243792) |  |
 | [好大的紅蘋果](https://sccl.bibliocommons.com/v2/record/S118C577101) | “Hao da de hong pin guo : Everyone comes to big red apples” |
 | [好餓的毛毛蟲](https://sccl.bibliocommons.com/v2/record/S118C1331915) |  |

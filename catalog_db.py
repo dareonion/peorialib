@@ -144,6 +144,14 @@ CREATE TABLE IF NOT EXISTS remote_bibs (
     PRIMARY KEY (system, record_id)
 );
 
+CREATE TABLE IF NOT EXISTS raw_pages (
+    url        TEXT PRIMARY KEY,       -- the exact request; newest fetch wins
+    host       TEXT,
+    body_gz    BLOB NOT NULL,          -- zlib-compressed response body
+    nbytes     INTEGER,                -- uncompressed size
+    fetched_at TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS remote_editions (
     system      TEXT NOT NULL,
     record_id   TEXT NOT NULL REFERENCES titles(record_id),
@@ -158,6 +166,8 @@ CREATE TABLE IF NOT EXISTS remote_editions (
     checked_at  TEXT NOT NULL,
     contents    TEXT,                     -- compilation contents note ('' = fetched, none)
     orig_title  TEXT,                     -- translation's original title ('' = fetched, none)
+    details     TEXT,                     -- JSON: isbn/edition/publisher/phys_desc/
+                                          -- summary/audience/series/subjects/genres/…
     PRIMARY KEY (system, record_id, bib_id)
 );
 
@@ -197,7 +207,7 @@ def open_db(path: str) -> sqlite3.Connection:
     conn.executescript(SCHEMA)
     # light migration: columns added after the table first shipped
     cols = {r[1] for r in conn.execute("PRAGMA table_info(remote_editions)")}
-    for col in ("contents", "orig_title"):
+    for col in ("contents", "orig_title", "details"):
         if col not in cols:
             conn.execute(f"ALTER TABLE remote_editions ADD COLUMN {col} TEXT")
     conn.commit()
@@ -295,11 +305,30 @@ def replace_remote_editions(conn, system: str, record_id: str, editions,
 
 
 def unenriched_editions(conn):
-    """Compilation/translation editions whose record details aren't fetched yet."""
+    """Every tracked edition whose record details aren't fetched yet."""
     return conn.execute(
         "SELECT system, record_id, bib_id, kind FROM remote_editions "
-        "WHERE kind IN ('audio', 'translation') "
-        "AND contents IS NULL AND orig_title IS NULL").fetchall()
+        "WHERE details IS NULL").fetchall()
+
+
+def store_raw_page(conn, url: str, body: bytes, fetched_at: str):
+    """Mirror a fetched response verbatim — every field the source sent stays
+    re-parseable offline, so a parser fix never needs a re-scrape."""
+    import urllib.parse
+    import zlib
+    conn.execute(
+        "INSERT OR REPLACE INTO raw_pages (url, host, body_gz, nbytes, "
+        "fetched_at) VALUES (?,?,?,?,?)",
+        (url, urllib.parse.urlsplit(url).netloc, zlib.compress(body, 6),
+         len(body), fetched_at))
+
+
+def get_raw_page(conn, url: str) -> bytes | None:
+    """The mirrored response body for a URL, decompressed."""
+    import zlib
+    row = conn.execute("SELECT body_gz FROM raw_pages WHERE url = ?",
+                       (url,)).fetchone()
+    return zlib.decompress(row["body_gz"]) if row else None
 
 
 def delete_remote_edition(conn, system: str, record_id: str, bib_id: str):
@@ -312,12 +341,13 @@ def delete_remote_edition(conn, system: str, record_id: str, bib_id: str):
 
 
 def set_edition_details(conn, system: str, record_id: str, bib_id: str,
-                        contents: str, orig_title: str):
-    """'' (not NULL) marks 'fetched, record has none' so we don't refetch."""
+                        contents: str, orig_title: str, details: str = None):
+    """'' / '{}' (not NULL) mark 'fetched, record has none' — no refetch."""
     conn.execute(
-        "UPDATE remote_editions SET contents = ?, orig_title = ? "
+        "UPDATE remote_editions SET contents = ?, orig_title = ?, details = ? "
         "WHERE system = ? AND record_id = ? AND bib_id = ?",
-        (contents or "", orig_title or "", system, record_id, bib_id))
+        (contents or "", orig_title or "", details or "{}",
+         system, record_id, bib_id))
 
 
 def remote_editions(conn):

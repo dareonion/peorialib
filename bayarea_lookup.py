@@ -91,6 +91,30 @@ AUTHOR_MISMATCH_PENALTY = 0.85
 
 # --- HTTP -----------------------------------------------------------------------
 
+# Every response body is mirrored verbatim into the DB (raw_pages): each of
+# the matching fixes so far has needed data we had already fetched and thrown
+# away. set_archive() points the mirror at the run's DB; _get() feeds it.
+_archive_path = None
+_archive_local = threading.local()
+
+
+def set_archive(db_path: str) -> None:
+    global _archive_path
+    _archive_path = db_path
+
+
+def _archive(url: str, body: bytes) -> None:
+    if not _archive_path:
+        return
+    conn = getattr(_archive_local, "conn", None)
+    if conn is None or getattr(_archive_local, "path", None) != _archive_path:
+        conn = db.open_db(_archive_path)
+        _archive_local.conn, _archive_local.path = conn, _archive_path
+    with conn:
+        db.store_raw_page(conn, url, body,
+                          datetime.now().isoformat(timespec="seconds"))
+
+
 # Minimum spacing between requests to the SAME host, across threads: sccl and
 # sjpl share gateway.bibliocommons.com, and two lookup threads interleaving on
 # it without coordination earned CJK searches HTTP 403s.
@@ -123,6 +147,7 @@ def _get(url: str, accept: str = "application/json", tries: int = 3,
                 data = resp.read()
                 if resp.headers.get("Content-Encoding") == "gzip":
                     data = gzip.decompress(data)
+                _archive(url, data)
                 return data
         except Exception as e:  # URLError, HTTPError, timeout
             last_err = e
@@ -537,25 +562,132 @@ def _marc_subfields(data: str) -> dict:
             for m in re.finditer(r"\$([a-z0-9])([^$]*)", data)}
 
 
+def _marc_subvals(data: str, keep=None, sep: str = " ") -> str:
+    """Join a field's subfield values ('$aBears$vFiction' → 'Bears -- Fiction'
+    with sep=' -- '); keep=None takes every alphabetic subfield."""
+    vals = [(m.group(1), m.group(2).strip())
+            for m in re.finditer(r"\$([a-z0-9])([^$]*)", data)]
+    return sep.join(v for k, v in vals
+                    if v and ((keep is None and k.isalpha()) or
+                              (keep and k in keep))).strip(" .,:;/")
+
+
+# details key -> (MARC tags, subfields to keep, join separator)
+_MARC_DETAILS = [
+    ("isbn", ("020",), ("a", "q"), " "),
+    ("edition", ("250",), ("a", "b"), " "),
+    ("publisher", ("264", "260"), ("a", "b", "c"), " "),
+    ("phys_desc", ("300",), None, " "),
+    ("series", ("490", "830"), ("a", "v"), " "),
+    ("summary", ("520",), ("a",), " "),
+    ("audience", ("521",), ("a", "b"), " "),
+    ("subjects", ("600", "650", "651"), None, " -- "),
+    ("genres", ("655",), ("a",), " "),
+    ("contributors", ("700",), None, " "),        # illustrators, narrators, …
+    ("alt_titles", ("246", "740"), ("a", "b"), " "),
+    ("notes", ("500",), ("a",), " "),
+    ("awards", ("586",), ("a",), " "),
+    ("lccn", ("010",), ("a",), " "),
+    ("oclc", ("035",), ("a",), " "),
+    ("lcc_call", ("050",), ("a", "b"), " "),
+    ("ddc_call", ("082",), ("a",), " "),
+    ("call_number", ("099", "092", "090"), None, " "),
+    ("reading_program", ("526",), None, " "),     # Accelerated Reader etc.
+]
+
+
+def _marc_details(marc: dict) -> dict:
+    """The full bibliographic picture from the MARC display — everything the
+    brief search payload doesn't carry."""
+    out = {}
+    for key, tags, keep, sep in _MARC_DETAILS:
+        vals = []
+        for tag in tags:
+            for d in marc.get(tag, []):
+                v = _marc_subvals(d, keep, sep)
+                if v and v not in vals:
+                    vals.append(v)
+        if vals:
+            out[key] = vals if len(vals) > 1 else vals[0]
+    return out
+
+
 _BC_BIB_ID = re.compile(r"^S(\d+)C(\d+)$")
 
 
-def bc_details(subdomain: str, bib_id: str) -> dict:
-    """contents (MARC 505) + original title (240 uniform title, else a
-    'Translation of' 500/765 note) — from the classic MARC display, the one
-    server-rendered detail view BiblioCommons still has. The gateway search
-    payload carries neither."""
-    m = _BC_BIB_ID.match(bib_id or "")
+def _detail_url(system: str, bib_id: str) -> str | None:
+    """The record's full-detail page (BC: the classic MARC display; WebPACs:
+    the record view) — the source of everything the search payloads omit."""
+    if system in ("sccl", "sjpl"):
+        m = _BC_BIB_ID.match(bib_id or "")
+        return (f"https://{system}.bibliocommons.com/item/catalogue_info/"
+                f"{m.group(2)}{m.group(1)}") if m else None
+    if system == "mvpl":
+        # the MARC display beats the record view: tagged fields, subfield
+        # marks, and data the view never renders (099, 521 Lexile, 526 AR)
+        return f"{MVPL_BASE}/search?/.{bib_id}/.{bib_id}/1,1,1,B/marc~{bib_id}"
+    if system == "linkplus":
+        return (f"{LINKPLUS_BASE}/search?/.{bib_id}/.{bib_id}/1,1,1,B/"
+                f"detlframeset~{bib_id}&FF=&1,0,")
+    return None
+
+
+def _edition_details(conn, system: str, bib_id: str, delay: float) -> dict:
+    """Full details for one edition, mirror-first: LINK+ detail pages were
+    already fetched for holdings, so they parse for free from raw_pages;
+    anything not mirrored is fetched live (and thereby mirrored)."""
+    url = _detail_url(system, bib_id)
+    if not url:
+        return {}
+    raw = db.get_raw_page(conn, url)
+    if raw is None:
+        raw = _get(url, accept="text/html",
+                   timeout=75 if system in ("mvpl", "linkplus") else 60)
+        time.sleep(delay)
+    if system in ("sccl", "sjpl"):
+        return bc_details_from_page(raw.decode("utf-8", "replace"))
+    if system == "mvpl":
+        return marc_details_bundle(iii_marc_fields(
+            raw.decode("iso-8859-1", "replace")))
+    return mvpl_details_from_page(raw.decode("utf-8", "replace"))
+
+
+def iii_marc_fields(page: str) -> dict:
+    """The classic catalog's own MARC display (<pre>, 'TAG II DATA' lines,
+    7-space continuations, '|x' subfield marks, implicit first $a) →
+    {tag: [field data]}, normalized to the $-convention bc_marc_fields uses.
+    """
+    m = re.search(r"<pre[^>]*>(.*?)</pre>", page, re.S)
     if not m:
         return {}
-    url = (f"https://{subdomain}.bibliocommons.com/item/catalogue_info/"
-           f"{m.group(2)}{m.group(1)}")
-    page = _get(url, accept="text/html", timeout=60).decode("utf-8", "replace")
-    return bc_details_from_page(page)
+    out = {}
+    tag, buf = None, ""
+
+    def flush():
+        nonlocal tag, buf
+        data = htmllib.unescape(buf).strip()
+        if tag and data:
+            if not data.startswith("|"):
+                data = "|a" + data
+            out.setdefault(tag, []).append(data.replace("|", "$"))
+        tag, buf = None, ""
+
+    for line in m.group(1).splitlines():
+        if re.match(r"^\d{3}", line):
+            flush()
+            tag, buf = line[:3], line[7:]
+        elif tag and line.startswith(" "):
+            # III wraps long fields; mid-token wraps (URLs) carry no spaces
+            buf += line[7:] if len(line) > 7 else line.strip()
+    flush()
+    return out
 
 
 def bc_details_from_page(page: str) -> dict:
-    marc = bc_marc_fields(page)
+    return marc_details_bundle(bc_marc_fields(page))
+
+
+def marc_details_bundle(marc: dict) -> dict:
     parts = []
     for d in marc.get("505", []):
         t = re.sub(r"\$[a-z0-9]", " ", d)
@@ -575,7 +707,18 @@ def bc_details_from_page(page: str) -> dict:
             if m2:
                 orig = m2.group(1).strip(" .$")
                 break
-    return {"contents": "; ".join(parts), "orig_title": orig}
+    if not orig:
+        # a translated record's added/uniform title: '<original>. <Language>.'
+        for tag in ("730", "740", "246"):
+            for d in marc.get(tag, []):
+                m3 = _UNIFORM_LANG.match(_marc_subvals(d, ("a",)))
+                if m3 and m3.group(1).strip():
+                    orig = m3.group(1).strip(" .")
+                    break
+            if orig:
+                break
+    return {"contents": "; ".join(parts), "orig_title": orig,
+            "details": _marc_details(marc)}
 
 
 # A translated record's uniform title reads '<original title>. <Language>.'
@@ -727,6 +870,25 @@ def _webpac_fields(page: str) -> dict:
     return fields
 
 
+def _webpac_fields_all(page: str) -> dict:
+    """Every value per label. Classic WebPAC repeats a field two ways — an
+    extra row whose label cell is EMPTY ('Subject' then two blank-labeled
+    rows), and values stacked inside one cell with <br> (two ISBNs) — and
+    both continuation forms belong to the preceding label."""
+    fields, last = {}, None
+    for m in re.finditer(r'<td[^>]*class="bibInfoLabel">\s*([^<]*?)\s*</td>\s*'
+                         r'<td[^>]*class="bibInfoData">(.*?)</td>', page, re.S):
+        label = m.group(1).strip() or last
+        if not label:
+            continue
+        last = label
+        for piece in re.split(r"<br\s*/?>", m.group(2), flags=re.I):
+            v = _strip_html(piece)
+            if v:
+                fields.setdefault(label, []).append(v)
+    return fields
+
+
 def _webpac_record_page(page: str) -> dict | None:
     """A single-hit keyword search jumps straight to the record view; parse that.
 
@@ -840,13 +1002,6 @@ class MountainView:
         return bib_or_cand.get("items", [])
 
 
-def mvpl_details(bib_id: str) -> dict:
-    """contents + 'Translation of' original title from the classic record view."""
-    page = _get(f"{MVPL_BASE}/record={bib_id}", accept="text/html",
-                timeout=75).decode("iso-8859-1", "replace")
-    return mvpl_details_from_page(page)
-
-
 def mvpl_details_from_page(page: str) -> dict:
     fields = _webpac_fields(page)
     contents = re.sub(r"\s*--\s*", "; ",
@@ -868,7 +1023,32 @@ def mvpl_details_from_page(page: str) -> dict:
             if m3 and m3.group(1).strip():
                 orig = m3.group(1).strip(" .")
                 break
-    return {"contents": contents, "orig_title": orig}
+    allf = _webpac_fields_all(page)
+
+    def pick(*keys):
+        vals = []
+        for k in keys:
+            vals += [v for v in allf.get(k, []) if v not in vals]
+        return (vals if len(vals) > 1 else vals[0]) if vals else None
+
+    details = {k: v for k, v in {
+        "isbn": pick("ISBN", "ISBN/ISSN"),
+        "edition": pick("Edition"),
+        "publisher": pick("Publication", "Imprint"),
+        "phys_desc": pick("Material", "Descript", "Description"),
+        "summary": pick("Summary"),
+        "audience": pick("Audience", "Target Audience"),
+        "series": pick("Series"),
+        "subjects": pick("Subject"),
+        "genres": pick("Genre"),
+        "alt_titles": pick("Add Title", "Other Title", "Alt Title",
+                           "Uniform Title"),
+        "authors": pick("Author"),
+        "contributors": pick("Added Entry", "Alt Author"),
+        "notes": pick("Note"),
+        "awards": pick("Awards", "Award"),
+    }.items() if v}
+    return {"contents": contents, "orig_title": orig, "details": details}
 
 
 # --- LINK+ (INN-Reach union catalog) --------------------------------------------
@@ -1022,6 +1202,7 @@ def lookup_all(db_path: str, systems: list[str], limit: int = None,
     (one thread + one DB connection each; each host still gets serial,
     delay-spaced requests), then the detail-enrichment pass, then the reports.
     """
+    set_archive(db_path)
     conn = db.open_db(db_path)
     for wl in sorted(glob.glob(WANTLIST_GLOB)):
         if wl == EXCLUDE_FILE:
@@ -1182,11 +1363,14 @@ def _lookup_system(db_path: str, system: str, rows, langs: dict, delay: float,
 
 
 def enrich_editions(db_path: str, systems, delay: float = 0.5) -> int:
-    """Fetch record details for the versions that are other works: what a
-    compilation contains (505 contents), what a translation is a translation
-    of (uniform title / note). Idempotent — only rows never fetched are hit —
-    and parallel per system, like the lookups.
+    """Fetch the full record details for EVERY tracked edition: the complete
+    bibliographic picture (isbn/edition/publisher/summary/audience/series/
+    subjects/genres…), a compilation's contents (505), and a translation's
+    stated original (uniform title / note) — which is also verified here.
+    Idempotent (only rows never fetched are hit), mirror-first (a page already
+    in raw_pages costs nothing), and parallel per system, like the lookups.
     """
+    set_archive(db_path)
     conn = db.open_db(db_path)
     todo = [r for r in db.unenriched_editions(conn) if r["system"] in systems]
     wants = {r["record_id"]: (r["title"], r["author"])
@@ -1194,19 +1378,16 @@ def enrich_editions(db_path: str, systems, delay: float = 0.5) -> int:
     conn.close()
     by_sys = {}
     for r in todo:
-        if r["system"] != "linkplus":   # linkplus carries neither kind
-            by_sys.setdefault(r["system"], []).append(r)
+        by_sys.setdefault(r["system"], []).append(r)
     done = []
 
     def work(system, rows_):
         c = db.open_db(db_path)
+        d_sys = max(delay, SYSTEM_DELAYS.get(system, delay))
         try:
             for r in rows_:
                 try:
-                    d = (bc_details(system, r["bib_id"])
-                         if system in ("sccl", "sjpl")
-                         else mvpl_details(r["bib_id"]))
-                    time.sleep(delay)
+                    d = _edition_details(c, system, r["bib_id"], d_sys)
                 except Exception as e:
                     print(f"  enrich ! {system}/{r['bib_id']}: {e}")
                     continue
@@ -1221,9 +1402,10 @@ def enrich_editions(db_path: str, systems, delay: float = 0.5) -> int:
                           f"{d.get('orig_title')[:40]!r} — dropped")
                     continue
                 with c:
-                    db.set_edition_details(c, system, r["record_id"],
-                                           r["bib_id"], d.get("contents"),
-                                           d.get("orig_title"))
+                    db.set_edition_details(
+                        c, system, r["record_id"], r["bib_id"],
+                        d.get("contents"), d.get("orig_title"),
+                        json.dumps(d.get("details") or {}, ensure_ascii=False))
                 done.append(1)
         finally:
             c.close()
@@ -1238,7 +1420,8 @@ def enrich_editions(db_path: str, systems, delay: float = 0.5) -> int:
 
 
 def probe(systems: list[str], query: str) -> None:
-    """Ad-hoc one-title lookup; prints, records nothing."""
+    """Ad-hoc one-title lookup; prints, records no lookup results (fetched
+    pages still land in the raw mirror)."""
     for system in systems:
         label, make_client = SYSTEMS[system]
         client = make_client()
@@ -1289,6 +1472,7 @@ def main(argv=None):
     args = ap.parse_args(argv)
 
     systems = args.system or sorted(SYSTEMS)
+    set_archive(args.db)
     if args.title:
         probe(systems, args.title)
     elif args.enrich:

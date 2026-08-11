@@ -119,6 +119,20 @@ Tables: `titles` (record metadata), `scrapes` (one row per lookup event),
 `search_snapshots` (Peoria-wide counts). The schema lives in `catalog_db.py`, so the
 DB is always reproducible; it's kept out of git to avoid binary churn.
 
+**Raw mirror**: every response body the Bay Area lookups fetch — search
+results, availability, record details, all four systems — is also stored
+verbatim (zlib-compressed) in `raw_pages`, newest fetch per URL. Every field
+the source sent stays re-parseable offline, so an extraction or matching fix
+can be replayed against mirrored data instead of needing a re-scrape.
+
+**Full details per edition**: the enrichment pass visits every tracked
+version's record page (mirror-first — LINK+ pages were already fetched for
+holdings) and stores the complete bibliographic picture in
+`remote_editions.details` as JSON: ISBN, edition statement, publisher,
+physical description, summary, audience, series, subjects, genres, alternate
+titles — plus the contents note and stated original title used for
+compilation/translation labeling and verification.
+
 ## Why it needs a real browser
 
 The catalog sits behind a **Cloudflare bot check**. A plain HTTP request (curl,
