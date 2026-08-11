@@ -535,7 +535,7 @@ def test_report_dedupes_and_discloses_odd_editions():
         # 2 want rows x 2 identical printings collapse into ONE shelf line...
         cupertino = md.split("## Cupertino")[1].split("##")[0]
         plain = [l for l in cupertino.splitlines()
-                 if l.startswith("- ") and "Eid" not in l]
+                 if l.startswith("| `") and "Eid" not in l]
         assert len(plain) == 1, plain
         # ...and the primary's bib supplies the link
         assert "/record/b1" in plain[0]
@@ -593,7 +593,7 @@ def test_cross_want_claims_collapse_to_the_primary_owner():
         assert len(b9_lines) == 1, b9_lines
         assert "[Bonsoir Lune]" in b9_lines[0]      # the dedicated want wins
         # …but the absorbed claim's cross-reference survives on the line
-        assert "— translation of “Goodnight moon”" in b9_lines[0]
+        assert "| translation of “Goodnight moon” |" in b9_lines[0]
         assert "[Goodnight moon]" not in wl         # no second line for b9
 
 
@@ -873,7 +873,7 @@ def test_editions_store_report_labels_links_and_supersede():
         mv = open(os.path.join(d, "mountainview.md"), encoding="utf-8").read()
         # the Spanish board book is on the shelf: labeled with its real
         # (spine) title, linked
-        assert ("— Spanish board book: “Oso polar, oso polar, ¿qué es ese "
+        assert ("| Spanish board book: “Oso polar, oso polar, ¿qué es ese "
                 "ruido?”" in mv)
         assert "https://classiccatalog.mountainview.gov/record=b3" in mv
         # the plain edition is checked out → linked in the 'no copy' section
@@ -887,7 +887,7 @@ def test_editions_store_report_labels_links_and_supersede():
         # a translation names its original
         assert f"— translation of “{title}”" in mv
         # the eBook lands in the Digital section, not the shelf lists
-        assert "## Digital" in mv and "(eBook)" in mv
+        assert "## Digital" in mv and "| eBook |" in mv
 
         # a re-lookup that drops the translation supersedes its availability
         conn = db.open_db(dbp)

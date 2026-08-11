@@ -181,8 +181,9 @@ def _branch_md(branch, rows, as_of) -> str:
                         ("Readers & holiday", other), ("Chinese / World Language", wl)]:
         if items:
             lines.append(f"\n## {name}\n")
-            lines += [f"- `{r['call_number'] or ''}` "
-                      f"{_link(r['title'], peoria_url(r['record_id']))}"
+            lines += ["| Call # | Title |", "|---|---|"]
+            lines += [f"| `{r['call_number'] or ''}` | "
+                      f"{_link(r['title'], peoria_url(r['record_id']))} |"
                       for r in items]
     if out_rows:
         outs = ", ".join(sorted(_link(r["title"] or "", peoria_url(r["record_id"]))
@@ -411,10 +412,12 @@ def _linkplus_md(rows, bibs, titles, editions, as_of) -> str:
         if libs:
             shown = ", ".join(libs[:6]) + (f", +{len(libs) - 6} more"
                                            if len(libs) > 6 else "")
-            have.append(f"- **{tlink}** — ✓ {len(libs)}: {shown}")
+            have.append(f"| {tlink} | ✓ {len(libs)} | {shown} |")
         else:
             nowhere.append(tlink)
-    lines += have
+    if have:
+        lines += ["| Title | On a shelf | Member systems |", "|---|---|---|"]
+        lines += have
     if nowhere:
         lines.append("\n## In LINK+, but no copy on any member shelf right now\n")
         lines.append(", ".join(sorted(nowhere)) + "\n")
@@ -466,11 +469,6 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
                ["format_class"] in _DIGITAL_CLASSES}
     all_versions -= digital
 
-    def named(rid, bib_id):
-        t = titles[rid]["title"] if rid in titles else rid
-        lab = label(rid, bib_id)
-        return _link(t, record_url(system, bib_id)) + (f" ({lab})" if lab else "")
-
     def kind_rank(rid, bib_id):
         ed = editions.get((system, rid, bib_id))
         return 0 if ed and ed["kind"] == "primary" else 1
@@ -493,25 +491,30 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
                     return f"translation of “{orig}”"
         return ""
 
-    def dedupe_named(pairs):
-        """One entry per bib and per rendered text. Several want rows can
-        claim one record (Bonsoir Lune is both its own want and Goodnight
-        moon's French edition) — the row that owns it as primary wins; and
-        several bibs of the same printing differ only in their link, which
-        reads as a duplicate too."""
+    def dedupe_versions(pairs):
+        """(linked title, version label) rows — one per bib and per rendered
+        text. Several want rows can claim one record (Bonsoir Lune is both
+        its own want and Goodnight moon's French edition) — the row that owns
+        it as primary wins, keeping the absorbed claim's translation note;
+        and several bibs of the same printing differ only in their link,
+        which reads as a duplicate too."""
         by_bib = {}
         for rid, bib in sorted(pairs, key=lambda p: (kind_rank(*p), p[1])):
             by_bib.setdefault(bib, []).append(rid)
         out = {}
         for bib, rids in by_bib.items():
-            s = named(rids[0], bib)
-            note = trans_note(bib, rids, rids[0])
+            rid = rids[0]
+            t = titles[rid]["title"] if rid in titles else rid
+            lab = label(rid, bib)
+            note = trans_note(bib, rids, rid)
             if note:
-                s += f" ({note})"
-            out.setdefault(re.sub(r"\]\([^)]*\)", "]", s), s)
+                lab = f"{lab} — {note}" if lab else note
+            link = _link(t, record_url(system, bib))
+            out.setdefault(re.sub(r"\]\([^)]*\)", "]", f"{link}|{lab}"),
+                           (link, lab))
         return sorted(out.values())
 
-    nowhere = dedupe_named(all_versions - have_shelf)
+    nowhere = dedupe_versions(all_versions - have_shelf)
     not_in_cat = sorted({(titles[b["record_id"]]["title"]
                           if b["record_id"] in titles else b["record_id"])
                          for b in unmatched})
@@ -554,24 +557,26 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
             note = trans_note(bib_id, claims[bib_id], rid)
             if note:
                 lab = f"{lab} — {note}" if lab else note
-            line = (f"- `{r['call_number'] or '?'}` "
-                    f"{_link(r['title'], record_url(system, bib_id))}"
-                    + (f" — {lab}" if lab else ""))
-            key = re.sub(r"\]\([^)]*\)", "]", line)
+            row = (f"| `{r['call_number'] or '?'}` | "
+                   f"{_link(r['title'], record_url(system, bib_id))} | {lab} |")
+            key = re.sub(r"\]\([^)]*\)", "]", row)
             if key in seen_txt:
                 continue
             seen_txt.add(key)
-            entries.append(line)
+            entries.append(row)
         lines.append(f"\n## {bname} — {len(entries)} on the shelf\n")
+        lines += ["| Call # | Title | Version |", "|---|---|---|"]
         lines += entries
     if digital:
         lines.append("\n## Digital (eBook / eAudiobook — borrow via the "
                      "library's app; availability is a license queue, not a "
                      "shelf)\n")
-        lines.append(", ".join(dedupe_named(digital)) + "\n")
+        lines += ["| Title | Version |", "|---|---|"]
+        lines += [f"| {link} | {lab} |" for link, lab in dedupe_versions(digital)]
     if nowhere:
         lines.append("\n## In the catalog, but no copy on any shelf right now\n")
-        lines.append(", ".join(nowhere) + "\n")
+        lines += ["| Title | Version |", "|---|---|"]
+        lines += [f"| {link} | {lab} |" for link, lab in nowhere]
     if not_in_cat:
         lines.append("\n## Not found in this catalog\n")
         lines.append(", ".join(not_in_cat) + "\n")
