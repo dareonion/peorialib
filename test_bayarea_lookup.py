@@ -598,6 +598,31 @@ def test_cross_want_claims_collapse_to_the_primary_owner():
         assert "[Goodnight moon]" not in wl         # no second line for b9
 
 
+def test_get_closes_throttled_responses_and_caps_backoff(monkeypatch):
+    """A 429's HTTPError *is* the response — leaving it unclosed left sockets
+    in CLOSE-WAIT, and uncapped 20/40/60s sleeps stalled a run for minutes."""
+    closed, slept = [], []
+
+    class FakeErr(Exception):
+        """What _get actually touches on a throttle: .code and .close()."""
+        code = 429
+
+        def close(self):
+            closed.append(True)
+
+    def boom(*a, **kw):
+        raise FakeErr()
+
+    monkeypatch.setattr(ba.urllib.request, "urlopen", boom)
+    monkeypatch.setattr(ba.time, "sleep", lambda s: slept.append(s))
+    try:
+        ba._get("https://example.org/x", tries=3)
+    except RuntimeError:
+        pass
+    assert len(closed) == 3, "every throttled response must be closed"
+    assert slept and max(slept) <= ba.THROTTLE_MAX_WAIT, slept
+
+
 def test_raw_page_mirror_round_trip():
     with tempfile.TemporaryDirectory() as d:
         dbp = os.path.join(d, "t.db")

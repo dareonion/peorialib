@@ -119,6 +119,10 @@ def _archive(url: str, body: bytes) -> None:
 # sjpl share gateway.bibliocommons.com, and two lookup threads interleaving on
 # it without coordination earned CJK searches HTTP 403s.
 _HOST_SPACING = 0.4
+# Cap a single back-off. Escalating 20/40/60s waits across several editions of
+# one title once burned 12 silent minutes and hit the service start timeout —
+# better to give up on a title and move on than to stall the whole run.
+THROTTLE_MAX_WAIT = 30
 _host_gate = threading.Lock()
 _host_last: dict = {}
 
@@ -151,8 +155,19 @@ def _get(url: str, accept: str = "application/json", tries: int = 3,
                 return data
         except Exception as e:  # URLError, HTTPError, timeout
             last_err = e
-            if getattr(e, "code", None) in (403, 429):  # throttled: back off hard
-                time.sleep(20 * (attempt + 1))
+            # an HTTPError *is* the response: unclosed, its socket lingers in
+            # CLOSE-WAIT for the rest of the run
+            try:
+                e.close()
+            except Exception:
+                pass
+            if getattr(e, "code", None) in (403, 429):  # throttled: back off
+                wait = min(20 * (attempt + 1), THROTTLE_MAX_WAIT)
+                # say so: a silent multi-minute sleep looks like a hang, and a
+                # per-title log line only prints once every fetch is done
+                print(f"    throttled ({e.code}) — waiting {wait}s: "
+                      f"{urllib.parse.urlsplit(url).netloc}", flush=True)
+                time.sleep(wait)
             else:
                 time.sleep(1.5 * (attempt + 1))
     raise RuntimeError(f"GET failed after {tries} tries: {url}: {last_err}")
