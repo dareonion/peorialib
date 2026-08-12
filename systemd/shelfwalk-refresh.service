@@ -8,4 +8,8 @@ Type=oneshot
 ExecStart=%h/gitrepo/shelfwalk/refresh.sh
 # a full four-system pass is ~30 min; kill a hung run well after that
 TimeoutStartSec=45min
-# Environment="SHELFWALK_PUSH=1"   # uncomment to push after each refresh
+Environment="SHELFWALK_PUSH=1"
+# git push needs the SSH key; a user service has no agent, so point ssh at the
+# key directly (BatchMode so a passphrase-protected key fails loudly in the
+# log instead of hanging until the start timeout)
+Environment="GIT_SSH_COMMAND=ssh -i %h/.ssh/id_ed25519 -o BatchMode=yes"
