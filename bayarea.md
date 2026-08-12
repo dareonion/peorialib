@@ -9,13 +9,106 @@ The want-list, looked up at four Bay Area systems (`uv run bayarea_lookup.py`):
 
 | Key | System | In catalog | On a shelf now |
 |---|---|---|---|
-| `sccl` | Santa Clara County Library District | 112 | 99 |
-| `sjpl` | San José Public Library | 100 | 96 |
-| `mvpl` | Mountain View Public Library | 102 | 64 |
-| `linkplus` | LINK+ (union catalog — request for pickup) | 123 | 120 |
+| `sccl` | Santa Clara County Library District | 111 | 98 |
+| `sjpl` | San José Public Library | 99 | 95 |
+| `mvpl` | Mountain View Public Library | 101 | 63 |
+| `linkplus` | LINK+ (union catalog — request for pickup) | 122 | 120 |
 
-Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`, `linkplus.md`.
+Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`, `linkplus.md`; per-title bibliographic detail: `titles.md`.
 
+
+## To do
+
+**27** to hold · **14** to request through LINK+ · **26** to buy. Everything else is either on a favorite branch's shelf right now (see the per-system files) or already covered.
+
+
+### Place a hold
+
+Your systems own these, but no copy is on a favorite branch's shelf right now.
+
+| Title | Owned by | Speed |
+|---|---|---|
+| Bluey : zoo. | [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b3480569) | every copy out — hold and wait |
+| Bon appétit ! Monsieur Lapin | [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C2607003) | on the shelf at King |
+| Bonne nuit tout le monde | [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b3475974) | every copy out — hold and wait |
+| Bonsoir Lune | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C342782), [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C3367618), [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b1387888) | on the shelf at King, Morgan Hill Library |
+| But not the hippopotamus | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C31808), [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C5835704), [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b2597286) | on the shelf at Bookmobile Department, Gilroy Library +2 |
+| La chenille qui fait des trous | [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C3921097) | on the shelf at King |
+| La couleur des émotions | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C1021940) | on the shelf at Morgan Hill Library |
+| Old MacDonald had a truck | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C501791), [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C5911463), [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b1566301) | on the shelf at Alum Rock, Bookmobile Department +5 |
+| Petit ours brun joue dans la neige | [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b3469638) | every copy out — hold and wait |
+| Petit Ours Brun joue dans son bain | [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b3469637) | every copy out — hold and wait |
+| Roule galette | [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C2133457) | on the shelf at King |
+| 好大的紅蘋果 | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C1243792), [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b2788272) | every copy out — hold and wait |
+| 媽媽買綠豆 | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C593060) | every copy out — hold and wait |
+| 小藍和小黃 | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C603415) | on the shelf at Milpitas Library |
+| 小黃點 | [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C6369933) | on the shelf at Almaden, Berryessa +1 |
+| 從頭動到腳 | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C1360462) | on the shelf at Saratoga Library |
+| 我變成一隻噴火龍了！ | [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C6370349) | on the shelf at Evergreen, Vineland |
+| 抱抱！ | [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C4433175), [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b2352043) | on the shelf at Educational Park |
+| 晚安，猩猩 | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C1360480), [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b3468980) | every copy out — hold and wait |
+| 棕色的熊、棕色的熊，你在看什麼？ | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C744249), [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C5876495), [Mountain View Public Library](https://classiccatalog.mountainview.gov/record=b3466624) | every copy out — hold and wait |
+| 母雞蘿絲去散步 | [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C4317199) | on the shelf at King |
+| 親愛的動物園 | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C1360471) | on the shelf at Saratoga Library |
+| 誰吃掉了？ | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C604978) | on the shelf at Milpitas Library, Saratoga Library |
+| 誰的家到了？ | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C832059) | every copy out — hold and wait |
+| 貝蒂好想好想吃香蕉 | [San José Public Library](https://sjpl.bibliocommons.com/v2/record/S156C5709834) | on the shelf at Almaden, Berryessa +2 |
+| 跑跑鎮 | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C614798) | every copy out — hold and wait |
+| 點點玩聲音 | [Santa Clara County Library District](https://sccl.bibliocommons.com/v2/record/S118C700687) | every copy out — hold and wait |
+
+### Request through LINK+
+
+No local system has these; a LINK+ member does — request for pickup at Mountain View. ✓ = member systems with a copy on a shelf now.
+
+| Title | On a shelf |
+|---|---|
+| [Barbapapa](https://csul.iii.com/record=b37102393) | all out |
+| [Bébés chouettes](https://csul.iii.com/record=b52128577) | ✓ 2 |
+| [Cher zoo](https://csul.iii.com/record=b51517608) | ✓ 1 |
+| [Le loup qui voulait changer de couleur](https://csul.iii.com/record=b41510198) | ✓ 3 |
+| [Maman !](https://csul.iii.com/record=b31994659) | ✓ 1 |
+| [Ours brun, dis-moi ce que tu vois ?](https://csul.iii.com/record=b41510197) | ✓ 4 |
+| [Petit Ours Brun aime sa maman](https://csul.iii.com/record=b48911464) | ✓ 1 |
+| [Petit-Bleu et Petit-Jaune](https://csul.iii.com/record=b52253462) | ✓ 1 |
+| [Regarde dans la nuit](https://csul.iii.com/record=b45258282) | ✓ 1 |
+| [Un livre](https://csul.iii.com/record=b38217262) | ✓ 4 |
+| [Un peu perdu](https://csul.iii.com/record=b51692959) | ✓ 1 |
+| [子兒，吐吐](https://csul.iii.com/record=b40645967) | ✓ 8 |
+| [說不要的書！](https://csul.iii.com/record=b51314585) | ✓ 2 |
+| [這是我的！](https://csul.iii.com/record=b51619387) | ✓ 3 |
+
+### Buy
+
+In no catalog here — not borrowable, even by request.
+
+| Title | ISBN |
+|---|---|
+| 2 yeux ? |  |
+| Bao bao biao qing ji: My Face Book (baby faces) |  |
+| Bonne nuit, Gorille |  |
+| Caca boudin |  |
+| Chut ! On a un plan |  |
+| De la petite taupe qui voulait savoir qui lui avait fait sur la tête |  |
+| Et dedans il y a... |  |
+| Gros pipi |  |
+| L'âne Trotro |  |
+| Le cherche-et-trouve de mes 2 ans |  |
+| Loup |  |
+| Méli-mélo |  |
+| Petit Ours Brun dit non |  |
+| Pop mange de toutes les couleurs |  |
+| T'choupi va sur le pot |  |
+| T'choupi veut tout faire tout seul |  |
+| Va-t'en, Grand Monstre Vert ! |  |
+| 丹丹寶寶版：刷牙 刷～刷～刷 | 9789577627247 |
+| 什麼唱歌：給0-3歲的傳統兒歌 |  |
+| 寶寶喜歡吃 | 9789861616063 |
+| 小雨滴：給0-3歲的律動兒歌 | 9789861616506 |
+| 幼幼小書：我的一天．我喜歡．我愛玩 | 9789861615226 |
+| 擦！擦！擦！ | 9789862038918 |
+| 早安晚安：給0-3歲的自理兒歌 | 9789861616513 |
+| 爸爸跟我玩 | 9789866167466 |
+| 誰來玩躲貓貓？ | 9789865258559 |
 
 ## Your branches
 
@@ -139,7 +232,6 @@ Per-system shelf lists: `sccl.md`, `sjpl.md`, `mountainview.md`, `linkplus.md`.
 | The snowy day | picture | [✓](https://sccl.bibliocommons.com/v2/record/S118C5414) | [✓](https://sccl.bibliocommons.com/v2/record/S118C5414) | [✓](https://classiccatalog.mountainview.gov/record=b2693057) | [✓](https://sjpl.bibliocommons.com/v2/record/S156C2404195) | [✓](https://sjpl.bibliocommons.com/v2/record/S156C2404195) |
 | The very busy spider | picture | [✗](https://sccl.bibliocommons.com/v2/record/S118C15845) | [✓](https://sccl.bibliocommons.com/v2/record/S118C15845) | [✓](https://classiccatalog.mountainview.gov/record=b1468189) | [✓](https://sjpl.bibliocommons.com/v2/record/S156C6148671) | [✓](https://sjpl.bibliocommons.com/v2/record/S156C6148671) |
 | The very hungry caterpillar | picture | [✓](https://sccl.bibliocommons.com/v2/record/S118C7975) | [✓](https://sccl.bibliocommons.com/v2/record/S118C7975) | [✓](https://classiccatalog.mountainview.gov/record=b1411494) | [✗](https://sjpl.bibliocommons.com/v2/record/S156C2945517) | [✓](https://sjpl.bibliocommons.com/v2/record/S156C2945517) |
-| The very hungry caterpillar | board | [✓](https://sccl.bibliocommons.com/v2/record/S118C196388) | [✓](https://sccl.bibliocommons.com/v2/record/S118C196388) | [✓](https://classiccatalog.mountainview.gov/record=b2999194) | [✗](https://sjpl.bibliocommons.com/v2/record/S156C2945517) | [✓](https://sjpl.bibliocommons.com/v2/record/S156C2945517) |
 | The very quiet cricket | picture | [✓](https://sccl.bibliocommons.com/v2/record/S118C27971) | [✓](https://sccl.bibliocommons.com/v2/record/S118C27971) | [✓](https://classiccatalog.mountainview.gov/record=b1129645) | [✓](https://sjpl.bibliocommons.com/v2/record/S156C6148665) | [✓](https://sjpl.bibliocommons.com/v2/record/S156C6148665) |
 | The watermelon seed | picture | [✓](https://sccl.bibliocommons.com/v2/record/S118C374209) | [✓](https://sccl.bibliocommons.com/v2/record/S118C374209) | [✓](https://classiccatalog.mountainview.gov/record=b1458139) |  | [✓](https://sjpl.bibliocommons.com/v2/record/S156C6631965) |
 | Time for bed | picture | [✗](https://sccl.bibliocommons.com/v2/record/S118C38181) | [✓](https://sccl.bibliocommons.com/v2/record/S118C38181) | [✓](https://classiccatalog.mountainview.gov/record=b1154249) |  |  |
@@ -311,7 +403,6 @@ Legend: ✓ on that shelf now · in-library use only ✗ that branch's copies ar
 | The snowy day | picture | [✓ 7](https://sccl.bibliocommons.com/v2/record/S118C5414) | [✓ 8](https://sjpl.bibliocommons.com/v2/record/S156C2404195) | [✓](https://classiccatalog.mountainview.gov/record=b2693057) | [✓ 29](https://csul.iii.com/record=b35434801) |
 | The very busy spider | picture | [✓ 5](https://sccl.bibliocommons.com/v2/record/S118C15845) | [✓ 22](https://sjpl.bibliocommons.com/v2/record/S156C6148671) | [✓](https://classiccatalog.mountainview.gov/record=b1468189) | [✓ 18](https://csul.iii.com/record=b48004713) |
 | The very hungry caterpillar | picture | [✓ 7](https://sccl.bibliocommons.com/v2/record/S118C7975) | [✓ 21](https://sjpl.bibliocommons.com/v2/record/S156C2945517) | [✓](https://classiccatalog.mountainview.gov/record=b1411494) | [✗](https://csul.iii.com/record=b52740608) |
-| The very hungry caterpillar | board | [✓ 7](https://sccl.bibliocommons.com/v2/record/S118C196388) | [✓ 21](https://sjpl.bibliocommons.com/v2/record/S156C2945517) | [✓](https://classiccatalog.mountainview.gov/record=b2999194) | [✗](https://csul.iii.com/record=b52740608) |
 | The very quiet cricket | picture | [✓ 6](https://sccl.bibliocommons.com/v2/record/S118C27971) | [✓ 15](https://sjpl.bibliocommons.com/v2/record/S156C6148665) | [✓](https://classiccatalog.mountainview.gov/record=b1129645) | [✓ 20](https://csul.iii.com/record=b48054940) |
 | The watermelon seed | picture | [✓ 3](https://sccl.bibliocommons.com/v2/record/S118C374209) | [✓ 9](https://sjpl.bibliocommons.com/v2/record/S156C6631965) | [✓](https://classiccatalog.mountainview.gov/record=b1458139) | [✓ 21](https://csul.iii.com/record=b46701590) |
 | Time for bed | picture | [✓ 5](https://sccl.bibliocommons.com/v2/record/S118C38181) | [✓ 2](https://sjpl.bibliocommons.com/v2/record/S156C2161106) | [✓](https://classiccatalog.mountainview.gov/record=b1154249) | [✓ 1](https://csul.iii.com/record=b31116487) |

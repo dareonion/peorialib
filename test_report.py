@@ -47,6 +47,34 @@ def test_write_all_creates_files_from_db():
         assert "| North |" in books
 
 
+def test_ages_reads_every_audience_shape():
+    ages = lambda *v: report._ages({"audience": list(v)})          # noqa: E731
+    # an age range wins, in any of the forms the catalogs actually store
+    assert ages("Ages 3-7") == "Ages 3-7"
+    assert ages("Ages 0-3. Random House Children's Books") == "Ages 0-3"
+    assert ages("2-5 Brodart") == "Ages 2-5"
+    assert ages("04-06") == "Ages 4-6"
+    assert ages("3-7 years") == "Ages 3-7"
+    assert ages("Ages 2+") == "Ages 2+"
+    # bands and levels, in priority order
+    assert ages("Pre-K to 1") == "PreK"
+    assert ages("P-01") == "PreK"
+    assert ages("Preschool") == "PreK"
+    assert ages("Grades K - 3") == "Gr K-3"
+    assert ages("K-3 Medialog, Inc") == "Gr K-3"
+    assert ages("AD 280 Lexile") == "AD280L"
+    assert ages("AD420L Lexile") == "AD420L"
+    assert ages("120 Lexile") == "120L"
+    assert ages("4-8", "K-3 Medialog, Inc", "190 Lexile") == "Ages 4-8"
+    # reading-program numbers are not ages, and unusable values yield nothing
+    assert ages("Accelerated Reader AR LG 2.0 0.5 87616") == ""
+    assert ages("Reading Counts RC K-2 1.5 1 Quiz: 00584") == ""
+    assert ages("Guided reading level: I") == ""
+    assert ages("NP Lexile") == ""
+    assert ages("-3.") == ""
+    assert report._ages({}) == ""
+
+
 def test_peoria_records_are_linked():
     with tempfile.TemporaryDirectory() as d:
         dbp = os.path.join(d, "t.db")

@@ -10,3 +10,4 @@ out.json
 *.db-wal
 *.db-shm
 scrapes/
+logs/

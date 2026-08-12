@@ -1,0 +1,11 @@
+[Unit]
+Description=shelfwalk — refresh Bay Area library availability
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/gitrepo/shelfwalk/refresh.sh
+# a full four-system pass is ~30 min; kill a hung run well after that
+TimeoutStartSec=45min
+# Environment="SHELFWALK_PUSH=1"   # uncomment to push after each refresh

@@ -26,7 +26,9 @@ to the live catalog record.
 **Generated markdown** — do NOT hand-edit; regenerate with `uv run report.py --write`.
 Every scrape (via `library_lookup.py`/`ingest.py`) regenerates them automatically, so
 they're always current:
-- `bayarea.md` — title × system overview for the Bay Area lookups
+- `bayarea.md` — **start here**: a *To do* ladder (hold / request through LINK+
+  / buy) plus the title × system and your-branches matrices
+- `titles.md` — per-title bibliographic detail: ages, ISBN, awards, summary
 - `sccl.md` / `sjpl.md` / `mountainview.md` — per-system, per-branch shelf-walks
 - `linkplus.md` — LINK+ union catalog, title-centric
 - `books.md` + `north.md` / `lakeview.md` / `main.md` — frozen Peoria snapshot
@@ -147,10 +149,50 @@ physical description, summary, audience, series, subjects, genres, alternate
 titles — plus the contents note and stated original title used for
 compilation/translation labeling and verification.
 
+## What to do about each title
+
+`bayarea.md` opens with a **To do** section, because "is it on a shelf" isn't
+an action. Every tracked title lands in exactly one rung:
+
+1. **on a favorite branch's shelf now** — nothing to do; it's in that system's
+   shelf-walk file, call number and all
+2. **place a hold** — your systems own it but no favorite branch has a copy
+   out on the shelf; the *Speed* column says whether one is sitting on some
+   other branch's shelf (fast) or every copy is out (wait)
+3. **request through LINK+** — no local system has it, a member library does
+4. **buy** — in no catalog here at all, with the ISBN to order
+
+## Per-title detail
+
+`titles.md` carries what the shelf lists have no room for — reading age, ISBN,
+awards, and the summary — merged across systems (each field from the first
+catalog that recorded it). Ages come from the catalogs' audience notes, which
+are wildly inconsistent (`Ages 3-7`, `2-5 Brodart`, `Pre-K to 1`, `AD 280
+Lexile`), so the column normalizes whatever exists and blanks where a record
+says nothing. The shelf-walk tables carry the same age in a column, for
+judging at the shelf whether a book suits the kid you're shopping for.
+
+## Scheduled refresh
+
+Board books turn over within hours, so the reports are only true if they're
+fresh. `refresh.sh` re-checks everything, regenerates the markdown, and commits
+it (logs in `logs/`, pruned after 30 days; set `SHELFWALK_PUSH=1` to push too).
+A systemd user timer runs it at 7:30am, catching up after a suspend:
+
+```bash
+cp systemd/shelfwalk-refresh.* ~/.config/systemd/user/
+systemctl --user daemon-reload
+systemctl --user enable --now shelfwalk-refresh.timer
+systemctl --user list-timers shelfwalk-refresh.timer   # when it next fires
+journalctl --user -u shelfwalk-refresh -n 20           # what happened
+```
+
+(`loginctl enable-linger` if it should also run while you're logged out.)
+
 ## Tests
 
 ```bash
-uv run pytest -q        # 60 tests, no network — every parser runs on fixtures
+uv run pytest -q        # 61 tests, no network — every parser runs on fixtures
 ```
 
 ---

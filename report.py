@@ -24,6 +24,7 @@ writers after every scrape, so the files stay current automatically.
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import unicodedata
 from pathlib import Path
@@ -284,11 +285,194 @@ def _edition_label(ed, want_title: str = None) -> str:
 
 
 def _title_key(titles, record_id):
-    """Collapse duplicate want-list records (same book, two Peoria editions)."""
+    """Collapse duplicate want-list records (same book, two Peoria editions).
+
+    Keyed on the title alone: the two Peoria records for *The Very Hungry
+    Caterpillar* differ only in shelf format, and keeping format in the key
+    listed the book twice in every rendering.
+    """
     t = titles.get(record_id)
     if t is None:
         return (record_id, "")
-    return ((t["title"] or "").lower(), t["format"] or "")
+    return ((t["title"] or "").lower(),)
+
+
+# --- bibliographic details (remote_editions.details, set by the enrich pass) ---
+
+_DETAIL_PREF = {"sccl": 0, "sjpl": 1, "mvpl": 2, "linkplus": 3}
+
+
+def _merge_details(editions, titles) -> dict:
+    """tkey -> one merged details dict. Catalogs describe the same book with
+    different completeness, so take each field from the first record that has
+    it, preferring the primary edition and the richest catalog."""
+    per = {}
+    for (system, rid, _bib), e in editions.items():
+        try:
+            d = json.loads(e["details"] or "{}")
+        except (TypeError, ValueError):
+            continue
+        if not d:
+            continue
+        rank = (0 if e["kind"] == "primary" else 1, _DETAIL_PREF.get(system, 9))
+        per.setdefault(_title_key(titles, rid), []).append((rank, d))
+    out = {}
+    for tkey, items in per.items():
+        merged = {}
+        for _rank, d in sorted(items, key=lambda x: x[0]):
+            for k, v in d.items():
+                if v and k not in merged:
+                    merged[k] = v
+        out[tkey] = merged
+    return out
+
+
+def _first(val):
+    """details values are a string or a list of strings."""
+    if isinstance(val, list):
+        return val[0] if val else ""
+    return val or ""
+
+
+def _all(val) -> list:
+    if isinstance(val, list):
+        return [v for v in val if v]
+    return [val] if val else []
+
+
+# Reading-program noise that must never be read as an age range: 'AR LG 2.0
+# 0.5', 'RC K-2 1.5 1', 'Guided reading level: I', '440 Lexile'.
+_NOT_AGE = re.compile(r"lexile|quiz|guided|reading counts|reader|\bRC\b|\bAR\b", re.I)
+_AGES_EXPLICIT = re.compile(r"\bages?\b[\s:]*(\d{1,2})\s*(?:-|–|to)\s*(\d{1,2})", re.I)
+_AGES_OPEN = re.compile(r"\bages?\b[\s:]*(\d{1,2})\s*\+", re.I)
+# a bare range leading the value: '2-5 Brodart', '04-06', '3-7 years'
+_AGES_BARE = re.compile(r"^\D{0,4}(\d{1,2})\s*(?:-|–)\s*(\d{1,2})\b")
+_PREK = re.compile(r"pre-?k|pre-?s(?:chool)?\b|toddler|\bbaby\b|^P\s*-\s*\w", re.I)
+_GRADES = re.compile(r"\b([K\d]{1,2})\s*(?:-|–|to)\s*([K\d]{1,2})\b", re.I)
+# 'AD420L Lexile', 'AD 280 Lexile', '120 Lexile' (NP/BR carry no number)
+_LEXILE = re.compile(r"\b(AD|HL|BR|IG|NC)?\s?(\d{2,4})\s*L?\b\s*Lexile", re.I)
+
+
+def _ages(det) -> str:
+    """Compact reading-level cell, best form first: an age range, else a
+    preschool band, else grades, else a Lexile.
+
+    The catalogs record audience a dozen ways ('Ages 3-7', '2-5 Brodart',
+    'Pre-K to 1', 'K-3 Medialog', 'AD 280 Lexile'), so each value is tried
+    against every shape rather than one regex over a joined blob.
+    """
+    best = {}
+    for raw in _all(det.get("audience")) + _all(det.get("reading_program")):
+        s = (raw or "").strip()
+        if not s:
+            continue
+        if not _NOT_AGE.search(s):
+            m = _AGES_EXPLICIT.search(s) or _AGES_BARE.match(s)
+            if m:
+                lo, hi = int(m.group(1)), int(m.group(2))
+                if 0 <= lo < hi <= 18:
+                    best.setdefault(0, f"Ages {lo}-{hi}")
+                    continue
+            m = _AGES_OPEN.search(s)
+            if m:
+                best.setdefault(0, f"Ages {m.group(1)}+")
+                continue
+            if _PREK.search(s):
+                best.setdefault(1, "PreK")
+                continue
+            m = _GRADES.search(s)
+            if m and re.search(r"grade|^\s*K", s, re.I):
+                best.setdefault(2, f"Gr {m.group(1).upper()}-{m.group(2).upper()}")
+                continue
+        m = _LEXILE.search(s)
+        if m:
+            best.setdefault(3, f"{(m.group(1) or '').upper()}{m.group(2)}L")
+    return best[min(best)] if best else ""
+
+
+_LOCAL_SYSTEMS = ("sccl", "sjpl", "mvpl")   # you can walk in; LINK+ you request
+
+
+def _todo_md(meta, matched, bib_of, bstate, branches, titles, editions) -> list:
+    """The actionable ladder: nothing to do (it's on a favorite shelf) → place a
+    hold → request through LINK+ → buy. Availability alone doesn't say which,
+    so this is the part of the report you act on."""
+    fav_keys = [(s, b) for s, b, _ in FAVORITES]
+    digital = set()     # (tkey, system) that own it only as eBook/eAudiobook
+    physical = set()
+    for (system, rid, bib), e in editions.items():
+        k = (_title_key(titles, rid), system)
+        (digital if (e["format_class"] or "") in _DIGITAL_CLASSES
+         else physical).add(k)
+
+    hold, viaplus, buy, digital_only = [], [], [], []
+    for tkey in sorted(meta, key=lambda k: k[0]):
+        title, _fmt = meta[tkey]
+        on_fav = any(bstate.get((tkey, s, b)) == "available"
+                     if b else any(st == "available"
+                                   for (tk, sy, _br), st in bstate.items()
+                                   if tk == tkey and sy == s)
+                     for s, b in fav_keys)
+        if on_fav:
+            continue                       # already in the shelf-walk files
+        owns = [s for s in _LOCAL_SYSTEMS if (tkey, s) in matched]
+        if owns:
+            if not any((tkey, s) in physical for s in owns):
+                digital_only.append(_link(title, record_url(
+                    owns[0], bib_of.get((tkey, owns[0])))))
+                continue
+            where = ", ".join(
+                _link(REMOTE_SYSTEMS[s][0].split(" (")[0],
+                      record_url(s, bib_of.get((tkey, s))))
+                for s in owns if (tkey, s) in physical)
+            # a copy sitting on some other branch's shelf travels fastest
+            elsewhere = sorted({br for s in owns
+                                for (tk, sy, br), st in bstate.items()
+                                if tk == tkey and sy == s and st == "available"
+                                and (s, br) not in fav_keys
+                                and (s, None) not in fav_keys})
+            speed = (f"on the shelf at {', '.join(elsewhere[:2])}"
+                     f"{f' +{len(elsewhere) - 2}' if len(elsewhere) > 2 else ''}"
+                     if elsewhere else "every copy out — hold and wait")
+            # the title stays plain — "Owned by" carries a link per system
+            hold.append(f"| {title} | {where} | {speed} |")
+        elif (tkey, "linkplus") in matched:
+            n = len(branches.get((tkey, "linkplus"), ()))
+            viaplus.append(f"| {_link(title, record_url('linkplus', bib_of.get((tkey, 'linkplus'))))} "
+                           f"| {'✓ ' + str(n) if n else 'all out'} |")
+        else:
+            isbns = ""
+            for rid, t in titles.items():
+                if _title_key(titles, rid) == tkey and t["isbns"]:
+                    isbns = ", ".join(re.findall(r"[0-9Xx]{10,13}", t["isbns"]))
+                    break
+            buy.append(f"| {title} | {isbns} |")
+
+    out = ["\n## To do\n",
+           f"**{len(hold)}** to hold · **{len(viaplus)}** to request through "
+           f"LINK+ · **{len(buy)}** to buy. Everything else is either on a "
+           f"favorite branch's shelf right now (see the per-system files) or "
+           f"already covered.\n"]
+    if hold:
+        out += ["\n### Place a hold\n",
+                "Your systems own these, but no copy is on a favorite "
+                "branch's shelf right now.\n",
+                "| Title | Owned by | Speed |", "|---|---|---|"] + hold
+    if viaplus:
+        out += ["\n### Request through LINK+\n",
+                "No local system has these; a LINK+ member does — request for "
+                "pickup at Mountain View. ✓ = member systems with a copy on a "
+                "shelf now.\n",
+                "| Title | On a shelf |", "|---|---|"] + viaplus
+    if buy:
+        out += ["\n### Buy\n",
+                "In no catalog here — not borrowable, even by request.\n",
+                "| Title | ISBN |", "|---|---|"] + buy
+    if digital_only:
+        out += ["\n### Digital only\n",
+                "Owned locally only as eBook/eAudiobook — borrow in the "
+                "library's app: " + ", ".join(digital_only) + "\n"]
+    return out
 
 
 def _bayarea_md(rows, bibs, titles, editions, as_of) -> str:
@@ -360,8 +544,10 @@ def _bayarea_md(rows, bibs, titles, editions, as_of) -> str:
         on_shelf = sum(1 for (tk, sy) in branches if sy == s)
         out.append(f"| `{s}` | {REMOTE_SYSTEMS[s][0]} | {in_cat} | {on_shelf} |")
     out += ["\nPer-system shelf lists: " +
-            ", ".join(f"`{REMOTE_SYSTEMS[s][1]}`" for s in REMOTE_ORDER) + ".\n",
-            "\n## Your branches\n",
+            ", ".join(f"`{REMOTE_SYSTEMS[s][1]}`" for s in REMOTE_ORDER) +
+            "; per-title bibliographic detail: `titles.md`.\n"]
+    out += _todo_md(meta, matched, bib_of, bstate, branches, titles, editions)
+    out += ["\n## Your branches\n",
             "| Title | Type | " + " | ".join(lbl for _, _, lbl in FAVORITES) + " |",
             "|" + "---|" * (2 + len(FAVORITES))]
     for tkey in sorted(meta, key=lambda k: k[0]):
@@ -440,9 +626,14 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
     matched = [b for b in sbibs if b["bib_id"]]
     unmatched = [b for b in sbibs if not b["bib_id"]]
 
+    det_by_key = _merge_details(editions, titles)
+
     def label(rid, bib_id):
         want = titles[rid]["title"] if rid in titles else None
         return _edition_label(editions.get((system, rid, bib_id)), want)
+
+    def ages(rid):
+        return _ages(det_by_key.get(_title_key(titles, rid), {}))
 
     # branch -> {(record_id, bib_id): best availability row} — one line per
     # tracked version (board/audio/translation), not per title
@@ -559,14 +750,15 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
             if note:
                 lab = f"{lab} — {note}" if lab else note
             row = (f"| `{r['call_number'] or '?'}` | "
-                   f"{_link(r['title'], record_url(system, bib_id))} | {lab} |")
+                   f"{_link(r['title'], record_url(system, bib_id))} | {lab} "
+                   f"| {ages(rid)} |")
             key = re.sub(r"\]\([^)]*\)", "]", row)
             if key in seen_txt:
                 continue
             seen_txt.add(key)
             entries.append(row)
         lines.append(f"\n## {bname} — {len(entries)} on the shelf\n")
-        lines += ["| Call # | Title | Version |", "|---|---|---|"]
+        lines += ["| Call # | Title | Version | Ages |", "|---|---|---|---|"]
         lines += entries
     if digital:
         lines.append("\n## Digital (eBook / eAudiobook — borrow via the "
@@ -584,6 +776,40 @@ def _system_md(system, rows, bibs, titles, editions, as_of) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _titles_md(bibs, titles, editions, as_of) -> str:
+    """Per-title bibliographic reference — the enrichment pass's details, which
+    the shelf lists have no room for (what it's about, what age it's aimed at,
+    what it won, what to buy)."""
+    det_by_key = _merge_details(editions, titles)
+    seen, rows = set(), []
+    for b in sorted(bibs, key=lambda b: (titles[b["record_id"]]["title"].lower()
+                                         if b["record_id"] in titles else "")):
+        rid = b["record_id"]
+        tkey = _title_key(titles, rid)
+        if tkey in seen or rid not in titles:
+            continue
+        seen.add(tkey)
+        t = titles[rid]
+        det = det_by_key.get(tkey, {})
+        summary = _first(det.get("summary"))
+        if len(summary) > 220:
+            summary = summary[:217] + "…"
+        isbn = _first(det.get("isbn")) or (t["isbns"] or "")
+        isbn = re.sub(r"\s*\([^)]*\)", "", isbn).strip()
+        rows.append(f"| {t['title']} | {t['author'] or ''} | {_ages(det)} | "
+                    f"{isbn} | {_first(det.get('awards'))} | {summary} |")
+    n_det = sum(1 for k in seen if det_by_key.get(k))
+    return "\n".join(
+        ["# Want-list — book details\n", _gen_header(as_of),
+         f"\nBibliographic detail for the **{len(rows)}** tracked titles "
+         f"({n_det} with catalog details fetched), merged across systems by "
+         f"the `--enrich` pass. Ages come from the catalogs' audience notes, "
+         f"so a Lexile (`AD420L`) or grade band appears where no age range "
+         f"was recorded, and blanks mean the record says nothing.\n",
+         "| Title | Author | Ages | ISBN | Awards | Summary |",
+         "|---|---|---|---|---|---|"] + rows) + "\n"
+
+
 def write_bayarea(db_path: str, outdir: str = ".") -> list[str]:
     """(Re)generate the Bay Area markdown. No-op (returns []) before any lookup."""
     rows, bibs, titles, editions, as_of = _load_remote(db_path)
@@ -594,6 +820,9 @@ def write_bayarea(db_path: str, outdir: str = ".") -> list[str]:
     (outdir / "bayarea.md").write_text(
         _bayarea_md(rows, bibs, titles, editions, as_of), encoding="utf-8")
     written.append(str(outdir / "bayarea.md"))
+    (outdir / "titles.md").write_text(
+        _titles_md(bibs, titles, editions, as_of), encoding="utf-8")
+    written.append(str(outdir / "titles.md"))
     for system, (_, fname) in REMOTE_SYSTEMS.items():
         if any(b["system"] == system for b in bibs):
             (outdir / fname).write_text(

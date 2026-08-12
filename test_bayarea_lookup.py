@@ -463,7 +463,7 @@ def test_remote_store_and_bayarea_markdown():
 
         written = report.write_bayarea(dbp, d)
         names = {os.path.basename(p) for p in written}
-        assert names == {"bayarea.md", "sccl.md"}
+        assert names == {"bayarea.md", "titles.md", "sccl.md"}
         overview = open(os.path.join(d, "bayarea.md"), encoding="utf-8").read()
         assert "Dear zoo" in overview and "✓ 1" in overview
         assert "Xiao xiong san bu" in overview and "—" in overview

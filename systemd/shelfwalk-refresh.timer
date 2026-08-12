@@ -1,0 +1,12 @@
+[Unit]
+Description=shelfwalk — morning availability refresh
+
+[Timer]
+# 7:30am local, so the reports are true before a morning library trip
+OnCalendar=*-*-* 07:30:00
+# if the machine was asleep at 7:30, run once it comes back
+Persistent=true
+RandomizedDelaySec=5min
+
+[Install]
+WantedBy=timers.target
