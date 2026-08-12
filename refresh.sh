@@ -3,8 +3,9 @@
 # and commit the result. Meant for the systemd user timer (see systemd/) or
 # cron; safe to run by hand too.
 #
-#   ./refresh.sh              # refresh + commit the regenerated reports
-#   SHELFWALK_PUSH=1 ./refresh.sh   # …and push
+#   ./refresh.sh                                  # refresh + commit the reports
+#   SHELFWALK_PUSH=1 ./refresh.sh                 # …and push
+#   SHELFWALK_ARGS="--system sccl --limit 2" ./refresh.sh    # quick smoke test
 #
 # Availability is the whole point of a refresh: popular board books turn over
 # within hours, so a morning run is what makes the reports true when you
@@ -17,9 +18,19 @@ export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
 
 mkdir -p logs
 log="logs/refresh-$(date +%Y-%m-%d).log"
+
+# One refresh at a time: a full pass takes ~30 min, so a daily timer plus a
+# hand-run (or a slow night) could otherwise stack two scrapes on one DB.
+exec 9>>logs/.refresh.lock
+if ! flock -n 9; then
+    echo "=== $(date -Is) skipped — another refresh holds the lock" >>"$log"
+    exit 0
+fi
+
 {
-    echo "=== $(date -Is) refresh starting"
-    uv run bayarea_lookup.py
+    echo "=== $(date -Is) refresh starting ${SHELFWALK_ARGS:+(args: $SHELFWALK_ARGS)}"
+    # shellcheck disable=SC2086  # deliberate word-splitting of the args knob
+    uv run bayarea_lookup.py ${SHELFWALK_ARGS:-}
     echo "=== $(date -Is) lookup exit $?"
 } >>"$log" 2>&1
 
