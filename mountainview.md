@@ -177,12 +177,12 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-11T10:44:12**. Don'
 | [Goodnight, goodnight, construction site](https://classiccatalog.mountainview.gov/record=b1600044) | board book |
 | [Goodnight, goodnight, construction site](https://classiccatalog.mountainview.gov/record=b3361558) | Japanese: “Oyasumi, hataraku kurumatachi” — translation of “Goodnight, goodnight, construction site” |
 | [Goodnight, goodnight, construction site](https://classiccatalog.mountainview.gov/record=b3460798) | Chinese: “Wan an, gong di shang de che” — translation of “Goodnight, goodnight, construction site” |
+| [Grumpy monkey : mom for a day](https://classiccatalog.mountainview.gov/record=b2774133) | French: “Gaston grognon” — translation of “Grumpy monkey” |
+| [Grumpy monkey : mom for a day](https://classiccatalog.mountainview.gov/record=b2821345) | Chinese: “Xin fan de hou zi” |
 | [Grumpy monkey : mom for a day](https://classiccatalog.mountainview.gov/record=b3465648) |  |
 | [Grumpy monkey party time!](https://classiccatalog.mountainview.gov/record=b2786758) | Spanish: “Gruñón, ¡esto es una fiesta!” — translation of “Grumpy monkey party time!” |
 | [Grumpy monkey yuck!](https://classiccatalog.mountainview.gov/record=b3455767) | board book |
 | [Grumpy monkey](https://classiccatalog.mountainview.gov/record=b2361523) |  |
-| [Grumpy monkey](https://classiccatalog.mountainview.gov/record=b2774133) | French: “Gaston grognon” — translation of “Grumpy monkey” |
-| [Grumpy monkey](https://classiccatalog.mountainview.gov/record=b2821345) | Chinese: “Xin fan de hou zi” |
 | [Hooray for fish!](https://classiccatalog.mountainview.gov/record=b1301058) |  |
 | [Hug](https://classiccatalog.mountainview.gov/record=b1328185) | board book |
 | [I love you to the moon and back](https://classiccatalog.mountainview.gov/record=b2822815) | board book |

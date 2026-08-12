@@ -5,20 +5,21 @@ are produced. They are generated artifacts of `shelfwalk.db`; never hand-edit th
     uv run report.py --write      # (re)generate all markdown from the DB
     uv run report.py --matrix     # just print the cross-branch matrix to stdout
 
-`--write` produces:
+`--write` produces, from the Bay Area lookups:
+    bayarea.md        title × system overview (+ a "your branches" matrix)
+    sccl.md           \\
+    sjpl.md            }  per-system, per-branch shelf-walks
+    mountainview.md   /
+    linkplus.md       union catalog, title-centric (70 systems, no shelf-walk)
+
+and, from the retired Peoria scrape data:
     books.md      overview: per-branch counts + the full title-x-branch matrix
     north.md      \\
     lakeview.md    }  per-branch "on the shelf now" shelf-walks
     main.md       /
 
-and, once bayarea_lookup.py has run at least once:
-    bayarea.md        title × system overview for the Bay Area lookups
-    sccl.md           \\
-    sjpl.md            }  per-system, per-branch shelf-walks
-    mountainview.md   /
-
-ingest.py, library_lookup.py, and bayarea_lookup.py call the writers after every
-scrape, so the files stay current automatically.
+bayarea_lookup.py (and, historically, ingest.py / library_lookup.py) call the
+writers after every scrape, so the files stay current automatically.
 """
 from __future__ import annotations
 

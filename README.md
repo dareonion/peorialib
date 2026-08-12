@@ -14,8 +14,9 @@ to the live catalog record.
 ## Contents
 
 **Code** (the source of truth is the SQLite DB; everything else is derived):
-- `library_lookup.py` — the availability lookup tool (details below)
-- `bayarea_lookup.py` — the same want-list at SCCLD / San José / Mountain View
+- `bayarea_lookup.py` — **the live tool**: the want-list at SCCLD / San José /
+  Mountain View / LINK+
+- `library_lookup.py` — the retired Peoria scraper (browser-driven; see the end)
 - `catalog_db.py` — SQLite store: every scrape's per-branch status over time
 - `ingest.py` — load browser-captured scrape JSON into the store
 - `report.py` — **generates the markdown** from the store (`--write`) + `--matrix`
@@ -25,20 +26,26 @@ to the live catalog record.
 **Generated markdown** — do NOT hand-edit; regenerate with `uv run report.py --write`.
 Every scrape (via `library_lookup.py`/`ingest.py`) regenerates them automatically, so
 they're always current:
-- `books.md` — overview: per-branch on-shelf counts + the full title-×-branch matrix
-- `north.md` / `lakeview.md` / `main.md` — per-branch "on the shelf now" shelf-walks
-  (with a Chinese / World Language subsection where applicable)
 - `bayarea.md` — title × system overview for the Bay Area lookups
 - `sccl.md` / `sjpl.md` / `mountainview.md` — per-system, per-branch shelf-walks
 - `linkplus.md` — LINK+ union catalog, title-centric
+- `books.md` + `north.md` / `lakeview.md` / `main.md` — frozen Peoria snapshot
 
 Every listing links straight to the record in that system's own catalog
-(Peoria's RSAcat, BiblioCommons, the classic WebPACs), so a click lands on the
+(BiblioCommons, the classic WebPACs, Peoria's RSAcat), so a click lands on the
 live page for holds/renewals.
+
+## Setup
+
+```bash
+uv sync    # venv + deps (pypinyin; playwright, only the Peoria scraper needs it)
+```
+
+Nothing else — the Bay Area catalogs are plain HTTP, no browser or auth.
 
 ## Bay Area lookups
 
-`bayarea_lookup.py` checks the same want-list at three Bay Area systems:
+`bayarea_lookup.py` checks the want-list at four Bay Area systems:
 
 | Key | System | Catalog |
 |---|---|---|
@@ -93,11 +100,16 @@ title. Those details come from the record pages (MARC 505/240) in an
 enrichment pass that runs automatically after every lookup; `--enrich` runs
 just that pass for anything still missing.
 
-**`wantlist_*.json`** files hold extra want-list books that have no Peoria
-record — added by hand: `wantlist_zh.json` (Traditional-Chinese picks, with the
-Traditional-edition ISBN where known; an unmatched title gets one last search by
-ISBN) and `wantlist_fr.json` (French picks). Every run merges them into `titles`
-(as `WANT:…` rows) before looking anything up. CJK titles are searched in CJK
+**`wantlist_*.json`** files are the hand-curated want-list — one JSON array of
+`{title, author, format, lang?, isbn?}`: `wantlist_en.json` (English picks),
+`wantlist_zh.json` (Traditional-Chinese, with the Traditional-edition ISBN
+where known; an unmatched title gets one last search by ISBN), and
+`wantlist_fr.json` (French). `lang` pins a title to that language so a French
+want can't match the English edition. `wantlist_exclude.json` lists titles to
+leave out of remote lookups entirely (Peoria-only shelf finds). Every run
+merges the lists into `titles` (as `WANT:…` rows) before looking anything up,
+so adding a book is a one-line edit plus `uv run bayarea_lookup.py --resume`.
+CJK titles are searched in CJK
 where the catalog supports it (BiblioCommons) and via pypinyin romanization
 where it doesn't (Mountain View's classic WebPAC 502s on CJK); scoring compares
 CJK, pinyin, and romanized forms, which also bridges traditional/simplified
@@ -135,6 +147,19 @@ physical description, summary, audience, series, subjects, genres, alternate
 titles — plus the contents note and stated original title used for
 compilation/translation labeling and verification.
 
+## Tests
+
+```bash
+uv run pytest -q        # 60 tests, no network — every parser runs on fixtures
+```
+
+---
+
+# Peoria (retired)
+
+Everything below concerns `library_lookup.py` and the Peoria markdown, kept for
+reference. It is no longer refreshed.
+
 ## Why it needs a real browser
 
 The catalog sits behind a **Cloudflare bot check**. A plain HTTP request (curl,
@@ -142,13 +167,7 @@ The catalog sits behind a **Cloudflare bot check**. A plain HTTP request (curl,
 "Just a moment…" interstitial. A *real* browser clears it by running the
 challenge JavaScript — so this tool drives one. No CAPTCHA-solving and no
 fingerprint spoofing; it just uses an actual browser the way a person would.
-
-## Setup
-
-```bash
-uv sync                              # create the venv + install Playwright
-uv run playwright install chromium   # one-time browser download (skip if you use --connect)
-```
+One-time browser download: `uv run playwright install chromium`.
 
 ## Usage
 
@@ -183,16 +202,6 @@ Branches: `north`, `lakeview`, `lincoln`, `main`, `mcclure`, `outreach`.
 - **`--headless`** — fastest, but the bot check usually blocks it. Handy only if
   you're running through `--connect` to a headless-but-already-cleared Chrome, or
   on a network Cloudflare trusts.
-
-## Tests
-
-```bash
-uv run python test_library_lookup.py     # or: uv run pytest -q
-```
-
-The tests cover the status/availability parsing and run the two page-side
-extractors against fixture HTML loaded locally (no network — the live,
-Cloudflare-guarded site is never touched).
 
 ## Notes
 

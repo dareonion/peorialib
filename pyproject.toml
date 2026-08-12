@@ -1,12 +1,17 @@
 [project]
 name = "shelfwalk"
 version = "0.1.0"
-description = "Look up Peoria Public Library book availability from the command line"
+description = "Track a toddler book want-list against Bay Area library shelves"
 requires-python = ">=3.11"
 dependencies = [
-    "playwright>=1.40",
+    "playwright>=1.40",   # only the retired Peoria scraper needs a browser
     "pypinyin>=0.55.0",
 ]
+
+[dependency-groups]
+# so plain `uv run pytest` resolves in-venv instead of falling back to a
+# system pytest that can't import playwright
+dev = ["pytest>=8"]
 
 [tool.uv]
 # Not a packaged library — just a script + its managed venv. Run with `uv run`.
