@@ -2,7 +2,7 @@
 
 <!-- AUTO-GENERATED from shelfwalk.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `shelfwalk.db` — data as of **2026-08-13T07:32:09**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `shelfwalk.db` — data as of **2026-08-14T07:35:09**. Don't hand-edit; run `uv run report.py --write`._
 
 
 Bibliographic detail for the **163** tracked titles (137 with catalog details fetched), merged across systems by the `--enrich` pass. Ages come from the catalogs' audience notes, so a Lexile (`AD420L`) or grade band appears where no age range was recorded, and blanks mean the record says nothing.
@@ -125,8 +125,8 @@ Bibliographic detail for the **163** tracked titles (137 with catalog details fe
 | The napping house | Wood, Audrey |  | 9780152567088 |  | In this cumulative tale, a wakeful flea atop a number of sleeping creatures causes a commotion, with just one bite |
 | The pigeon needs a bath! | Willems, Mo | AD350L | 9781423190875 |  | The Pigeon is dirty and he needs a bath, but he won't go willingly |
 | The snowy day | Keats, Ezra Jack illustrator author | AD500L | 0606049231 | Caldecott Medal, 1963 | The adventures of a little boy in the city on a very snowy day |
-| The very busy spider | Carle, Eric author illustrator | PreK | 9780399211669 |  | The farm animals try to divert a busy little spider from spinning her web, but she persists and produces a thing of both beauty and usefulness. The pictures may be felt as well as seen |
-| The very hungry caterpillar | Carle, Eric author | Ages 2-5 | 0399208534 |  | Follows the progress of a hungry little caterpillar as he eats his way through a varied and very large quantity of food until, full at last, he forms a cocoon around himself and goes to sleep. Die-cut pages illustrate… |
+| The very busy spider | Carle, Eric author illustrator |  | 9780399211669 |  | The farm animals try to divert a busy little spider from spinning her web, but she persists and produces a thing of both beauty and usefulness. The pictures may be felt as well as seen |
+| The very hungry caterpillar | Carle, Eric author | Ages 2-5 | 9780525516194 hardcover |  | Follows the progress of a hungry little caterpillar as he eats his way through a varied and very large quantity of food until, full at last, he forms a cocoon around himself and goes to sleep and wakes up a butterfly |
 | The very quiet cricket | Carle, Eric |  | 9780399218859 |  | A very quiet cricket who wants to rub his wings together and make a sound as do so many other animals finally achieves his wish. The cricket's sound is reproduced at the end of the book |
 | The watermelon seed | Pizzoli, Greg author | 350L | 9781423171010 | Theodor Seuss Geisel Award | After swallowing a watermelon seed, a crocodile imagines a scary outcome |
 | Time for bed | Fox, Mem, 1946- |  | 0152010149 |  | As darkness falls parents everywhere try to get their children ready for sleep |
@@ -159,7 +159,7 @@ Bibliographic detail for the **163** tracked titles (137 with catalog details fe
 | 早安晚安：給0-3歲的自理兒歌 |  |  | 9789861616513 |  |  |
 | 晚安，猩猩 | Rathmann, Peggy |  | 9787513342728 board book |  |  |
 | 棕色的熊、棕色的熊，你在看什麼？ | Martin, Bill |  | 9577621902 |  | Illustrations and rhyming text portray a young bear searching for its mother and meeting many North American animals along the way |
-| 母雞蘿絲去散步 | Hutchins, Pat |  | 9787533259389 |  |  |
+| 母雞蘿絲去散步 | Hutchins, Pat |  | 7533296427 |  |  |
 | 爸爸跟我玩 |  |  | 9789866167466 |  |  |
 | 米米坐馬桶 | 周逸芬 |  | 9789869883160 |  |  |
 | 親愛的動物園 | Campbell, Rod |  | 9787539174365 |  | In this delightful tale about a youngster looking for the perfect pet, readers can lift the flaps to see the animals the zoo has sent |
@@ -170,5 +170,5 @@ Bibliographic detail for the **163** tracked titles (137 with catalog details fe
 | 貝蒂好想好想吃香蕉 | Antony, Steve | Ages 1-6 | 9786264063005 |  | Betty the gorilla gets very upset when she is unable to peel her banana, and every effort Mr. Toucan makes to help her only seems to make things worse |
 | 跑跑鎮 |  |  | 9787533282103 |  |  |
 | 這是我的！ | 三浦太郎 |  | 9787556271283 set ; paperback |  | 兩歲左右的幼兒已經逐漸意識到自己是獨立的個體了，會開始用語言表達自己，「這是我的！」就是一個很常從幼兒口中出現的句子・這類表達自我的語言其實能夠直接促進幼兒自我概念的發展，從根本不認識自己，到開始知道自己的名字及能用詞句標誌自己的物品. 這種幼兒逐漸發展自我概念的過程，將有助其建立正面的自我觀及自尊感. |
-| 鱷魚怕怕．牙醫怕怕 | 五味太郎 |  | 9789577621382 |  | A crocodile and a dentist have an encounter in which each is afraid of the other |
+| 鱷魚怕怕．牙醫怕怕 | 五味太郎 |  | 9787572804977 hardback |  | A crocodile and a dentist have an encounter in which each is afraid of the other |
 | 點點玩聲音 | Tullet, Hervé |  | 9789577626110 |  |  |
