@@ -2,7 +2,7 @@
 
 <!-- AUTO-GENERATED from shelfwalk.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `shelfwalk.db` — data as of **2026-08-14T07:35:09**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `shelfwalk.db` — data as of **2026-08-15T07:31:09**. Don't hand-edit; run `uv run report.py --write`._
 
 
 **103** of **165** titles are in the catalog; **67** have at least one copy on a shelf right now. Titles link to the record in this catalog; unlabeled lines are the plain edition, labels mark the other versions we track (board book / audiobook / eBook / eAudiobook / translations).
@@ -65,8 +65,8 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-14T07:35:09**. Don'
 | `J P DEWDNEY` | [Llama Llama red pajama](https://classiccatalog.mountainview.gov/record=b1301067) |  |  |
 | `J P DONALDSON` | [The Gruffalo](https://classiccatalog.mountainview.gov/record=b1440004) |  | AD510L |
 | `J P GRAVETT` | [Monkey and me](https://classiccatalog.mountainview.gov/record=b1350037) |  |  |
+| `J P HAUGHTON` | [Oh no, George!](https://classiccatalog.mountainview.gov/record=b1435450) |  | Ages 2-5 |
 | `J P HAUGHTON` | [Shh! We have a plan](https://classiccatalog.mountainview.gov/record=b1503194) |  | Ages 2-5 |
-| `J P HENKES` | [Kitten's first full moon](https://classiccatalog.mountainview.gov/record=b1279884) |  | 360L |
 | `J P HILLS` | [Duck & Goose go to the beach](https://classiccatalog.mountainview.gov/record=b1481550) |  | Ages 3-7 |
 | `J P KEATS` | [The snowy day](https://classiccatalog.mountainview.gov/record=b2693057) |  | AD500L |
 | `J P KLASSEN CD` | [I want my hat back](https://classiccatalog.mountainview.gov/record=b1425648) |  | 90L |
@@ -88,7 +88,7 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-14T07:35:09**. Don'
 | `J P WOOD` | [The napping house](https://classiccatalog.mountainview.gov/record=b1072078) |  |  |
 | `J P YOLEN` | [How do dinosaurs say good night?](https://classiccatalog.mountainview.gov/record=b1227952) |  | AD210L |
 
-## Children's Board Books - 1st Floor — 8 on the shelf
+## Children's Board Books - 1st Floor — 9 on the shelf
 
 | Call # | Title | Version | Ages |
 |---|---|---|---|
@@ -96,35 +96,25 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-14T07:35:09**. Don'
 | `J BOARD A` | [Hug](https://classiccatalog.mountainview.gov/record=b1328185) | board book |  |
 | `J BOARD C` | [The very hungry caterpillar](https://classiccatalog.mountainview.gov/record=b2999194) | board book | Ages 2-5 |
 | `J BOARD D` | [Llama Llama misses Mama](https://classiccatalog.mountainview.gov/record=b2405394) | board book |  |
+| `J BOARD H` | [Kitten's first full moon](https://classiccatalog.mountainview.gov/record=b1578866) | board book | 360L |
 | `J BOARD M` | [Brown bear, brown bear, what do you see?](https://classiccatalog.mountainview.gov/record=b1424060) | board book | AD440L |
 | `J BOARD VEHICLE` | [Goodnight, goodnight, construction site](https://classiccatalog.mountainview.gov/record=b1600044) | board book |  |
 | `J BOARD VEHICLE` | [Steam train, dream train](https://classiccatalog.mountainview.gov/record=b2161777) | board book | AD610L |
 | `J BOARD W` | [Owl babies](https://classiccatalog.mountainview.gov/record=b2418463) | board book | AD500L |
 
-## Children's Concept Books - 1st Floor — 8 on the shelf
+## Children's Concept Books - 1st Floor — 9 on the shelf
 
 | Call # | Title | Version | Ages |
 |---|---|---|---|
 | `J P CREWS VEH` | [Freight train = Tren de carga](https://classiccatalog.mountainview.gov/record=b1035344) |  |  |
 | `J P DEWDNEY VEH` | [Little Excavator](https://classiccatalog.mountainview.gov/record=b1585689) |  | AD480L |
 | `J P KLASSEN Read-Along` | [I want my hat back](https://classiccatalog.mountainview.gov/record=b3457979) |  | 90L |
+| `J P MCMULLAN VEH` | [I stink!](https://classiccatalog.mountainview.gov/record=b1251479) |  |  |
 | `J P RINKER VEH` | [Steam train, dream train](https://classiccatalog.mountainview.gov/record=b1458131) |  | AD610L |
 | `J P SAYRES VEH` | [Where do diggers sleep at night?](https://classiccatalog.mountainview.gov/record=b1437829) |  | AD510L |
 | `J P SCHERTLE VEH` | [Little blue truck](https://classiccatalog.mountainview.gov/record=b1348696) |  | AD580L |
 | `J P SHANNON Read-Along` | [Duck on a bike](https://classiccatalog.mountainview.gov/record=b2821456) |  | AD240L |
 | `J P SHANNON VEH` | [Duck on a bike](https://classiccatalog.mountainview.gov/record=b1248676) |  | AD240L |
-
-## Children's Early Readers Fiction - 1st Floor — 7 on the shelf
-
-| Call # | Title | Version | Ages |
-|---|---|---|---|
-| `J E CARLE` | [The very busy spider](https://classiccatalog.mountainview.gov/record=b1468189) |  |  |
-| `J E CRONIN` | [Duck stays in the truck](https://classiccatalog.mountainview.gov/record=b2546685) |  | Ages 5-7 |
-| `J E DIESEN` | [You can do it, Pout-Pout Fish!](https://classiccatalog.mountainview.gov/record=b2324144) |  | 210L |
-| `J E EASTMAN` | [Are you my mother?](https://classiccatalog.mountainview.gov/record=b1052293) |  | 80L |
-| `J E EASTMAN` | [Go, dog. Go!](https://classiccatalog.mountainview.gov/record=b1572994) |  |  |
-| `J E REGAN Mike` | [Mike delivers : the duck is stuck!](https://classiccatalog.mountainview.gov/record=b2992838) |  | Ages 4-6 |
-| `J E SEUSS` | [Mr. Brown can moo! Can you?](https://classiccatalog.mountainview.gov/record=b1052397) |  |  |
 
 ## Children's Audiobooks - 1st Floor — 4 on the shelf
 
@@ -134,6 +124,16 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-14T07:35:09**. Don'
 | `J CD P Rosen` | [We're going on a bear hunt](https://classiccatalog.mountainview.gov/record=b1348021) | audiobook |  |
 | `J CD P SENDAK` | [Where the wild things are](https://classiccatalog.mountainview.gov/record=b1394856) | audiobook | Ages 4-8 |
 | `J CD P SLOBODKINA` | [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://classiccatalog.mountainview.gov/record=b1394814) | audiobook | Ages 3-7 |
+
+## Children's Early Readers Fiction - 1st Floor — 5 on the shelf
+
+| Call # | Title | Version | Ages |
+|---|---|---|---|
+| `J E CARLE` | [The very busy spider](https://classiccatalog.mountainview.gov/record=b1468189) |  |  |
+| `J E CRONIN` | [Duck stays in the truck](https://classiccatalog.mountainview.gov/record=b2546685) |  | Ages 5-7 |
+| `J E DIESEN` | [You can do it, Pout-Pout Fish!](https://classiccatalog.mountainview.gov/record=b2324144) |  | 210L |
+| `J E EASTMAN` | [Are you my mother?](https://classiccatalog.mountainview.gov/record=b1052293) |  | 80L |
+| `J E EASTMAN` | [Go, dog. Go!](https://classiccatalog.mountainview.gov/record=b1572994) |  |  |
 
 ## Childrens Holiday Books - 1st Floor — 3 on the shelf
 
@@ -158,6 +158,7 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-14T07:35:09**. Don'
 | [Blueberries for Sal](https://classiccatalog.mountainview.gov/record=b1334377) |  |
 | [Blueberries for Sal](https://classiccatalog.mountainview.gov/record=b1409259) | Spanish: “Arándanos para Sal” — translation of “Blueberries for Sal” |
 | [Bonsoir Lune](https://classiccatalog.mountainview.gov/record=b1387888) | translation of “Goodnight moon” |
+| [Brown bear, brown bear, what do you see?](https://classiccatalog.mountainview.gov/record=b2392348) | Chinese board book: “Zong se de xiong, zong se de xiong, ni zai kan shen me?” — translation of “Brown bear, brown bear, what do you see?” |
 | [Brown bear, brown bear, what do you see?](https://classiccatalog.mountainview.gov/record=b2821442) |  |
 | [Brown bear, brown bear, what do you see?](https://classiccatalog.mountainview.gov/record=b3476128) | Spanish board book: “Oso pardo, oso pardo, ¿qué ves ahí?” — translation of “Brown bear, brown bear, what do you see?” |
 | [But not the hippopotamus](https://classiccatalog.mountainview.gov/record=b2597286) | board book |
@@ -181,18 +182,17 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-14T07:35:09**. Don'
 | [Goodnight, goodnight, construction site](https://classiccatalog.mountainview.gov/record=b1480336) | Spanish: “Felices sueños, camiones grandes y pequeños” — translation of “Goodnight, goodnight, construction site” |
 | [Goodnight, goodnight, construction site](https://classiccatalog.mountainview.gov/record=b3361558) | Japanese: “Oyasumi, hataraku kurumatachi” — translation of “Goodnight, goodnight, construction site” |
 | [Goodnight, goodnight, construction site](https://classiccatalog.mountainview.gov/record=b3460798) | Chinese: “Wan an, gong di shang de che” — translation of “Goodnight, goodnight, construction site” |
-| [Grumpy monkey : mom for a day](https://classiccatalog.mountainview.gov/record=b2774133) | French: “Gaston grognon” — translation of “Grumpy monkey” |
-| [Grumpy monkey : mom for a day](https://classiccatalog.mountainview.gov/record=b2821345) | Chinese: “Xin fan de hou zi” |
 | [Grumpy monkey : mom for a day](https://classiccatalog.mountainview.gov/record=b3465648) |  |
 | [Grumpy monkey party time!](https://classiccatalog.mountainview.gov/record=b2786758) | Spanish: “Gruñón, ¡esto es una fiesta!” — translation of “Grumpy monkey party time!” |
 | [Grumpy monkey yuck!](https://classiccatalog.mountainview.gov/record=b3455767) | board book |
+| [Grumpy monkey](https://classiccatalog.mountainview.gov/record=b2774133) | French: “Gaston grognon” — translation of “Grumpy monkey” |
+| [Grumpy monkey](https://classiccatalog.mountainview.gov/record=b2821345) | Chinese: “Xin fan de hou zi” |
 | [Hooray for fish!](https://classiccatalog.mountainview.gov/record=b1301058) |  |
 | [I love you to the moon and back](https://classiccatalog.mountainview.gov/record=b2822815) | board book |
-| [I stink!](https://classiccatalog.mountainview.gov/record=b1251479) |  |
 | [If you give a mouse a cookie](https://classiccatalog.mountainview.gov/record=b1078546) |  |
 | [If you give a mouse a cookie](https://classiccatalog.mountainview.gov/record=b1175721) | Spanish: “Si le das una galletita a un ratón” — translation of “If you give a mouse a cookie” |
 | [If you give a mouse a cookie](https://classiccatalog.mountainview.gov/record=b3418118) | Chinese: “Yao shi ni gei lao shu chi bing gan = Yaoshi ni gei laoshu chi binggan” — translation of “If you give a mouse a cookie” |
-| [Kitten's first full moon](https://classiccatalog.mountainview.gov/record=b1578866) | board book |
+| [Kitten's first full moon](https://classiccatalog.mountainview.gov/record=b1279884) |  |
 | [Kitten's first full moon](https://classiccatalog.mountainview.gov/record=b2381005) | Chinese: “Xiao mao mi zhui yue liang” — translation of “Kitten's first full moon” |
 | [Knuffle Bunny : a cautionary tale](https://classiccatalog.mountainview.gov/record=b1286804) |  |
 | [Little Excavator](https://classiccatalog.mountainview.gov/record=b3471819) | board book |
@@ -204,19 +204,20 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-14T07:35:09**. Don'
 | [Llama Llama red pajama](https://classiccatalog.mountainview.gov/record=b2821464) |  |
 | [Mighty, mighty construction site](https://classiccatalog.mountainview.gov/record=b1587466) |  |
 | [Mighty, mighty construction site](https://classiccatalog.mountainview.gov/record=b3118126) | board book |
+| [Mike delivers : the duck is stuck!](https://classiccatalog.mountainview.gov/record=b2992838) |  |
 | [Moo, baa, la la la!](https://classiccatalog.mountainview.gov/record=b2582373) | board book |
 | [Mouse paint](https://classiccatalog.mountainview.gov/record=b1110201) |  |
 | [Mr. Brown can moo! Can you?](https://classiccatalog.mountainview.gov/record=b1430829) |  |
 | [My truck is stuck!](https://classiccatalog.mountainview.gov/record=b1259887) |  |
 | [My truck is stuck!](https://classiccatalog.mountainview.gov/record=b1424079) | board book |
 | [Not a box](https://classiccatalog.mountainview.gov/record=b1327221) |  |
-| [Oh no, George!](https://classiccatalog.mountainview.gov/record=b1435450) |  |
 | [Old MacDonald had a truck](https://classiccatalog.mountainview.gov/record=b1566301) |  |
 | [Orange pear apple bear](https://classiccatalog.mountainview.gov/record=b1340742) |  |
 | [Pete the cat : I love my white shoes](https://classiccatalog.mountainview.gov/record=b1425984) |  |
 | [Petit Ours Brun joue dans son bain](https://classiccatalog.mountainview.gov/record=b3469637) | board book |
 | [Petit ours brun joue dans la neige](https://classiccatalog.mountainview.gov/record=b3469638) | board book |
 | [Polar bear, polar bear, what do you hear?](https://classiccatalog.mountainview.gov/record=b1324547) | board book |
+| [Press here](https://classiccatalog.mountainview.gov/record=b3485909) |  |
 | [Sheep in a jeep](https://classiccatalog.mountainview.gov/record=b2787973) | board book |
 | [Ten apples up on top!](https://classiccatalog.mountainview.gov/record=b1328375) |  |
 | [Ten little fingers and ten little toes](https://classiccatalog.mountainview.gov/record=b1356017) |  |
@@ -249,7 +250,6 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-14T07:35:09**. Don'
 | [小金魚逃走了](https://classiccatalog.mountainview.gov/record=b3479942) |  |
 | [抱抱！](https://classiccatalog.mountainview.gov/record=b2352043) | translation of “Hug” |
 | [晚安，猩猩](https://classiccatalog.mountainview.gov/record=b3468980) |  |
-| [棕色的熊、棕色的熊，你在看什麼？](https://classiccatalog.mountainview.gov/record=b2392348) | board book: “Zong se de xiong, zong se de xiong, ni zai kan shen me?” — translation of “Brown bear, brown bear, what do you see?” |
 | [棕色的熊、棕色的熊，你在看什麼？](https://classiccatalog.mountainview.gov/record=b3466624) | translation of “Brown bear, brown bear, what do you see?” |
 | [鱷魚怕怕．牙醫怕怕](https://classiccatalog.mountainview.gov/record=b2380989) |  |
 
