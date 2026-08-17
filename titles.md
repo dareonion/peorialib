@@ -2,7 +2,7 @@
 
 <!-- AUTO-GENERATED from shelfwalk.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `shelfwalk.db` — data as of **2026-08-16T07:35:09**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `shelfwalk.db` — data as of **2026-08-17T07:32:09**. Don't hand-edit; run `uv run report.py --write`._
 
 
 Bibliographic detail for the **163** tracked titles (137 with catalog details fetched), merged across systems by the `--enrich` pass. Ages come from the catalogs' audience notes, so a Lexile (`AD420L`) or grade band appears where no age range was recorded, and blanks mean the record says nothing.
@@ -36,7 +36,7 @@ Bibliographic detail for the **163** tracked titles (137 with catalog details fe
 | Chut ! On a un plan | Haughton, Chris |  |  |  |  |
 | De la petite taupe qui voulait savoir qui lui avait fait sur la tête | Holzwarth, Werner |  |  |  |  |
 | Dear zoo | Campbell, Rod, 1945- author | 150L | 0027164403 |  | Each animal arriving from the zoo as a possible pet fails to suit its prospective owner, until just the right one is found. Movable flaps reveal the contents of each package |
-| Don't let the pigeon drive the bus | Willems, Mo author | 120L | 9780786819881 | Caldecott Honor | No matter how hard he pleads and begs, the pigeon is not supposed to drive the bus while the driver is away, but pigeon tries every persuasive trick a young child knows to get you to say, "Yes." |
+| Don't let the pigeon drive the bus | Willems, Mo author | 120L | 9780786819881 | Caldecott Honor | A pigeon that longs to drive a bus sees a chance to make its dream come true when the bus driver takes a short break |
 | Don't push the button! | Cotter, Bill | Ages 4-8 | 9781402287466 |  | The only rule in Larry's book is that the reader not push the button, but when no one is looking, it may be irresistible |
 | Dot! scribble! go! | Tullet, Hervé author illustrator | Ages 3-5 | 9781797232584 |  | "Once again, Hervé Tullet brilliantly and successfully coaxes children to recognize and celebrate their innate artistic talent. He convinces each reader that their hand is magic and capable of transforming a few simp… |
 | Dragons love tacos | Rubin, Adam, 1983- author | AD520L | 9780803736801 |  | Explores the love dragons have for tacos, and the dangers of feeding them them anything with spicy salsa |
