@@ -2,7 +2,7 @@
 
 <!-- AUTO-GENERATED from shelfwalk.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `shelfwalk.db` — data as of **2026-08-19T07:34:09**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `shelfwalk.db` — data as of **2026-08-20T07:31:09**. Don't hand-edit; run `uv run report.py --write`._
 
 
 Bibliographic detail for the **163** tracked titles (137 with catalog details fetched), merged across systems by the `--enrich` pass. Ages come from the catalogs' audience notes, so a Lexile (`AD420L`) or grade band appears where no age range was recorded, and blanks mean the record says nothing.
@@ -69,7 +69,7 @@ Bibliographic detail for the **163** tracked titles (137 with catalog details fe
 | In my heart : a book of feelings | Witek, Jo, 1968- | AD450L | 9781419713101 |  | A young girl explores what different emotions feel like, such as happiness which makes her want to twirl, or sadness which feels as heavy as an elephant |
 | Jamberry | Degen, Bruce | PreK | 0060214171 |  | A little boy walking in the forest meets a big lovable bear that takes him on a delicious berry-picking adventure in the magical world of Berryland |
 | Kitten's first full moon | Henkes, Kevin | 360L | 9780060588281 | Caldecott Medal, 2005 | When Kitten mistakes the full moon for a bowl of milk, she ends up tired, wet, and hungry trying to reach it |
-| Knuffle Bunny : a cautionary tale | Willems, Mo author | Ages 2-5 | 0786818700 | Caldecott Honor Book, 2005 | A trip to the laundromat leads to a momentous occasion when Trixie, too young to speak words, realizes that something important is missing and struggles to explain the problem to her father. Trixie, Daddy, and Knuffle… |
+| Knuffle Bunny : a cautionary tale | Willems, Mo author | Ages 2-5 | 0786818700 | Caldecott Honor | A trip to the laundromat leads to a momentous occasion when Trixie, too young to speak words, realizes that something important is missing and struggles to explain the problem to her father. Trixie, Daddy, and Knuffle… |
 | Knuffle Bunny too : a case of mistaken identity | Willems, Mo author | Ages 3-6 | 9781423102991 | A Junior Library Guild selection | Her daddy in tow, Trixie hurries to school to show off her one-of-a-kind Knuffle Bunny. But an awful surprise awaits her: someone else has the exact same bunny! |
 | L'âne Trotro | Guettier, Bénédicte |  |  |  |  |
 | La chenille qui fait des trous | Carle, Eric |  | 2871421749 |  | Follows the progress of a hungry little caterpillar as he eats his way through a varied and very large quantity of food until, full at last, he forms a cocoon around himself and goes to sleep. Die-cut pages illustrate… |
@@ -127,7 +127,7 @@ Bibliographic detail for the **163** tracked titles (137 with catalog details fe
 | The snowy day | Keats, Ezra Jack illustrator author | AD500L | 0606049231 | Caldecott Medal, 1963 | The adventures of a little boy in the city on a very snowy day |
 | The very busy spider | Carle, Eric author illustrator |  | 9780399211669 |  | The farm animals try to divert a busy little spider from spinning her web, but she persists and produces a thing of both beauty and usefulness. The pictures may be felt as well as seen |
 | The very hungry caterpillar | Carle, Eric author | Ages 2-5 | 0399208534 |  | Follows the progress of a hungry little caterpillar as he eats his way through a varied and very large quantity of food until, full at last, he forms a cocoon around himself and goes to sleep. Die-cut pages illustrate… |
-| The very quiet cricket | Carle, Eric |  | 9780448481395 |  | "One day a tiny cricket is born. He meets a big cricket who chirps his welcome. The tiny cricket tries to respond, but he cannot make a sound. And so the cricket makes his way in the world, meeting one insect after an… |
+| The very quiet cricket | Carle, Eric |  | 9780399218859 |  | A very quiet cricket who wants to rub his wings together and make a sound as do so many other animals finally achieves his wish. The cricket's sound is reproduced at the end of the book |
 | The watermelon seed | Pizzoli, Greg author | 350L | 9781423171010 | Theodor Seuss Geisel Award | After swallowing a watermelon seed, a crocodile imagines a scary outcome |
 | Time for bed | Fox, Mem, 1946- |  | 0152010149 |  | As darkness falls parents everywhere try to get their children ready for sleep |
 | Twinkle, twinkle, little sheepy : a sleepy sheepy story | Cummins, Lucy Ruth author |  | 9798217041008 |  | Twinkle, twinkle, little sheep, now it's time to go to sleep . . . Crafted from the original bedtime song "Twinkle, Twinkle, Little Star," and with sturdy board book pages, this is the perfect bedtime read for little … |
@@ -135,7 +135,7 @@ Bibliographic detail for the **163** tracked titles (137 with catalog details fe
 | Un peu perdu | Haughton, Chris |  | 9782844208934 |  | Un bébé chouette tombe de son nid et atterrit au coeur de la forêt. Un écureuil et une grenouille l'aident à retrouver sa mère |
 | Va-t'en, Grand Monstre Vert ! | Emberley, Ed |  |  |  |  |
 | We're going on a bear hunt | Rosen, Michael, 1946- |  | 0689504764 |  | Brave bear hunters go through grass, a river, mud, and other obstacles before the inevitable encounter with the bear forces a headlong retreat |
-| Where do diggers sleep at night? | Sayres, Brianna Caplan | AD510L | 9780375868481 |  | Illustrations and rhyming text reveal what trucks, tractors, and construction vehicles do to get ready for bed after a hard day's work |
+| Where do diggers sleep at night? | Sayres, Brianna Caplan | AD510L | 9798897793624 |  | Illustrations and rhyming text reveal what trucks, tractors, and construction vehicles do to get ready for bed after a hard day's work |
 | Where the wild things are | Sendak, Maurice | Ages 4-8 | 9780060254926 | Caldecott Medal, 1964 | Max, a naughty little boy, sent to bed without his supper, sails to the land of the wild things where he becomes their king |
 | Where's Spot? | Hill, Eric, 1927-2014 author illustrator | Ages 2-6 | 9780399240461 |  | A mother dog finds eight other animals hiding around the house before finding her lost puppy. Flaps conceal the animals |
 | You can do it, Pout-Pout Fish! | Diesen, Deborah author | 210L | 9780374309817 |  | "Mr. Fish has a fun idea! He is going to make a painting for his friends at school, and he does not need any help--that is, until his plan doesn't work"--Back cover |
@@ -157,7 +157,7 @@ Bibliographic detail for the **163** tracked titles (137 with catalog details fe
 | 抱抱！ | Alborough, Jez |  | 9789861893211 |  |  |
 | 擦！擦！擦！ |  |  | 9789862038918 |  |  |
 | 早安晚安：給0-3歲的自理兒歌 |  |  | 9789861616513 |  |  |
-| 晚安，猩猩 | Rathmann, Peggy |  | 9787513342728 board book |  |  |
+| 晚安，猩猩 | Rathmann, Peggy |  | 9787559615886 |  |  |
 | 棕色的熊、棕色的熊，你在看什麼？ | Martin, Bill |  | 9577621902 |  | Illustrations and rhyming text portray a young bear searching for its mother and meeting many North American animals along the way |
 | 母雞蘿絲去散步 | Hutchins, Pat |  | 7533296427 |  |  |
 | 爸爸跟我玩 |  |  | 9789866167466 |  |  |
