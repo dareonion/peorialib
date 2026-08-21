@@ -2,7 +2,7 @@
 
 <!-- AUTO-GENERATED from shelfwalk.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `shelfwalk.db` — data as of **2026-08-20T07:31:09**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `shelfwalk.db` — data as of **2026-08-21T07:35:09**. Don't hand-edit; run `uv run report.py --write`._
 
 
 Bibliographic detail for the **163** tracked titles (137 with catalog details fetched), merged across systems by the `--enrich` pass. Ages come from the catalogs' audience notes, so a Lexile (`AD420L`) or grade band appears where no age range was recorded, and blanks mean the record says nothing.
@@ -41,7 +41,7 @@ Bibliographic detail for the **163** tracked titles (137 with catalog details fe
 | Dot! scribble! go! | Tullet, Hervé author illustrator | Ages 3-5 | 9781797232584 |  | "Once again, Hervé Tullet brilliantly and successfully coaxes children to recognize and celebrate their innate artistic talent. He convinces each reader that their hand is magic and capable of transforming a few simp… |
 | Dragons love tacos | Rubin, Adam, 1983- author | AD520L | 9780803736801 |  | Explores the love dragons have for tacos, and the dangers of feeding them them anything with spicy salsa |
 | Duck & Goose go to the beach | Hills, Tad author illustrator | Ages 3-7 | 9780385372350 |  | "Duck wants to go on an adventure. Goose doesn't. He doesn't see the point. After all, why would they go anywhere when they're happy right where they are? But then Goose sees the ocean and loves it. Who doesn't? Well,… |
-| Duck & Goose, honk! quack! boo! | Hills, Tad author illustrator | Ages 3-8 | 9781524701758 |  | Duck and Goose, dressed for Halloween as a ghost and a superhero, respectively, go trick-or-treating in the forest, but they are careful to follow Thistle's warning to look out for a scary swamp monster |
+| Duck & Goose, honk! quack! boo! | Hills, Tad author illustrator | AD510L | 9781524701758 |  | Duck and Goose, dressed for Halloween as a ghost and a superhero, respectively, go trick-or-treating in the forest, but they are careful to follow Thistle's warning to look out for a scary swamp monster |
 | Duck on a bike | Shannon, David | AD240L | 9781338744903 | 2 x 2 Reading List, 2003 | A duck decides to ride a bike and soon influences all the other animals on the farm to ride bikes too |
 | Duck stays in the truck | Cronin, Doreen author | Ages 5-7 | 9781534454149 |  | "Farmer Brown wants to go camping. He packs up the animals. He packs up his brother, Bob. The chickens want to hike. The cows want to fish. The pigs want to picnic. And Duck? Duck just wants to stay in the truck. How … |
 | Each peach pear plum | Ahlberg, Janet |  | 9780140506396 |  | Rhymed text and illustrations invite the reader to play "I Spy" with a variety of Mother Goose and other folklore characters |
