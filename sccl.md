@@ -2,10 +2,10 @@
 
 <!-- AUTO-GENERATED from shelfwalk.db by report.py — do not edit by hand. Regenerate: `uv run report.py --write` -->
 
-_Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don't hand-edit; run `uv run report.py --write`._
+_Auto-generated from `shelfwalk.db` — data as of **2026-08-22T07:31:29**. Don't hand-edit; run `uv run report.py --write`._
 
 
-**114** of **165** titles are in the catalog; **96** have at least one copy on a shelf right now. Titles link to the record in this catalog; unlabeled lines are the plain edition, labels mark the other versions we track (board book / audiobook / eBook / eAudiobook / translations).
+**114** of **165** titles are in the catalog; **97** have at least one copy on a shelf right now. Titles link to the record in this catalog; unlabeled lines are the plain edition, labels mark the other versions we track (board book / audiobook / eBook / eAudiobook / translations).
 
 
 ## Los Altos Library — 75 on the shelf
@@ -108,11 +108,11 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | `JP BURNING` | [Mr. Gumpy's outing](https://sccl.bibliocommons.com/v2/record/S118C11270) |  | 490L |
 | `JP CARLE` | [From head to toe](https://sccl.bibliocommons.com/v2/record/S118C59289) |  |  |
 | `JP CARLE` | [The very busy spider](https://sccl.bibliocommons.com/v2/record/S118C15845) |  |  |
+| `JP CHINESE ANDREAE` | [Giraffes can't dance](https://sccl.bibliocommons.com/v2/record/S118C1182591) | Chinese: “Chang jing lu bu hui tiao wu” — translation of “Giraffes can't dance” | AD450L |
 | `JP CHINESE CARLE` | [好餓的毛毛蟲](https://sccl.bibliocommons.com/v2/record/S118C1331915) | “Hao e de mao mao chong” |  |
 | `JP CHINESE GOMI` | [小金魚逃走了](https://sccl.bibliocommons.com/v2/record/S118C1179700) |  |  |
 | `JP CHINESE HAUGHTO` | [Shh! We have a plan](https://sccl.bibliocommons.com/v2/record/S118C1182561) | Chinese: “Xu! wo men you ge ji hua” — translation of “Shh! we have a plan” | Ages 2-5 |
 | `JP CHINESE RATHMAN` | [晚安，猩猩](https://sccl.bibliocommons.com/v2/record/S118C1183739) |  |  |
-| `JP CHINESE RINKER` | [Mighty, mighty construction site](https://sccl.bibliocommons.com/v2/record/S118C1350387) | Chinese: “Zao an, gong cheng che zao an” — translation of “Mighty, mighty construction site” | AD710L |
 | `JP CHINESE ROSEN` | [We're going on a bear hunt](https://sccl.bibliocommons.com/v2/record/S118C448005) | Chinese: “Wo men yao qu zhuo gou xiong” — translation of “We're going on a bear hunt” |  |
 | `JP DEAN` | [Pete the cat : I love my white shoes](https://sccl.bibliocommons.com/v2/record/S118C323988) |  | Ages 3-7 |
 | `JP DEGEN` | [Jamberry](https://sccl.bibliocommons.com/v2/record/S118C14319) |  | PreK |
@@ -154,7 +154,7 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | `JP WILLEMS` | [The pigeon needs a bath!](https://sccl.bibliocommons.com/v2/record/S118C407291) |  | AD350L |
 | `JP WOOD` | [The napping house](https://sccl.bibliocommons.com/v2/record/S118C14620) |  |  |
 
-## Milpitas Library — 79 on the shelf
+## Milpitas Library — 80 on the shelf
 
 | Call # | Title | Version | Ages |
 |---|---|---|---|
@@ -172,9 +172,10 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | `J TODDLER` | [Kitten's first full moon](https://sccl.bibliocommons.com/v2/record/S118C496883) | board book | 360L |
 | `J TODDLER` | [Little blue truck](https://sccl.bibliocommons.com/v2/record/S118C921524) | board book | AD580L |
 | `J TODDLER` | [Moo, baa, fa la la la la!](https://sccl.bibliocommons.com/v2/record/S118C1066724) | board book |  |
+| `J TODDLER` | [My truck is stuck!](https://sccl.bibliocommons.com/v2/record/S118C1181275) | board book | AD200L |
 | `J TODDLER` | [Orange pear apple bear](https://sccl.bibliocommons.com/v2/record/S118C546848) | board book | Ages 2-4 |
-| `J TODDLER` | [Ten little fingers and ten little toes](https://sccl.bibliocommons.com/v2/record/S118C1009025) | board book | Ages 5-8 |
 | `J TODDLER` | [The going to bed book](https://sccl.bibliocommons.com/v2/record/S118C91924) | board book | AD460L |
+| `J TODDLER` | [Time for bed](https://sccl.bibliocommons.com/v2/record/S118C1127718) | board book |  |
 | `J TODDLER` | [We're going on a bear hunt](https://sccl.bibliocommons.com/v2/record/S118C945478) | board book |  |
 | `J TODDLER` | [Where's Spot?](https://sccl.bibliocommons.com/v2/record/S118C104812) | board book | Ages 2-6 |
 | `JE CARLE` | [The very quiet cricket](https://sccl.bibliocommons.com/v2/record/S118C620847) |  |  |
@@ -306,7 +307,7 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | `JP WILSON` | [Bear snores on](https://sccl.bibliocommons.com/v2/record/S118C110074) |  | AD280L |
 | `JP WOOD` | [The napping house](https://sccl.bibliocommons.com/v2/record/S118C14620) |  |  |
 
-## Morgan Hill Library — 60 on the shelf
+## Morgan Hill Library — 58 on the shelf
 
 | Call # | Title | Version | Ages |
 |---|---|---|---|
@@ -331,7 +332,6 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | `JP CHINESE ROSEN` | [We're going on a bear hunt](https://sccl.bibliocommons.com/v2/record/S118C448005) | Chinese: “Wo men yao qu zhuo gou xiong” — translation of “We're going on a bear hunt” |  |
 | `JP CHINESE ZHOU` | [米米坐馬桶](https://sccl.bibliocommons.com/v2/record/S118C1222409) |  |  |
 | `JP COUSINS` | [Hooray for fish!](https://sccl.bibliocommons.com/v2/record/S118C162412) |  |  |
-| `JP DEAN` | [Pete the cat : I love my white shoes](https://sccl.bibliocommons.com/v2/record/S118C323988) |  | Ages 3-7 |
 | `JP DEWDNEY` | [Llama Llama red pajama](https://sccl.bibliocommons.com/v2/record/S118C181656) |  |  |
 | `JP FOX` | [Ten little fingers and ten little toes](https://sccl.bibliocommons.com/v2/record/S118C246888) |  | Ages 5-8 |
 | `JP FRENCH BROWN` | [Bonsoir Lune](https://sccl.bibliocommons.com/v2/record/S118C342782) | translation of “Goodnight moon” |  |
@@ -367,7 +367,6 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | `JP SPANISH TALK CREWS PRELOAD` | [Freight train = Tren de carga](https://sccl.bibliocommons.com/v2/record/S118C1163925) | audiobook: “Freight Train : Tren De Carga” | PreK |
 | `JP WILLEMS` | [Don't let the pigeon drive the bus](https://sccl.bibliocommons.com/v2/record/S118C138660) |  | 120L |
 | `JP WILLEMS` | [Knuffle Bunny : a cautionary tale](https://sccl.bibliocommons.com/v2/record/S118C154311) |  | Ages 2-5 |
-| `JP WILLEMS` | [The pigeon needs a bath!](https://sccl.bibliocommons.com/v2/record/S118C407291) |  | AD350L |
 | `JP WILSON` | [Bear snores on](https://sccl.bibliocommons.com/v2/record/S118C110074) |  | AD280L |
 | `JP WOOD` | [The napping house](https://sccl.bibliocommons.com/v2/record/S118C14620) |  |  |
 
@@ -491,7 +490,7 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | `JP WILLEMS` | [The pigeon needs a bath!](https://sccl.bibliocommons.com/v2/record/S118C407291) |  | AD350L |
 | `JP WILSON` | [Bear snores on](https://sccl.bibliocommons.com/v2/record/S118C110074) |  | AD280L |
 
-## Campbell Library — 39 on the shelf
+## Campbell Library — 40 on the shelf
 
 | Call # | Title | Version | Ages |
 |---|---|---|---|
@@ -522,6 +521,7 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | `JP MCMULLA` | [I stink!](https://sccl.bibliocommons.com/v2/record/S118C114918) |  |  |
 | `JP RINKER` | [Goodnight, goodnight, construction site](https://sccl.bibliocommons.com/v2/record/S118C323945) |  |  |
 | `JP RINKER` | [Steam train, dream train](https://sccl.bibliocommons.com/v2/record/S118C372893) |  | AD610L |
+| `JP SCARRY` | [Cars and trucks and things that go](https://sccl.bibliocommons.com/v2/record/S118C22437) |  | Ages 3-7 |
 | `JP SENDAK` | [Where the wild things are](https://sccl.bibliocommons.com/v2/record/S118C5702) |  | Ages 4-8 |
 | `JP SLOBODK` | [Caps for sale : a tale of a peddler, some monkeys, and their monkey business](https://sccl.bibliocommons.com/v2/record/S118C1161154) |  | Ages 3-7 |
 | `JP SPANISH HAUGHTO` | [Shh! We have a plan](https://sccl.bibliocommons.com/v2/record/S118C799909) | Spanish: “¡Shhh! Tenemos un plan” — translation of “Shh! We have a plan” | Ages 2-5 |
@@ -649,10 +649,10 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | [The snowy day](https://sccl.bibliocommons.com/v2/record/S980C1289594) | eAudiobook |
 | [The snowy day](https://sccl.bibliocommons.com/v2/record/S980C1583668) | eBook |
 | [The very busy spider](https://sccl.bibliocommons.com/v2/record/S980C3359960) | eAudiobook |
+| [The very busy spider](https://sccl.bibliocommons.com/v2/record/S980C5651247) | eAudiobook: “The Very Eric Carle Treasury : The Very Busy Spider / The Very Quiet Cricket / The Very Clumsy Click Beetle / The Very Lonely Firefly” |
 | [The very hungry caterpillar](https://sccl.bibliocommons.com/v2/record/S980C3014825) | eBook |
 | [The very hungry caterpillar](https://sccl.bibliocommons.com/v2/record/S980C3359961) | eAudiobook |
 | [The very quiet cricket](https://sccl.bibliocommons.com/v2/record/S980C3359962) | eAudiobook |
-| [The very quiet cricket](https://sccl.bibliocommons.com/v2/record/S980C5651247) | eAudiobook: “The Very Eric Carle Treasury : The Very Busy Spider / The Very Quiet Cricket / The Very Clumsy Click Beetle / The Very Lonely Firefly” |
 | [The very quiet cricket](https://sccl.bibliocommons.com/v2/record/S980C7253511) | eBook |
 | [The watermelon seed](https://sccl.bibliocommons.com/v2/record/S118C793523) | Chinese eBook: “Xi gua zi” — translation of “The watermelon seed” |
 | [The watermelon seed](https://sccl.bibliocommons.com/v2/record/S980C2231135) | eBook |
@@ -666,7 +666,6 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 
 | Title | Version |
 |---|---|
-| [Cars and trucks and things that go](https://sccl.bibliocommons.com/v2/record/S118C22437) |  |
 | [Dear zoo](https://sccl.bibliocommons.com/v2/record/S118C1355543) | Chinese: “Qin ai de dong wu yuan : dong wu fan fan shu” — translation of “Dear zoo” |
 | [Dear zoo](https://sccl.bibliocommons.com/v2/record/S118C14525) |  |
 | [Dear zoo](https://sccl.bibliocommons.com/v2/record/S118C397600) | French: “Dear zoo : Cher zoo” |
@@ -684,7 +683,7 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | [Little Excavator](https://sccl.bibliocommons.com/v2/record/S118C1341215) | board book |
 | [Llama Llama misses Mama](https://sccl.bibliocommons.com/v2/record/S118C1009023) | board book |
 | [Llama Llama red pajama](https://sccl.bibliocommons.com/v2/record/S118C1313833) | board book |
-| [My truck is stuck!](https://sccl.bibliocommons.com/v2/record/S118C1181275) | board book |
+| [Mighty, mighty construction site](https://sccl.bibliocommons.com/v2/record/S118C1350387) | Chinese: “Zao an, gong cheng che zao an” — translation of “Mighty, mighty construction site” |
 | [My truck is stuck!](https://sccl.bibliocommons.com/v2/record/S118C123875) |  |
 | [Oh no, George!](https://sccl.bibliocommons.com/v2/record/S118C1182566) | Chinese: “Bie zhe yang, Xiaoguai!” — translation of “Oh no, George!” |
 | [Polar bear, polar bear, what do you hear?](https://sccl.bibliocommons.com/v2/record/S118C67031) | board book |
@@ -698,13 +697,11 @@ _Auto-generated from `shelfwalk.db` — data as of **2026-08-21T16:25:58**. Don'
 | [The very hungry caterpillar](https://sccl.bibliocommons.com/v2/record/S118C996455) |  |
 | [The very quiet cricket](https://sccl.bibliocommons.com/v2/record/S118C1360499) | Spanish: “El grillo muy silencioso : The very quiet cricket” |
 | [The watermelon seed](https://sccl.bibliocommons.com/v2/record/S118C999623) | audiobook |
-| [Time for bed](https://sccl.bibliocommons.com/v2/record/S118C1127718) | board book |
 | [We're going on a bear hunt](https://sccl.bibliocommons.com/v2/record/S118C397617) | French: “La chasse à l'ours : We're going on a bear hunt” — translation of “We're going on a bear hunt” |
 | [Where do diggers sleep at night?](https://sccl.bibliocommons.com/v2/record/S118C1365031) | audiobook |
 | [好大的紅蘋果](https://sccl.bibliocommons.com/v2/record/S118C1243792) |  |
 | [好大的紅蘋果](https://sccl.bibliocommons.com/v2/record/S118C577101) | “Hao da de hong pin guo : Everyone comes to big red apples” |
 | [好餓的毛毛蟲](https://sccl.bibliocommons.com/v2/record/S118C1020595) |  |
-| [好餓的毛毛蟲](https://sccl.bibliocommons.com/v2/record/S118C676168) | “Hao e de mao mao chong” |
 | [媽媽買綠豆](https://sccl.bibliocommons.com/v2/record/S118C1365933) | “Ma ma mai Lü dou” |
 | [媽媽買綠豆](https://sccl.bibliocommons.com/v2/record/S118C593060) |  |
 | [小藍和小黃](https://sccl.bibliocommons.com/v2/record/S118C603415) |  |
